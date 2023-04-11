@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "experience": 1,
+  "cookingtime": 600,
+  "ingredient": {
+    "item": "breadcraft:diced_onion"
+  },
+  "result": "breadcraft:caramelized_onion"
+}

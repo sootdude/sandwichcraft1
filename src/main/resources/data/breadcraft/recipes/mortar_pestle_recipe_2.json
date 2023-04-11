@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    " 4 "
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:blackstone"
+    },
+    "1": {
+      "item": "minecraft:wooden_shovel"
+    },
+    "2": {
+      "item": "minecraft:blackstone"
+    },
+    "4": {
+      "item": "minecraft:blackstone"
+    }
+  },
+  "result": {
+    "item": "breadcraft:mortar_pestle",
+    "count": 1
+  }
+}

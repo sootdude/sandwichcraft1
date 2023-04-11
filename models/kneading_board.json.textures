@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": ""
+      },
+      "name": "default"
+    },
+    "kneadboard": {
+      "map": {
+        "0": "board"
+      },
+      "name": "kneadboard"
+    }
+  }
+}

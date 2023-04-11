@@ -1,0 +1,30 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:CreamCheeseDollop"
+      },
+      {
+        "value": "CUSTOM:WhiteCheddarSlice"
+      },
+      {
+        "value": "CUSTOM:AgedWhiteCheddarSlice"
+      },
+      {
+        "value": "CUSTOM:SlicedMozzarella"
+      },
+      {
+        "value": "CUSTOM:GratedParmesan"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "white_cheeses",
+    "namespace": "mod"
+  }
+}

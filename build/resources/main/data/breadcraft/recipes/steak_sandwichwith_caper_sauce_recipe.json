@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_sub_sandwich_loaf"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "item": "breadcraft:caper_seeds"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "tag": "forge:butter"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:steak_sandwichwith_caper_sauce",
+    "count": 1
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 2,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:ChefsKnife"
+      },
+      {
+        "value": "Items.FISH#1"
+      },
+      {
+        "value": "TAG:forge:lettuce"
+      },
+      {
+        "value": "TAG:forge:chili_pepper"
+      },
+      {
+        "value": "CUSTOM:DicedOnion"
+      },
+      {
+        "value": "TAG:forge:lemon_juice"
+      },
+      {
+        "value": "CUSTOM:BreadcraftSalt"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:SalmonCeviche"
+    },
+    "name": "salmon_ceviche_recipe",
+    "namespace": "mod"
+  }
+}

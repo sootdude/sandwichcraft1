@@ -1,0 +1,832 @@
+{
+  "_fv": 39,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 178,
+    "height": 154,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": -8,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 1,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": false,
+          "onSlotChanged": {
+            "name": "Closegui"
+          },
+          "x": 165,
+          "y": 63
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 2,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": false,
+          "onSlotChanged": {
+            "name": "Closegui"
+          },
+          "x": 184,
+          "y": 63
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 4,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": false,
+          "onSlotChanged": {
+            "name": "Closegui"
+          },
+          "x": 222,
+          "y": 63
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 5,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": false,
+          "onSlotChanged": {
+            "name": "Closegui"
+          },
+          "x": 241,
+          "y": 63
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbarempty.png",
+          "use1Xscale": false,
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar1.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar1_2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar2"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar3"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar3.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar4"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar4.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar5"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar5.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar6"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar6.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar7"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar7.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar8"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar8.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar9"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar9.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar10"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar10.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar11"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar11.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar12"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar12.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar13"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar13.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar14"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar14.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar15"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar15.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar16"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar16.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar17"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar17.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar18"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar18.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar19"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar19.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar20"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar20.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar21"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar21.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar22"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar22.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar23"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar23.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar24"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar24.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar25"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar25.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar26"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar26.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar27"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar27.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar28"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar28.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar29"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar29.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar30"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar31.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar31"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar32.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar32"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar33.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar33"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar34.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar34"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar35.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar35"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar36.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar36"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar37.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar37"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar38.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar38"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar39.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar39"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar40.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar40"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar41.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar41"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar42.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar42"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar43.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar43"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar44.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar44"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar45.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar45"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar46.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar46"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar47.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar47"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar48.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar48"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar49.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar49"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar50.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar50"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar51.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar51"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar52.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar52"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar53.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar53"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar54.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar54"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar55.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar55"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar56.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar56"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar57.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbar57"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar58.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Progressbardone"
+          },
+          "x": 148,
+          "y": 70
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 3,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": false,
+          "onSlotChanged": {
+            "name": "Closegui"
+          },
+          "x": 203,
+          "y": 63
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_salt_pot",
+          "text": {
+            "fixedValue": "Salt Pot"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 190,
+          "y": 49
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_inventory",
+          "text": {
+            "fixedValue": "Inventory"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 132,
+          "y": 101
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 22,
+      "sy": 39,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

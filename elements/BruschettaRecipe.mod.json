@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:FrenchBatardSlice"
+      },
+      {
+        "value": "TAG:forge:tomatoes"
+      },
+      {
+        "value": "TAG:forge:basil"
+      },
+      {
+        "value": "CUSTOM:SlicedMozzarella"
+      },
+      {
+        "value": "TAG:forge:olive_oil"
+      },
+      {
+        "value": "CUSTOM:MincedGarlic"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:Bruschetta"
+    },
+    "name": "bruschetta_recipe",
+    "namespace": "mod"
+  }
+}

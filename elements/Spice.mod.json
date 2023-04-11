@@ -1,0 +1,42 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:HotPepper"
+      },
+      {
+        "value": "CUSTOM:MincedGarlic"
+      },
+      {
+        "value": "CUSTOM:Garlic"
+      },
+      {
+        "value": "CUSTOM:Basil"
+      },
+      {
+        "value": "CUSTOM:Rosemary"
+      },
+      {
+        "value": "CUSTOM:Thyme"
+      },
+      {
+        "value": "CUSTOM:MixedHerbs"
+      },
+      {
+        "value": "CUSTOM:CaperSeeds"
+      },
+      {
+        "value": "CUSTOM:HotSauce"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "spice",
+    "namespace": "forge"
+  }
+}

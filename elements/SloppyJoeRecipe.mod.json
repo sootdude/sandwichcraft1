@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:SlicedSubSandwichLoaf"
+      },
+      {
+        "value": "TAG:forge:beef"
+      },
+      {
+        "value": "CUSTOM:DicedOnion"
+      },
+      {
+        "value": "TAG:forge:cheese_slice"
+      },
+      {
+        "value": "TAG:forge:ketchup"
+      },
+      {
+        "value": "TAG:forge:mustard"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:SloppyJoe"
+    },
+    "name": "sloppy_joe_recipe",
+    "namespace": "mod"
+  }
+}

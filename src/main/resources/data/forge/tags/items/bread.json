@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:sliced_berry_bagel",
+    "breadcraft:white_bread_slice",
+    "breadcraft:pumpernickel_slice",
+    "breadcraft:chocolate_sourdough_slice",
+    "breadcraft:sliced_plain_bagel",
+    "breadcraft:sliced_baguette",
+    "breadcraft:sliced_brioche_bun",
+    "breadcraft:fougasse_slice",
+    "breadcraft:whole_wheat_boule_slice",
+    "breadcraft:country_loaf_slice",
+    "breadcraft:babka_slice",
+    "breadcraft:focaccia_slice",
+    "minecraft:bread",
+    "breadcraft:sliced_everything_bagel",
+    "breadcraft:whole_wheat_slice",
+    "breadcraft:french_batard_slice",
+    "breadcraft:rye_bread_slice",
+    "breadcraft:brioche_slice",
+    "breadcraft:pretzel_bread_slice",
+    "breadcraft:sliced_sub_sandwich_loaf",
+    "breadcraft:sourdough_sandwich_bread_slice",
+    "breadcraft:guinness_bread_slice",
+    "breadcraft:sourdough_boule_slice",
+    "breadcraft:challah_slice",
+    "breadcraft:milk_bread_slice"
+  ]
+}

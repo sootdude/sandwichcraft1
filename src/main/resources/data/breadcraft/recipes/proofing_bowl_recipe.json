@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    " 4 "
+  ],
+  "key": {
+    "0": {
+      "tag": "forge:planks"
+    },
+    "1": {
+      "item": "minecraft:white_carpet"
+    },
+    "2": {
+      "tag": "forge:planks"
+    },
+    "4": {
+      "tag": "forge:planks"
+    }
+  },
+  "result": {
+    "item": "breadcraft:proofing_bowl",
+    "count": 1
+  }
+}

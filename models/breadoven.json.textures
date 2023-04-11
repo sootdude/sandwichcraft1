@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "4": "window",
+        "5": "breadoven"
+      },
+      "name": "default"
+    }
+  }
+}

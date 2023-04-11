@@ -1,0 +1,24 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:Onion"
+      },
+      {
+        "value": "CUSTOM:DicedOnion"
+      },
+      {
+        "value": "CUSTOM:CaramelizedOnion"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "crops/onion",
+    "namespace": "forge"
+  }
+}

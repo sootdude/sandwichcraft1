@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:crumbled_blue_cheese",
+    "breadcraft:parmesan",
+    "breadcraft:gouda",
+    "breadcraft:brie",
+    "breadcraft:colby_cheese",
+    "breadcraft:aged_white_cheddar",
+    "breadcraft:aged_white_cheddar_slice",
+    "breadcraft:cream_cheese",
+    "breadcraft:gouda_cheese_slice",
+    "breadcraft:white_cheddar_slice",
+    "breadcraft:cream_cheese_dollop",
+    "breadcraft:cheddar_cheese_slice",
+    "breadcraft:cheddar_cheese",
+    "breadcraft:grated_parmesan",
+    "breadcraft:colby_cheese_slice",
+    "breadcraft:white_cheddar",
+    "breadcraft:blue_cheese",
+    "breadcraft:brie_slice"
+  ]
+}

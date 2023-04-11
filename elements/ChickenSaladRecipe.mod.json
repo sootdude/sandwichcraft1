@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:ChefsKnife"
+      },
+      {
+        "value": "TAG:forge:chicken"
+      },
+      {
+        "value": "TAG:forge:mayo"
+      },
+      {
+        "value": "CUSTOM:DicedOnion"
+      },
+      {
+        "value": "TAG:forge:salt"
+      },
+      {
+        "value": "TAG:forge:herb"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:ChickenSalad"
+    },
+    "name": "chicken_salad_recipe",
+    "namespace": "mod"
+  }
+}

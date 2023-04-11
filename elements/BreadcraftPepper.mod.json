@@ -1,0 +1,39 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:PepperStage0"
+      },
+      {
+        "value": "CUSTOM:PepperStage2"
+      },
+      {
+        "value": "CUSTOM:PepperStage1"
+      },
+      {
+        "value": "CUSTOM:PepperStage4"
+      },
+      {
+        "value": "CUSTOM:PepperStage3"
+      },
+      {
+        "value": "CUSTOM:PepperStage6"
+      },
+      {
+        "value": "CUSTOM:PepperStage5"
+      },
+      {
+        "value": "CUSTOM:PepperStage7"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "pepper",
+    "namespace": "breadcraft"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:SlicedSubSandwichLoaf"
+      },
+      {
+        "value": "TAG:forge:lettuce"
+      },
+      {
+        "value": "TAG:forge:tomatoes"
+      },
+      {
+        "value": "CUSTOM:DicedOnion"
+      },
+      {
+        "value": "TAG:forge:tomatoes"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:VeggieSub"
+    },
+    "name": "veggie_sub_recipe",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_plain_bagel"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:pork"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:breakfast_sandwich",
+    "count": 1
+  }
+}

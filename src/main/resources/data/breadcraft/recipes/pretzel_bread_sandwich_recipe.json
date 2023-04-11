@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:pretzel_bread_slice"
+    },
+    {
+      "item": "breadcraft:pretzel_bread_slice"
+    },
+    {
+      "tag": "forge:tomatoes"
+    },
+    {
+      "item": "breadcraft:caramelized_onion"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:pretzel_bread_sandwich",
+    "count": 1
+  }
+}

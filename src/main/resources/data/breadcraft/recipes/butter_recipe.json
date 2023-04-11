@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:cream"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "item": "breadcraft:whisk"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:butter",
+    "count": 1
+  }
+}

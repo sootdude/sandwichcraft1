@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:ketchup"
+    },
+    {
+      "tag": "forge:hot_sauce"
+    },
+    {
+      "tag": "forge:mustard"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:bbq_sauce",
+    "count": 4
+  }
+}

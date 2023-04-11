@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "breadcraft:block/aging_cask"
+    },
+    "facing=east": {
+      "model": "breadcraft:block/aging_cask",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "breadcraft:block/aging_cask",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "breadcraft:block/aging_cask",
+      "y": 270
+    }
+  }
+}

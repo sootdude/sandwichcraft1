@@ -1,0 +1,66 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:EnrichedDough"
+      },
+      {
+        "value": "CUSTOM:ProofedEnrichedDough"
+      },
+      {
+        "value": "CUSTOM:RolledEnrichedDough"
+      },
+      {
+        "value": "CUSTOM:FlatWholeWheatDough"
+      },
+      {
+        "value": "CUSTOM:WholeWheatDough"
+      },
+      {
+        "value": "CUSTOM:ProofedWholeWheatDough"
+      },
+      {
+        "value": "CUSTOM:BasicDough"
+      },
+      {
+        "value": "CUSTOM:FlatBasicDough"
+      },
+      {
+        "value": "CUSTOM:DarkDough"
+      },
+      {
+        "value": "CUSTOM:FlatDarkDough"
+      },
+      {
+        "value": "CUSTOM:HerbDough"
+      },
+      {
+        "value": "CUSTOM:FlatHerbDough"
+      },
+      {
+        "value": "CUSTOM:ProofedHerbDough"
+      },
+      {
+        "value": "CUSTOM:ProofedBasicDough"
+      },
+      {
+        "value": "CUSTOM:ProofedDarkDough"
+      },
+      {
+        "value": "CUSTOM:PretzelDough"
+      },
+      {
+        "value": "CUSTOM:RolledBasicDough"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "dough",
+    "namespace": "forge"
+  }
+}

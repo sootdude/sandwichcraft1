@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "breadcraft:cream_cheese_dollop"
+    },
+    {
+      "item": "breadcraft:sourdough_sandwich_bread_slice"
+    },
+    {
+      "item": "breadcraft:sourdough_sandwich_bread_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:grilled_apple_sandwich",
+    "count": 1
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:MozzarellaCurds"
+      },
+      {
+        "value": "CUSTOM:CheddarCheeseCurds"
+      },
+      {
+        "value": "CUSTOM:ParmesanCurds"
+      },
+      {
+        "value": "CUSTOM:ColbyCheeseCurds"
+      },
+      {
+        "value": "CUSTOM:GoudaCheeseCurds"
+      },
+      {
+        "value": "CUSTOM:BrieCheeseCurds"
+      },
+      {
+        "value": "CUSTOM:BlueCheeseCurds"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "cheesecurd",
+    "namespace": "forge"
+  }
+}

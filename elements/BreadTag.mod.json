@@ -1,0 +1,90 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:RyeBreadSlice"
+      },
+      {
+        "value": "CUSTOM:SlicedSubSandwichLoaf"
+      },
+      {
+        "value": "CUSTOM:SlicedBriocheBun"
+      },
+      {
+        "value": "CUSTOM:BriocheSlice"
+      },
+      {
+        "value": "CUSTOM:WhiteBreadSlice"
+      },
+      {
+        "value": "CUSTOM:MilkBreadSlice"
+      },
+      {
+        "value": "CUSTOM:PretzelBreadSlice"
+      },
+      {
+        "value": "CUSTOM:CountryLoafSlice"
+      },
+      {
+        "value": "CUSTOM:PumpernickelSlice"
+      },
+      {
+        "value": "CUSTOM:BabkaSlice"
+      },
+      {
+        "value": "CUSTOM:FougasseSlice"
+      },
+      {
+        "value": "CUSTOM:FrenchBatardSlice"
+      },
+      {
+        "value": "CUSTOM:WholeWheatSlice"
+      },
+      {
+        "value": "CUSTOM:WholeWheatBouleSlice"
+      },
+      {
+        "value": "CUSTOM:SourdoughSandwichBreadSlice"
+      },
+      {
+        "value": "CUSTOM:SourdoughBouleSlice"
+      },
+      {
+        "value": "CUSTOM:SlicedPlainBagel"
+      },
+      {
+        "value": "CUSTOM:SlicedBerryBagel"
+      },
+      {
+        "value": "CUSTOM:SlicedEverythingBagel"
+      },
+      {
+        "value": "CUSTOM:FocacciaSlice"
+      },
+      {
+        "value": "CUSTOM:ChocolateSourdoughSlice"
+      },
+      {
+        "value": "CUSTOM:ChallahSlice"
+      },
+      {
+        "value": "CUSTOM:SlicedBaguette"
+      },
+      {
+        "value": "CUSTOM:GuinnessBreadSlice"
+      },
+      {
+        "value": "Items.BREAD"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "bread",
+    "namespace": "forge"
+  }
+}

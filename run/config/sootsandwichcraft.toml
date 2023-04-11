@@ -1,0 +1,14 @@
+
+[seedDropRate]
+	ryeSeedDropRate = 1.0
+	thymeSeedDropRate = 1.0
+	garlicSeedDropRate = 1.0
+	basilSeedDropRate = 1.0
+	rosemarySeedDropRate = 1.0
+	onionSeedDropRate = 1.0
+	mustardSeedDropRate = 1.0
+	tomatoSeedDropRate = 1.0
+	hotpepperSeedDropRate = 1.0
+	caperSeedDropRate = 1.0
+	wildgreensSeedDropRate = 1.0
+

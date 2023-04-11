@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:country_loaf_slice"
+    },
+    {
+      "item": "breadcraft:minced_garlic"
+    },
+    {
+      "tag": "forge:butter"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:garlic_bread",
+    "count": 1
+  }
+}

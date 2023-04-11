@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 4,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "TAG:forge:sugar"
+      },
+      {
+        "value": "TAG:forge:ketchup"
+      },
+      {
+        "value": "TAG:forge:hot_sauce"
+      },
+      {
+        "value": "TAG:forge:mustard"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:BBQSauce"
+    },
+    "name": "bbq_sauce_recipe",
+    "namespace": "mod"
+  }
+}

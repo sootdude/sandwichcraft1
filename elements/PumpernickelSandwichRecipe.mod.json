@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:PumpernickelSlice"
+      },
+      {
+        "value": "CUSTOM:PumpernickelSlice"
+      },
+      {
+        "value": "TAG:forge:cheese_slice"
+      },
+      {
+        "value": "CUSTOM:GratedParmesan"
+      },
+      {
+        "value": "TAG:forge:lettuce"
+      },
+      {
+        "value": "CUSTOM:TartarSauce"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:PumpernickelSandwich"
+    },
+    "name": "pumpernickel_sandwich_recipe",
+    "namespace": "mod"
+  }
+}

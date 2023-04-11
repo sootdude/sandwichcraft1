@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:cream_cheese_dollop",
+    "breadcraft:white_cheddar_slice",
+    "breadcraft:grated_parmesan",
+    "breadcraft:aged_white_cheddar_slice",
+    "breadcraft:sliced_mozzarella"
+  ]
+}

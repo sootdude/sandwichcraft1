@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "TAG:forge:cookingoil"
+      },
+      {
+        "value": "CUSTOM:Pot"
+      },
+      {
+        "value": "TAG:forge:cheesecurd"
+      },
+      {
+        "value": "TAG:forge:flour"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:FriedCheeseCurds"
+    },
+    "name": "fried_cheese_curd_recipe",
+    "namespace": "mod"
+  }
+}

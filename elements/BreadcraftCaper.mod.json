@@ -1,0 +1,39 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:CaperStage0"
+      },
+      {
+        "value": "CUSTOM:CaperStage2"
+      },
+      {
+        "value": "CUSTOM:CaperStage1"
+      },
+      {
+        "value": "CUSTOM:CaperStage4"
+      },
+      {
+        "value": "CUSTOM:CaperStage3"
+      },
+      {
+        "value": "CUSTOM:CaperStage6"
+      },
+      {
+        "value": "CUSTOM:CaperStage5"
+      },
+      {
+        "value": "CUSTOM:CaperStage7"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "caper",
+    "namespace": "breadcraft"
+  }
+}

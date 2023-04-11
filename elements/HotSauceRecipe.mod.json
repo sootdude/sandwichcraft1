@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 3,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "TAG:forge:chili_pepper"
+      },
+      {
+        "value": "TAG:forge:cookingoil"
+      },
+      {
+        "value": "TAG:forge:salt"
+      },
+      {
+        "value": "CUSTOM:MortarPestle"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:HotSauce"
+    },
+    "name": "hot_sauce_recipe",
+    "namespace": "mod"
+  }
+}

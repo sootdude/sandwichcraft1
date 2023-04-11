@@ -1,0 +1,21 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:RawBurgerPatty"
+      },
+      {
+        "value": "CUSTOM:ChoppedBeef"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "raw_beef",
+    "namespace": "forge"
+  }
+}

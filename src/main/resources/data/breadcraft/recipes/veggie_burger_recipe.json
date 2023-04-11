@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_brioche_bun"
+    },
+    {
+      "item": "breadcraft:veggie_patty"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    },
+    {
+      "tag": "forge:tomatoes"
+    },
+    {
+      "tag": "forge:lettuce"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:veggie_burger",
+    "count": 1
+  }
+}

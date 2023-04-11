@@ -1,0 +1,24 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:WhiteCheddarSlice"
+      },
+      {
+        "value": "CUSTOM:AgedWhiteCheddarSlice"
+      },
+      {
+        "value": "CUSTOM:CheddarCheeseSlice"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "cheddar",
+    "namespace": "mod"
+  }
+}

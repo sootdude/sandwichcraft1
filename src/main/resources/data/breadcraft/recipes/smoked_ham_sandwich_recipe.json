@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_baguette"
+    },
+    {
+      "tag": "forge:pork"
+    },
+    {
+      "tag": "forge:butter"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:smoked_ham_sandwich",
+    "count": 1
+  }
+}

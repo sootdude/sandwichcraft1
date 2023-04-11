@@ -1,0 +1,39 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "breadcraft"
+    }
+  ],
+  "seed": {
+    "item": "breadcraft:onion_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 2,
+  "growthModifier": 1.5,
+  "display": {
+    "block": "breadcraft:onion",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "breadcraft:onion"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+	{
+      "chance": 0.25,
+      "output": {
+        "item": "breadcraft:onion_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

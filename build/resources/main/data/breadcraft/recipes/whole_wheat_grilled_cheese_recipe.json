@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:whole_wheat_slice"
+    },
+    {
+      "item": "breadcraft:whole_wheat_slice"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:whole_wheat_grilled_cheese",
+    "count": 1
+  }
+}

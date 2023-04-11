@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "item": "breadcraft:egg_salad"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:scrambled_egg_sandwich",
+    "count": 1
+  }
+}

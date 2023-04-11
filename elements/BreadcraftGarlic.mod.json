@@ -1,0 +1,39 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:GarlicStage7"
+      },
+      {
+        "value": "CUSTOM:GarlicStage6"
+      },
+      {
+        "value": "CUSTOM:GarlicStage5"
+      },
+      {
+        "value": "CUSTOM:GarlicStage4"
+      },
+      {
+        "value": "CUSTOM:GarlicStage3"
+      },
+      {
+        "value": "CUSTOM:GarlicStage2"
+      },
+      {
+        "value": "CUSTOM:GarlicStage1"
+      },
+      {
+        "value": "CUSTOM:GarlicStage0"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "garlic",
+    "namespace": "breadcraft"
+  }
+}

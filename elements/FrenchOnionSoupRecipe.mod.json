@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "TAG:forge:onions"
+      },
+      {
+        "value": "TAG:forge:salt"
+      },
+      {
+        "value": "TAG:forge:cookingoil"
+      },
+      {
+        "value": "TAG:forge:cheese_slice"
+      },
+      {
+        "value": "CUSTOM:FrenchBatardSlice"
+      },
+      {
+        "value": "CUSTOM:Pot"
+      },
+      {
+        "value": "Items.BOWL"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:FrenchOnionSoup"
+    },
+    "name": "french_onion_soup_recipe",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:PretzelBreadSlice"
+      },
+      {
+        "value": "CUSTOM:CountryLoafSlice"
+      },
+      {
+        "value": "CUSTOM:WhiteBreadSlice"
+      },
+      {
+        "value": "CUSTOM:SourdoughBouleSlice"
+      },
+      {
+        "value": "CUSTOM:FougasseSlice"
+      },
+      {
+        "value": "CUSTOM:FocacciaSlice"
+      },
+      {
+        "value": "CUSTOM:FrenchBatardSlice"
+      },
+      {
+        "value": "Items.BREAD"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "acceptable_salad_bread",
+    "namespace": "mod"
+  }
+}

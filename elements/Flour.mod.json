@@ -1,0 +1,24 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:RyeFlour"
+      },
+      {
+        "value": "CUSTOM:WhiteFlour"
+      },
+      {
+        "value": "CUSTOM:WheatFlour"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "flour",
+    "namespace": "forge"
+  }
+}

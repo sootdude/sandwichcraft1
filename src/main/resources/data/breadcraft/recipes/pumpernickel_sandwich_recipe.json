@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:pumpernickel_slice"
+    },
+    {
+      "item": "breadcraft:pumpernickel_slice"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    },
+    {
+      "item": "breadcraft:grated_parmesan"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "item": "breadcraft:tartar_sauce"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:pumpernickel_sandwich",
+    "count": 1
+  }
+}

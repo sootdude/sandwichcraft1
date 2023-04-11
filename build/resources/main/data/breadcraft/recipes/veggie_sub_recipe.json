@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_sub_sandwich_loaf"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "tag": "forge:tomatoes"
+    },
+    {
+      "item": "breadcraft:diced_onion"
+    },
+    {
+      "tag": "forge:tomatoes"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:veggie_sub",
+    "count": 1
+  }
+}

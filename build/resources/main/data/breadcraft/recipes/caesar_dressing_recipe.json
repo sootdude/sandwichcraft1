@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:minced_garlic"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    },
+    {
+      "tag": "forge:mustard"
+    },
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "item": "breadcraft:grated_parmesan"
+    },
+    {
+      "tag": "forge:salt"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:caesar_dressing",
+    "count": 4
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:rye_bread_slice"
+    },
+    {
+      "item": "breadcraft:rye_bread_slice"
+    },
+    {
+      "tag": "breadcraft:cheddar"
+    },
+    {
+      "tag": "forge:pork"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:rye_ham_and_cheese_sandwich",
+    "count": 1
+  }
+}

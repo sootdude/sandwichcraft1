@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "01",
+    "23"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:birch_slab"
+    },
+    "1": {
+      "item": "minecraft:birch_slab"
+    },
+    "2": {
+      "item": "minecraft:quartz_stairs"
+    },
+    "3": {
+      "item": "minecraft:quartz_stairs"
+    }
+  },
+  "result": {
+    "item": "breadcraft:counter",
+    "count": 2
+  }
+}

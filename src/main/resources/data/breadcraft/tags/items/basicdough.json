@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:proofed_basic_dough",
+    "breadcraft:basic_dough",
+    "breadcraft:flat_basic_dough"
+  ]
+}

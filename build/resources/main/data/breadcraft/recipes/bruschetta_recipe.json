@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:french_batard_slice"
+    },
+    {
+      "tag": "forge:tomatoes"
+    },
+    {
+      "tag": "forge:basil"
+    },
+    {
+      "item": "breadcraft:sliced_mozzarella"
+    },
+    {
+      "tag": "forge:olive_oil"
+    },
+    {
+      "item": "breadcraft:minced_garlic"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:bruschetta",
+    "count": 1
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 2,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:SlicedMozzarella"
+      },
+      {
+        "value": "CUSTOM:TomatoSlice"
+      },
+      {
+        "value": "TAG:forge:basil"
+      },
+      {
+        "value": "CUSTOM:TomatoSlice"
+      },
+      {
+        "value": "CUSTOM:SlicedMozzarella"
+      },
+      {
+        "value": "TAG:forge:olive_oil"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:CapreseSalad"
+    },
+    "name": "caprese_salad_recipe",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "breadcraft:basicdough"
+    },
+    {
+      "item": "breadcraft:rolling_pin"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:rolled_basic_dough",
+    "count": 1
+  }
+}

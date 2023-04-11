@@ -1,0 +1,38 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:BasilStage0"
+      },
+      {
+        "value": "CUSTOM:BasilStage1"
+      },
+      {
+        "value": "CUSTOM:BasilStage2"
+      },
+      {
+        "value": "CUSTOM:BasilStage3"
+      },
+      {
+        "value": "CUSTOM:BasilStage4"
+      },
+      {
+        "value": "CUSTOM:BasilStage5"
+      },
+      {
+        "value": "CUSTOM:BasilStage6"
+      },
+      {
+        "value": "CUSTOM:BasilStage7"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "name": "basil",
+    "namespace": "breadcraft"
+  }
+}

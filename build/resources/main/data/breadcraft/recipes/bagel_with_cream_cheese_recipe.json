@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_plain_bagel"
+    },
+    {
+      "item": "breadcraft:cream_cheese_dollop"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:bagelwith_cream_cheese",
+    "count": 1
+  }
+}

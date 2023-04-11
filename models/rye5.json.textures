@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "crop": "wheat_stage5"
+      },
+      "name": "default"
+    }
+  }
+}

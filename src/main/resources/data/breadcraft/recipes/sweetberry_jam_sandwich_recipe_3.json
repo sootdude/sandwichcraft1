@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:milk_bread_slice"
+    },
+    {
+      "item": "breadcraft:milk_bread_slice"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:sweetberry_jam_sandwich",
+    "count": 1
+  }
+}

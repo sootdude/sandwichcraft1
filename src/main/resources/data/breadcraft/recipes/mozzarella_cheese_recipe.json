@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:mozzarella_curds"
+    },
+    {
+      "item": "breadcraft:cheese_press"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:mozzarella_cheese",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:mustard_seeds"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    },
+    {
+      "item": "breadcraft:mortar_pestle"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:mustard",
+    "count": 3
+  }
+}

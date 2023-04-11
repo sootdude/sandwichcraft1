@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "breadcraft:blocks/tomato_stage3",
+    "particle": "breadcraft:blocks/tomato_stage3"
+  },
+  "render_type": "cutout"
+}

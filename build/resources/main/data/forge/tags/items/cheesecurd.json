@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:colby_cheese_curds",
+    "breadcraft:brie_cheese_curds",
+    "breadcraft:cheddar_cheese_curds",
+    "breadcraft:blue_cheese_curds",
+    "breadcraft:mozzarella_curds",
+    "breadcraft:parmesan_curds",
+    "breadcraft:gouda_cheese_curds"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:chocolate_sourdough_slice"
+    },
+    {
+      "item": "breadcraft:chocolate_sourdough_slice"
+    },
+    {
+      "tag": "forge:bananas"
+    },
+    {
+      "tag": "forge:butter"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:banana_sandwich",
+    "count": 1
+  }
+}

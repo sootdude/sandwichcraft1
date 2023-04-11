@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:SlicedBriocheBun"
+      },
+      {
+        "value": "CUSTOM:VeggiePatty"
+      },
+      {
+        "value": "TAG:forge:cheese_slice"
+      },
+      {
+        "value": "TAG:forge:tomatoes"
+      },
+      {
+        "value": "TAG:forge:lettuce"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:VeggieBurger"
+    },
+    "name": "veggie_burger_recipe",
+    "namespace": "mod"
+  }
+}

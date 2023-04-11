@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 4,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "TAG:forge:tomatoes"
+      },
+      {
+        "value": "TAG:forge:onions"
+      },
+      {
+        "value": "TAG:forge:salt"
+      },
+      {
+        "value": "TAG:forge:sugar"
+      },
+      {
+        "value": "CUSTOM:MixedHerbs"
+      },
+      {
+        "value": "CUSTOM:MortarPestle"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:Ketchup"
+    },
+    "name": "ketchup_recipe",
+    "namespace": "mod"
+  }
+}

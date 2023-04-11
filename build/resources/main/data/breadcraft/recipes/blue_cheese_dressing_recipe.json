@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "tag": "forge:cream"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    },
+    {
+      "item": "breadcraft:minced_garlic"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "item": "breadcraft:crumbled_blue_cheese"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:blue_cheese_dressing",
+    "count": 4
+  }
+}

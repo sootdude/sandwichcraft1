@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:mixed_herbs",
+    "breadcraft:rosemary",
+    "breadcraft:caper_seeds",
+    "breadcraft:minced_garlic",
+    "breadcraft:basil",
+    "breadcraft:garlic",
+    "breadcraft:thyme",
+    "breadcraft:hot_sauce",
+    "breadcraft:hot_pepper"
+  ]
+}

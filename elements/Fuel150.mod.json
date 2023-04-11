@@ -1,0 +1,42 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "Blocks.WOODEN_SLAB#0"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#1"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#2"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#3"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#4"
+      },
+      {
+        "value": "Blocks.WOODEN_SLAB#5"
+      },
+      {
+        "value": "Blocks.MANGROVE_SLAB"
+      },
+      {
+        "value": "Blocks.CRIMSON_SLAB"
+      },
+      {
+        "value": "Blocks.WARPED_SLAB"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "fuel_150",
+    "namespace": "mod"
+  }
+}

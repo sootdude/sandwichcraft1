@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_sub_sandwich_loaf"
+    },
+    {
+      "tag": "forge:pork"
+    },
+    {
+      "tag": "forge:beef"
+    },
+    {
+      "tag": "forge:herb"
+    },
+    {
+      "tag": "forge:ketchup"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:meatball_sub",
+    "count": 1
+  }
+}

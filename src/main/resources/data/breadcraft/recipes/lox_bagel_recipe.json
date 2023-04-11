@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_everything_bagel"
+    },
+    {
+      "item": "minecraft:cooked_salmon"
+    },
+    {
+      "item": "breadcraft:cream_cheese_dollop"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:lox_bagel",
+    "count": 1
+  }
+}

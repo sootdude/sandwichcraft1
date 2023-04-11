@@ -1,0 +1,39 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:MustardStage7"
+      },
+      {
+        "value": "CUSTOM:MustardStage5"
+      },
+      {
+        "value": "CUSTOM:MustardStage6"
+      },
+      {
+        "value": "CUSTOM:MustardStage3"
+      },
+      {
+        "value": "CUSTOM:MustardStage4"
+      },
+      {
+        "value": "CUSTOM:MustardStage1"
+      },
+      {
+        "value": "CUSTOM:MustardStage2"
+      },
+      {
+        "value": "CUSTOM:MustardStage0"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "mustard",
+    "namespace": "breadcraft"
+  }
+}

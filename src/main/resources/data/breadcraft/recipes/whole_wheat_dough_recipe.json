@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:wheat_flour"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "item": "breadcraft:wheat_flour"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:flat_whole_wheat_dough",
+    "count": 1
+  }
+}

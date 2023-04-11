@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:aging_cask",
+    "breadcraft:proofing_bowl",
+    "breadcraft:kneading_board",
+    "breadcraft:proofing_bowl_covered"
+  ]
+}

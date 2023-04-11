@@ -1,0 +1,11 @@
+{
+  "_fv": 39,
+  "_type": "tab",
+  "definition": {
+    "name": "Ingredients",
+    "icon": {
+      "value": "CUSTOM:WhiteFlour"
+    },
+    "showSearch": false
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:ThymeSeeds"
+      },
+      {
+        "value": "CUSTOM:RyeSeeds"
+      },
+      {
+        "value": "CUSTOM:BasilSeeds"
+      },
+      {
+        "value": "CUSTOM:RosemarySeeds"
+      },
+      {
+        "value": "CUSTOM:CaperSeeds"
+      },
+      {
+        "value": "Items.WHEAT_SEEDS"
+      },
+      {
+        "value": "Items.PUMPKIN_SEEDS"
+      },
+      {
+        "value": "Items.MELON_SEEDS"
+      },
+      {
+        "value": "Items.BEETROOT_SEEDS"
+      },
+      {
+        "value": "CUSTOM:TomatoSeeds"
+      },
+      {
+        "value": "CUSTOM:MustardSeeds"
+      },
+      {
+        "value": "CUSTOM:OnionSeeds"
+      },
+      {
+        "value": "CUSTOM:WildGreensSeeds"
+      },
+      {
+        "value": "CUSTOM:HotPepperSeeds"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "seeds",
+    "namespace": "forge"
+  }
+}

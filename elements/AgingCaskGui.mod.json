@@ -1,0 +1,796 @@
+{
+  "_fv": 39,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 178,
+    "height": 158,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": -6,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false
+          },
+          "id": 1,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": true,
+          "x": 166,
+          "y": 62
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 2,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": true,
+          "x": 242,
+          "y": 62
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "arrowplain.png",
+          "use1Xscale": false,
+          "x": 199,
+          "y": 57
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbarempty.png",
+          "use1Xscale": false,
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar1.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar1_2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress2"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress3"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar3.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress4"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar4.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress5"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar5.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress6"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar6.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress7"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar7.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress8"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar8.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress9"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar9.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress10"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar10.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress11"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar11.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress12"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar12.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress13"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar13.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress14"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar14.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress15"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar15.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress16"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar16.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress17"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar17.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress18"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar18.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress19"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar19.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress20"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar20.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress21"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar21.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress22"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar22.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress23"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar23.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress24"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar24.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress25"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar25.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress26"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar26.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress27"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar27.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress28"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar28.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress29"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar29.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress30"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar31.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress32"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar32.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress33"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar33.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress34"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar34.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress35"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar35.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress36"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar36.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress37"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar37.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress38"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar38.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress39"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar39.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress40"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar40.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress41"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar41.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress42"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar42.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress43"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar43.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress44"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar44.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress45"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar45.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress46"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar46.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress47"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar47.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress48"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar48.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress49"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar49.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress50"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar50.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress51"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar51.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress52"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar52.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress53"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar53.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress54"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar54.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress55"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar55.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress56"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar56.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress57"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar57.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress58"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "progressbar58.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Caskprogress60"
+          },
+          "x": 148,
+          "y": 71
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_cask",
+          "text": {
+            "fixedValue": "Cask"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 201,
+          "y": 47
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_inventory",
+          "text": {
+            "fixedValue": "Inventory"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 132,
+          "y": 103
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

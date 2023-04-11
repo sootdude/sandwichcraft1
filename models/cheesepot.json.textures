@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "4": "campfirefull",
+        "5": "waterflowing"
+      },
+      "name": "default"
+    }
+  }
+}

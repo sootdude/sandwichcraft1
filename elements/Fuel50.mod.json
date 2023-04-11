@@ -1,0 +1,21 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "Blocks.BAMBOO"
+      },
+      {
+        "value": "Blocks.SCAFFOLDING"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "fuel_50",
+    "namespace": "mod"
+  }
+}

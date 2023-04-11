@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:butter"
+    },
+    {
+      "item": "breadcraft:pot"
+    },
+    {
+      "item": "breadcraft:mortar_pestle"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:mashed_potatoes",
+    "count": 1
+  }
+}

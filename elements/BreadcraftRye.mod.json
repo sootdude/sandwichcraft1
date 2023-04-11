@@ -1,0 +1,38 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:Stage0"
+      },
+      {
+        "value": "CUSTOM:Stage1"
+      },
+      {
+        "value": "CUSTOM:Stage2"
+      },
+      {
+        "value": "CUSTOM:Stage3"
+      },
+      {
+        "value": "CUSTOM:Stage4"
+      },
+      {
+        "value": "CUSTOM:Stage5"
+      },
+      {
+        "value": "CUSTOM:Stage6"
+      },
+      {
+        "value": "CUSTOM:Stage7"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "name": "rye",
+    "namespace": "breadcraft"
+  }
+}

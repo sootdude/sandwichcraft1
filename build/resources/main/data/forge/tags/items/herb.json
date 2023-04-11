@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:mixed_herbs",
+    "breadcraft:rosemary",
+    "breadcraft:basil",
+    "breadcraft:thyme"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:cooked_beef",
+    "minecraft:beef",
+    "breadcraft:raw_burger_patty",
+    "breadcraft:chopped_beef",
+    "breadcraft:burger_patty"
+  ]
+}

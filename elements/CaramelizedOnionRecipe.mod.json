@@ -1,0 +1,20 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Smelting",
+    "xpReward": 1.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "smeltingInputStack": {
+      "value": "CUSTOM:DicedOnion"
+    },
+    "smeltingReturnStack": {
+      "value": "CUSTOM:CaramelizedOnion"
+    },
+    "name": "caramelized_onion_recipe",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:WhiteBreadSlice"
+      },
+      {
+        "value": "CUSTOM:WhiteBreadSlice"
+      },
+      {
+        "value": "TAG:forge:pork"
+      },
+      {
+        "value": "TAG:forge:chicken"
+      },
+      {
+        "value": "TAG:forge:cheese_slice"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:DeliSandwich"
+    },
+    "name": "deli_sandwich_recipe",
+    "namespace": "mod"
+  }
+}

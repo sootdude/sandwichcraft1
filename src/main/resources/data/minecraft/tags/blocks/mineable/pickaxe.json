@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:salt_pot",
+    "breadcraft:cheese_pot",
+    "breadcraft:bread_oven",
+    "breadcraft:counter",
+    "breadcraft:salt_pot_full",
+    "breadcraft:cheese_pot_crafting"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:french_batard_slice"
+    },
+    {
+      "item": "breadcraft:french_batard_slice"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    },
+    {
+      "tag": "forge:tomatoes"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:grilled_tomato_sandwich",
+    "count": 1
+  }
+}

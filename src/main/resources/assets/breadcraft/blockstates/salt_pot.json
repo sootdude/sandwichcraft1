@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "breadcraft:block/salt_pot"
+    },
+    "facing=east": {
+      "model": "breadcraft:block/salt_pot",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "breadcraft:block/salt_pot",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "breadcraft:block/salt_pot",
+      "y": 270
+    }
+  }
+}

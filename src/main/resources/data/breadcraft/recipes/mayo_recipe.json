@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:cookingoil"
+    },
+    {
+      "item": "breadcraft:mixed_herbs"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "item": "breadcraft:mortar_pestle"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:mayonnaise",
+    "count": 4
+  }
+}

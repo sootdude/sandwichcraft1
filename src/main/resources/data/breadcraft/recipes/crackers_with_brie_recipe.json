@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:crackers"
+    },
+    {
+      "item": "breadcraft:brie_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:crackers_with_brie",
+    "count": 1
+  }
+}

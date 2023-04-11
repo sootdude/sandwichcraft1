@@ -1,0 +1,235 @@
+{
+  "_fv": 39,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 178,
+    "height": 143,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": -13,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false
+          },
+          "id": 1,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": true,
+          "x": 159,
+          "y": 71
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 2,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": true,
+          "x": 249,
+          "y": 71
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar1.png",
+          "use1Xscale": false,
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar2.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar1"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar3.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar2"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar4.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar3"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar5.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar4"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar6.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar5"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar7.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar6"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar8.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar7"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar9.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar8"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar10.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar9"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar11.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar10"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar12.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar11"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "doughbar13.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "Doughbar13"
+          },
+          "x": 193,
+          "y": 67
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proofing_bowl",
+          "text": {
+            "fixedValue": "Proofing Bowl"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 178,
+          "y": 55
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_inventory",
+          "text": {
+            "fixedValue": "Inventory"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 132,
+          "y": 96
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

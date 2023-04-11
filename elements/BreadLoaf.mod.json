@@ -1,0 +1,72 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:Brioche"
+      },
+      {
+        "value": "CUSTOM:Pumpernickel"
+      },
+      {
+        "value": "CUSTOM:PretzelBread"
+      },
+      {
+        "value": "CUSTOM:WhiteCountryLoaf"
+      },
+      {
+        "value": "CUSTOM:WhiteBread"
+      },
+      {
+        "value": "CUSTOM:Fougasse"
+      },
+      {
+        "value": "CUSTOM:Babka"
+      },
+      {
+        "value": "CUSTOM:RyeBread"
+      },
+      {
+        "value": "CUSTOM:SubSandwichLoaf"
+      },
+      {
+        "value": "CUSTOM:MilkBread"
+      },
+      {
+        "value": "CUSTOM:Baguette"
+      },
+      {
+        "value": "CUSTOM:SourdoughSandwichBread"
+      },
+      {
+        "value": "CUSTOM:SourdoughBoule"
+      },
+      {
+        "value": "CUSTOM:WholeWheatBoule"
+      },
+      {
+        "value": "CUSTOM:WholeWheatBread"
+      },
+      {
+        "value": "CUSTOM:FrenchBatard"
+      },
+      {
+        "value": "CUSTOM:Focaccia"
+      },
+      {
+        "value": "CUSTOM:ChocolateSourdough"
+      },
+      {
+        "value": "CUSTOM:Challah"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "bread_loaf",
+    "namespace": "forge"
+  }
+}

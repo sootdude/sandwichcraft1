@@ -1,0 +1,39 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:WildGreensStage7"
+      },
+      {
+        "value": "CUSTOM:WildGreensStage5"
+      },
+      {
+        "value": "CUSTOM:WildGreensStage6"
+      },
+      {
+        "value": "CUSTOM:WildGreensStage3"
+      },
+      {
+        "value": "CUSTOM:WildGreensStage4"
+      },
+      {
+        "value": "CUSTOM:WildGreensStage1"
+      },
+      {
+        "value": "CUSTOM:WildGreensStage2"
+      },
+      {
+        "value": "CUSTOM:WildGreensStage0"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "wild_greens",
+    "namespace": "breadcraft"
+  }
+}

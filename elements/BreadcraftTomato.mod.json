@@ -1,0 +1,58 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [
+      {
+        "value": "CUSTOM:TomatoStage0"
+      },
+      {
+        "value": "CUSTOM:TomatoStage2"
+      },
+      {
+        "value": "CUSTOM:TomatoStage1"
+      },
+      {
+        "value": "CUSTOM:TomatoStage4"
+      },
+      {
+        "value": "CUSTOM:TomatoStage3"
+      },
+      {
+        "value": "CUSTOM:TomatoStage6"
+      }
+    ],
+    "blocks": [
+      {
+        "value": "CUSTOM:TomatoStage0"
+      },
+      {
+        "value": "CUSTOM:TomatoStage2"
+      },
+      {
+        "value": "CUSTOM:TomatoStage1"
+      },
+      {
+        "value": "CUSTOM:TomatoStage4"
+      },
+      {
+        "value": "CUSTOM:TomatoStage3"
+      },
+      {
+        "value": "CUSTOM:TomatoStage6"
+      },
+      {
+        "value": "CUSTOM:TomatoStage5"
+      },
+      {
+        "value": "CUSTOM:TomatoStage7"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "tomato",
+    "namespace": "breadcraft"
+  }
+}

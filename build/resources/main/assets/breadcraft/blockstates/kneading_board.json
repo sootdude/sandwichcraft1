@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "breadcraft:block/kneading_board"
+    },
+    "facing=east": {
+      "model": "breadcraft:block/kneading_board",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "breadcraft:block/kneading_board",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "breadcraft:block/kneading_board",
+      "y": 270
+    }
+  }
+}

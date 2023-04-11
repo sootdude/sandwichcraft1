@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/saltpot",
+  "textures": {
+    "all": "breadcraft:blocks/saltpotreal",
+    "particle": "breadcraft:blocks/grey",
+    "1": "breadcraft:blocks/saltpotreal"
+  },
+  "render_type": "solid"
+}

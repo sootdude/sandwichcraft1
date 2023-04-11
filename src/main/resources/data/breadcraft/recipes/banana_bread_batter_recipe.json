@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:mortar_pestle"
+    },
+    {
+      "tag": "forge:bananas"
+    },
+    {
+      "tag": "forge:flour"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:cookingoil"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:banana_bread_batter",
+    "count": 1
+  }
+}

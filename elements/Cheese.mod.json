@@ -1,0 +1,69 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:AgedWhiteCheddar"
+      },
+      {
+        "value": "CUSTOM:CheddarCheese"
+      },
+      {
+        "value": "CUSTOM:WhiteCheddarSlice"
+      },
+      {
+        "value": "CUSTOM:AgedWhiteCheddarSlice"
+      },
+      {
+        "value": "CUSTOM:CheddarCheeseSlice"
+      },
+      {
+        "value": "CUSTOM:CreamCheese"
+      },
+      {
+        "value": "CUSTOM:WhiteCheddar"
+      },
+      {
+        "value": "CUSTOM:CreamCheeseDollop"
+      },
+      {
+        "value": "CUSTOM:ColbyCheese"
+      },
+      {
+        "value": "CUSTOM:ColbyCheeseSlice"
+      },
+      {
+        "value": "CUSTOM:Brie"
+      },
+      {
+        "value": "CUSTOM:BrieSlice"
+      },
+      {
+        "value": "CUSTOM:Gouda"
+      },
+      {
+        "value": "CUSTOM:GoudaCheeseSlice"
+      },
+      {
+        "value": "CUSTOM:Parmesan"
+      },
+      {
+        "value": "CUSTOM:GratedParmesan"
+      },
+      {
+        "value": "CUSTOM:BlueCheese"
+      },
+      {
+        "value": "CUSTOM:CrumbledBlueCheese"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "cheese",
+    "namespace": "forge"
+  }
+}

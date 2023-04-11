@@ -1,0 +1,27 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:Tomato"
+      },
+      {
+        "value": "CUSTOM:WildGreens"
+      },
+      {
+        "value": "CUSTOM:HotPepper"
+      },
+      {
+        "value": "CUSTOM:Onion"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "vegetables",
+    "namespace": "forge"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 4,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "Items.BEETROOT"
+      },
+      {
+        "value": "Items.CARROT"
+      },
+      {
+        "value": "TAG:forge:lettuce"
+      },
+      {
+        "value": "TAG:forge:salt"
+      },
+      {
+        "value": "TAG:forge:eggs"
+      },
+      {
+        "value": "CUSTOM:ChefsKnife"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:RawVeggiePatty"
+    },
+    "name": "raw_veggie_patty_recipe",
+    "namespace": "mod"
+  }
+}

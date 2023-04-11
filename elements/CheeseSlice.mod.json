@@ -1,0 +1,42 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:WhiteCheddarSlice"
+      },
+      {
+        "value": "CUSTOM:AgedWhiteCheddarSlice"
+      },
+      {
+        "value": "CUSTOM:CheddarCheeseSlice"
+      },
+      {
+        "value": "CUSTOM:ColbyCheeseSlice"
+      },
+      {
+        "value": "CUSTOM:GratedParmesan"
+      },
+      {
+        "value": "CUSTOM:BrieSlice"
+      },
+      {
+        "value": "CUSTOM:GoudaCheeseSlice"
+      },
+      {
+        "value": "CUSTOM:CrumbledBlueCheese"
+      },
+      {
+        "value": "CUSTOM:SlicedMozzarella"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "cheese_slice",
+    "namespace": "forge"
+  }
+}

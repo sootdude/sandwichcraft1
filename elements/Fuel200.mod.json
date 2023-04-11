@@ -1,0 +1,84 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "Items.BOAT"
+      },
+      {
+        "value": "Items.SPRUCE_BOAT"
+      },
+      {
+        "value": "Items.BIRCH_BOAT"
+      },
+      {
+        "value": "Items.JUNGLE_BOAT"
+      },
+      {
+        "value": "Items.ACACIA_BOAT"
+      },
+      {
+        "value": "Items.DARK_OAK_BOAT"
+      },
+      {
+        "value": "Items.MANGROVE_BOAT"
+      },
+      {
+        "value": "Items.OAK_CHEST_BOAT"
+      },
+      {
+        "value": "Items.SPRUCE_CHEST_BOAT"
+      },
+      {
+        "value": "Items.BIRCH_CHEST_BOAT"
+      },
+      {
+        "value": "Items.JUNGLE_CHEST_BOAT"
+      },
+      {
+        "value": "Items.ACACIA_CHEST_BOAT"
+      },
+      {
+        "value": "Items.DARK_OAK_CHEST_BOAT"
+      },
+      {
+        "value": "Items.MANGROVE_CHEST_BOAT"
+      },
+      {
+        "value": "Items.SIGN"
+      },
+      {
+        "value": "Items.SPRUCE_SIGN"
+      },
+      {
+        "value": "Items.BIRCH_SIGN"
+      },
+      {
+        "value": "Items.JUNGLE_SIGN"
+      },
+      {
+        "value": "Items.ACACIA_SIGN"
+      },
+      {
+        "value": "Items.DARK_OAK_SIGN"
+      },
+      {
+        "value": "Items.CRIMSON_SIGN"
+      },
+      {
+        "value": "Items.WARPED_SIGN"
+      },
+      {
+        "value": "Items.MANGROVE_SIGN"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "fuel_200",
+    "namespace": "mod"
+  }
+}

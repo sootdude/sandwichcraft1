@@ -1,0 +1,21 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:EnrichedDough"
+      },
+      {
+        "value": "CUSTOM:ProofedEnrichedDough"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "enricheddough",
+    "namespace": "breadcraft"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:OnionStage7"
+      },
+      {
+        "value": "CUSTOM:OnionStage6"
+      },
+      {
+        "value": "CUSTOM:OnionStage5"
+      },
+      {
+        "value": "CUSTOM:OnionStage4"
+      },
+      {
+        "value": "CUSTOM:OnionStage3"
+      },
+      {
+        "value": "CUSTOM:OnionStage2"
+      },
+      {
+        "value": "CUSTOM:OnionStage1"
+      },
+      {
+        "value": "CUSTOM:OnionStage0"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "onion",
+    "namespace": "breadcraft"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "breadcraft:block/proofing_bowl_covered"
+    },
+    "facing=east": {
+      "model": "breadcraft:block/proofing_bowl_covered",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "breadcraft:block/proofing_bowl_covered",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "breadcraft:block/proofing_bowl_covered",
+      "y": 270
+    }
+  }
+}

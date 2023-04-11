@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:loaf_pan"
+    },
+    {
+      "item": "breadcraft:hammer"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:dutch_oven",
+    "count": 1
+  }
+}

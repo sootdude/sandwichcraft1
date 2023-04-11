@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_brioche_bun"
+    },
+    {
+      "tag": "forge:burger_patty"
+    },
+    {
+      "tag": "forge:ketchup"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:hamburger",
+    "count": 1
+  }
+}

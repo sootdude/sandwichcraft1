@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 2,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:ChefsKnife"
+      },
+      {
+        "value": "TAG:forge:lettuce"
+      },
+      {
+        "value": "CUSTOM:TomatoSlice"
+      },
+      {
+        "value": "CUSTOM:DicedOnion"
+      },
+      {
+        "value": "TAG:breadcraft:acceptable_salad_bread"
+      },
+      {
+        "value": "TAG:forge:olive_oil"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:Panzanella"
+    },
+    "name": "panzanella_recipe",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:chili_pepper"
+    },
+    {
+      "tag": "forge:cookingoil"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "item": "breadcraft:mortar_pestle"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:hot_sauce",
+    "count": 3
+  }
+}

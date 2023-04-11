@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 2,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:ChefsKnife"
+      },
+      {
+        "value": "TAG:forge:eggs"
+      },
+      {
+        "value": "TAG:forge:eggs"
+      },
+      {
+        "value": "TAG:forge:mayo"
+      },
+      {
+        "value": "TAG:forge:mustard"
+      },
+      {
+        "value": "CUSTOM:DicedOnion"
+      },
+      {
+        "value": "CUSTOM:TomatoSlice"
+      },
+      {
+        "value": "TAG:forge:salt"
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:EggSalad"
+    },
+    "name": "egg_salad_recipe",
+    "namespace": "mod"
+  }
+}

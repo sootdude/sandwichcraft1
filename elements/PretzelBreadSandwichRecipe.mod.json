@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:PretzelBreadSlice"
+      },
+      {
+        "value": "CUSTOM:PretzelBreadSlice"
+      },
+      {
+        "value": "TAG:forge:tomatoes"
+      },
+      {
+        "value": "CUSTOM:CaramelizedOnion"
+      },
+      {
+        "value": "TAG:forge:cheese_slice"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:PretzelBreadSandwich"
+    },
+    "name": "pretzel_bread_sandwich_recipe",
+    "namespace": "mod"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "Items.BEEF"
+      },
+      {
+        "value": "Items.COOKED_BEEF"
+      },
+      {
+        "value": "CUSTOM:ChoppedBeef"
+      },
+      {
+        "value": "CUSTOM:BurgerPatty"
+      },
+      {
+        "value": "CUSTOM:RawBurgerPatty"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "beef",
+    "namespace": "forge"
+  }
+}

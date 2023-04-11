@@ -1,0 +1,24 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:DarkDough"
+      },
+      {
+        "value": "CUSTOM:FlatDarkDough"
+      },
+      {
+        "value": "CUSTOM:ProofedDarkDough"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "dark_dough",
+    "namespace": "mod"
+  }
+}

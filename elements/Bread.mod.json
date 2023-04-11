@@ -1,0 +1,171 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:SourdoughSandwichBread"
+      },
+      {
+        "value": "CUSTOM:SourdoughSandwichBreadSlice"
+      },
+      {
+        "value": "CUSTOM:SourdoughBoule"
+      },
+      {
+        "value": "CUSTOM:SourdoughBouleSlice"
+      },
+      {
+        "value": "CUSTOM:PretzelBread"
+      },
+      {
+        "value": "CUSTOM:PretzelRoll"
+      },
+      {
+        "value": "CUSTOM:WhiteBread"
+      },
+      {
+        "value": "CUSTOM:Babka"
+      },
+      {
+        "value": "CUSTOM:WhiteCountryLoaf"
+      },
+      {
+        "value": "CUSTOM:Fougasse"
+      },
+      {
+        "value": "CUSTOM:Brioche"
+      },
+      {
+        "value": "CUSTOM:Pumpernickel"
+      },
+      {
+        "value": "CUSTOM:PlainBagel"
+      },
+      {
+        "value": "CUSTOM:BerryBagel"
+      },
+      {
+        "value": "CUSTOM:EverythingBagel"
+      },
+      {
+        "value": "CUSTOM:RyeBread"
+      },
+      {
+        "value": "CUSTOM:RyeBreadSlice"
+      },
+      {
+        "value": "CUSTOM:SoftPretzel"
+      },
+      {
+        "value": "CUSTOM:SubSandwichLoaf"
+      },
+      {
+        "value": "CUSTOM:DinnerRoll"
+      },
+      {
+        "value": "CUSTOM:SlicedSubSandwichLoaf"
+      },
+      {
+        "value": "CUSTOM:BriocheBun"
+      },
+      {
+        "value": "CUSTOM:SlicedBriocheBun"
+      },
+      {
+        "value": "CUSTOM:BriocheSlice"
+      },
+      {
+        "value": "CUSTOM:WhiteBreadSlice"
+      },
+      {
+        "value": "CUSTOM:MilkBread"
+      },
+      {
+        "value": "CUSTOM:Baguette"
+      },
+      {
+        "value": "CUSTOM:MilkBreadSlice"
+      },
+      {
+        "value": "CUSTOM:PretzelBreadSlice"
+      },
+      {
+        "value": "CUSTOM:CountryLoafSlice"
+      },
+      {
+        "value": "CUSTOM:PumpernickelSlice"
+      },
+      {
+        "value": "CUSTOM:BabkaSlice"
+      },
+      {
+        "value": "CUSTOM:FougasseSlice"
+      },
+      {
+        "value": "CUSTOM:FrenchBatard"
+      },
+      {
+        "value": "CUSTOM:FrenchBatardSlice"
+      },
+      {
+        "value": "CUSTOM:WholeWheatBread"
+      },
+      {
+        "value": "CUSTOM:WholeWheatSlice"
+      },
+      {
+        "value": "CUSTOM:WholeWheatBoule"
+      },
+      {
+        "value": "CUSTOM:WholeWheatBouleSlice"
+      },
+      {
+        "value": "CUSTOM:GuinnessBread"
+      },
+      {
+        "value": "CUSTOM:GuinnessBreadSlice"
+      },
+      {
+        "value": "CUSTOM:Focaccia"
+      },
+      {
+        "value": "CUSTOM:FocacciaSlice"
+      },
+      {
+        "value": "CUSTOM:SlicedPlainBagel"
+      },
+      {
+        "value": "CUSTOM:SlicedBerryBagel"
+      },
+      {
+        "value": "CUSTOM:SlicedEverythingBagel"
+      },
+      {
+        "value": "CUSTOM:Challah"
+      },
+      {
+        "value": "CUSTOM:ChallahSlice"
+      },
+      {
+        "value": "CUSTOM:ChocolateSourdough"
+      },
+      {
+        "value": "CUSTOM:ChocolateSourdoughSlice"
+      },
+      {
+        "value": "Items.BREAD"
+      },
+      {
+        "value": "CUSTOM:Croissant"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "bread",
+    "namespace": "forge"
+  }
+}

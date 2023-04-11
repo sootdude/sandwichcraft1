@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": true,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:WholeWheatSlice"
+      },
+      {
+        "value": "CUSTOM:WholeWheatSlice"
+      },
+      {
+        "value": "TAG:forge:lettuce"
+      },
+      {
+        "value": "TAG:forge:mayo"
+      },
+      {
+        "value": "TAG:forge:cheese_slice"
+      },
+      {
+        "value": "TAG:forge:cheese_slice"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": ""
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:GreensSandwich"
+    },
+    "name": "greens_sandwich_recipe",
+    "namespace": "mod"
+  }
+}
