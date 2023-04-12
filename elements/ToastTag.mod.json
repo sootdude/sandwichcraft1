@@ -1,0 +1,33 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:Toast"
+      },
+      {
+        "value": "CUSTOM:WhiteBreadToast"
+      },
+      {
+        "value": "CUSTOM:SourdoughToast"
+      },
+      {
+        "value": "CUSTOM:RyeToast"
+      },
+      {
+        "value": "CUSTOM:CountryLoafToast"
+      },
+      {
+        "value": "CUSTOM:FrenchBreadToast"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "toast",
+    "namespace": "forge"
+  }
+}

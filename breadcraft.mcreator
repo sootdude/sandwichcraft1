@@ -20580,6 +20580,221 @@
           "src/main/java/net/mcreator/breadcraft/configuration/SootsandwichcraftConfigConfiguration.java"
         ]
       }
+    },
+    {
+      "name": "Toast",
+      "type": "item",
+      "sortid": 207,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toast",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/item/ToastItem.java",
+          "src/main/resources/assets/breadcraft/models/item/toast.json"
+        ]
+      }
+    },
+    {
+      "name": "WhiteBreadToast",
+      "type": "item",
+      "sortid": 197,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "white_bread_toast",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/item/WhiteBreadToastItem.java",
+          "src/main/resources/assets/breadcraft/models/item/white_bread_toast.json"
+        ]
+      }
+    },
+    {
+      "name": "SourdoughToast",
+      "type": "item",
+      "sortid": 201,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sourdough_toast",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/breadcraft/models/item/sourdough_toast.json",
+          "src/main/java/net/mcreator/breadcraft/item/SourdoughToastItem.java"
+        ]
+      }
+    },
+    {
+      "name": "RyeToast",
+      "type": "item",
+      "sortid": 243,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rye_toast",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/item/RyeToastItem.java",
+          "src/main/resources/assets/breadcraft/models/item/rye_toast.json"
+        ]
+      }
+    },
+    {
+      "name": "CountryLoafToast",
+      "type": "item",
+      "sortid": 245,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "country_loaf_toast",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/breadcraft/models/item/country_loaf_toast.json",
+          "src/main/java/net/mcreator/breadcraft/item/CountryLoafToastItem.java"
+        ]
+      }
+    },
+    {
+      "name": "FrenchBreadToast",
+      "type": "item",
+      "sortid": 212,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "french_bread_toast",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/item/FrenchBreadToastItem.java",
+          "src/main/resources/assets/breadcraft/models/item/french_bread_toast.json"
+        ]
+      }
+    },
+    {
+      "name": "ToastRecipe",
+      "type": "recipe",
+      "sortid": 1022,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toast_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/toast_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "ToastRecipe2",
+      "type": "recipe",
+      "sortid": 1023,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toast_recipe_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/toast_recipe_2.json"
+        ]
+      }
+    },
+    {
+      "name": "ToastRecipe3",
+      "type": "recipe",
+      "sortid": 1024,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toast_recipe_3",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/toast_recipe_3.json"
+        ]
+      }
+    },
+    {
+      "name": "WhiteBreadToastRecipe",
+      "type": "recipe",
+      "sortid": 1025,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "white_bread_toast_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/white_bread_toast_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "SourdoughToastRecipe",
+      "type": "recipe",
+      "sortid": 1026,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sourdough_toast_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/sourdough_toast_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "SourdoughToastRecipe2",
+      "type": "recipe",
+      "sortid": 1027,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sourdough_toast_recipe_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/sourdough_toast_recipe_2.json"
+        ]
+      }
+    },
+    {
+      "name": "RyeToastRecipe",
+      "type": "recipe",
+      "sortid": 1028,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rye_toast_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/rye_toast_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "CountryLoafToastRecipe",
+      "type": "recipe",
+      "sortid": 1029,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "country_loaf_toast_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/country_loaf_toast_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "FrenchBreadToastRecipe",
+      "type": "recipe",
+      "sortid": 1030,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "french_bread_toast_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/french_bread_toast_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "ToastTag",
+      "type": "tag",
+      "sortid": 1031,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toast_tag",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/forge/tags/items/toast.json"
+        ]
+      },
+      "path": "~/tags"
     }
   ],
   "variable_elements": [],
@@ -20599,8 +20814,8 @@
       "item.breadcraft.guinness_bread": "Guinness Bread",
       "item.breadcraft.thyme_seeds": "Thyme Seeds",
       "config.breadcraft.sootsandwichcraft_config": "sootsandwichcraft",
-      "item.breadcraft.whisk": "Whisk",
       "item.breadcraft.basic_dough": "Basic Dough",
+      "item.breadcraft.whisk": "Whisk",
       "item.breadcraft.butter": "Butter",
       "item.breadcraft.french_batard_slice": "French Bâtard Bread Slice",
       "item.breadcraft.banana_bread_batter": "Banana Bread Batter",
@@ -20608,13 +20823,14 @@
       "item.breadcraft.mustard_seeds": "Mustard Seeds",
       "item.breadcraft.brieand_baguette_sandwich": "Brie and Baguette Sandwich",
       "item.breadcraft.greens_sandwich": "Greens Sandwich",
-      "item.breadcraft.wedge_salad": "Wedge Salad",
       "item.breadcraft.sourdough_boule_grilled_cheese": "Grilled Cheese",
+      "item.breadcraft.wedge_salad": "Wedge Salad",
       "item.breadcraft.sliced_baguette": "Sliced Baguette",
       "item.breadcraft.rye_flour": "Rye Flour",
       "item.breadcraft.caesar_dressing": "Caesar Dressing",
       "gui.breadcraft.salt_pot_gui.label_salt_pot": "Salt Pot",
       "item.breadcraft.brie_slice": "Brie Slice",
+      "item.breadcraft.white_bread_toast": "Toast",
       "item.breadcraft.mortar_pestle": "Mortar and Pestle",
       "item.breadcraft.honey_mustard": "Honey Mustard",
       "block.breadcraft.mustard_stage_0": "MustardStage0",
@@ -20632,6 +20848,7 @@
       "gui.breadcraft.bread_oven_gui.label_inventory": "Inventory",
       "item.breadcraft.blt": "BLT",
       "itemGroup.tabdough": "Dough",
+      "item.breadcraft.country_loaf_toast": "Toast",
       "item.breadcraft.scrambled_egg_sandwich": "Scrambled Egg Sandwich",
       "item.breadcraft.dinner_roll": "Dinner Roll",
       "item.breadcraft.pressed_brie": "Pressed Brie",
@@ -20639,11 +20856,11 @@
       "item.breadcraft.banana_bread_slice": "Banana Bread Slice",
       "item.breadcraft.cheddar_cheese_slice": "Cheddar Cheese Slice",
       "item.breadcraft.sloppy_joe": "Sloppy Joe",
-      "item.breadcraft.grilled_tomato_sandwich": "Grilled Tomato Sandwich",
-      "block.breadcraft.pepper_stage_0": "PepperStage0",
       "block.breadcraft.onion_stage_7": "OnionStage7",
-      "item.breadcraft.salad": "Salad",
+      "block.breadcraft.pepper_stage_0": "PepperStage0",
+      "item.breadcraft.grilled_tomato_sandwich": "Grilled Tomato Sandwich",
       "block.breadcraft.onion_stage_6": "OnionStage6",
+      "item.breadcraft.salad": "Salad",
       "block.breadcraft.onion_stage_5": "OnionStage6",
       "block.breadcraft.onion_stage_4": "OnionStage4",
       "block.breadcraft.onion_stage_3": "OnionStage3",
@@ -20662,8 +20879,8 @@
       "item.breadcraft.hammer": "Hammer",
       "item.breadcraft.berry_bagelwith_cream_cheese": "Sweetberry Bagel with Cream Cheese",
       "gui.breadcraft.kneading_board_menu.label_inventory": "Inventory",
-      "item.breadcraft.rolled_enriched_dough": "Rolled Enriched Dough",
       "item.breadcraft.cheese_press": "Cheese Press",
+      "item.breadcraft.rolled_enriched_dough": "Rolled Enriched Dough",
       "item.breadcraft.pressed_blue_cheese": "Pressed Blue Cheese",
       "item.breadcraft.potato_salad": "Potato Salad",
       "item.breadcraft.whole_wheat_bread": "Whole Wheat Bread",
@@ -20672,8 +20889,8 @@
       "item.breadcraft.lox_bagel": "Lox Bagel",
       "item.breadcraft.enriched_dough_with_filling": "Enriched Dough with Filling",
       "item.breadcraft.white_bread_slice": "White Bread Slice",
-      "item.breadcraft.brie_cheese_curds": "Brie Cheese Curds",
       "item.breadcraft.sliced_berry_bagel": "Sliced Sweetberry Bagel",
+      "item.breadcraft.brie_cheese_curds": "Brie Cheese Curds",
       "block.breadcraft.cheese_pot_crafting": "Cheese Pot",
       "item.breadcraft.pretzel_bread": "Pretzel Bread",
       "item.breadcraft.ketchup": "Ketchup",
@@ -20683,11 +20900,11 @@
       "item.breadcraft.challah": "Challah",
       "item.breadcraft.ranch": "Ranch",
       "item.breadcraft.everything_bagelwith_cream_cheese": "Everything Bagel with Cream Cheese",
-      "item.breadcraft.whole_wheat_boule_slice": "Whole Wheat Boule Slice",
       "itemGroup.tabbreadcraft_tools": "Baking Essentials",
+      "item.breadcraft.whole_wheat_boule_slice": "Whole Wheat Boule Slice",
       "item.breadcraft.ridged_pan": "Ridged Pan",
-      "item.breadcraft.garlic": "Garlic",
       "item.breadcraft.banana_sandwich": "Chocolate Banana Sandwich",
+      "item.breadcraft.garlic": "Garlic",
       "item.breadcraft.berry_bagel": "Sweetberry Bagel",
       "item.breadcraft.pretzel_bread_sandwich": "Pretzel Bread Sandwich",
       "item.breadcraft.salmon_melt": "Salmon Melt",
@@ -20719,6 +20936,7 @@
       "item.breadcraft.rosemary": "Rosemary",
       "item.breadcraft.brioche_bun": "Brioche Bun",
       "item.breadcraft.colby_cheese_slice": "Colby Cheese Slice",
+      "item.breadcraft.french_bread_toast": "Toast",
       "item.breadcraft.tomato_seeds": "Tomato Seeds",
       "item.breadcraft.parmesan": "Parmesan",
       "item.breadcraft.deli_sandwich": "Deli Sandwich",
@@ -20746,8 +20964,8 @@
       "item.breadcraft.pretzel_dough": "Pretzel Dough",
       "item.breadcraft.steak_sandwichwith_caper_sauce": "Steak Sandwich with Caper Sauce",
       "item.breadcraft.caramelized_onion": "Caramelized Onion",
-      "item.breadcraft.reg_banana_sandwich": "Banana Sandwich",
       "item.breadcraft.sliced_brioche_bun": "Sliced Brioche Bun",
+      "item.breadcraft.reg_banana_sandwich": "Banana Sandwich",
       "item.breadcraft.onion_rings": "Onion Rings",
       "item.breadcraft.white_cheddar": "White Cheddar",
       "block.breadcraft.bread_oven": "Bread Oven",
@@ -20762,6 +20980,7 @@
       "item.breadcraft.sourdough_ham_and_cheese_sandwich": "Sourdough Ham And Cheese Sandwich",
       "item.breadcraft.caper_leaves": "Caper Leaves",
       "item.breadcraft.rye_grilled_cheese": "Grilled Cheese",
+      "item.breadcraft.rye_toast": "Toast",
       "item.breadcraft.rolled_basic_dough": "Rolled Basic Dough",
       "item.breadcraft.onion_seeds": "Onion Seeds",
       "item.breadcraft.meatball_sub": "Meatball Sub",
@@ -20782,8 +21001,8 @@
       "block.breadcraft.garlic_stage_6": "GarlicStage6",
       "block.breadcraft.garlic_stage_3": "GarlicStage3",
       "block.breadcraft.garlic_stage_4": "GarlicStage4",
-      "block.breadcraft.garlic_stage_1": "GarlicStage1",
       "item.breadcraft.aged_white_cheddar_slice": "Aged White Cheddar Slice",
+      "block.breadcraft.garlic_stage_1": "GarlicStage1",
       "block.breadcraft.garlic_stage_2": "GarlicStage2",
       "block.breadcraft.garlic_stage_0": "GarlicStage0",
       "block.breadcraft.salt_pot": "Salt Pot",
@@ -20825,6 +21044,7 @@
       "item.breadcraft.proofed_basic_dough": "Risen Basic Dough",
       "item.breadcraft.parmesan_curds": "Parmesan Cheese Curds",
       "item.breadcraft.blue_cheese_curds": "Blue Cheese Curds",
+      "item.breadcraft.toast": "Toast",
       "item.breadcraft.tartar_sauce": "Tartar Sauce",
       "item.breadcraft.sourdough_grilled_cheese": "Grilled Cheese",
       "item.breadcraft.cream_cheese": "Cream Cheese",
@@ -20887,6 +21107,7 @@
       "item.breadcraft.rolled_dark_dough": "Rolled Dark Dough",
       "item.breadcraft.baguette": "Baguette",
       "item.breadcraft.meat_stew": "Meat Stew",
+      "item.breadcraft.sourdough_toast": "Toast",
       "item.breadcraft.pulled_pork_sandwich": "Pulled Pork Sandwich",
       "item.breadcraft.chicken_sandwich": "Chicken Sandwich",
       "item.breadcraft.dark_dough_with_filling": "Dark Dough with Filling",
