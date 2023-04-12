@@ -1,5 +1,6 @@
 
 [seedDropRate]
+	#Seed drop rate settings: 0 turns seed drops off, 1 is the lowest, 3 is the highest, and 2 is default. Anything higher than 3 will default to what 3 is.
 	ryeSeedDropRate = 1.0
 	thymeSeedDropRate = 1.0
 	garlicSeedDropRate = 1.0
