@@ -15,6 +15,7 @@ import net.minecraft.world.item.BlockItem;
 
 import net.mcreator.breadcraft.item.WildGreensSeedsItem;
 import net.mcreator.breadcraft.item.WildGreensItem;
+import net.mcreator.breadcraft.item.WholeWheatToastItem;
 import net.mcreator.breadcraft.item.WholeWheatSliceItem;
 import net.mcreator.breadcraft.item.WholeWheatGrilledCheeseItem;
 import net.mcreator.breadcraft.item.WholeWheatDoughItem;
@@ -532,14 +533,15 @@ public class BreadcraftModItems {
 	public static final RegistryObject<Item> RYE_GRILLED_CHEESE = REGISTRY.register("rye_grilled_cheese", () -> new RyeGrilledCheeseItem());
 	public static final RegistryObject<Item> COUNTRY_GRILLED_CHEESE = REGISTRY.register("country_grilled_cheese", () -> new CountryGrilledCheeseItem());
 	public static final RegistryObject<Item> PRETZEL_BREAD_GRILLED_CHEESE = REGISTRY.register("pretzel_bread_grilled_cheese", () -> new PretzelBreadGrilledCheeseItem());
+	public static final RegistryObject<Item> WHOLE_WHEAT_TOAST = REGISTRY.register("whole_wheat_toast", () -> new WholeWheatToastItem());
 	public static final RegistryObject<Item> PRETZEL_BREAD_SANDWICH = REGISTRY.register("pretzel_bread_sandwich", () -> new PretzelBreadSandwichItem());
 	public static final RegistryObject<Item> COD_SANDWICH = REGISTRY.register("cod_sandwich", () -> new CodSandwichItem());
 	public static final RegistryObject<Item> SOURDOUGH_HAM_AND_CHEESE_SANDWICH = REGISTRY.register("sourdough_ham_and_cheese_sandwich", () -> new SourdoughHamAndCheeseSandwichItem());
-	public static final RegistryObject<Item> RYE_TOAST = REGISTRY.register("rye_toast", () -> new RyeToastItem());
 	public static final RegistryObject<Item> CLUB_SANDWICH = REGISTRY.register("club_sandwich", () -> new ClubSandwichItem());
+	public static final RegistryObject<Item> RYE_TOAST = REGISTRY.register("rye_toast", () -> new RyeToastItem());
 	public static final RegistryObject<Item> DELI_SANDWICH = REGISTRY.register("deli_sandwich", () -> new DeliSandwichItem());
-	public static final RegistryObject<Item> COUNTRY_LOAF_TOAST = REGISTRY.register("country_loaf_toast", () -> new CountryLoafToastItem());
 	public static final RegistryObject<Item> SCRAMBLED_EGG_SANDWICH = REGISTRY.register("scrambled_egg_sandwich", () -> new ScrambledEggSandwichItem());
+	public static final RegistryObject<Item> COUNTRY_LOAF_TOAST = REGISTRY.register("country_loaf_toast", () -> new CountryLoafToastItem());
 	public static final RegistryObject<Item> BLT = REGISTRY.register("blt", () -> new BLTItem());
 	public static final RegistryObject<Item> MASHED_POTATOES = REGISTRY.register("mashed_potatoes", () -> new MashedPotatoesItem());
 	public static final RegistryObject<Item> POTATO_CHIPS = REGISTRY.register("potato_chips", () -> new PotatoChipsItem());
