@@ -2,7 +2,7 @@ package net.mcreator.breadcraft.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -25,7 +25,7 @@ public class ProofingbowluseProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.BASIC_DOUGH.get() && (new Object() {
@@ -33,7 +33,7 @@ public class ProofingbowluseProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == BreadcraftModItems.PROOFED_BASIC_DOUGH.get() && new Object() {
@@ -41,7 +41,7 @@ public class ProofingbowluseProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -49,7 +49,7 @@ public class ProofingbowluseProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -58,7 +58,7 @@ public class ProofingbowluseProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+					_blockEntity.getTileData().putDouble("craftingTime", 240);
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
@@ -67,11 +67,11 @@ public class ProofingbowluseProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+					_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -82,7 +82,7 @@ public class ProofingbowluseProcedure {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 					BlockEntity blockEntity = world.getBlockEntity(pos);
 					if (blockEntity != null)
-						return blockEntity.getPersistentData().getDouble(tag);
+						return blockEntity.getTileData().getDouble(tag);
 					return -1;
 				}
 			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -90,7 +90,7 @@ public class ProofingbowluseProcedure {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
 					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
 			}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -104,11 +104,11 @@ public class ProofingbowluseProcedure {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
 						}.getAmount(world, new BlockPos(x, y, z), 2)));
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 							if (capability instanceof IItemHandlerModifiable)
 								((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 						});
@@ -119,7 +119,7 @@ public class ProofingbowluseProcedure {
 					if (_ent != null) {
 						final int _slotid = 1;
 						final int _amount = 1;
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 							if (capability instanceof IItemHandlerModifiable) {
 								ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 								_stk.shrink(_amount);
@@ -140,7 +140,7 @@ public class ProofingbowluseProcedure {
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+						_blockEntity.getTileData().putDouble("craftingProgress", 0);
 					if (world instanceof Level _level)
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
@@ -151,7 +151,7 @@ public class ProofingbowluseProcedure {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 					BlockEntity _ent = world.getBlockEntity(pos);
 					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
 			}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.BASIC_DOUGH.get() && new Object() {
@@ -159,7 +159,7 @@ public class ProofingbowluseProcedure {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
 					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
 			}.getAmount(world, new BlockPos(x, y, z), 2) == 0) {
@@ -168,7 +168,7 @@ public class ProofingbowluseProcedure {
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+						_blockEntity.getTileData().putDouble("craftingTime", 240);
 					if (world instanceof Level _level)
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
@@ -177,11 +177,11 @@ public class ProofingbowluseProcedure {
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+						_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
 								if (blockEntity != null)
-									return blockEntity.getPersistentData().getDouble(tag);
+									return blockEntity.getTileData().getDouble(tag);
 								return -1;
 							}
 						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -192,7 +192,7 @@ public class ProofingbowluseProcedure {
 					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 						BlockEntity blockEntity = world.getBlockEntity(pos);
 						if (blockEntity != null)
-							return blockEntity.getPersistentData().getDouble(tag);
+							return blockEntity.getTileData().getDouble(tag);
 						return -1;
 					}
 				}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -200,7 +200,7 @@ public class ProofingbowluseProcedure {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
 				}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -214,11 +214,11 @@ public class ProofingbowluseProcedure {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
 							}.getAmount(world, new BlockPos(x, y, z), 2)));
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 							});
@@ -229,7 +229,7 @@ public class ProofingbowluseProcedure {
 						if (_ent != null) {
 							final int _slotid = 1;
 							final int _amount = 1;
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable) {
 									ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 									_stk.shrink(_amount);
@@ -250,7 +250,7 @@ public class ProofingbowluseProcedure {
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
-							_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+							_blockEntity.getTileData().putDouble("craftingProgress", 0);
 						if (world instanceof Level _level)
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
@@ -261,7 +261,7 @@ public class ProofingbowluseProcedure {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
 				}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.DARK_DOUGH.get() && (new Object() {
@@ -269,7 +269,7 @@ public class ProofingbowluseProcedure {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
 				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == BreadcraftModItems.PROOFED_DARK_DOUGH.get() && new Object() {
@@ -277,7 +277,7 @@ public class ProofingbowluseProcedure {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
 				}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -285,7 +285,7 @@ public class ProofingbowluseProcedure {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
 				}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -294,7 +294,7 @@ public class ProofingbowluseProcedure {
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
-							_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+							_blockEntity.getTileData().putDouble("craftingTime", 240);
 						if (world instanceof Level _level)
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
@@ -303,11 +303,11 @@ public class ProofingbowluseProcedure {
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
-							_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+							_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 									BlockEntity blockEntity = world.getBlockEntity(pos);
 									if (blockEntity != null)
-										return blockEntity.getPersistentData().getDouble(tag);
+										return blockEntity.getTileData().getDouble(tag);
 									return -1;
 								}
 							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -318,7 +318,7 @@ public class ProofingbowluseProcedure {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -326,7 +326,7 @@ public class ProofingbowluseProcedure {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
 					}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -340,11 +340,11 @@ public class ProofingbowluseProcedure {
 										AtomicInteger _retval = new AtomicInteger(0);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
 								}.getAmount(world, new BlockPos(x, y, z), 2)));
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable)
 										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 								});
@@ -355,7 +355,7 @@ public class ProofingbowluseProcedure {
 							if (_ent != null) {
 								final int _slotid = 1;
 								final int _amount = 1;
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable) {
 										ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 										_stk.shrink(_amount);
@@ -376,7 +376,7 @@ public class ProofingbowluseProcedure {
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
-								_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+								_blockEntity.getTileData().putDouble("craftingProgress", 0);
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
@@ -387,7 +387,7 @@ public class ProofingbowluseProcedure {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
 					}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.DARK_DOUGH.get() && new Object() {
@@ -395,7 +395,7 @@ public class ProofingbowluseProcedure {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
 					}.getAmount(world, new BlockPos(x, y, z), 2) == 0) {
@@ -404,7 +404,7 @@ public class ProofingbowluseProcedure {
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
-								_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+								_blockEntity.getTileData().putDouble("craftingTime", 240);
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
@@ -413,11 +413,11 @@ public class ProofingbowluseProcedure {
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
-								_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+								_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 										BlockEntity blockEntity = world.getBlockEntity(pos);
 										if (blockEntity != null)
-											return blockEntity.getPersistentData().getDouble(tag);
+											return blockEntity.getTileData().getDouble(tag);
 										return -1;
 									}
 								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -428,7 +428,7 @@ public class ProofingbowluseProcedure {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
 								if (blockEntity != null)
-									return blockEntity.getPersistentData().getDouble(tag);
+									return blockEntity.getTileData().getDouble(tag);
 								return -1;
 							}
 						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -436,7 +436,7 @@ public class ProofingbowluseProcedure {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
 						}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -450,11 +450,11 @@ public class ProofingbowluseProcedure {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
 									}.getAmount(world, new BlockPos(x, y, z), 2)));
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 										if (capability instanceof IItemHandlerModifiable)
 											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 									});
@@ -465,7 +465,7 @@ public class ProofingbowluseProcedure {
 								if (_ent != null) {
 									final int _slotid = 1;
 									final int _amount = 1;
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 										if (capability instanceof IItemHandlerModifiable) {
 											ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 											_stk.shrink(_amount);
@@ -486,7 +486,7 @@ public class ProofingbowluseProcedure {
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
-									_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+									_blockEntity.getTileData().putDouble("craftingProgress", 0);
 								if (world instanceof Level _level)
 									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 							}
@@ -497,7 +497,7 @@ public class ProofingbowluseProcedure {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 								return _retval.get();
 							}
 						}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.HERB_DOUGH.get() && (new Object() {
@@ -505,7 +505,7 @@ public class ProofingbowluseProcedure {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 								return _retval.get();
 							}
 						}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == BreadcraftModItems.PROOFED_HERB_DOUGH.get() && new Object() {
@@ -513,7 +513,7 @@ public class ProofingbowluseProcedure {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
 						}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -521,7 +521,7 @@ public class ProofingbowluseProcedure {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
 						}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -530,7 +530,7 @@ public class ProofingbowluseProcedure {
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
-									_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+									_blockEntity.getTileData().putDouble("craftingTime", 240);
 								if (world instanceof Level _level)
 									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 							}
@@ -539,11 +539,11 @@ public class ProofingbowluseProcedure {
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
-									_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+									_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 											BlockEntity blockEntity = world.getBlockEntity(pos);
 											if (blockEntity != null)
-												return blockEntity.getPersistentData().getDouble(tag);
+												return blockEntity.getTileData().getDouble(tag);
 											return -1;
 										}
 									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -554,7 +554,7 @@ public class ProofingbowluseProcedure {
 								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 									BlockEntity blockEntity = world.getBlockEntity(pos);
 									if (blockEntity != null)
-										return blockEntity.getPersistentData().getDouble(tag);
+										return blockEntity.getTileData().getDouble(tag);
 									return -1;
 								}
 							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -562,7 +562,7 @@ public class ProofingbowluseProcedure {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
 							}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -576,11 +576,11 @@ public class ProofingbowluseProcedure {
 												AtomicInteger _retval = new AtomicInteger(0);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 												return _retval.get();
 											}
 										}.getAmount(world, new BlockPos(x, y, z), 2)));
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 											if (capability instanceof IItemHandlerModifiable)
 												((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 										});
@@ -591,7 +591,7 @@ public class ProofingbowluseProcedure {
 									if (_ent != null) {
 										final int _slotid = 1;
 										final int _amount = 1;
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 											if (capability instanceof IItemHandlerModifiable) {
 												ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 												_stk.shrink(_amount);
@@ -612,7 +612,7 @@ public class ProofingbowluseProcedure {
 									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 									BlockState _bs = world.getBlockState(_bp);
 									if (_blockEntity != null)
-										_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+										_blockEntity.getTileData().putDouble("craftingProgress", 0);
 									if (world instanceof Level _level)
 										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 								}
@@ -623,7 +623,7 @@ public class ProofingbowluseProcedure {
 									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
 							}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.HERB_DOUGH.get() && new Object() {
@@ -631,7 +631,7 @@ public class ProofingbowluseProcedure {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
 							}.getAmount(world, new BlockPos(x, y, z), 2) == 0) {
@@ -640,7 +640,7 @@ public class ProofingbowluseProcedure {
 									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 									BlockState _bs = world.getBlockState(_bp);
 									if (_blockEntity != null)
-										_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+										_blockEntity.getTileData().putDouble("craftingTime", 240);
 									if (world instanceof Level _level)
 										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 								}
@@ -649,11 +649,11 @@ public class ProofingbowluseProcedure {
 									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 									BlockState _bs = world.getBlockState(_bp);
 									if (_blockEntity != null)
-										_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+										_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 												BlockEntity blockEntity = world.getBlockEntity(pos);
 												if (blockEntity != null)
-													return blockEntity.getPersistentData().getDouble(tag);
+													return blockEntity.getTileData().getDouble(tag);
 												return -1;
 											}
 										}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -664,7 +664,7 @@ public class ProofingbowluseProcedure {
 									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 										BlockEntity blockEntity = world.getBlockEntity(pos);
 										if (blockEntity != null)
-											return blockEntity.getPersistentData().getDouble(tag);
+											return blockEntity.getTileData().getDouble(tag);
 										return -1;
 									}
 								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -672,7 +672,7 @@ public class ProofingbowluseProcedure {
 										AtomicInteger _retval = new AtomicInteger(0);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
 								}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -686,11 +686,11 @@ public class ProofingbowluseProcedure {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
 											}.getAmount(world, new BlockPos(x, y, z), 2)));
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 												if (capability instanceof IItemHandlerModifiable)
 													((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 											});
@@ -701,7 +701,7 @@ public class ProofingbowluseProcedure {
 										if (_ent != null) {
 											final int _slotid = 1;
 											final int _amount = 1;
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 												if (capability instanceof IItemHandlerModifiable) {
 													ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 													_stk.shrink(_amount);
@@ -722,7 +722,7 @@ public class ProofingbowluseProcedure {
 										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 										BlockState _bs = world.getBlockState(_bp);
 										if (_blockEntity != null)
-											_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+											_blockEntity.getTileData().putDouble("craftingProgress", 0);
 										if (world instanceof Level _level)
 											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 									}
@@ -733,7 +733,7 @@ public class ProofingbowluseProcedure {
 										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 										return _retval.get();
 									}
 								}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.WHOLE_WHEAT_DOUGH.get() && (new Object() {
@@ -741,7 +741,7 @@ public class ProofingbowluseProcedure {
 										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 										return _retval.get();
 									}
 								}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == BreadcraftModItems.PROOFED_WHOLE_WHEAT_DOUGH.get() && new Object() {
@@ -749,7 +749,7 @@ public class ProofingbowluseProcedure {
 										AtomicInteger _retval = new AtomicInteger(0);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
 								}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -757,7 +757,7 @@ public class ProofingbowluseProcedure {
 										AtomicInteger _retval = new AtomicInteger(0);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
 								}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -766,7 +766,7 @@ public class ProofingbowluseProcedure {
 										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 										BlockState _bs = world.getBlockState(_bp);
 										if (_blockEntity != null)
-											_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+											_blockEntity.getTileData().putDouble("craftingTime", 240);
 										if (world instanceof Level _level)
 											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 									}
@@ -775,11 +775,11 @@ public class ProofingbowluseProcedure {
 										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 										BlockState _bs = world.getBlockState(_bp);
 										if (_blockEntity != null)
-											_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+											_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 													BlockEntity blockEntity = world.getBlockEntity(pos);
 													if (blockEntity != null)
-														return blockEntity.getPersistentData().getDouble(tag);
+														return blockEntity.getTileData().getDouble(tag);
 													return -1;
 												}
 											}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -790,7 +790,7 @@ public class ProofingbowluseProcedure {
 										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 											BlockEntity blockEntity = world.getBlockEntity(pos);
 											if (blockEntity != null)
-												return blockEntity.getPersistentData().getDouble(tag);
+												return blockEntity.getTileData().getDouble(tag);
 											return -1;
 										}
 									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -798,7 +798,7 @@ public class ProofingbowluseProcedure {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
 									}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -812,11 +812,11 @@ public class ProofingbowluseProcedure {
 														AtomicInteger _retval = new AtomicInteger(0);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 														return _retval.get();
 													}
 												}.getAmount(world, new BlockPos(x, y, z), 2)));
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 													if (capability instanceof IItemHandlerModifiable)
 														((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 												});
@@ -827,7 +827,7 @@ public class ProofingbowluseProcedure {
 											if (_ent != null) {
 												final int _slotid = 1;
 												final int _amount = 1;
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 													if (capability instanceof IItemHandlerModifiable) {
 														ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 														_stk.shrink(_amount);
@@ -848,7 +848,7 @@ public class ProofingbowluseProcedure {
 											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 											BlockState _bs = world.getBlockState(_bp);
 											if (_blockEntity != null)
-												_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+												_blockEntity.getTileData().putDouble("craftingProgress", 0);
 											if (world instanceof Level _level)
 												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 										}
@@ -859,7 +859,7 @@ public class ProofingbowluseProcedure {
 											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 											return _retval.get();
 										}
 									}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.WHOLE_WHEAT_DOUGH.get() && new Object() {
@@ -867,7 +867,7 @@ public class ProofingbowluseProcedure {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
 									}.getAmount(world, new BlockPos(x, y, z), 2) == 0) {
@@ -876,7 +876,7 @@ public class ProofingbowluseProcedure {
 											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 											BlockState _bs = world.getBlockState(_bp);
 											if (_blockEntity != null)
-												_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+												_blockEntity.getTileData().putDouble("craftingTime", 240);
 											if (world instanceof Level _level)
 												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 										}
@@ -885,11 +885,11 @@ public class ProofingbowluseProcedure {
 											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 											BlockState _bs = world.getBlockState(_bp);
 											if (_blockEntity != null)
-												_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+												_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 														BlockEntity blockEntity = world.getBlockEntity(pos);
 														if (blockEntity != null)
-															return blockEntity.getPersistentData().getDouble(tag);
+															return blockEntity.getTileData().getDouble(tag);
 														return -1;
 													}
 												}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -900,7 +900,7 @@ public class ProofingbowluseProcedure {
 											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 												BlockEntity blockEntity = world.getBlockEntity(pos);
 												if (blockEntity != null)
-													return blockEntity.getPersistentData().getDouble(tag);
+													return blockEntity.getTileData().getDouble(tag);
 												return -1;
 											}
 										}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -908,7 +908,7 @@ public class ProofingbowluseProcedure {
 												AtomicInteger _retval = new AtomicInteger(0);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 												return _retval.get();
 											}
 										}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -922,11 +922,11 @@ public class ProofingbowluseProcedure {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
 													}.getAmount(world, new BlockPos(x, y, z), 2)));
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 														if (capability instanceof IItemHandlerModifiable)
 															((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 													});
@@ -937,7 +937,7 @@ public class ProofingbowluseProcedure {
 												if (_ent != null) {
 													final int _slotid = 1;
 													final int _amount = 1;
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 														if (capability instanceof IItemHandlerModifiable) {
 															ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 															_stk.shrink(_amount);
@@ -958,7 +958,7 @@ public class ProofingbowluseProcedure {
 												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 												BlockState _bs = world.getBlockState(_bp);
 												if (_blockEntity != null)
-													_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+													_blockEntity.getTileData().putDouble("craftingProgress", 0);
 												if (world instanceof Level _level)
 													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 											}
@@ -969,7 +969,7 @@ public class ProofingbowluseProcedure {
 												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 												return _retval.get();
 											}
 										}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.ENRICHED_DOUGH.get() && (new Object() {
@@ -977,7 +977,7 @@ public class ProofingbowluseProcedure {
 												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 												return _retval.get();
 											}
 										}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == BreadcraftModItems.PROOFED_ENRICHED_DOUGH.get() && new Object() {
@@ -985,7 +985,7 @@ public class ProofingbowluseProcedure {
 												AtomicInteger _retval = new AtomicInteger(0);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 												return _retval.get();
 											}
 										}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -993,7 +993,7 @@ public class ProofingbowluseProcedure {
 												AtomicInteger _retval = new AtomicInteger(0);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 												return _retval.get();
 											}
 										}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -1002,7 +1002,7 @@ public class ProofingbowluseProcedure {
 												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 												BlockState _bs = world.getBlockState(_bp);
 												if (_blockEntity != null)
-													_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+													_blockEntity.getTileData().putDouble("craftingTime", 240);
 												if (world instanceof Level _level)
 													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 											}
@@ -1011,11 +1011,11 @@ public class ProofingbowluseProcedure {
 												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 												BlockState _bs = world.getBlockState(_bp);
 												if (_blockEntity != null)
-													_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+													_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 															BlockEntity blockEntity = world.getBlockEntity(pos);
 															if (blockEntity != null)
-																return blockEntity.getPersistentData().getDouble(tag);
+																return blockEntity.getTileData().getDouble(tag);
 															return -1;
 														}
 													}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1026,7 +1026,7 @@ public class ProofingbowluseProcedure {
 												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 													BlockEntity blockEntity = world.getBlockEntity(pos);
 													if (blockEntity != null)
-														return blockEntity.getPersistentData().getDouble(tag);
+														return blockEntity.getTileData().getDouble(tag);
 													return -1;
 												}
 											}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -1034,7 +1034,7 @@ public class ProofingbowluseProcedure {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
 											}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -1048,11 +1048,11 @@ public class ProofingbowluseProcedure {
 																AtomicInteger _retval = new AtomicInteger(0);
 																BlockEntity _ent = world.getBlockEntity(pos);
 																if (_ent != null)
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																return _retval.get();
 															}
 														}.getAmount(world, new BlockPos(x, y, z), 2)));
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 															if (capability instanceof IItemHandlerModifiable)
 																((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 														});
@@ -1063,7 +1063,7 @@ public class ProofingbowluseProcedure {
 													if (_ent != null) {
 														final int _slotid = 1;
 														final int _amount = 1;
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 															if (capability instanceof IItemHandlerModifiable) {
 																ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																_stk.shrink(_amount);
@@ -1084,7 +1084,7 @@ public class ProofingbowluseProcedure {
 													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 													BlockState _bs = world.getBlockState(_bp);
 													if (_blockEntity != null)
-														_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+														_blockEntity.getTileData().putDouble("craftingProgress", 0);
 													if (world instanceof Level _level)
 														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 												}
@@ -1095,7 +1095,7 @@ public class ProofingbowluseProcedure {
 													AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 													return _retval.get();
 												}
 											}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.ENRICHED_DOUGH.get() && new Object() {
@@ -1103,7 +1103,7 @@ public class ProofingbowluseProcedure {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
 											}.getAmount(world, new BlockPos(x, y, z), 2) == 0) {
@@ -1112,7 +1112,7 @@ public class ProofingbowluseProcedure {
 													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 													BlockState _bs = world.getBlockState(_bp);
 													if (_blockEntity != null)
-														_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+														_blockEntity.getTileData().putDouble("craftingTime", 240);
 													if (world instanceof Level _level)
 														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 												}
@@ -1121,11 +1121,11 @@ public class ProofingbowluseProcedure {
 													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 													BlockState _bs = world.getBlockState(_bp);
 													if (_blockEntity != null)
-														_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+														_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																BlockEntity blockEntity = world.getBlockEntity(pos);
 																if (blockEntity != null)
-																	return blockEntity.getPersistentData().getDouble(tag);
+																	return blockEntity.getTileData().getDouble(tag);
 																return -1;
 															}
 														}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1136,7 +1136,7 @@ public class ProofingbowluseProcedure {
 													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 														BlockEntity blockEntity = world.getBlockEntity(pos);
 														if (blockEntity != null)
-															return blockEntity.getPersistentData().getDouble(tag);
+															return blockEntity.getTileData().getDouble(tag);
 														return -1;
 													}
 												}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -1144,7 +1144,7 @@ public class ProofingbowluseProcedure {
 														AtomicInteger _retval = new AtomicInteger(0);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 														return _retval.get();
 													}
 												}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -1158,11 +1158,11 @@ public class ProofingbowluseProcedure {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
 																	if (_ent != null)
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
 															}.getAmount(world, new BlockPos(x, y, z), 2)));
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																if (capability instanceof IItemHandlerModifiable)
 																	((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 															});
@@ -1173,7 +1173,7 @@ public class ProofingbowluseProcedure {
 														if (_ent != null) {
 															final int _slotid = 1;
 															final int _amount = 1;
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																if (capability instanceof IItemHandlerModifiable) {
 																	ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																	_stk.shrink(_amount);
@@ -1194,7 +1194,7 @@ public class ProofingbowluseProcedure {
 														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 														BlockState _bs = world.getBlockState(_bp);
 														if (_blockEntity != null)
-															_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+															_blockEntity.getTileData().putDouble("craftingProgress", 0);
 														if (world instanceof Level _level)
 															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 													}
@@ -1205,7 +1205,7 @@ public class ProofingbowluseProcedure {
 														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 														return _retval.get();
 													}
 												}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.SOURDOUGH_DOUGH.get() && (new Object() {
@@ -1213,7 +1213,7 @@ public class ProofingbowluseProcedure {
 														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 														return _retval.get();
 													}
 												}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == BreadcraftModItems.PROOFED_SOURDOUGH_DOUGH.get() && new Object() {
@@ -1221,7 +1221,7 @@ public class ProofingbowluseProcedure {
 														AtomicInteger _retval = new AtomicInteger(0);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 														return _retval.get();
 													}
 												}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -1229,7 +1229,7 @@ public class ProofingbowluseProcedure {
 														AtomicInteger _retval = new AtomicInteger(0);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 														return _retval.get();
 													}
 												}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -1238,7 +1238,7 @@ public class ProofingbowluseProcedure {
 														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 														BlockState _bs = world.getBlockState(_bp);
 														if (_blockEntity != null)
-															_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+															_blockEntity.getTileData().putDouble("craftingTime", 240);
 														if (world instanceof Level _level)
 															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 													}
@@ -1247,11 +1247,11 @@ public class ProofingbowluseProcedure {
 														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 														BlockState _bs = world.getBlockState(_bp);
 														if (_blockEntity != null)
-															_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+															_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																	if (blockEntity != null)
-																		return blockEntity.getPersistentData().getDouble(tag);
+																		return blockEntity.getTileData().getDouble(tag);
 																	return -1;
 																}
 															}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1262,7 +1262,7 @@ public class ProofingbowluseProcedure {
 														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 															BlockEntity blockEntity = world.getBlockEntity(pos);
 															if (blockEntity != null)
-																return blockEntity.getPersistentData().getDouble(tag);
+																return blockEntity.getTileData().getDouble(tag);
 															return -1;
 														}
 													}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -1270,7 +1270,7 @@ public class ProofingbowluseProcedure {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
 													}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -1284,11 +1284,11 @@ public class ProofingbowluseProcedure {
 																		AtomicInteger _retval = new AtomicInteger(0);
 																		BlockEntity _ent = world.getBlockEntity(pos);
 																		if (_ent != null)
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																		return _retval.get();
 																	}
 																}.getAmount(world, new BlockPos(x, y, z), 2)));
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																	if (capability instanceof IItemHandlerModifiable)
 																		((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																});
@@ -1299,7 +1299,7 @@ public class ProofingbowluseProcedure {
 															if (_ent != null) {
 																final int _slotid = 1;
 																final int _amount = 1;
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																	if (capability instanceof IItemHandlerModifiable) {
 																		ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																		_stk.shrink(_amount);
@@ -1320,7 +1320,7 @@ public class ProofingbowluseProcedure {
 															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 															BlockState _bs = world.getBlockState(_bp);
 															if (_blockEntity != null)
-																_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																_blockEntity.getTileData().putDouble("craftingProgress", 0);
 															if (world instanceof Level _level)
 																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 														}
@@ -1331,7 +1331,7 @@ public class ProofingbowluseProcedure {
 															AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 															return _retval.get();
 														}
 													}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.SOURDOUGH_DOUGH.get() && new Object() {
@@ -1339,7 +1339,7 @@ public class ProofingbowluseProcedure {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
 													}.getAmount(world, new BlockPos(x, y, z), 2) == 0) {
@@ -1348,7 +1348,7 @@ public class ProofingbowluseProcedure {
 															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 															BlockState _bs = world.getBlockState(_bp);
 															if (_blockEntity != null)
-																_blockEntity.getPersistentData().putDouble("craftingTime", 240);
+																_blockEntity.getTileData().putDouble("craftingTime", 240);
 															if (world instanceof Level _level)
 																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 														}
@@ -1357,11 +1357,11 @@ public class ProofingbowluseProcedure {
 															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 															BlockState _bs = world.getBlockState(_bp);
 															if (_blockEntity != null)
-																_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																	public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																		BlockEntity blockEntity = world.getBlockEntity(pos);
 																		if (blockEntity != null)
-																			return blockEntity.getPersistentData().getDouble(tag);
+																			return blockEntity.getTileData().getDouble(tag);
 																		return -1;
 																	}
 																}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1372,7 +1372,7 @@ public class ProofingbowluseProcedure {
 															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																BlockEntity blockEntity = world.getBlockEntity(pos);
 																if (blockEntity != null)
-																	return blockEntity.getPersistentData().getDouble(tag);
+																	return blockEntity.getTileData().getDouble(tag);
 																return -1;
 															}
 														}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 240 && new Object() {
@@ -1380,7 +1380,7 @@ public class ProofingbowluseProcedure {
 																AtomicInteger _retval = new AtomicInteger(0);
 																BlockEntity _ent = world.getBlockEntity(pos);
 																if (_ent != null)
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																return _retval.get();
 															}
 														}.getAmount(world, new BlockPos(x, y, z), 2) <= 63) {
@@ -1394,11 +1394,11 @@ public class ProofingbowluseProcedure {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
 																			if (_ent != null)
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
 																	}.getAmount(world, new BlockPos(x, y, z), 2)));
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																		if (capability instanceof IItemHandlerModifiable)
 																			((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																	});
@@ -1409,7 +1409,7 @@ public class ProofingbowluseProcedure {
 																if (_ent != null) {
 																	final int _slotid = 1;
 																	final int _amount = 1;
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																		if (capability instanceof IItemHandlerModifiable) {
 																			ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																			_stk.shrink(_amount);
@@ -1430,7 +1430,7 @@ public class ProofingbowluseProcedure {
 																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																BlockState _bs = world.getBlockState(_bp);
 																if (_blockEntity != null)
-																	_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																	_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																if (world instanceof Level _level)
 																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 															}
@@ -1441,7 +1441,7 @@ public class ProofingbowluseProcedure {
 															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 															BlockState _bs = world.getBlockState(_bp);
 															if (_blockEntity != null)
-																_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																_blockEntity.getTileData().putDouble("craftingProgress", 0);
 															if (world instanceof Level _level)
 																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 														}

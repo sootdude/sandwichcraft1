@@ -4,7 +4,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.world.BlockEvent;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 public class OnionStage7TrampledProcedure {
 	@SubscribeEvent
 	public static void onFarmlandTrampled(BlockEvent.FarmlandTrampleEvent event) {
-		execute(event, event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
+		execute(event, event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
 	}
 
 	public static void execute(LevelAccessor world, double x, double y, double z) {

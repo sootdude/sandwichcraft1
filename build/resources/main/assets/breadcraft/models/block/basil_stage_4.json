@@ -3,6 +3,5 @@
   "textures": {
     "cross": "breadcraft:blocks/basil_stage_4",
     "particle": "breadcraft:blocks/basil_stage_4"
-  },
-  "render_type": "cutout"
+  }
 }

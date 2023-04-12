@@ -3,6 +3,5 @@
   "textures": {
     "crop": "breadcraft:blocks/rye_stage2",
     "particle": "breadcraft:blocks/rye_stage2"
-  },
-  "render_type": "cutout"
+  }
 }

@@ -31,7 +31,7 @@ public class CreamItem extends Item {
 	}
 
 	@Override
-	public ItemStack getCraftingRemainingItem(ItemStack itemstack) {
+	public ItemStack getContainerItem(ItemStack itemstack) {
 		return new ItemStack(Items.GLASS_BOTTLE);
 	}
 

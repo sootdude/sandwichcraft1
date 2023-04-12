@@ -18,7 +18,7 @@ public class CheesePressItem extends Item {
 	}
 
 	@Override
-	public ItemStack getCraftingRemainingItem(ItemStack itemstack) {
+	public ItemStack getContainerItem(ItemStack itemstack) {
 		ItemStack retval = new ItemStack(this);
 		retval.setDamageValue(itemstack.getDamageValue() + 1);
 		if (retval.getDamageValue() >= retval.getMaxDamage()) {

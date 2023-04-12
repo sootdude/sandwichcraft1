@@ -1,6 +1,9 @@
 
 package net.mcreator.breadcraft.block;
 
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
+
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -26,6 +29,8 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.Containers;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 
 import net.mcreator.breadcraft.init.BreadcraftModBlocks;
 import net.mcreator.breadcraft.block.entity.ProofingBowlCoveredBlockEntity;
@@ -124,5 +129,10 @@ public class ProofingBowlCoveredBlock extends Block implements EntityBlock {
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
 		else
 			return 0;
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public static void registerRenderLayer() {
+		ItemBlockRenderTypes.setRenderLayer(BreadcraftModBlocks.PROOFING_BOWL_COVERED.get(), renderType -> renderType == RenderType.cutout());
 	}
 }

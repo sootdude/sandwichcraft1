@@ -3,6 +3,5 @@
   "textures": {
     "cross": "breadcraft:blocks/wildgreens_stage3",
     "particle": "breadcraft:blocks/wildgreens_stage3"
-  },
-  "render_type": "cutout"
+  }
 }

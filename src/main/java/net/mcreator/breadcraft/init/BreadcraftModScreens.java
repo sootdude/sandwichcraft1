@@ -1,6 +1,6 @@
 
 /*
- *	MCreator note: This file will be REGENERATED on each build.
+ *    MCreator note: This file will be REGENERATED on each build.
  */
 package net.mcreator.breadcraft.init;
 
@@ -23,12 +23,12 @@ public class BreadcraftModScreens {
 	@SubscribeEvent
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
-			MenuScreens.register(BreadcraftModMenus.KNEADING_BOARD_MENU.get(), KneadingBoardMenuScreen::new);
-			MenuScreens.register(BreadcraftModMenus.SALT_POT_GUI.get(), SaltPotGUIScreen::new);
-			MenuScreens.register(BreadcraftModMenus.COUNTER_STORAGE.get(), CounterStorageScreen::new);
-			MenuScreens.register(BreadcraftModMenus.BREAD_OVEN_GUI.get(), BreadOvenGuiScreen::new);
-			MenuScreens.register(BreadcraftModMenus.PROOFING_BOWL_GUI.get(), ProofingBowlGuiScreen::new);
-			MenuScreens.register(BreadcraftModMenus.AGING_CASK_GUI.get(), AgingCaskGuiScreen::new);
+			MenuScreens.register(BreadcraftModMenus.KNEADING_BOARD_MENU, KneadingBoardMenuScreen::new);
+			MenuScreens.register(BreadcraftModMenus.SALT_POT_GUI, SaltPotGUIScreen::new);
+			MenuScreens.register(BreadcraftModMenus.COUNTER_STORAGE, CounterStorageScreen::new);
+			MenuScreens.register(BreadcraftModMenus.BREAD_OVEN_GUI, BreadOvenGuiScreen::new);
+			MenuScreens.register(BreadcraftModMenus.PROOFING_BOWL_GUI, ProofingBowlGuiScreen::new);
+			MenuScreens.register(BreadcraftModMenus.AGING_CASK_GUI, AgingCaskGuiScreen::new);
 		});
 	}
 }

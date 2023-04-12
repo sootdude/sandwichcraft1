@@ -8,10 +8,10 @@
     "minecraft:oak_button",
     "minecraft:white_wool",
     "minecraft:lime_wool",
-    "minecraft:mangrove_propagule",
     "minecraft:dark_oak_sapling",
     "minecraft:jungle_button",
     "minecraft:spruce_button",
+    "minecraft:air",
     "minecraft:pink_wool",
     "minecraft:acacia_sapling",
     "minecraft:light_gray_wool",
@@ -33,7 +33,6 @@
     "minecraft:jungle_sapling",
     "minecraft:spruce_sapling",
     "minecraft:acacia_button",
-    "minecraft:mangrove_button",
     "minecraft:brown_wool"
   ]
 }

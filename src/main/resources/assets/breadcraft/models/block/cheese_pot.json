@@ -5,6 +5,5 @@
     "particle": "breadcraft:blocks/grey",
     "4": "breadcraft:blocks/campfirefull",
     "5": "breadcraft:blocks/waterflowing"
-  },
-  "render_type": "solid"
+  }
 }

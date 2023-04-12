@@ -3,6 +3,5 @@
   "textures": {
     "crop": "breadcraft:blocks/caper_stage_0",
     "particle": "breadcraft:blocks/caper_stage_0"
-  },
-  "render_type": "cutout"
+  }
 }

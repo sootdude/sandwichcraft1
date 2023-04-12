@@ -112,7 +112,7 @@ import net.mcreator.breadcraft.block.entity.AgingCaskBlockEntity;
 import net.mcreator.breadcraft.BreadcraftMod;
 
 public class BreadcraftModBlockEntities {
-	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, BreadcraftMod.MODID);
+	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, BreadcraftMod.MODID);
 	public static final RegistryObject<BlockEntityType<?>> SALT_POT = register("salt_pot", BreadcraftModBlocks.SALT_POT, SaltPotBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> CHEESE_POT = register("cheese_pot", BreadcraftModBlocks.CHEESE_POT, CheesePotBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> AGING_CASK = register("aging_cask", BreadcraftModBlocks.AGING_CASK, AgingCaskBlockEntity::new);

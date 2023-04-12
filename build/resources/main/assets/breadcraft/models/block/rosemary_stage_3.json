@@ -3,6 +3,5 @@
   "textures": {
     "crop": "breadcraft:blocks/rosemary_stage3",
     "particle": "breadcraft:blocks/rosemary_stage3"
-  },
-  "render_type": "cutout"
+  }
 }

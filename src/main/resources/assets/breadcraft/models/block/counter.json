@@ -4,6 +4,5 @@
     "all": "breadcraft:blocks/appendage",
     "particle": "breadcraft:blocks/appendage",
     "6": "breadcraft:blocks/appendage"
-  },
-  "render_type": "solid"
+  }
 }

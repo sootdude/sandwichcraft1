@@ -2,8 +2,11 @@ package net.mcreator.breadcraft.procedures;
 
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.common.MinecraftForge;
 
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -21,6 +24,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.nbt.CompoundTag;
@@ -28,7 +32,6 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.breadcraft.world.inventory.SaltPotGUIMenu;
 import net.mcreator.breadcraft.init.BreadcraftModBlocks;
-import net.mcreator.breadcraft.BreadcraftMod;
 
 import java.util.Map;
 
@@ -43,7 +46,7 @@ public class SaltPotUpdateTickProcedure {
 				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				int _amount = 1000;
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> capability.fill(new FluidStack(Fluids.WATER, _amount), IFluidHandler.FluidAction.EXECUTE));
+					_ent.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null).ifPresent(capability -> capability.fill(new FluidStack(Fluids.WATER, _amount), IFluidHandler.FluidAction.EXECUTE));
 			}
 			{
 				BlockPos _bp = new BlockPos(x, y, z);
@@ -88,7 +91,7 @@ public class SaltPotUpdateTickProcedure {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 1200) {
@@ -97,30 +100,52 @@ public class SaltPotUpdateTickProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+					_blockEntity.getTileData().putDouble("craftingProgress", 0);
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if (entity instanceof Player _player)
 				_player.closeContainer();
-			BreadcraftMod.queueServerWork(2, () -> {
-				{
-					if (entity instanceof ServerPlayer _ent) {
-						BlockPos _bpos = new BlockPos(x, y, z);
-						NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
-							@Override
-							public Component getDisplayName() {
-								return Component.literal("SaltPotGUI");
-							}
+			new Object() {
+				private int ticks = 0;
+				private float waitTicks;
+				private LevelAccessor world;
 
-							@Override
-							public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-								return new SaltPotGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
-							}
-						}, _bpos);
+				public void start(LevelAccessor world, int waitTicks) {
+					this.waitTicks = waitTicks;
+					MinecraftForge.EVENT_BUS.register(this);
+					this.world = world;
+				}
+
+				@SubscribeEvent
+				public void tick(TickEvent.ServerTickEvent event) {
+					if (event.phase == TickEvent.Phase.END) {
+						this.ticks += 1;
+						if (this.ticks >= this.waitTicks)
+							run();
 					}
 				}
-			});
+
+				private void run() {
+					{
+						if (entity instanceof ServerPlayer _ent) {
+							BlockPos _bpos = new BlockPos(x, y, z);
+							NetworkHooks.openGui((ServerPlayer) _ent, new MenuProvider() {
+								@Override
+								public Component getDisplayName() {
+									return new TextComponent("SaltPotGUI");
+								}
+
+								@Override
+								public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+									return new SaltPotGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
+								}
+							}, _bpos);
+						}
+					}
+					MinecraftForge.EVENT_BUS.unregister(this);
+				}
+			}.start(world, 2);
 		}
 	}
 }

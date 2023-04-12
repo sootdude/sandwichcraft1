@@ -3,6 +3,5 @@
   "textures": {
     "cross": "breadcraft:blocks/pepper_stage_1",
     "particle": "breadcraft:blocks/pepper_stage_1"
-  },
-  "render_type": "cutout"
+  }
 }

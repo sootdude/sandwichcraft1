@@ -1,9 +1,11 @@
+
 package net.mcreator.breadcraft.client.gui;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.Minecraft;
@@ -131,8 +133,8 @@ public class ProofingBowlGuiScreen extends AbstractContainerScreen<ProofingBowlG
 
 	@Override
 	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
-		this.font.draw(poseStack, Component.translatable("gui.breadcraft.proofing_bowl_gui.label_proofing_bowl"), 53, 6, -12829636);
-		this.font.draw(poseStack, Component.translatable("gui.breadcraft.proofing_bowl_gui.label_inventory"), 7, 47, -12829636);
+		this.font.draw(poseStack, new TranslatableComponent("gui.breadcraft.proofing_bowl_gui.label_proofing_bowl"), 53, 6, -12829636);
+		this.font.draw(poseStack, new TranslatableComponent("gui.breadcraft.proofing_bowl_gui.label_inventory"), 7, 47, -12829636);
 	}
 
 	@Override

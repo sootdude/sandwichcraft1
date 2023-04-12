@@ -2,7 +2,7 @@ package net.mcreator.breadcraft.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -11,7 +11,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.util.RandomSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
@@ -20,6 +19,7 @@ import net.mcreator.breadcraft.init.BreadcraftModItems;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Random;
 
 public class BreadOvenCookingProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -33,7 +33,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -41,7 +41,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -49,14 +49,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && ((new Object() {
@@ -64,7 +64,7 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.COAL || (new Object() {
@@ -72,7 +72,7 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.CHARCOAL)) {
@@ -81,7 +81,7 @@ public class BreadOvenCookingProcedure {
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -95,11 +95,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (1600 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (1600 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -112,7 +112,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -120,7 +120,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -128,14 +128,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -143,7 +143,7 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Blocks.COAL_BLOCK.asItem()) {
@@ -152,7 +152,7 @@ public class BreadOvenCookingProcedure {
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -166,11 +166,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (16000 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (16000 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -183,7 +183,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -191,7 +191,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -199,14 +199,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -214,7 +214,7 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Blocks.DRIED_KELP_BLOCK.asItem()) {
@@ -223,7 +223,7 @@ public class BreadOvenCookingProcedure {
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -237,11 +237,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (4000 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (4000 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -254,7 +254,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -262,7 +262,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -270,14 +270,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -285,7 +285,7 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.BLAZE_ROD) {
@@ -294,7 +294,7 @@ public class BreadOvenCookingProcedure {
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -308,11 +308,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (2400 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (2400 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -325,7 +325,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -333,7 +333,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -341,14 +341,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -356,7 +356,7 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.LAVA_BUCKET) {
@@ -365,7 +365,7 @@ public class BreadOvenCookingProcedure {
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -380,7 +380,7 @@ public class BreadOvenCookingProcedure {
 					final int _slotid = 2;
 					final ItemStack _setstack = new ItemStack(Items.BUCKET);
 					_setstack.setCount(1);
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable)
 							((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 					});
@@ -391,11 +391,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (20000 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (20000 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -408,7 +408,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -416,7 +416,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -424,14 +424,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -439,16 +439,16 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("forge:fuel"))).getRandomElement(RandomSource.create()).orElseGet(() -> Items.AIR))) {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("forge:fuel"))).getRandomElement(new Random()).orElseGet(() -> Items.AIR))) {
 			{
 				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -462,11 +462,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (300 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (300 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -479,7 +479,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -487,7 +487,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -495,14 +495,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -510,16 +510,16 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_200"))).getRandomElement(RandomSource.create()).orElseGet(() -> Items.AIR))) {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_200"))).getRandomElement(new Random()).orElseGet(() -> Items.AIR))) {
 			{
 				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -533,11 +533,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (200 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (200 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -550,7 +550,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -558,7 +558,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -566,14 +566,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -581,16 +581,16 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_150"))).getRandomElement(RandomSource.create()).orElseGet(() -> Items.AIR))) {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_150"))).getRandomElement(new Random()).orElseGet(() -> Items.AIR))) {
 			{
 				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -604,11 +604,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (150 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (150 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -621,7 +621,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -629,7 +629,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -637,14 +637,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -652,16 +652,16 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_100"))).getRandomElement(RandomSource.create()).orElseGet(() -> Items.AIR))) {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_100"))).getRandomElement(new Random()).orElseGet(() -> Items.AIR))) {
 			{
 				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -675,11 +675,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (100 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (100 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -692,7 +692,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -700,7 +700,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -708,14 +708,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -723,16 +723,16 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_67"))).getRandomElement(RandomSource.create()).orElseGet(() -> Items.AIR))) {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_67"))).getRandomElement(new Random()).orElseGet(() -> Items.AIR))) {
 			{
 				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -746,11 +746,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (67 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (67 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -763,7 +763,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 1) >= 1 && new Object() {
@@ -771,7 +771,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 2) >= 1 && new Object() {
@@ -779,14 +779,14 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 4) >= 1 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") <= 5 && (new Object() {
@@ -794,16 +794,16 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_50"))).getRandomElement(RandomSource.create()).orElseGet(() -> Items.AIR))) {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("breadcraft:fuel_50"))).getRandomElement(new Random()).orElseGet(() -> Items.AIR))) {
 			{
 				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 							_stk.shrink(_amount);
@@ -817,11 +817,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", (50 + new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", (50 + new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")));
@@ -833,7 +833,7 @@ public class BreadOvenCookingProcedure {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -842,11 +842,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("fuelBar", ((new Object() {
+					_blockEntity.getTileData().putDouble("fuelBar", ((new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar")) - 1));
@@ -859,7 +859,7 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_BASIC_DOUGH.get() && new Object() {
@@ -867,7 +867,7 @@ public class BreadOvenCookingProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
 		}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -875,7 +875,7 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.DUTCH_OVEN.get() && (new Object() {
@@ -883,14 +883,14 @@ public class BreadOvenCookingProcedure {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
 		}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.WHITE_COUNTRY_LOAF.get() && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -899,7 +899,7 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+					_blockEntity.getTileData().putDouble("craftingTime", 200);
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
@@ -908,11 +908,11 @@ public class BreadOvenCookingProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+					_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -923,7 +923,7 @@ public class BreadOvenCookingProcedure {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 					BlockEntity blockEntity = world.getBlockEntity(pos);
 					if (blockEntity != null)
-						return blockEntity.getPersistentData().getDouble(tag);
+						return blockEntity.getTileData().getDouble(tag);
 					return -1;
 				}
 			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -931,14 +931,14 @@ public class BreadOvenCookingProcedure {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
 					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
 			}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 					BlockEntity blockEntity = world.getBlockEntity(pos);
 					if (blockEntity != null)
-						return blockEntity.getPersistentData().getDouble(tag);
+						return blockEntity.getTileData().getDouble(tag);
 					return -1;
 				}
 			}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -946,7 +946,7 @@ public class BreadOvenCookingProcedure {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 					BlockEntity _ent = world.getBlockEntity(pos);
 					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
 			}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.WHITE_COUNTRY_LOAF.get()) {
@@ -960,11 +960,11 @@ public class BreadOvenCookingProcedure {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
 						}.getAmount(world, new BlockPos(x, y, z), 3)));
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 							if (capability instanceof IItemHandlerModifiable)
 								((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 						});
@@ -975,7 +975,7 @@ public class BreadOvenCookingProcedure {
 					if (_ent != null) {
 						final int _slotid = 1;
 						final int _amount = 1;
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 							if (capability instanceof IItemHandlerModifiable) {
 								ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 								_stk.shrink(_amount);
@@ -989,7 +989,7 @@ public class BreadOvenCookingProcedure {
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+						_blockEntity.getTileData().putDouble("craftingProgress", 0);
 					if (world instanceof Level _level)
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
@@ -1000,7 +1000,7 @@ public class BreadOvenCookingProcedure {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 					BlockEntity _ent = world.getBlockEntity(pos);
 					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
 			}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_BASIC_DOUGH.get() && new Object() {
@@ -1008,7 +1008,7 @@ public class BreadOvenCookingProcedure {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
 					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
 			}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -1016,14 +1016,14 @@ public class BreadOvenCookingProcedure {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 					BlockEntity _ent = world.getBlockEntity(pos);
 					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
 			}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.DUTCH_OVEN.get() && new Object() {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 					BlockEntity blockEntity = world.getBlockEntity(pos);
 					if (blockEntity != null)
-						return blockEntity.getPersistentData().getDouble(tag);
+						return blockEntity.getTileData().getDouble(tag);
 					return -1;
 				}
 			}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1032,7 +1032,7 @@ public class BreadOvenCookingProcedure {
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+						_blockEntity.getTileData().putDouble("craftingTime", 200);
 					if (world instanceof Level _level)
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
@@ -1041,11 +1041,11 @@ public class BreadOvenCookingProcedure {
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+						_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
 								if (blockEntity != null)
-									return blockEntity.getPersistentData().getDouble(tag);
+									return blockEntity.getTileData().getDouble(tag);
 								return -1;
 							}
 						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1056,7 +1056,7 @@ public class BreadOvenCookingProcedure {
 					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 						BlockEntity blockEntity = world.getBlockEntity(pos);
 						if (blockEntity != null)
-							return blockEntity.getPersistentData().getDouble(tag);
+							return blockEntity.getTileData().getDouble(tag);
 						return -1;
 					}
 				}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -1064,14 +1064,14 @@ public class BreadOvenCookingProcedure {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
 				}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 						BlockEntity blockEntity = world.getBlockEntity(pos);
 						if (blockEntity != null)
-							return blockEntity.getPersistentData().getDouble(tag);
+							return blockEntity.getTileData().getDouble(tag);
 						return -1;
 					}
 				}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1085,11 +1085,11 @@ public class BreadOvenCookingProcedure {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
 							}.getAmount(world, new BlockPos(x, y, z), 3)));
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 							});
@@ -1100,7 +1100,7 @@ public class BreadOvenCookingProcedure {
 						if (_ent != null) {
 							final int _slotid = 1;
 							final int _amount = 1;
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable) {
 									ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 									_stk.shrink(_amount);
@@ -1114,7 +1114,7 @@ public class BreadOvenCookingProcedure {
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
-							_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+							_blockEntity.getTileData().putDouble("craftingProgress", 0);
 						if (world instanceof Level _level)
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
@@ -1125,7 +1125,7 @@ public class BreadOvenCookingProcedure {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
 				}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PRETZEL_DOUGH.get() && new Object() {
@@ -1133,7 +1133,7 @@ public class BreadOvenCookingProcedure {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
 				}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -1141,7 +1141,7 @@ public class BreadOvenCookingProcedure {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
 				}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.DUTCH_OVEN.get() && (new Object() {
@@ -1149,14 +1149,14 @@ public class BreadOvenCookingProcedure {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null)
-							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
 				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.PRETZEL_BREAD.get() && new Object() {
 					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 						BlockEntity blockEntity = world.getBlockEntity(pos);
 						if (blockEntity != null)
-							return blockEntity.getPersistentData().getDouble(tag);
+							return blockEntity.getTileData().getDouble(tag);
 						return -1;
 					}
 				}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1165,7 +1165,7 @@ public class BreadOvenCookingProcedure {
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
-							_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+							_blockEntity.getTileData().putDouble("craftingTime", 200);
 						if (world instanceof Level _level)
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
@@ -1174,11 +1174,11 @@ public class BreadOvenCookingProcedure {
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
-							_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+							_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 									BlockEntity blockEntity = world.getBlockEntity(pos);
 									if (blockEntity != null)
-										return blockEntity.getPersistentData().getDouble(tag);
+										return blockEntity.getTileData().getDouble(tag);
 									return -1;
 								}
 							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1189,7 +1189,7 @@ public class BreadOvenCookingProcedure {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -1197,14 +1197,14 @@ public class BreadOvenCookingProcedure {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
 					}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -1212,7 +1212,7 @@ public class BreadOvenCookingProcedure {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
 					}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.PRETZEL_BREAD.get()) {
@@ -1226,11 +1226,11 @@ public class BreadOvenCookingProcedure {
 										AtomicInteger _retval = new AtomicInteger(0);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
 								}.getAmount(world, new BlockPos(x, y, z), 3)));
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable)
 										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 								});
@@ -1241,7 +1241,7 @@ public class BreadOvenCookingProcedure {
 							if (_ent != null) {
 								final int _slotid = 1;
 								final int _amount = 1;
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable) {
 										ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 										_stk.shrink(_amount);
@@ -1255,7 +1255,7 @@ public class BreadOvenCookingProcedure {
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
-								_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+								_blockEntity.getTileData().putDouble("craftingProgress", 0);
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
@@ -1266,7 +1266,7 @@ public class BreadOvenCookingProcedure {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
 					}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PRETZEL_DOUGH.get() && new Object() {
@@ -1274,7 +1274,7 @@ public class BreadOvenCookingProcedure {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
 					}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -1282,14 +1282,14 @@ public class BreadOvenCookingProcedure {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
 					}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.DUTCH_OVEN.get() && new Object() {
 						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 							BlockEntity blockEntity = world.getBlockEntity(pos);
 							if (blockEntity != null)
-								return blockEntity.getPersistentData().getDouble(tag);
+								return blockEntity.getTileData().getDouble(tag);
 							return -1;
 						}
 					}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1298,7 +1298,7 @@ public class BreadOvenCookingProcedure {
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
-								_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+								_blockEntity.getTileData().putDouble("craftingTime", 200);
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
@@ -1307,11 +1307,11 @@ public class BreadOvenCookingProcedure {
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
-								_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+								_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 										BlockEntity blockEntity = world.getBlockEntity(pos);
 										if (blockEntity != null)
-											return blockEntity.getPersistentData().getDouble(tag);
+											return blockEntity.getTileData().getDouble(tag);
 										return -1;
 									}
 								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1322,7 +1322,7 @@ public class BreadOvenCookingProcedure {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
 								if (blockEntity != null)
-									return blockEntity.getPersistentData().getDouble(tag);
+									return blockEntity.getTileData().getDouble(tag);
 								return -1;
 							}
 						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -1330,14 +1330,14 @@ public class BreadOvenCookingProcedure {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
 						}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
 								if (blockEntity != null)
-									return blockEntity.getPersistentData().getDouble(tag);
+									return blockEntity.getTileData().getDouble(tag);
 								return -1;
 							}
 						}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1351,11 +1351,11 @@ public class BreadOvenCookingProcedure {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
 									}.getAmount(world, new BlockPos(x, y, z), 3)));
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 										if (capability instanceof IItemHandlerModifiable)
 											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 									});
@@ -1366,7 +1366,7 @@ public class BreadOvenCookingProcedure {
 								if (_ent != null) {
 									final int _slotid = 1;
 									final int _amount = 1;
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 										if (capability instanceof IItemHandlerModifiable) {
 											ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 											_stk.shrink(_amount);
@@ -1380,7 +1380,7 @@ public class BreadOvenCookingProcedure {
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
-									_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+									_blockEntity.getTileData().putDouble("craftingProgress", 0);
 								if (world instanceof Level _level)
 									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 							}
@@ -1391,7 +1391,7 @@ public class BreadOvenCookingProcedure {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 								return _retval.get();
 							}
 						}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PRETZEL_DOUGH.get() && new Object() {
@@ -1399,7 +1399,7 @@ public class BreadOvenCookingProcedure {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
 						}.getAmount(world, new BlockPos(x, y, z), 3) <= 60 && (new Object() {
@@ -1407,7 +1407,7 @@ public class BreadOvenCookingProcedure {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 								return _retval.get();
 							}
 						}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.ROUND_PAN.get() && (new Object() {
@@ -1415,14 +1415,14 @@ public class BreadOvenCookingProcedure {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 								BlockEntity _ent = world.getBlockEntity(pos);
 								if (_ent != null)
-									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 								return _retval.get();
 							}
 						}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.PRETZEL_ROLL.get() && new Object() {
 							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 								BlockEntity blockEntity = world.getBlockEntity(pos);
 								if (blockEntity != null)
-									return blockEntity.getPersistentData().getDouble(tag);
+									return blockEntity.getTileData().getDouble(tag);
 								return -1;
 							}
 						}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1431,7 +1431,7 @@ public class BreadOvenCookingProcedure {
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
-									_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+									_blockEntity.getTileData().putDouble("craftingTime", 200);
 								if (world instanceof Level _level)
 									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 							}
@@ -1440,11 +1440,11 @@ public class BreadOvenCookingProcedure {
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
-									_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+									_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 											BlockEntity blockEntity = world.getBlockEntity(pos);
 											if (blockEntity != null)
-												return blockEntity.getPersistentData().getDouble(tag);
+												return blockEntity.getTileData().getDouble(tag);
 											return -1;
 										}
 									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1455,7 +1455,7 @@ public class BreadOvenCookingProcedure {
 								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 									BlockEntity blockEntity = world.getBlockEntity(pos);
 									if (blockEntity != null)
-										return blockEntity.getPersistentData().getDouble(tag);
+										return blockEntity.getTileData().getDouble(tag);
 									return -1;
 								}
 							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -1463,14 +1463,14 @@ public class BreadOvenCookingProcedure {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
 							}.getAmount(world, new BlockPos(x, y, z), 3) <= 60 && new Object() {
 								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 									BlockEntity blockEntity = world.getBlockEntity(pos);
 									if (blockEntity != null)
-										return blockEntity.getPersistentData().getDouble(tag);
+										return blockEntity.getTileData().getDouble(tag);
 									return -1;
 								}
 							}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -1478,7 +1478,7 @@ public class BreadOvenCookingProcedure {
 									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
 							}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.PRETZEL_ROLL.get()) {
@@ -1492,11 +1492,11 @@ public class BreadOvenCookingProcedure {
 												AtomicInteger _retval = new AtomicInteger(0);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 												return _retval.get();
 											}
 										}.getAmount(world, new BlockPos(x, y, z), 3)));
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 											if (capability instanceof IItemHandlerModifiable)
 												((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 										});
@@ -1507,7 +1507,7 @@ public class BreadOvenCookingProcedure {
 									if (_ent != null) {
 										final int _slotid = 1;
 										final int _amount = 1;
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 											if (capability instanceof IItemHandlerModifiable) {
 												ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 												_stk.shrink(_amount);
@@ -1521,7 +1521,7 @@ public class BreadOvenCookingProcedure {
 									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 									BlockState _bs = world.getBlockState(_bp);
 									if (_blockEntity != null)
-										_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+										_blockEntity.getTileData().putDouble("craftingProgress", 0);
 									if (world instanceof Level _level)
 										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 								}
@@ -1532,7 +1532,7 @@ public class BreadOvenCookingProcedure {
 									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
 							}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PRETZEL_DOUGH.get() && new Object() {
@@ -1540,7 +1540,7 @@ public class BreadOvenCookingProcedure {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
 							}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -1548,14 +1548,14 @@ public class BreadOvenCookingProcedure {
 									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 									BlockEntity _ent = world.getBlockEntity(pos);
 									if (_ent != null)
-										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
 							}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.ROUND_PAN.get() && new Object() {
 								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 									BlockEntity blockEntity = world.getBlockEntity(pos);
 									if (blockEntity != null)
-										return blockEntity.getPersistentData().getDouble(tag);
+										return blockEntity.getTileData().getDouble(tag);
 									return -1;
 								}
 							}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1564,7 +1564,7 @@ public class BreadOvenCookingProcedure {
 									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 									BlockState _bs = world.getBlockState(_bp);
 									if (_blockEntity != null)
-										_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+										_blockEntity.getTileData().putDouble("craftingTime", 200);
 									if (world instanceof Level _level)
 										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 								}
@@ -1573,11 +1573,11 @@ public class BreadOvenCookingProcedure {
 									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 									BlockState _bs = world.getBlockState(_bp);
 									if (_blockEntity != null)
-										_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+										_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 												BlockEntity blockEntity = world.getBlockEntity(pos);
 												if (blockEntity != null)
-													return blockEntity.getPersistentData().getDouble(tag);
+													return blockEntity.getTileData().getDouble(tag);
 												return -1;
 											}
 										}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1588,7 +1588,7 @@ public class BreadOvenCookingProcedure {
 									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 										BlockEntity blockEntity = world.getBlockEntity(pos);
 										if (blockEntity != null)
-											return blockEntity.getPersistentData().getDouble(tag);
+											return blockEntity.getTileData().getDouble(tag);
 										return -1;
 									}
 								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -1596,14 +1596,14 @@ public class BreadOvenCookingProcedure {
 										AtomicInteger _retval = new AtomicInteger(0);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
 								}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 										BlockEntity blockEntity = world.getBlockEntity(pos);
 										if (blockEntity != null)
-											return blockEntity.getPersistentData().getDouble(tag);
+											return blockEntity.getTileData().getDouble(tag);
 										return -1;
 									}
 								}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1617,11 +1617,11 @@ public class BreadOvenCookingProcedure {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
 											}.getAmount(world, new BlockPos(x, y, z), 3)));
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 												if (capability instanceof IItemHandlerModifiable)
 													((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 											});
@@ -1632,7 +1632,7 @@ public class BreadOvenCookingProcedure {
 										if (_ent != null) {
 											final int _slotid = 1;
 											final int _amount = 1;
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 												if (capability instanceof IItemHandlerModifiable) {
 													ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 													_stk.shrink(_amount);
@@ -1646,7 +1646,7 @@ public class BreadOvenCookingProcedure {
 										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 										BlockState _bs = world.getBlockState(_bp);
 										if (_blockEntity != null)
-											_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+											_blockEntity.getTileData().putDouble("craftingProgress", 0);
 										if (world instanceof Level _level)
 											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 									}
@@ -1657,7 +1657,7 @@ public class BreadOvenCookingProcedure {
 										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 										return _retval.get();
 									}
 								}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_BASIC_DOUGH.get() && new Object() {
@@ -1665,7 +1665,7 @@ public class BreadOvenCookingProcedure {
 										AtomicInteger _retval = new AtomicInteger(0);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
 								}.getAmount(world, new BlockPos(x, y, z), 3) <= 58 && (new Object() {
@@ -1673,7 +1673,7 @@ public class BreadOvenCookingProcedure {
 										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 										return _retval.get();
 									}
 								}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.POT.get() && (new Object() {
@@ -1681,14 +1681,14 @@ public class BreadOvenCookingProcedure {
 										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 										BlockEntity _ent = world.getBlockEntity(pos);
 										if (_ent != null)
-											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 										return _retval.get();
 									}
 								}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.PLAIN_BAGEL.get() && new Object() {
 									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 										BlockEntity blockEntity = world.getBlockEntity(pos);
 										if (blockEntity != null)
-											return blockEntity.getPersistentData().getDouble(tag);
+											return blockEntity.getTileData().getDouble(tag);
 										return -1;
 									}
 								}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1697,7 +1697,7 @@ public class BreadOvenCookingProcedure {
 										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 										BlockState _bs = world.getBlockState(_bp);
 										if (_blockEntity != null)
-											_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+											_blockEntity.getTileData().putDouble("craftingTime", 200);
 										if (world instanceof Level _level)
 											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 									}
@@ -1706,11 +1706,11 @@ public class BreadOvenCookingProcedure {
 										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 										BlockState _bs = world.getBlockState(_bp);
 										if (_blockEntity != null)
-											_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+											_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 													BlockEntity blockEntity = world.getBlockEntity(pos);
 													if (blockEntity != null)
-														return blockEntity.getPersistentData().getDouble(tag);
+														return blockEntity.getTileData().getDouble(tag);
 													return -1;
 												}
 											}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1721,7 +1721,7 @@ public class BreadOvenCookingProcedure {
 										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 											BlockEntity blockEntity = world.getBlockEntity(pos);
 											if (blockEntity != null)
-												return blockEntity.getPersistentData().getDouble(tag);
+												return blockEntity.getTileData().getDouble(tag);
 											return -1;
 										}
 									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -1729,14 +1729,14 @@ public class BreadOvenCookingProcedure {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
 									}.getAmount(world, new BlockPos(x, y, z), 3) <= 58 && new Object() {
 										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 											BlockEntity blockEntity = world.getBlockEntity(pos);
 											if (blockEntity != null)
-												return blockEntity.getPersistentData().getDouble(tag);
+												return blockEntity.getTileData().getDouble(tag);
 											return -1;
 										}
 									}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -1744,7 +1744,7 @@ public class BreadOvenCookingProcedure {
 											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 											return _retval.get();
 										}
 									}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.PLAIN_BAGEL.get()) {
@@ -1758,11 +1758,11 @@ public class BreadOvenCookingProcedure {
 														AtomicInteger _retval = new AtomicInteger(0);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 														return _retval.get();
 													}
 												}.getAmount(world, new BlockPos(x, y, z), 3)));
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 													if (capability instanceof IItemHandlerModifiable)
 														((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 												});
@@ -1773,7 +1773,7 @@ public class BreadOvenCookingProcedure {
 											if (_ent != null) {
 												final int _slotid = 1;
 												final int _amount = 1;
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 													if (capability instanceof IItemHandlerModifiable) {
 														ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 														_stk.shrink(_amount);
@@ -1787,7 +1787,7 @@ public class BreadOvenCookingProcedure {
 											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 											BlockState _bs = world.getBlockState(_bp);
 											if (_blockEntity != null)
-												_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+												_blockEntity.getTileData().putDouble("craftingProgress", 0);
 											if (world instanceof Level _level)
 												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 										}
@@ -1798,7 +1798,7 @@ public class BreadOvenCookingProcedure {
 											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 											return _retval.get();
 										}
 									}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_BASIC_DOUGH.get() && new Object() {
@@ -1806,7 +1806,7 @@ public class BreadOvenCookingProcedure {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
 									}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -1814,14 +1814,14 @@ public class BreadOvenCookingProcedure {
 											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 											BlockEntity _ent = world.getBlockEntity(pos);
 											if (_ent != null)
-												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 											return _retval.get();
 										}
 									}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.POT.get() && new Object() {
 										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 											BlockEntity blockEntity = world.getBlockEntity(pos);
 											if (blockEntity != null)
-												return blockEntity.getPersistentData().getDouble(tag);
+												return blockEntity.getTileData().getDouble(tag);
 											return -1;
 										}
 									}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1830,7 +1830,7 @@ public class BreadOvenCookingProcedure {
 											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 											BlockState _bs = world.getBlockState(_bp);
 											if (_blockEntity != null)
-												_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+												_blockEntity.getTileData().putDouble("craftingTime", 200);
 											if (world instanceof Level _level)
 												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 										}
@@ -1839,11 +1839,11 @@ public class BreadOvenCookingProcedure {
 											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 											BlockState _bs = world.getBlockState(_bp);
 											if (_blockEntity != null)
-												_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+												_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 														BlockEntity blockEntity = world.getBlockEntity(pos);
 														if (blockEntity != null)
-															return blockEntity.getPersistentData().getDouble(tag);
+															return blockEntity.getTileData().getDouble(tag);
 														return -1;
 													}
 												}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1854,7 +1854,7 @@ public class BreadOvenCookingProcedure {
 											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 												BlockEntity blockEntity = world.getBlockEntity(pos);
 												if (blockEntity != null)
-													return blockEntity.getPersistentData().getDouble(tag);
+													return blockEntity.getTileData().getDouble(tag);
 												return -1;
 											}
 										}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -1862,14 +1862,14 @@ public class BreadOvenCookingProcedure {
 												AtomicInteger _retval = new AtomicInteger(0);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 												return _retval.get();
 											}
 										}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 												BlockEntity blockEntity = world.getBlockEntity(pos);
 												if (blockEntity != null)
-													return blockEntity.getPersistentData().getDouble(tag);
+													return blockEntity.getTileData().getDouble(tag);
 												return -1;
 											}
 										}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1883,11 +1883,11 @@ public class BreadOvenCookingProcedure {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
 													}.getAmount(world, new BlockPos(x, y, z), 3)));
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 														if (capability instanceof IItemHandlerModifiable)
 															((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 													});
@@ -1898,7 +1898,7 @@ public class BreadOvenCookingProcedure {
 												if (_ent != null) {
 													final int _slotid = 1;
 													final int _amount = 1;
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 														if (capability instanceof IItemHandlerModifiable) {
 															ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 															_stk.shrink(_amount);
@@ -1912,7 +1912,7 @@ public class BreadOvenCookingProcedure {
 												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 												BlockState _bs = world.getBlockState(_bp);
 												if (_blockEntity != null)
-													_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+													_blockEntity.getTileData().putDouble("craftingProgress", 0);
 												if (world instanceof Level _level)
 													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 											}
@@ -1923,7 +1923,7 @@ public class BreadOvenCookingProcedure {
 												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 												return _retval.get();
 											}
 										}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_ENRICHED_DOUGH.get() && new Object() {
@@ -1931,7 +1931,7 @@ public class BreadOvenCookingProcedure {
 												AtomicInteger _retval = new AtomicInteger(0);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 												return _retval.get();
 											}
 										}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -1939,7 +1939,7 @@ public class BreadOvenCookingProcedure {
 												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 												return _retval.get();
 											}
 										}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.LOAF_PAN.get() && (new Object() {
@@ -1947,14 +1947,14 @@ public class BreadOvenCookingProcedure {
 												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 												BlockEntity _ent = world.getBlockEntity(pos);
 												if (_ent != null)
-													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 												return _retval.get();
 											}
 										}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.BRIOCHE.get() && new Object() {
 											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 												BlockEntity blockEntity = world.getBlockEntity(pos);
 												if (blockEntity != null)
-													return blockEntity.getPersistentData().getDouble(tag);
+													return blockEntity.getTileData().getDouble(tag);
 												return -1;
 											}
 										}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -1963,7 +1963,7 @@ public class BreadOvenCookingProcedure {
 												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 												BlockState _bs = world.getBlockState(_bp);
 												if (_blockEntity != null)
-													_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+													_blockEntity.getTileData().putDouble("craftingTime", 200);
 												if (world instanceof Level _level)
 													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 											}
@@ -1972,11 +1972,11 @@ public class BreadOvenCookingProcedure {
 												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 												BlockState _bs = world.getBlockState(_bp);
 												if (_blockEntity != null)
-													_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+													_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 															BlockEntity blockEntity = world.getBlockEntity(pos);
 															if (blockEntity != null)
-																return blockEntity.getPersistentData().getDouble(tag);
+																return blockEntity.getTileData().getDouble(tag);
 															return -1;
 														}
 													}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -1987,7 +1987,7 @@ public class BreadOvenCookingProcedure {
 												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 													BlockEntity blockEntity = world.getBlockEntity(pos);
 													if (blockEntity != null)
-														return blockEntity.getPersistentData().getDouble(tag);
+														return blockEntity.getTileData().getDouble(tag);
 													return -1;
 												}
 											}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -1995,14 +1995,14 @@ public class BreadOvenCookingProcedure {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
 											}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 													BlockEntity blockEntity = world.getBlockEntity(pos);
 													if (blockEntity != null)
-														return blockEntity.getPersistentData().getDouble(tag);
+														return blockEntity.getTileData().getDouble(tag);
 													return -1;
 												}
 											}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -2010,7 +2010,7 @@ public class BreadOvenCookingProcedure {
 													AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 													return _retval.get();
 												}
 											}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.BRIOCHE.get()) {
@@ -2024,11 +2024,11 @@ public class BreadOvenCookingProcedure {
 																AtomicInteger _retval = new AtomicInteger(0);
 																BlockEntity _ent = world.getBlockEntity(pos);
 																if (_ent != null)
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																return _retval.get();
 															}
 														}.getAmount(world, new BlockPos(x, y, z), 3)));
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 															if (capability instanceof IItemHandlerModifiable)
 																((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 														});
@@ -2039,7 +2039,7 @@ public class BreadOvenCookingProcedure {
 													if (_ent != null) {
 														final int _slotid = 1;
 														final int _amount = 1;
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 															if (capability instanceof IItemHandlerModifiable) {
 																ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																_stk.shrink(_amount);
@@ -2053,7 +2053,7 @@ public class BreadOvenCookingProcedure {
 													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 													BlockState _bs = world.getBlockState(_bp);
 													if (_blockEntity != null)
-														_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+														_blockEntity.getTileData().putDouble("craftingProgress", 0);
 													if (world instanceof Level _level)
 														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 												}
@@ -2064,7 +2064,7 @@ public class BreadOvenCookingProcedure {
 													AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 													return _retval.get();
 												}
 											}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_ENRICHED_DOUGH.get() && new Object() {
@@ -2072,7 +2072,7 @@ public class BreadOvenCookingProcedure {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
 											}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -2080,14 +2080,14 @@ public class BreadOvenCookingProcedure {
 													AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 													BlockEntity _ent = world.getBlockEntity(pos);
 													if (_ent != null)
-														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 													return _retval.get();
 												}
 											}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.LOAF_PAN.get() && new Object() {
 												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 													BlockEntity blockEntity = world.getBlockEntity(pos);
 													if (blockEntity != null)
-														return blockEntity.getPersistentData().getDouble(tag);
+														return blockEntity.getTileData().getDouble(tag);
 													return -1;
 												}
 											}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2096,7 +2096,7 @@ public class BreadOvenCookingProcedure {
 													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 													BlockState _bs = world.getBlockState(_bp);
 													if (_blockEntity != null)
-														_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+														_blockEntity.getTileData().putDouble("craftingTime", 200);
 													if (world instanceof Level _level)
 														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 												}
@@ -2105,11 +2105,11 @@ public class BreadOvenCookingProcedure {
 													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 													BlockState _bs = world.getBlockState(_bp);
 													if (_blockEntity != null)
-														_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+														_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																BlockEntity blockEntity = world.getBlockEntity(pos);
 																if (blockEntity != null)
-																	return blockEntity.getPersistentData().getDouble(tag);
+																	return blockEntity.getTileData().getDouble(tag);
 																return -1;
 															}
 														}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -2120,7 +2120,7 @@ public class BreadOvenCookingProcedure {
 													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 														BlockEntity blockEntity = world.getBlockEntity(pos);
 														if (blockEntity != null)
-															return blockEntity.getPersistentData().getDouble(tag);
+															return blockEntity.getTileData().getDouble(tag);
 														return -1;
 													}
 												}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -2128,14 +2128,14 @@ public class BreadOvenCookingProcedure {
 														AtomicInteger _retval = new AtomicInteger(0);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 														return _retval.get();
 													}
 												}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 														BlockEntity blockEntity = world.getBlockEntity(pos);
 														if (blockEntity != null)
-															return blockEntity.getPersistentData().getDouble(tag);
+															return blockEntity.getTileData().getDouble(tag);
 														return -1;
 													}
 												}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2149,11 +2149,11 @@ public class BreadOvenCookingProcedure {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
 																	if (_ent != null)
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
 															}.getAmount(world, new BlockPos(x, y, z), 3)));
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																if (capability instanceof IItemHandlerModifiable)
 																	((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 															});
@@ -2164,7 +2164,7 @@ public class BreadOvenCookingProcedure {
 														if (_ent != null) {
 															final int _slotid = 1;
 															final int _amount = 1;
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																if (capability instanceof IItemHandlerModifiable) {
 																	ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																	_stk.shrink(_amount);
@@ -2178,7 +2178,7 @@ public class BreadOvenCookingProcedure {
 														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 														BlockState _bs = world.getBlockState(_bp);
 														if (_blockEntity != null)
-															_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+															_blockEntity.getTileData().putDouble("craftingProgress", 0);
 														if (world instanceof Level _level)
 															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 													}
@@ -2189,7 +2189,7 @@ public class BreadOvenCookingProcedure {
 														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 														return _retval.get();
 													}
 												}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_BASIC_DOUGH.get() && new Object() {
@@ -2197,7 +2197,7 @@ public class BreadOvenCookingProcedure {
 														AtomicInteger _retval = new AtomicInteger(0);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 														return _retval.get();
 													}
 												}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -2205,7 +2205,7 @@ public class BreadOvenCookingProcedure {
 														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 														return _retval.get();
 													}
 												}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.LOAF_PAN.get() && (new Object() {
@@ -2213,14 +2213,14 @@ public class BreadOvenCookingProcedure {
 														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 														BlockEntity _ent = world.getBlockEntity(pos);
 														if (_ent != null)
-															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 														return _retval.get();
 													}
 												}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.WHITE_BREAD.get() && new Object() {
 													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 														BlockEntity blockEntity = world.getBlockEntity(pos);
 														if (blockEntity != null)
-															return blockEntity.getPersistentData().getDouble(tag);
+															return blockEntity.getTileData().getDouble(tag);
 														return -1;
 													}
 												}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2229,7 +2229,7 @@ public class BreadOvenCookingProcedure {
 														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 														BlockState _bs = world.getBlockState(_bp);
 														if (_blockEntity != null)
-															_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+															_blockEntity.getTileData().putDouble("craftingTime", 200);
 														if (world instanceof Level _level)
 															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 													}
@@ -2238,11 +2238,11 @@ public class BreadOvenCookingProcedure {
 														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 														BlockState _bs = world.getBlockState(_bp);
 														if (_blockEntity != null)
-															_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+															_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																	if (blockEntity != null)
-																		return blockEntity.getPersistentData().getDouble(tag);
+																		return blockEntity.getTileData().getDouble(tag);
 																	return -1;
 																}
 															}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -2253,7 +2253,7 @@ public class BreadOvenCookingProcedure {
 														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 															BlockEntity blockEntity = world.getBlockEntity(pos);
 															if (blockEntity != null)
-																return blockEntity.getPersistentData().getDouble(tag);
+																return blockEntity.getTileData().getDouble(tag);
 															return -1;
 														}
 													}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -2261,14 +2261,14 @@ public class BreadOvenCookingProcedure {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
 													}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 															BlockEntity blockEntity = world.getBlockEntity(pos);
 															if (blockEntity != null)
-																return blockEntity.getPersistentData().getDouble(tag);
+																return blockEntity.getTileData().getDouble(tag);
 															return -1;
 														}
 													}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -2276,7 +2276,7 @@ public class BreadOvenCookingProcedure {
 															AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 															return _retval.get();
 														}
 													}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.WHITE_BREAD.get()) {
@@ -2290,11 +2290,11 @@ public class BreadOvenCookingProcedure {
 																		AtomicInteger _retval = new AtomicInteger(0);
 																		BlockEntity _ent = world.getBlockEntity(pos);
 																		if (_ent != null)
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																		return _retval.get();
 																	}
 																}.getAmount(world, new BlockPos(x, y, z), 3)));
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																	if (capability instanceof IItemHandlerModifiable)
 																		((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																});
@@ -2305,7 +2305,7 @@ public class BreadOvenCookingProcedure {
 															if (_ent != null) {
 																final int _slotid = 1;
 																final int _amount = 1;
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																	if (capability instanceof IItemHandlerModifiable) {
 																		ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																		_stk.shrink(_amount);
@@ -2319,7 +2319,7 @@ public class BreadOvenCookingProcedure {
 															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 															BlockState _bs = world.getBlockState(_bp);
 															if (_blockEntity != null)
-																_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																_blockEntity.getTileData().putDouble("craftingProgress", 0);
 															if (world instanceof Level _level)
 																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 														}
@@ -2330,7 +2330,7 @@ public class BreadOvenCookingProcedure {
 															AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 															return _retval.get();
 														}
 													}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_BASIC_DOUGH.get() && new Object() {
@@ -2338,7 +2338,7 @@ public class BreadOvenCookingProcedure {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
 													}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -2346,14 +2346,14 @@ public class BreadOvenCookingProcedure {
 															AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 															BlockEntity _ent = world.getBlockEntity(pos);
 															if (_ent != null)
-																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 															return _retval.get();
 														}
 													}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.LOAF_PAN.get() && new Object() {
 														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 															BlockEntity blockEntity = world.getBlockEntity(pos);
 															if (blockEntity != null)
-																return blockEntity.getPersistentData().getDouble(tag);
+																return blockEntity.getTileData().getDouble(tag);
 															return -1;
 														}
 													}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2362,7 +2362,7 @@ public class BreadOvenCookingProcedure {
 															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 															BlockState _bs = world.getBlockState(_bp);
 															if (_blockEntity != null)
-																_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																_blockEntity.getTileData().putDouble("craftingTime", 200);
 															if (world instanceof Level _level)
 																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 														}
@@ -2371,11 +2371,11 @@ public class BreadOvenCookingProcedure {
 															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 															BlockState _bs = world.getBlockState(_bp);
 															if (_blockEntity != null)
-																_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																	public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																		BlockEntity blockEntity = world.getBlockEntity(pos);
 																		if (blockEntity != null)
-																			return blockEntity.getPersistentData().getDouble(tag);
+																			return blockEntity.getTileData().getDouble(tag);
 																		return -1;
 																	}
 																}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -2386,7 +2386,7 @@ public class BreadOvenCookingProcedure {
 															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																BlockEntity blockEntity = world.getBlockEntity(pos);
 																if (blockEntity != null)
-																	return blockEntity.getPersistentData().getDouble(tag);
+																	return blockEntity.getTileData().getDouble(tag);
 																return -1;
 															}
 														}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -2394,14 +2394,14 @@ public class BreadOvenCookingProcedure {
 																AtomicInteger _retval = new AtomicInteger(0);
 																BlockEntity _ent = world.getBlockEntity(pos);
 																if (_ent != null)
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																return _retval.get();
 															}
 														}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																BlockEntity blockEntity = world.getBlockEntity(pos);
 																if (blockEntity != null)
-																	return blockEntity.getPersistentData().getDouble(tag);
+																	return blockEntity.getTileData().getDouble(tag);
 																return -1;
 															}
 														}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2415,11 +2415,11 @@ public class BreadOvenCookingProcedure {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
 																			if (_ent != null)
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
 																	}.getAmount(world, new BlockPos(x, y, z), 3)));
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																		if (capability instanceof IItemHandlerModifiable)
 																			((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																	});
@@ -2430,7 +2430,7 @@ public class BreadOvenCookingProcedure {
 																if (_ent != null) {
 																	final int _slotid = 1;
 																	final int _amount = 1;
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																		if (capability instanceof IItemHandlerModifiable) {
 																			ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																			_stk.shrink(_amount);
@@ -2444,7 +2444,7 @@ public class BreadOvenCookingProcedure {
 																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																BlockState _bs = world.getBlockState(_bp);
 																if (_blockEntity != null)
-																	_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																	_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																if (world instanceof Level _level)
 																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 															}
@@ -2455,7 +2455,7 @@ public class BreadOvenCookingProcedure {
 																AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																BlockEntity _ent = world.getBlockEntity(pos);
 																if (_ent != null)
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																return _retval.get();
 															}
 														}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_DARK_DOUGH.get() && new Object() {
@@ -2463,7 +2463,7 @@ public class BreadOvenCookingProcedure {
 																AtomicInteger _retval = new AtomicInteger(0);
 																BlockEntity _ent = world.getBlockEntity(pos);
 																if (_ent != null)
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																return _retval.get();
 															}
 														}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -2471,7 +2471,7 @@ public class BreadOvenCookingProcedure {
 																AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																BlockEntity _ent = world.getBlockEntity(pos);
 																if (_ent != null)
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																return _retval.get();
 															}
 														}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.LOAF_PAN.get() && (new Object() {
@@ -2479,14 +2479,14 @@ public class BreadOvenCookingProcedure {
 																AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																BlockEntity _ent = world.getBlockEntity(pos);
 																if (_ent != null)
-																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																return _retval.get();
 															}
 														}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.PUMPERNICKEL.get() && new Object() {
 															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																BlockEntity blockEntity = world.getBlockEntity(pos);
 																if (blockEntity != null)
-																	return blockEntity.getPersistentData().getDouble(tag);
+																	return blockEntity.getTileData().getDouble(tag);
 																return -1;
 															}
 														}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2495,7 +2495,7 @@ public class BreadOvenCookingProcedure {
 																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																BlockState _bs = world.getBlockState(_bp);
 																if (_blockEntity != null)
-																	_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																	_blockEntity.getTileData().putDouble("craftingTime", 200);
 																if (world instanceof Level _level)
 																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 															}
@@ -2504,11 +2504,11 @@ public class BreadOvenCookingProcedure {
 																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																BlockState _bs = world.getBlockState(_bp);
 																if (_blockEntity != null)
-																	_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																	_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																		public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																			BlockEntity blockEntity = world.getBlockEntity(pos);
 																			if (blockEntity != null)
-																				return blockEntity.getPersistentData().getDouble(tag);
+																				return blockEntity.getTileData().getDouble(tag);
 																			return -1;
 																		}
 																	}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -2519,7 +2519,7 @@ public class BreadOvenCookingProcedure {
 																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																	if (blockEntity != null)
-																		return blockEntity.getPersistentData().getDouble(tag);
+																		return blockEntity.getTileData().getDouble(tag);
 																	return -1;
 																}
 															}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -2527,14 +2527,14 @@ public class BreadOvenCookingProcedure {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
 																	if (_ent != null)
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
 															}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																	if (blockEntity != null)
-																		return blockEntity.getPersistentData().getDouble(tag);
+																		return blockEntity.getTileData().getDouble(tag);
 																	return -1;
 																}
 															}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -2542,7 +2542,7 @@ public class BreadOvenCookingProcedure {
 																	AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																	BlockEntity _ent = world.getBlockEntity(pos);
 																	if (_ent != null)
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																	return _retval.get();
 																}
 															}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.PUMPERNICKEL.get()) {
@@ -2556,11 +2556,11 @@ public class BreadOvenCookingProcedure {
 																				AtomicInteger _retval = new AtomicInteger(0);
 																				BlockEntity _ent = world.getBlockEntity(pos);
 																				if (_ent != null)
-																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																				return _retval.get();
 																			}
 																		}.getAmount(world, new BlockPos(x, y, z), 3)));
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																			if (capability instanceof IItemHandlerModifiable)
 																				((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																		});
@@ -2571,7 +2571,7 @@ public class BreadOvenCookingProcedure {
 																	if (_ent != null) {
 																		final int _slotid = 1;
 																		final int _amount = 1;
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																			if (capability instanceof IItemHandlerModifiable) {
 																				ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																				_stk.shrink(_amount);
@@ -2585,7 +2585,7 @@ public class BreadOvenCookingProcedure {
 																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																	BlockState _bs = world.getBlockState(_bp);
 																	if (_blockEntity != null)
-																		_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																		_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																	if (world instanceof Level _level)
 																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																}
@@ -2596,7 +2596,7 @@ public class BreadOvenCookingProcedure {
 																	AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																	BlockEntity _ent = world.getBlockEntity(pos);
 																	if (_ent != null)
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																	return _retval.get();
 																}
 															}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_DARK_DOUGH.get() && new Object() {
@@ -2604,7 +2604,7 @@ public class BreadOvenCookingProcedure {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
 																	if (_ent != null)
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
 															}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -2612,14 +2612,14 @@ public class BreadOvenCookingProcedure {
 																	AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																	BlockEntity _ent = world.getBlockEntity(pos);
 																	if (_ent != null)
-																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																	return _retval.get();
 																}
 															}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.LOAF_PAN.get() && new Object() {
 																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																	if (blockEntity != null)
-																		return blockEntity.getPersistentData().getDouble(tag);
+																		return blockEntity.getTileData().getDouble(tag);
 																	return -1;
 																}
 															}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2628,7 +2628,7 @@ public class BreadOvenCookingProcedure {
 																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																	BlockState _bs = world.getBlockState(_bp);
 																	if (_blockEntity != null)
-																		_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																		_blockEntity.getTileData().putDouble("craftingTime", 200);
 																	if (world instanceof Level _level)
 																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																}
@@ -2637,11 +2637,11 @@ public class BreadOvenCookingProcedure {
 																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																	BlockState _bs = world.getBlockState(_bp);
 																	if (_blockEntity != null)
-																		_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																		_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																				BlockEntity blockEntity = world.getBlockEntity(pos);
 																				if (blockEntity != null)
-																					return blockEntity.getPersistentData().getDouble(tag);
+																					return blockEntity.getTileData().getDouble(tag);
 																				return -1;
 																			}
 																		}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -2652,7 +2652,7 @@ public class BreadOvenCookingProcedure {
 																	public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																		BlockEntity blockEntity = world.getBlockEntity(pos);
 																		if (blockEntity != null)
-																			return blockEntity.getPersistentData().getDouble(tag);
+																			return blockEntity.getTileData().getDouble(tag);
 																		return -1;
 																	}
 																}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -2660,14 +2660,14 @@ public class BreadOvenCookingProcedure {
 																		AtomicInteger _retval = new AtomicInteger(0);
 																		BlockEntity _ent = world.getBlockEntity(pos);
 																		if (_ent != null)
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																		return _retval.get();
 																	}
 																}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 																	public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																		BlockEntity blockEntity = world.getBlockEntity(pos);
 																		if (blockEntity != null)
-																			return blockEntity.getPersistentData().getDouble(tag);
+																			return blockEntity.getTileData().getDouble(tag);
 																		return -1;
 																	}
 																}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2681,11 +2681,11 @@ public class BreadOvenCookingProcedure {
 																					AtomicInteger _retval = new AtomicInteger(0);
 																					BlockEntity _ent = world.getBlockEntity(pos);
 																					if (_ent != null)
-																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																					return _retval.get();
 																				}
 																			}.getAmount(world, new BlockPos(x, y, z), 3)));
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																				if (capability instanceof IItemHandlerModifiable)
 																					((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																			});
@@ -2696,7 +2696,7 @@ public class BreadOvenCookingProcedure {
 																		if (_ent != null) {
 																			final int _slotid = 1;
 																			final int _amount = 1;
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																				if (capability instanceof IItemHandlerModifiable) {
 																					ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																					_stk.shrink(_amount);
@@ -2710,7 +2710,7 @@ public class BreadOvenCookingProcedure {
 																		BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																		BlockState _bs = world.getBlockState(_bp);
 																		if (_blockEntity != null)
-																			_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																			_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																		if (world instanceof Level _level)
 																			_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																	}
@@ -2721,7 +2721,7 @@ public class BreadOvenCookingProcedure {
 																		AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																		BlockEntity _ent = world.getBlockEntity(pos);
 																		if (_ent != null)
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																		return _retval.get();
 																	}
 																}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_HERB_DOUGH.get() && new Object() {
@@ -2729,7 +2729,7 @@ public class BreadOvenCookingProcedure {
 																		AtomicInteger _retval = new AtomicInteger(0);
 																		BlockEntity _ent = world.getBlockEntity(pos);
 																		if (_ent != null)
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																		return _retval.get();
 																	}
 																}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -2737,7 +2737,7 @@ public class BreadOvenCookingProcedure {
 																		AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																		BlockEntity _ent = world.getBlockEntity(pos);
 																		if (_ent != null)
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																		return _retval.get();
 																	}
 																}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.SHEET_PAN.get() && (new Object() {
@@ -2745,14 +2745,14 @@ public class BreadOvenCookingProcedure {
 																		AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																		BlockEntity _ent = world.getBlockEntity(pos);
 																		if (_ent != null)
-																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																		return _retval.get();
 																	}
 																}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.FOUGASSE.get() && new Object() {
 																	public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																		BlockEntity blockEntity = world.getBlockEntity(pos);
 																		if (blockEntity != null)
-																			return blockEntity.getPersistentData().getDouble(tag);
+																			return blockEntity.getTileData().getDouble(tag);
 																		return -1;
 																	}
 																}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2761,7 +2761,7 @@ public class BreadOvenCookingProcedure {
 																		BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																		BlockState _bs = world.getBlockState(_bp);
 																		if (_blockEntity != null)
-																			_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																			_blockEntity.getTileData().putDouble("craftingTime", 200);
 																		if (world instanceof Level _level)
 																			_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																	}
@@ -2770,11 +2770,11 @@ public class BreadOvenCookingProcedure {
 																		BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																		BlockState _bs = world.getBlockState(_bp);
 																		if (_blockEntity != null)
-																			_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																			_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																					BlockEntity blockEntity = world.getBlockEntity(pos);
 																					if (blockEntity != null)
-																						return blockEntity.getPersistentData().getDouble(tag);
+																						return blockEntity.getTileData().getDouble(tag);
 																					return -1;
 																				}
 																			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -2785,7 +2785,7 @@ public class BreadOvenCookingProcedure {
 																		public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																			BlockEntity blockEntity = world.getBlockEntity(pos);
 																			if (blockEntity != null)
-																				return blockEntity.getPersistentData().getDouble(tag);
+																				return blockEntity.getTileData().getDouble(tag);
 																			return -1;
 																		}
 																	}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -2793,14 +2793,14 @@ public class BreadOvenCookingProcedure {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
 																			if (_ent != null)
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
 																	}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 																		public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																			BlockEntity blockEntity = world.getBlockEntity(pos);
 																			if (blockEntity != null)
-																				return blockEntity.getPersistentData().getDouble(tag);
+																				return blockEntity.getTileData().getDouble(tag);
 																			return -1;
 																		}
 																	}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -2808,7 +2808,7 @@ public class BreadOvenCookingProcedure {
 																			AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																			BlockEntity _ent = world.getBlockEntity(pos);
 																			if (_ent != null)
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																			return _retval.get();
 																		}
 																	}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.FOUGASSE.get()) {
@@ -2822,11 +2822,11 @@ public class BreadOvenCookingProcedure {
 																						AtomicInteger _retval = new AtomicInteger(0);
 																						BlockEntity _ent = world.getBlockEntity(pos);
 																						if (_ent != null)
-																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																						return _retval.get();
 																					}
 																				}.getAmount(world, new BlockPos(x, y, z), 3)));
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																					if (capability instanceof IItemHandlerModifiable)
 																						((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																				});
@@ -2837,7 +2837,7 @@ public class BreadOvenCookingProcedure {
 																			if (_ent != null) {
 																				final int _slotid = 1;
 																				final int _amount = 1;
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																					if (capability instanceof IItemHandlerModifiable) {
 																						ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																						_stk.shrink(_amount);
@@ -2851,7 +2851,7 @@ public class BreadOvenCookingProcedure {
 																			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																			BlockState _bs = world.getBlockState(_bp);
 																			if (_blockEntity != null)
-																				_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																				_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																			if (world instanceof Level _level)
 																				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																		}
@@ -2862,7 +2862,7 @@ public class BreadOvenCookingProcedure {
 																			AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																			BlockEntity _ent = world.getBlockEntity(pos);
 																			if (_ent != null)
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																			return _retval.get();
 																		}
 																	}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_HERB_DOUGH.get() && new Object() {
@@ -2870,7 +2870,7 @@ public class BreadOvenCookingProcedure {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
 																			if (_ent != null)
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
 																	}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -2878,14 +2878,14 @@ public class BreadOvenCookingProcedure {
 																			AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																			BlockEntity _ent = world.getBlockEntity(pos);
 																			if (_ent != null)
-																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																			return _retval.get();
 																		}
 																	}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.SHEET_PAN.get() && new Object() {
 																		public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																			BlockEntity blockEntity = world.getBlockEntity(pos);
 																			if (blockEntity != null)
-																				return blockEntity.getPersistentData().getDouble(tag);
+																				return blockEntity.getTileData().getDouble(tag);
 																			return -1;
 																		}
 																	}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2894,7 +2894,7 @@ public class BreadOvenCookingProcedure {
 																			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																			BlockState _bs = world.getBlockState(_bp);
 																			if (_blockEntity != null)
-																				_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																				_blockEntity.getTileData().putDouble("craftingTime", 200);
 																			if (world instanceof Level _level)
 																				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																		}
@@ -2903,11 +2903,11 @@ public class BreadOvenCookingProcedure {
 																			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																			BlockState _bs = world.getBlockState(_bp);
 																			if (_blockEntity != null)
-																				_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																				_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																						BlockEntity blockEntity = world.getBlockEntity(pos);
 																						if (blockEntity != null)
-																							return blockEntity.getPersistentData().getDouble(tag);
+																							return blockEntity.getTileData().getDouble(tag);
 																						return -1;
 																					}
 																				}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -2918,7 +2918,7 @@ public class BreadOvenCookingProcedure {
 																			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																				BlockEntity blockEntity = world.getBlockEntity(pos);
 																				if (blockEntity != null)
-																					return blockEntity.getPersistentData().getDouble(tag);
+																					return blockEntity.getTileData().getDouble(tag);
 																				return -1;
 																			}
 																		}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -2926,14 +2926,14 @@ public class BreadOvenCookingProcedure {
 																				AtomicInteger _retval = new AtomicInteger(0);
 																				BlockEntity _ent = world.getBlockEntity(pos);
 																				if (_ent != null)
-																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																				return _retval.get();
 																			}
 																		}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 																			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																				BlockEntity blockEntity = world.getBlockEntity(pos);
 																				if (blockEntity != null)
-																					return blockEntity.getPersistentData().getDouble(tag);
+																					return blockEntity.getTileData().getDouble(tag);
 																				return -1;
 																			}
 																		}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -2947,11 +2947,12 @@ public class BreadOvenCookingProcedure {
 																							AtomicInteger _retval = new AtomicInteger(0);
 																							BlockEntity _ent = world.getBlockEntity(pos);
 																							if (_ent != null)
-																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																										.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																							return _retval.get();
 																						}
 																					}.getAmount(world, new BlockPos(x, y, z), 3)));
-																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																						if (capability instanceof IItemHandlerModifiable)
 																							((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																					});
@@ -2962,7 +2963,7 @@ public class BreadOvenCookingProcedure {
 																				if (_ent != null) {
 																					final int _slotid = 1;
 																					final int _amount = 1;
-																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																						if (capability instanceof IItemHandlerModifiable) {
 																							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																							_stk.shrink(_amount);
@@ -2976,7 +2977,7 @@ public class BreadOvenCookingProcedure {
 																				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																				BlockState _bs = world.getBlockState(_bp);
 																				if (_blockEntity != null)
-																					_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																					_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																				if (world instanceof Level _level)
 																					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																			}
@@ -2987,7 +2988,7 @@ public class BreadOvenCookingProcedure {
 																				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																				BlockEntity _ent = world.getBlockEntity(pos);
 																				if (_ent != null)
-																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																				return _retval.get();
 																			}
 																		}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.ENRICHED_DOUGH_WITH_FILLING.get() && new Object() {
@@ -2995,7 +2996,7 @@ public class BreadOvenCookingProcedure {
 																				AtomicInteger _retval = new AtomicInteger(0);
 																				BlockEntity _ent = world.getBlockEntity(pos);
 																				if (_ent != null)
-																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																				return _retval.get();
 																			}
 																		}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -3003,7 +3004,7 @@ public class BreadOvenCookingProcedure {
 																				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																				BlockEntity _ent = world.getBlockEntity(pos);
 																				if (_ent != null)
-																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																				return _retval.get();
 																			}
 																		}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.LOAF_PAN.get() && (new Object() {
@@ -3011,14 +3012,14 @@ public class BreadOvenCookingProcedure {
 																				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																				BlockEntity _ent = world.getBlockEntity(pos);
 																				if (_ent != null)
-																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																				return _retval.get();
 																			}
 																		}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.BABKA.get() && new Object() {
 																			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																				BlockEntity blockEntity = world.getBlockEntity(pos);
 																				if (blockEntity != null)
-																					return blockEntity.getPersistentData().getDouble(tag);
+																					return blockEntity.getTileData().getDouble(tag);
 																				return -1;
 																			}
 																		}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3027,7 +3028,7 @@ public class BreadOvenCookingProcedure {
 																				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																				BlockState _bs = world.getBlockState(_bp);
 																				if (_blockEntity != null)
-																					_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																					_blockEntity.getTileData().putDouble("craftingTime", 200);
 																				if (world instanceof Level _level)
 																					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																			}
@@ -3036,11 +3037,11 @@ public class BreadOvenCookingProcedure {
 																				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																				BlockState _bs = world.getBlockState(_bp);
 																				if (_blockEntity != null)
-																					_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																					_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																							BlockEntity blockEntity = world.getBlockEntity(pos);
 																							if (blockEntity != null)
-																								return blockEntity.getPersistentData().getDouble(tag);
+																								return blockEntity.getTileData().getDouble(tag);
 																							return -1;
 																						}
 																					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -3051,7 +3052,7 @@ public class BreadOvenCookingProcedure {
 																				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																					BlockEntity blockEntity = world.getBlockEntity(pos);
 																					if (blockEntity != null)
-																						return blockEntity.getPersistentData().getDouble(tag);
+																						return blockEntity.getTileData().getDouble(tag);
 																					return -1;
 																				}
 																			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -3059,14 +3060,14 @@ public class BreadOvenCookingProcedure {
 																					AtomicInteger _retval = new AtomicInteger(0);
 																					BlockEntity _ent = world.getBlockEntity(pos);
 																					if (_ent != null)
-																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																					return _retval.get();
 																				}
 																			}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 																				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																					BlockEntity blockEntity = world.getBlockEntity(pos);
 																					if (blockEntity != null)
-																						return blockEntity.getPersistentData().getDouble(tag);
+																						return blockEntity.getTileData().getDouble(tag);
 																					return -1;
 																				}
 																			}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -3074,7 +3075,7 @@ public class BreadOvenCookingProcedure {
 																					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																					BlockEntity _ent = world.getBlockEntity(pos);
 																					if (_ent != null)
-																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																					return _retval.get();
 																				}
 																			}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.BABKA.get()) {
@@ -3088,11 +3089,12 @@ public class BreadOvenCookingProcedure {
 																								AtomicInteger _retval = new AtomicInteger(0);
 																								BlockEntity _ent = world.getBlockEntity(pos);
 																								if (_ent != null)
-																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																											.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																								return _retval.get();
 																							}
 																						}.getAmount(world, new BlockPos(x, y, z), 3)));
-																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																							if (capability instanceof IItemHandlerModifiable)
 																								((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																						});
@@ -3103,7 +3105,7 @@ public class BreadOvenCookingProcedure {
 																					if (_ent != null) {
 																						final int _slotid = 1;
 																						final int _amount = 1;
-																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																							if (capability instanceof IItemHandlerModifiable) {
 																								ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																								_stk.shrink(_amount);
@@ -3117,7 +3119,7 @@ public class BreadOvenCookingProcedure {
 																					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																					BlockState _bs = world.getBlockState(_bp);
 																					if (_blockEntity != null)
-																						_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																						_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																					if (world instanceof Level _level)
 																						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																				}
@@ -3128,7 +3130,7 @@ public class BreadOvenCookingProcedure {
 																					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																					BlockEntity _ent = world.getBlockEntity(pos);
 																					if (_ent != null)
-																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																					return _retval.get();
 																				}
 																			}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.ENRICHED_DOUGH_WITH_FILLING.get() && new Object() {
@@ -3136,7 +3138,7 @@ public class BreadOvenCookingProcedure {
 																					AtomicInteger _retval = new AtomicInteger(0);
 																					BlockEntity _ent = world.getBlockEntity(pos);
 																					if (_ent != null)
-																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																					return _retval.get();
 																				}
 																			}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -3144,14 +3146,14 @@ public class BreadOvenCookingProcedure {
 																					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																					BlockEntity _ent = world.getBlockEntity(pos);
 																					if (_ent != null)
-																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																					return _retval.get();
 																				}
 																			}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.LOAF_PAN.get() && new Object() {
 																				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																					BlockEntity blockEntity = world.getBlockEntity(pos);
 																					if (blockEntity != null)
-																						return blockEntity.getPersistentData().getDouble(tag);
+																						return blockEntity.getTileData().getDouble(tag);
 																					return -1;
 																				}
 																			}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3160,7 +3162,7 @@ public class BreadOvenCookingProcedure {
 																					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																					BlockState _bs = world.getBlockState(_bp);
 																					if (_blockEntity != null)
-																						_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																						_blockEntity.getTileData().putDouble("craftingTime", 200);
 																					if (world instanceof Level _level)
 																						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																				}
@@ -3169,11 +3171,11 @@ public class BreadOvenCookingProcedure {
 																					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																					BlockState _bs = world.getBlockState(_bp);
 																					if (_blockEntity != null)
-																						_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																						_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																								BlockEntity blockEntity = world.getBlockEntity(pos);
 																								if (blockEntity != null)
-																									return blockEntity.getPersistentData().getDouble(tag);
+																									return blockEntity.getTileData().getDouble(tag);
 																								return -1;
 																							}
 																						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -3184,7 +3186,7 @@ public class BreadOvenCookingProcedure {
 																					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																						BlockEntity blockEntity = world.getBlockEntity(pos);
 																						if (blockEntity != null)
-																							return blockEntity.getPersistentData().getDouble(tag);
+																							return blockEntity.getTileData().getDouble(tag);
 																						return -1;
 																					}
 																				}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -3192,14 +3194,14 @@ public class BreadOvenCookingProcedure {
 																						AtomicInteger _retval = new AtomicInteger(0);
 																						BlockEntity _ent = world.getBlockEntity(pos);
 																						if (_ent != null)
-																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																						return _retval.get();
 																					}
 																				}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 																					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																						BlockEntity blockEntity = world.getBlockEntity(pos);
 																						if (blockEntity != null)
-																							return blockEntity.getPersistentData().getDouble(tag);
+																							return blockEntity.getTileData().getDouble(tag);
 																						return -1;
 																					}
 																				}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3213,11 +3215,12 @@ public class BreadOvenCookingProcedure {
 																									AtomicInteger _retval = new AtomicInteger(0);
 																									BlockEntity _ent = world.getBlockEntity(pos);
 																									if (_ent != null)
-																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																												.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																									return _retval.get();
 																								}
 																							}.getAmount(world, new BlockPos(x, y, z), 3)));
-																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																								if (capability instanceof IItemHandlerModifiable)
 																									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																							});
@@ -3228,7 +3231,7 @@ public class BreadOvenCookingProcedure {
 																						if (_ent != null) {
 																							final int _slotid = 1;
 																							final int _amount = 1;
-																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																								if (capability instanceof IItemHandlerModifiable) {
 																									ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																									_stk.shrink(_amount);
@@ -3242,7 +3245,7 @@ public class BreadOvenCookingProcedure {
 																						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																						BlockState _bs = world.getBlockState(_bp);
 																						if (_blockEntity != null)
-																							_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																							_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																						if (world instanceof Level _level)
 																							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																					}
@@ -3253,7 +3256,7 @@ public class BreadOvenCookingProcedure {
 																						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																						BlockEntity _ent = world.getBlockEntity(pos);
 																						if (_ent != null)
-																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																						return _retval.get();
 																					}
 																				}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_DARK_DOUGH.get() && new Object() {
@@ -3261,7 +3264,7 @@ public class BreadOvenCookingProcedure {
 																						AtomicInteger _retval = new AtomicInteger(0);
 																						BlockEntity _ent = world.getBlockEntity(pos);
 																						if (_ent != null)
-																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																						return _retval.get();
 																					}
 																				}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -3269,7 +3272,7 @@ public class BreadOvenCookingProcedure {
 																						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																						BlockEntity _ent = world.getBlockEntity(pos);
 																						if (_ent != null)
-																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																						return _retval.get();
 																					}
 																				}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.DUTCH_OVEN.get() && (new Object() {
@@ -3277,14 +3280,14 @@ public class BreadOvenCookingProcedure {
 																						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																						BlockEntity _ent = world.getBlockEntity(pos);
 																						if (_ent != null)
-																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																						return _retval.get();
 																					}
 																				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.RYE_BREAD.get() && new Object() {
 																					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																						BlockEntity blockEntity = world.getBlockEntity(pos);
 																						if (blockEntity != null)
-																							return blockEntity.getPersistentData().getDouble(tag);
+																							return blockEntity.getTileData().getDouble(tag);
 																						return -1;
 																					}
 																				}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3293,7 +3296,7 @@ public class BreadOvenCookingProcedure {
 																						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																						BlockState _bs = world.getBlockState(_bp);
 																						if (_blockEntity != null)
-																							_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																							_blockEntity.getTileData().putDouble("craftingTime", 200);
 																						if (world instanceof Level _level)
 																							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																					}
@@ -3302,11 +3305,11 @@ public class BreadOvenCookingProcedure {
 																						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																						BlockState _bs = world.getBlockState(_bp);
 																						if (_blockEntity != null)
-																							_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																							_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																									BlockEntity blockEntity = world.getBlockEntity(pos);
 																									if (blockEntity != null)
-																										return blockEntity.getPersistentData().getDouble(tag);
+																										return blockEntity.getTileData().getDouble(tag);
 																									return -1;
 																								}
 																							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -3317,7 +3320,7 @@ public class BreadOvenCookingProcedure {
 																						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																							BlockEntity blockEntity = world.getBlockEntity(pos);
 																							if (blockEntity != null)
-																								return blockEntity.getPersistentData().getDouble(tag);
+																								return blockEntity.getTileData().getDouble(tag);
 																							return -1;
 																						}
 																					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -3325,14 +3328,15 @@ public class BreadOvenCookingProcedure {
 																							AtomicInteger _retval = new AtomicInteger(0);
 																							BlockEntity _ent = world.getBlockEntity(pos);
 																							if (_ent != null)
-																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																										.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																							return _retval.get();
 																						}
 																					}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 																						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																							BlockEntity blockEntity = world.getBlockEntity(pos);
 																							if (blockEntity != null)
-																								return blockEntity.getPersistentData().getDouble(tag);
+																								return blockEntity.getTileData().getDouble(tag);
 																							return -1;
 																						}
 																					}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -3340,7 +3344,7 @@ public class BreadOvenCookingProcedure {
 																							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																							BlockEntity _ent = world.getBlockEntity(pos);
 																							if (_ent != null)
-																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																							return _retval.get();
 																						}
 																					}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.RYE_BREAD.get()) {
@@ -3354,11 +3358,12 @@ public class BreadOvenCookingProcedure {
 																										AtomicInteger _retval = new AtomicInteger(0);
 																										BlockEntity _ent = world.getBlockEntity(pos);
 																										if (_ent != null)
-																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																													.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																										return _retval.get();
 																									}
 																								}.getAmount(world, new BlockPos(x, y, z), 3)));
-																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																									if (capability instanceof IItemHandlerModifiable)
 																										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																								});
@@ -3369,7 +3374,7 @@ public class BreadOvenCookingProcedure {
 																							if (_ent != null) {
 																								final int _slotid = 1;
 																								final int _amount = 1;
-																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																									if (capability instanceof IItemHandlerModifiable) {
 																										ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																										_stk.shrink(_amount);
@@ -3383,7 +3388,7 @@ public class BreadOvenCookingProcedure {
 																							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																							BlockState _bs = world.getBlockState(_bp);
 																							if (_blockEntity != null)
-																								_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																								_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																							if (world instanceof Level _level)
 																								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																						}
@@ -3394,7 +3399,7 @@ public class BreadOvenCookingProcedure {
 																							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																							BlockEntity _ent = world.getBlockEntity(pos);
 																							if (_ent != null)
-																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																							return _retval.get();
 																						}
 																					}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_DARK_DOUGH.get() && new Object() {
@@ -3402,7 +3407,8 @@ public class BreadOvenCookingProcedure {
 																							AtomicInteger _retval = new AtomicInteger(0);
 																							BlockEntity _ent = world.getBlockEntity(pos);
 																							if (_ent != null)
-																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																										.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																							return _retval.get();
 																						}
 																					}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -3410,14 +3416,14 @@ public class BreadOvenCookingProcedure {
 																							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																							BlockEntity _ent = world.getBlockEntity(pos);
 																							if (_ent != null)
-																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																							return _retval.get();
 																						}
 																					}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.DUTCH_OVEN.get() && new Object() {
 																						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																							BlockEntity blockEntity = world.getBlockEntity(pos);
 																							if (blockEntity != null)
-																								return blockEntity.getPersistentData().getDouble(tag);
+																								return blockEntity.getTileData().getDouble(tag);
 																							return -1;
 																						}
 																					}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3426,7 +3432,7 @@ public class BreadOvenCookingProcedure {
 																							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																							BlockState _bs = world.getBlockState(_bp);
 																							if (_blockEntity != null)
-																								_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																								_blockEntity.getTileData().putDouble("craftingTime", 200);
 																							if (world instanceof Level _level)
 																								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																						}
@@ -3435,11 +3441,11 @@ public class BreadOvenCookingProcedure {
 																							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																							BlockState _bs = world.getBlockState(_bp);
 																							if (_blockEntity != null)
-																								_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																								_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																										BlockEntity blockEntity = world.getBlockEntity(pos);
 																										if (blockEntity != null)
-																											return blockEntity.getPersistentData().getDouble(tag);
+																											return blockEntity.getTileData().getDouble(tag);
 																										return -1;
 																									}
 																								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -3450,7 +3456,7 @@ public class BreadOvenCookingProcedure {
 																							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																								BlockEntity blockEntity = world.getBlockEntity(pos);
 																								if (blockEntity != null)
-																									return blockEntity.getPersistentData().getDouble(tag);
+																									return blockEntity.getTileData().getDouble(tag);
 																								return -1;
 																							}
 																						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -3458,14 +3464,15 @@ public class BreadOvenCookingProcedure {
 																								AtomicInteger _retval = new AtomicInteger(0);
 																								BlockEntity _ent = world.getBlockEntity(pos);
 																								if (_ent != null)
-																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																											.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																								return _retval.get();
 																							}
 																						}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 																							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																								BlockEntity blockEntity = world.getBlockEntity(pos);
 																								if (blockEntity != null)
-																									return blockEntity.getPersistentData().getDouble(tag);
+																									return blockEntity.getTileData().getDouble(tag);
 																								return -1;
 																							}
 																						}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3479,12 +3486,12 @@ public class BreadOvenCookingProcedure {
 																											AtomicInteger _retval = new AtomicInteger(0);
 																											BlockEntity _ent = world.getBlockEntity(pos);
 																											if (_ent != null)
-																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																														.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																											return _retval.get();
 																										}
 																									}.getAmount(world, new BlockPos(x, y, z), 3)));
-																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																										if (capability instanceof IItemHandlerModifiable)
 																											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																									});
@@ -3495,7 +3502,7 @@ public class BreadOvenCookingProcedure {
 																								if (_ent != null) {
 																									final int _slotid = 1;
 																									final int _amount = 1;
-																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																										if (capability instanceof IItemHandlerModifiable) {
 																											ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																											_stk.shrink(_amount);
@@ -3509,7 +3516,7 @@ public class BreadOvenCookingProcedure {
 																								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																								BlockState _bs = world.getBlockState(_bp);
 																								if (_blockEntity != null)
-																									_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																									_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																								if (world instanceof Level _level)
 																									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																							}
@@ -3520,7 +3527,8 @@ public class BreadOvenCookingProcedure {
 																								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																								BlockEntity _ent = world.getBlockEntity(pos);
 																								if (_ent != null)
-																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																											.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																								return _retval.get();
 																							}
 																						}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_ENRICHED_DOUGH.get() && new Object() {
@@ -3528,7 +3536,8 @@ public class BreadOvenCookingProcedure {
 																								AtomicInteger _retval = new AtomicInteger(0);
 																								BlockEntity _ent = world.getBlockEntity(pos);
 																								if (_ent != null)
-																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																											.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																								return _retval.get();
 																							}
 																						}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && (new Object() {
@@ -3536,7 +3545,8 @@ public class BreadOvenCookingProcedure {
 																								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																								BlockEntity _ent = world.getBlockEntity(pos);
 																								if (_ent != null)
-																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																											.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																								return _retval.get();
 																							}
 																						}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.SQUARE_PAN.get() && (new Object() {
@@ -3544,14 +3554,15 @@ public class BreadOvenCookingProcedure {
 																								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																								BlockEntity _ent = world.getBlockEntity(pos);
 																								if (_ent != null)
-																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																											.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																								return _retval.get();
 																							}
 																						}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.MILK_BREAD.get() && new Object() {
 																							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																								BlockEntity blockEntity = world.getBlockEntity(pos);
 																								if (blockEntity != null)
-																									return blockEntity.getPersistentData().getDouble(tag);
+																									return blockEntity.getTileData().getDouble(tag);
 																								return -1;
 																							}
 																						}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3560,7 +3571,7 @@ public class BreadOvenCookingProcedure {
 																								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																								BlockState _bs = world.getBlockState(_bp);
 																								if (_blockEntity != null)
-																									_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																									_blockEntity.getTileData().putDouble("craftingTime", 200);
 																								if (world instanceof Level _level)
 																									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																							}
@@ -3569,11 +3580,11 @@ public class BreadOvenCookingProcedure {
 																								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																								BlockState _bs = world.getBlockState(_bp);
 																								if (_blockEntity != null)
-																									_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																									_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																											BlockEntity blockEntity = world.getBlockEntity(pos);
 																											if (blockEntity != null)
-																												return blockEntity.getPersistentData().getDouble(tag);
+																												return blockEntity.getTileData().getDouble(tag);
 																											return -1;
 																										}
 																									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -3584,7 +3595,7 @@ public class BreadOvenCookingProcedure {
 																								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																									BlockEntity blockEntity = world.getBlockEntity(pos);
 																									if (blockEntity != null)
-																										return blockEntity.getPersistentData().getDouble(tag);
+																										return blockEntity.getTileData().getDouble(tag);
 																									return -1;
 																								}
 																							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -3592,14 +3603,15 @@ public class BreadOvenCookingProcedure {
 																									AtomicInteger _retval = new AtomicInteger(0);
 																									BlockEntity _ent = world.getBlockEntity(pos);
 																									if (_ent != null)
-																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																												.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																									return _retval.get();
 																								}
 																							}.getAmount(world, new BlockPos(x, y, z), 3) <= 63 && new Object() {
 																								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																									BlockEntity blockEntity = world.getBlockEntity(pos);
 																									if (blockEntity != null)
-																										return blockEntity.getPersistentData().getDouble(tag);
+																										return blockEntity.getTileData().getDouble(tag);
 																									return -1;
 																								}
 																							}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -3607,7 +3619,8 @@ public class BreadOvenCookingProcedure {
 																									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																									BlockEntity _ent = world.getBlockEntity(pos);
 																									if (_ent != null)
-																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																												.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																									return _retval.get();
 																								}
 																							}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.MILK_BREAD.get()) {
@@ -3621,12 +3634,12 @@ public class BreadOvenCookingProcedure {
 																												AtomicInteger _retval = new AtomicInteger(0);
 																												BlockEntity _ent = world.getBlockEntity(pos);
 																												if (_ent != null)
-																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																															.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																												return _retval.get();
 																											}
 																										}.getAmount(world, new BlockPos(x, y, z), 3)));
-																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																											if (capability instanceof IItemHandlerModifiable)
 																												((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																										});
@@ -3637,7 +3650,7 @@ public class BreadOvenCookingProcedure {
 																									if (_ent != null) {
 																										final int _slotid = 1;
 																										final int _amount = 1;
-																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																											if (capability instanceof IItemHandlerModifiable) {
 																												ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																												_stk.shrink(_amount);
@@ -3651,7 +3664,7 @@ public class BreadOvenCookingProcedure {
 																									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																									BlockState _bs = world.getBlockState(_bp);
 																									if (_blockEntity != null)
-																										_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																										_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																									if (world instanceof Level _level)
 																										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																								}
@@ -3662,7 +3675,8 @@ public class BreadOvenCookingProcedure {
 																									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																									BlockEntity _ent = world.getBlockEntity(pos);
 																									if (_ent != null)
-																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																												.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																									return _retval.get();
 																								}
 																							}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_ENRICHED_DOUGH.get() && new Object() {
@@ -3670,7 +3684,8 @@ public class BreadOvenCookingProcedure {
 																									AtomicInteger _retval = new AtomicInteger(0);
 																									BlockEntity _ent = world.getBlockEntity(pos);
 																									if (_ent != null)
-																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																												.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																									return _retval.get();
 																								}
 																							}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
@@ -3678,14 +3693,15 @@ public class BreadOvenCookingProcedure {
 																									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																									BlockEntity _ent = world.getBlockEntity(pos);
 																									if (_ent != null)
-																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																												.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																									return _retval.get();
 																								}
 																							}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.SQUARE_PAN.get() && new Object() {
 																								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																									BlockEntity blockEntity = world.getBlockEntity(pos);
 																									if (blockEntity != null)
-																										return blockEntity.getPersistentData().getDouble(tag);
+																										return blockEntity.getTileData().getDouble(tag);
 																									return -1;
 																								}
 																							}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3694,7 +3710,7 @@ public class BreadOvenCookingProcedure {
 																									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																									BlockState _bs = world.getBlockState(_bp);
 																									if (_blockEntity != null)
-																										_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																										_blockEntity.getTileData().putDouble("craftingTime", 200);
 																									if (world instanceof Level _level)
 																										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																								}
@@ -3703,11 +3719,11 @@ public class BreadOvenCookingProcedure {
 																									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																									BlockState _bs = world.getBlockState(_bp);
 																									if (_blockEntity != null)
-																										_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																										_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																												BlockEntity blockEntity = world.getBlockEntity(pos);
 																												if (blockEntity != null)
-																													return blockEntity.getPersistentData().getDouble(tag);
+																													return blockEntity.getTileData().getDouble(tag);
 																												return -1;
 																											}
 																										}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -3718,7 +3734,7 @@ public class BreadOvenCookingProcedure {
 																									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																										BlockEntity blockEntity = world.getBlockEntity(pos);
 																										if (blockEntity != null)
-																											return blockEntity.getPersistentData().getDouble(tag);
+																											return blockEntity.getTileData().getDouble(tag);
 																										return -1;
 																									}
 																								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -3726,14 +3742,15 @@ public class BreadOvenCookingProcedure {
 																										AtomicInteger _retval = new AtomicInteger(0);
 																										BlockEntity _ent = world.getBlockEntity(pos);
 																										if (_ent != null)
-																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																													.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																										return _retval.get();
 																									}
 																								}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
 																									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																										BlockEntity blockEntity = world.getBlockEntity(pos);
 																										if (blockEntity != null)
-																											return blockEntity.getPersistentData().getDouble(tag);
+																											return blockEntity.getTileData().getDouble(tag);
 																										return -1;
 																									}
 																								}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3747,12 +3764,12 @@ public class BreadOvenCookingProcedure {
 																													AtomicInteger _retval = new AtomicInteger(0);
 																													BlockEntity _ent = world.getBlockEntity(pos);
 																													if (_ent != null)
-																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																													return _retval.get();
 																												}
 																											}.getAmount(world, new BlockPos(x, y, z), 3)));
-																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																												if (capability instanceof IItemHandlerModifiable)
 																													((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																											});
@@ -3763,7 +3780,7 @@ public class BreadOvenCookingProcedure {
 																										if (_ent != null) {
 																											final int _slotid = 1;
 																											final int _amount = 1;
-																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																												if (capability instanceof IItemHandlerModifiable) {
 																													ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																													_stk.shrink(_amount);
@@ -3777,7 +3794,7 @@ public class BreadOvenCookingProcedure {
 																										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																										BlockState _bs = world.getBlockState(_bp);
 																										if (_blockEntity != null)
-																											_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																											_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																										if (world instanceof Level _level)
 																											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																									}
@@ -3788,7 +3805,8 @@ public class BreadOvenCookingProcedure {
 																										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																										BlockEntity _ent = world.getBlockEntity(pos);
 																										if (_ent != null)
-																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																													.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																										return _retval.get();
 																									}
 																								}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_ENRICHED_DOUGH.get() && new Object() {
@@ -3796,7 +3814,8 @@ public class BreadOvenCookingProcedure {
 																										AtomicInteger _retval = new AtomicInteger(0);
 																										BlockEntity _ent = world.getBlockEntity(pos);
 																										if (_ent != null)
-																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																													.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																										return _retval.get();
 																									}
 																								}.getAmount(world, new BlockPos(x, y, z), 3) <= 60 && (new Object() {
@@ -3804,7 +3823,8 @@ public class BreadOvenCookingProcedure {
 																										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																										BlockEntity _ent = world.getBlockEntity(pos);
 																										if (_ent != null)
-																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																													.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																										return _retval.get();
 																									}
 																								}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.ROUND_PAN.get() && (new Object() {
@@ -3812,14 +3832,15 @@ public class BreadOvenCookingProcedure {
 																										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																										BlockEntity _ent = world.getBlockEntity(pos);
 																										if (_ent != null)
-																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																													.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																										return _retval.get();
 																									}
 																								}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.BRIOCHE_BUN.get() && new Object() {
 																									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																										BlockEntity blockEntity = world.getBlockEntity(pos);
 																										if (blockEntity != null)
-																											return blockEntity.getPersistentData().getDouble(tag);
+																											return blockEntity.getTileData().getDouble(tag);
 																										return -1;
 																									}
 																								}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3828,7 +3849,7 @@ public class BreadOvenCookingProcedure {
 																										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																										BlockState _bs = world.getBlockState(_bp);
 																										if (_blockEntity != null)
-																											_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																											_blockEntity.getTileData().putDouble("craftingTime", 200);
 																										if (world instanceof Level _level)
 																											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																									}
@@ -3837,11 +3858,11 @@ public class BreadOvenCookingProcedure {
 																										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																										BlockState _bs = world.getBlockState(_bp);
 																										if (_blockEntity != null)
-																											_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																											_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																													BlockEntity blockEntity = world.getBlockEntity(pos);
 																													if (blockEntity != null)
-																														return blockEntity.getPersistentData().getDouble(tag);
+																														return blockEntity.getTileData().getDouble(tag);
 																													return -1;
 																												}
 																											}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -3852,7 +3873,7 @@ public class BreadOvenCookingProcedure {
 																										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																											BlockEntity blockEntity = world.getBlockEntity(pos);
 																											if (blockEntity != null)
-																												return blockEntity.getPersistentData().getDouble(tag);
+																												return blockEntity.getTileData().getDouble(tag);
 																											return -1;
 																										}
 																									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -3860,7 +3881,7 @@ public class BreadOvenCookingProcedure {
 																											AtomicInteger _retval = new AtomicInteger(0);
 																											BlockEntity _ent = world.getBlockEntity(pos);
 																											if (_ent != null)
-																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																														.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																											return _retval.get();
 																										}
@@ -3868,7 +3889,7 @@ public class BreadOvenCookingProcedure {
 																										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																											BlockEntity blockEntity = world.getBlockEntity(pos);
 																											if (blockEntity != null)
-																												return blockEntity.getPersistentData().getDouble(tag);
+																												return blockEntity.getTileData().getDouble(tag);
 																											return -1;
 																										}
 																									}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -3876,7 +3897,8 @@ public class BreadOvenCookingProcedure {
 																											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																											BlockEntity _ent = world.getBlockEntity(pos);
 																											if (_ent != null)
-																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																														.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																											return _retval.get();
 																										}
 																									}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == BreadcraftModItems.BRIOCHE_BUN.get()) {
@@ -3890,12 +3912,12 @@ public class BreadOvenCookingProcedure {
 																														AtomicInteger _retval = new AtomicInteger(0);
 																														BlockEntity _ent = world.getBlockEntity(pos);
 																														if (_ent != null)
-																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																	.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																														return _retval.get();
 																													}
 																												}.getAmount(world, new BlockPos(x, y, z), 3)));
-																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																													if (capability instanceof IItemHandlerModifiable)
 																														((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																												});
@@ -3906,7 +3928,7 @@ public class BreadOvenCookingProcedure {
 																											if (_ent != null) {
 																												final int _slotid = 1;
 																												final int _amount = 1;
-																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																													if (capability instanceof IItemHandlerModifiable) {
 																														ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																														_stk.shrink(_amount);
@@ -3920,7 +3942,7 @@ public class BreadOvenCookingProcedure {
 																											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																											BlockState _bs = world.getBlockState(_bp);
 																											if (_blockEntity != null)
-																												_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																												_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																											if (world instanceof Level _level)
 																												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																										}
@@ -3931,7 +3953,8 @@ public class BreadOvenCookingProcedure {
 																											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																											BlockEntity _ent = world.getBlockEntity(pos);
 																											if (_ent != null)
-																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																														.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																											return _retval.get();
 																										}
 																									}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == BreadcraftModItems.PROOFED_ENRICHED_DOUGH.get() && new Object() {
@@ -3939,7 +3962,7 @@ public class BreadOvenCookingProcedure {
 																											AtomicInteger _retval = new AtomicInteger(0);
 																											BlockEntity _ent = world.getBlockEntity(pos);
 																											if (_ent != null)
-																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																														.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																											return _retval.get();
 																										}
@@ -3948,14 +3971,15 @@ public class BreadOvenCookingProcedure {
 																											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																											BlockEntity _ent = world.getBlockEntity(pos);
 																											if (_ent != null)
-																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																														.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																											return _retval.get();
 																										}
 																									}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == BreadcraftModItems.ROUND_PAN.get() && new Object() {
 																										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																											BlockEntity blockEntity = world.getBlockEntity(pos);
 																											if (blockEntity != null)
-																												return blockEntity.getPersistentData().getDouble(tag);
+																												return blockEntity.getTileData().getDouble(tag);
 																											return -1;
 																										}
 																									}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -3964,7 +3988,7 @@ public class BreadOvenCookingProcedure {
 																											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																											BlockState _bs = world.getBlockState(_bp);
 																											if (_blockEntity != null)
-																												_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																												_blockEntity.getTileData().putDouble("craftingTime", 200);
 																											if (world instanceof Level _level)
 																												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																										}
@@ -3973,11 +3997,11 @@ public class BreadOvenCookingProcedure {
 																											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																											BlockState _bs = world.getBlockState(_bp);
 																											if (_blockEntity != null)
-																												_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																												_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																														BlockEntity blockEntity = world.getBlockEntity(pos);
 																														if (blockEntity != null)
-																															return blockEntity.getPersistentData().getDouble(tag);
+																															return blockEntity.getTileData().getDouble(tag);
 																														return -1;
 																													}
 																												}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -3988,7 +4012,7 @@ public class BreadOvenCookingProcedure {
 																											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																												BlockEntity blockEntity = world.getBlockEntity(pos);
 																												if (blockEntity != null)
-																													return blockEntity.getPersistentData().getDouble(tag);
+																													return blockEntity.getTileData().getDouble(tag);
 																												return -1;
 																											}
 																										}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -3996,7 +4020,7 @@ public class BreadOvenCookingProcedure {
 																												AtomicInteger _retval = new AtomicInteger(0);
 																												BlockEntity _ent = world.getBlockEntity(pos);
 																												if (_ent != null)
-																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																															.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																												return _retval.get();
 																											}
@@ -4004,7 +4028,7 @@ public class BreadOvenCookingProcedure {
 																											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																												BlockEntity blockEntity = world.getBlockEntity(pos);
 																												if (blockEntity != null)
-																													return blockEntity.getPersistentData().getDouble(tag);
+																													return blockEntity.getTileData().getDouble(tag);
 																												return -1;
 																											}
 																										}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4018,12 +4042,12 @@ public class BreadOvenCookingProcedure {
 																															AtomicInteger _retval = new AtomicInteger(0);
 																															BlockEntity _ent = world.getBlockEntity(pos);
 																															if (_ent != null)
-																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																		.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																															return _retval.get();
 																														}
 																													}.getAmount(world, new BlockPos(x, y, z), 3)));
-																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																														if (capability instanceof IItemHandlerModifiable)
 																															((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																													});
@@ -4034,7 +4058,7 @@ public class BreadOvenCookingProcedure {
 																												if (_ent != null) {
 																													final int _slotid = 1;
 																													final int _amount = 1;
-																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																														if (capability instanceof IItemHandlerModifiable) {
 																															ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																															_stk.shrink(_amount);
@@ -4048,7 +4072,7 @@ public class BreadOvenCookingProcedure {
 																												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																												BlockState _bs = world.getBlockState(_bp);
 																												if (_blockEntity != null)
-																													_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																													_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																												if (world instanceof Level _level)
 																													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																											}
@@ -4059,7 +4083,7 @@ public class BreadOvenCookingProcedure {
 																												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																												BlockEntity _ent = world.getBlockEntity(pos);
 																												if (_ent != null)
-																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																															.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																												return _retval.get();
 																											}
@@ -4068,7 +4092,7 @@ public class BreadOvenCookingProcedure {
 																												AtomicInteger _retval = new AtomicInteger(0);
 																												BlockEntity _ent = world.getBlockEntity(pos);
 																												if (_ent != null)
-																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																															.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																												return _retval.get();
 																											}
@@ -4077,7 +4101,7 @@ public class BreadOvenCookingProcedure {
 																												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																												BlockEntity _ent = world.getBlockEntity(pos);
 																												if (_ent != null)
-																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																															.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																												return _retval.get();
 																											}
@@ -4086,7 +4110,7 @@ public class BreadOvenCookingProcedure {
 																												AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																												BlockEntity _ent = world.getBlockEntity(pos);
 																												if (_ent != null)
-																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																															.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																												return _retval.get();
 																											}
@@ -4094,7 +4118,7 @@ public class BreadOvenCookingProcedure {
 																											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																												BlockEntity blockEntity = world.getBlockEntity(pos);
 																												if (blockEntity != null)
-																													return blockEntity.getPersistentData().getDouble(tag);
+																													return blockEntity.getTileData().getDouble(tag);
 																												return -1;
 																											}
 																										}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4103,7 +4127,7 @@ public class BreadOvenCookingProcedure {
 																												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																												BlockState _bs = world.getBlockState(_bp);
 																												if (_blockEntity != null)
-																													_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																													_blockEntity.getTileData().putDouble("craftingTime", 200);
 																												if (world instanceof Level _level)
 																													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																											}
@@ -4112,11 +4136,11 @@ public class BreadOvenCookingProcedure {
 																												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																												BlockState _bs = world.getBlockState(_bp);
 																												if (_blockEntity != null)
-																													_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																													_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																															BlockEntity blockEntity = world.getBlockEntity(pos);
 																															if (blockEntity != null)
-																																return blockEntity.getPersistentData().getDouble(tag);
+																																return blockEntity.getTileData().getDouble(tag);
 																															return -1;
 																														}
 																													}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -4127,7 +4151,7 @@ public class BreadOvenCookingProcedure {
 																												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																													BlockEntity blockEntity = world.getBlockEntity(pos);
 																													if (blockEntity != null)
-																														return blockEntity.getPersistentData().getDouble(tag);
+																														return blockEntity.getTileData().getDouble(tag);
 																													return -1;
 																												}
 																											}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -4135,7 +4159,7 @@ public class BreadOvenCookingProcedure {
 																													AtomicInteger _retval = new AtomicInteger(0);
 																													BlockEntity _ent = world.getBlockEntity(pos);
 																													if (_ent != null)
-																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																													return _retval.get();
 																												}
@@ -4143,7 +4167,7 @@ public class BreadOvenCookingProcedure {
 																												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																													BlockEntity blockEntity = world.getBlockEntity(pos);
 																													if (blockEntity != null)
-																														return blockEntity.getPersistentData().getDouble(tag);
+																														return blockEntity.getTileData().getDouble(tag);
 																													return -1;
 																												}
 																											}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -4151,7 +4175,7 @@ public class BreadOvenCookingProcedure {
 																													AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																													BlockEntity _ent = world.getBlockEntity(pos);
 																													if (_ent != null)
-																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																													return _retval.get();
 																												}
@@ -4166,12 +4190,12 @@ public class BreadOvenCookingProcedure {
 																																AtomicInteger _retval = new AtomicInteger(0);
 																																BlockEntity _ent = world.getBlockEntity(pos);
 																																if (_ent != null)
-																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																			.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																return _retval.get();
 																															}
 																														}.getAmount(world, new BlockPos(x, y, z), 3)));
-																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																															if (capability instanceof IItemHandlerModifiable)
 																																((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																														});
@@ -4182,7 +4206,7 @@ public class BreadOvenCookingProcedure {
 																													if (_ent != null) {
 																														final int _slotid = 1;
 																														final int _amount = 1;
-																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																															if (capability instanceof IItemHandlerModifiable) {
 																																ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																_stk.shrink(_amount);
@@ -4196,7 +4220,7 @@ public class BreadOvenCookingProcedure {
 																													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																													BlockState _bs = world.getBlockState(_bp);
 																													if (_blockEntity != null)
-																														_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																														_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																													if (world instanceof Level _level)
 																														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																												}
@@ -4207,7 +4231,7 @@ public class BreadOvenCookingProcedure {
 																													AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																													BlockEntity _ent = world.getBlockEntity(pos);
 																													if (_ent != null)
-																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																													return _retval.get();
 																												}
@@ -4216,7 +4240,7 @@ public class BreadOvenCookingProcedure {
 																													AtomicInteger _retval = new AtomicInteger(0);
 																													BlockEntity _ent = world.getBlockEntity(pos);
 																													if (_ent != null)
-																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																													return _retval.get();
 																												}
@@ -4225,7 +4249,7 @@ public class BreadOvenCookingProcedure {
 																													AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																													BlockEntity _ent = world.getBlockEntity(pos);
 																													if (_ent != null)
-																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																													return _retval.get();
 																												}
@@ -4233,7 +4257,7 @@ public class BreadOvenCookingProcedure {
 																												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																													BlockEntity blockEntity = world.getBlockEntity(pos);
 																													if (blockEntity != null)
-																														return blockEntity.getPersistentData().getDouble(tag);
+																														return blockEntity.getTileData().getDouble(tag);
 																													return -1;
 																												}
 																											}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4242,7 +4266,7 @@ public class BreadOvenCookingProcedure {
 																													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																													BlockState _bs = world.getBlockState(_bp);
 																													if (_blockEntity != null)
-																														_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																														_blockEntity.getTileData().putDouble("craftingTime", 200);
 																													if (world instanceof Level _level)
 																														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																												}
@@ -4251,11 +4275,11 @@ public class BreadOvenCookingProcedure {
 																													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																													BlockState _bs = world.getBlockState(_bp);
 																													if (_blockEntity != null)
-																														_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																														_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																BlockEntity blockEntity = world.getBlockEntity(pos);
 																																if (blockEntity != null)
-																																	return blockEntity.getPersistentData().getDouble(tag);
+																																	return blockEntity.getTileData().getDouble(tag);
 																																return -1;
 																															}
 																														}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -4266,7 +4290,7 @@ public class BreadOvenCookingProcedure {
 																													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																														BlockEntity blockEntity = world.getBlockEntity(pos);
 																														if (blockEntity != null)
-																															return blockEntity.getPersistentData().getDouble(tag);
+																															return blockEntity.getTileData().getDouble(tag);
 																														return -1;
 																													}
 																												}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -4274,7 +4298,7 @@ public class BreadOvenCookingProcedure {
 																														AtomicInteger _retval = new AtomicInteger(0);
 																														BlockEntity _ent = world.getBlockEntity(pos);
 																														if (_ent != null)
-																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																	.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																														return _retval.get();
 																													}
@@ -4282,7 +4306,7 @@ public class BreadOvenCookingProcedure {
 																													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																														BlockEntity blockEntity = world.getBlockEntity(pos);
 																														if (blockEntity != null)
-																															return blockEntity.getPersistentData().getDouble(tag);
+																															return blockEntity.getTileData().getDouble(tag);
 																														return -1;
 																													}
 																												}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4296,12 +4320,12 @@ public class BreadOvenCookingProcedure {
 																																	AtomicInteger _retval = new AtomicInteger(0);
 																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																	if (_ent != null)
-																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																				.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																	return _retval.get();
 																																}
 																															}.getAmount(world, new BlockPos(x, y, z), 3)));
-																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																if (capability instanceof IItemHandlerModifiable)
 																																	((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																															});
@@ -4312,7 +4336,7 @@ public class BreadOvenCookingProcedure {
 																														if (_ent != null) {
 																															final int _slotid = 1;
 																															final int _amount = 1;
-																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																if (capability instanceof IItemHandlerModifiable) {
 																																	ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																	_stk.shrink(_amount);
@@ -4326,7 +4350,7 @@ public class BreadOvenCookingProcedure {
 																														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																														BlockState _bs = world.getBlockState(_bp);
 																														if (_blockEntity != null)
-																															_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																															_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																														if (world instanceof Level _level)
 																															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																													}
@@ -4337,7 +4361,7 @@ public class BreadOvenCookingProcedure {
 																														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																														BlockEntity _ent = world.getBlockEntity(pos);
 																														if (_ent != null)
-																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																	.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																														return _retval.get();
 																													}
@@ -4346,7 +4370,7 @@ public class BreadOvenCookingProcedure {
 																														AtomicInteger _retval = new AtomicInteger(0);
 																														BlockEntity _ent = world.getBlockEntity(pos);
 																														if (_ent != null)
-																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																	.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																														return _retval.get();
 																													}
@@ -4355,7 +4379,7 @@ public class BreadOvenCookingProcedure {
 																														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																														BlockEntity _ent = world.getBlockEntity(pos);
 																														if (_ent != null)
-																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																	.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																														return _retval.get();
 																													}
@@ -4364,7 +4388,7 @@ public class BreadOvenCookingProcedure {
 																														AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																														BlockEntity _ent = world.getBlockEntity(pos);
 																														if (_ent != null)
-																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																															_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																	.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																														return _retval.get();
 																													}
@@ -4372,7 +4396,7 @@ public class BreadOvenCookingProcedure {
 																													public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																														BlockEntity blockEntity = world.getBlockEntity(pos);
 																														if (blockEntity != null)
-																															return blockEntity.getPersistentData().getDouble(tag);
+																															return blockEntity.getTileData().getDouble(tag);
 																														return -1;
 																													}
 																												}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4381,7 +4405,7 @@ public class BreadOvenCookingProcedure {
 																														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																														BlockState _bs = world.getBlockState(_bp);
 																														if (_blockEntity != null)
-																															_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																															_blockEntity.getTileData().putDouble("craftingTime", 200);
 																														if (world instanceof Level _level)
 																															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																													}
@@ -4390,11 +4414,11 @@ public class BreadOvenCookingProcedure {
 																														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																														BlockState _bs = world.getBlockState(_bp);
 																														if (_blockEntity != null)
-																															_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																															_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																																	if (blockEntity != null)
-																																		return blockEntity.getPersistentData().getDouble(tag);
+																																		return blockEntity.getTileData().getDouble(tag);
 																																	return -1;
 																																}
 																															}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -4405,7 +4429,7 @@ public class BreadOvenCookingProcedure {
 																														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																															BlockEntity blockEntity = world.getBlockEntity(pos);
 																															if (blockEntity != null)
-																																return blockEntity.getPersistentData().getDouble(tag);
+																																return blockEntity.getTileData().getDouble(tag);
 																															return -1;
 																														}
 																													}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -4413,7 +4437,7 @@ public class BreadOvenCookingProcedure {
 																															AtomicInteger _retval = new AtomicInteger(0);
 																															BlockEntity _ent = world.getBlockEntity(pos);
 																															if (_ent != null)
-																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																		.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																															return _retval.get();
 																														}
@@ -4421,7 +4445,7 @@ public class BreadOvenCookingProcedure {
 																														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																															BlockEntity blockEntity = world.getBlockEntity(pos);
 																															if (blockEntity != null)
-																																return blockEntity.getPersistentData().getDouble(tag);
+																																return blockEntity.getTileData().getDouble(tag);
 																															return -1;
 																														}
 																													}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -4429,7 +4453,7 @@ public class BreadOvenCookingProcedure {
 																															AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																															BlockEntity _ent = world.getBlockEntity(pos);
 																															if (_ent != null)
-																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																		.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																															return _retval.get();
 																														}
@@ -4444,12 +4468,12 @@ public class BreadOvenCookingProcedure {
 																																		AtomicInteger _retval = new AtomicInteger(0);
 																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																		if (_ent != null)
-																																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																					.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																		return _retval.get();
 																																	}
 																																}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																	if (capability instanceof IItemHandlerModifiable)
 																																		((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																																});
@@ -4460,7 +4484,7 @@ public class BreadOvenCookingProcedure {
 																															if (_ent != null) {
 																																final int _slotid = 1;
 																																final int _amount = 1;
-																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																	if (capability instanceof IItemHandlerModifiable) {
 																																		ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																		_stk.shrink(_amount);
@@ -4474,7 +4498,7 @@ public class BreadOvenCookingProcedure {
 																															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																															BlockState _bs = world.getBlockState(_bp);
 																															if (_blockEntity != null)
-																																_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																															if (world instanceof Level _level)
 																																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																														}
@@ -4485,7 +4509,7 @@ public class BreadOvenCookingProcedure {
 																															AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																															BlockEntity _ent = world.getBlockEntity(pos);
 																															if (_ent != null)
-																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																		.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																															return _retval.get();
 																														}
@@ -4494,7 +4518,7 @@ public class BreadOvenCookingProcedure {
 																															AtomicInteger _retval = new AtomicInteger(0);
 																															BlockEntity _ent = world.getBlockEntity(pos);
 																															if (_ent != null)
-																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																		.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																															return _retval.get();
 																														}
@@ -4503,7 +4527,7 @@ public class BreadOvenCookingProcedure {
 																															AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																															BlockEntity _ent = world.getBlockEntity(pos);
 																															if (_ent != null)
-																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																		.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																															return _retval.get();
 																														}
@@ -4511,7 +4535,7 @@ public class BreadOvenCookingProcedure {
 																														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																															BlockEntity blockEntity = world.getBlockEntity(pos);
 																															if (blockEntity != null)
-																																return blockEntity.getPersistentData().getDouble(tag);
+																																return blockEntity.getTileData().getDouble(tag);
 																															return -1;
 																														}
 																													}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4520,7 +4544,7 @@ public class BreadOvenCookingProcedure {
 																															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																															BlockState _bs = world.getBlockState(_bp);
 																															if (_blockEntity != null)
-																																_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																_blockEntity.getTileData().putDouble("craftingTime", 200);
 																															if (world instanceof Level _level)
 																																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																														}
@@ -4529,11 +4553,11 @@ public class BreadOvenCookingProcedure {
 																															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																															BlockState _bs = world.getBlockState(_bp);
 																															if (_blockEntity != null)
-																																_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																	public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																		BlockEntity blockEntity = world.getBlockEntity(pos);
 																																		if (blockEntity != null)
-																																			return blockEntity.getPersistentData().getDouble(tag);
+																																			return blockEntity.getTileData().getDouble(tag);
 																																		return -1;
 																																	}
 																																}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -4544,7 +4568,7 @@ public class BreadOvenCookingProcedure {
 																															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																BlockEntity blockEntity = world.getBlockEntity(pos);
 																																if (blockEntity != null)
-																																	return blockEntity.getPersistentData().getDouble(tag);
+																																	return blockEntity.getTileData().getDouble(tag);
 																																return -1;
 																															}
 																														}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -4552,7 +4576,7 @@ public class BreadOvenCookingProcedure {
 																																AtomicInteger _retval = new AtomicInteger(0);
 																																BlockEntity _ent = world.getBlockEntity(pos);
 																																if (_ent != null)
-																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																			.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																return _retval.get();
 																															}
@@ -4560,7 +4584,7 @@ public class BreadOvenCookingProcedure {
 																															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																BlockEntity blockEntity = world.getBlockEntity(pos);
 																																if (blockEntity != null)
-																																	return blockEntity.getPersistentData().getDouble(tag);
+																																	return blockEntity.getTileData().getDouble(tag);
 																																return -1;
 																															}
 																														}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4574,12 +4598,12 @@ public class BreadOvenCookingProcedure {
 																																			AtomicInteger _retval = new AtomicInteger(0);
 																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																			if (_ent != null)
-																																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																						.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																			return _retval.get();
 																																		}
 																																	}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																		if (capability instanceof IItemHandlerModifiable)
 																																			((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																																	});
@@ -4590,7 +4614,7 @@ public class BreadOvenCookingProcedure {
 																																if (_ent != null) {
 																																	final int _slotid = 1;
 																																	final int _amount = 1;
-																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																		if (capability instanceof IItemHandlerModifiable) {
 																																			ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																			_stk.shrink(_amount);
@@ -4604,7 +4628,7 @@ public class BreadOvenCookingProcedure {
 																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																BlockState _bs = world.getBlockState(_bp);
 																																if (_blockEntity != null)
-																																	_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																	_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																if (world instanceof Level _level)
 																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																															}
@@ -4615,7 +4639,7 @@ public class BreadOvenCookingProcedure {
 																																AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																BlockEntity _ent = world.getBlockEntity(pos);
 																																if (_ent != null)
-																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																			.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																return _retval.get();
 																															}
@@ -4624,7 +4648,7 @@ public class BreadOvenCookingProcedure {
 																																AtomicInteger _retval = new AtomicInteger(0);
 																																BlockEntity _ent = world.getBlockEntity(pos);
 																																if (_ent != null)
-																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																			.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																return _retval.get();
 																															}
@@ -4633,7 +4657,7 @@ public class BreadOvenCookingProcedure {
 																																AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																BlockEntity _ent = world.getBlockEntity(pos);
 																																if (_ent != null)
-																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																			.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																return _retval.get();
 																															}
@@ -4642,7 +4666,7 @@ public class BreadOvenCookingProcedure {
 																																AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																BlockEntity _ent = world.getBlockEntity(pos);
 																																if (_ent != null)
-																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																	_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																			.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																return _retval.get();
 																															}
@@ -4650,7 +4674,7 @@ public class BreadOvenCookingProcedure {
 																															public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																BlockEntity blockEntity = world.getBlockEntity(pos);
 																																if (blockEntity != null)
-																																	return blockEntity.getPersistentData().getDouble(tag);
+																																	return blockEntity.getTileData().getDouble(tag);
 																																return -1;
 																															}
 																														}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4659,7 +4683,7 @@ public class BreadOvenCookingProcedure {
 																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																BlockState _bs = world.getBlockState(_bp);
 																																if (_blockEntity != null)
-																																	_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																	_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																if (world instanceof Level _level)
 																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																															}
@@ -4668,11 +4692,11 @@ public class BreadOvenCookingProcedure {
 																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																BlockState _bs = world.getBlockState(_bp);
 																																if (_blockEntity != null)
-																																	_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																	_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																		public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																			BlockEntity blockEntity = world.getBlockEntity(pos);
 																																			if (blockEntity != null)
-																																				return blockEntity.getPersistentData().getDouble(tag);
+																																				return blockEntity.getTileData().getDouble(tag);
 																																			return -1;
 																																		}
 																																	}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -4683,7 +4707,7 @@ public class BreadOvenCookingProcedure {
 																																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																																	if (blockEntity != null)
-																																		return blockEntity.getPersistentData().getDouble(tag);
+																																		return blockEntity.getTileData().getDouble(tag);
 																																	return -1;
 																																}
 																															}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -4691,7 +4715,7 @@ public class BreadOvenCookingProcedure {
 																																	AtomicInteger _retval = new AtomicInteger(0);
 																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																	if (_ent != null)
-																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																				.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																	return _retval.get();
 																																}
@@ -4699,7 +4723,7 @@ public class BreadOvenCookingProcedure {
 																																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																																	if (blockEntity != null)
-																																		return blockEntity.getPersistentData().getDouble(tag);
+																																		return blockEntity.getTileData().getDouble(tag);
 																																	return -1;
 																																}
 																															}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -4707,7 +4731,7 @@ public class BreadOvenCookingProcedure {
 																																	AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																	if (_ent != null)
-																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																				.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																	return _retval.get();
 																																}
@@ -4722,12 +4746,12 @@ public class BreadOvenCookingProcedure {
 																																				AtomicInteger _retval = new AtomicInteger(0);
 																																				BlockEntity _ent = world.getBlockEntity(pos);
 																																				if (_ent != null)
-																																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																							.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																				return _retval.get();
 																																			}
 																																		}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																			if (capability instanceof IItemHandlerModifiable)
 																																				((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																																		});
@@ -4738,7 +4762,7 @@ public class BreadOvenCookingProcedure {
 																																	if (_ent != null) {
 																																		final int _slotid = 1;
 																																		final int _amount = 1;
-																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																			if (capability instanceof IItemHandlerModifiable) {
 																																				ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																				_stk.shrink(_amount);
@@ -4752,7 +4776,7 @@ public class BreadOvenCookingProcedure {
 																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																	BlockState _bs = world.getBlockState(_bp);
 																																	if (_blockEntity != null)
-																																		_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																		_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																	if (world instanceof Level _level)
 																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																}
@@ -4763,7 +4787,7 @@ public class BreadOvenCookingProcedure {
 																																	AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																	if (_ent != null)
-																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																				.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																	return _retval.get();
 																																}
@@ -4772,7 +4796,7 @@ public class BreadOvenCookingProcedure {
 																																	AtomicInteger _retval = new AtomicInteger(0);
 																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																	if (_ent != null)
-																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																				.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																	return _retval.get();
 																																}
@@ -4781,7 +4805,7 @@ public class BreadOvenCookingProcedure {
 																																	AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																	if (_ent != null)
-																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																		_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																				.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																	return _retval.get();
 																																}
@@ -4789,7 +4813,7 @@ public class BreadOvenCookingProcedure {
 																																public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																																	if (blockEntity != null)
-																																		return blockEntity.getPersistentData().getDouble(tag);
+																																		return blockEntity.getTileData().getDouble(tag);
 																																	return -1;
 																																}
 																															}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4798,7 +4822,7 @@ public class BreadOvenCookingProcedure {
 																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																	BlockState _bs = world.getBlockState(_bp);
 																																	if (_blockEntity != null)
-																																		_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																		_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																	if (world instanceof Level _level)
 																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																}
@@ -4807,11 +4831,11 @@ public class BreadOvenCookingProcedure {
 																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																	BlockState _bs = world.getBlockState(_bp);
 																																	if (_blockEntity != null)
-																																		_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																		_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																				BlockEntity blockEntity = world.getBlockEntity(pos);
 																																				if (blockEntity != null)
-																																					return blockEntity.getPersistentData().getDouble(tag);
+																																					return blockEntity.getTileData().getDouble(tag);
 																																				return -1;
 																																			}
 																																		}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -4822,7 +4846,7 @@ public class BreadOvenCookingProcedure {
 																																	public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																		BlockEntity blockEntity = world.getBlockEntity(pos);
 																																		if (blockEntity != null)
-																																			return blockEntity.getPersistentData().getDouble(tag);
+																																			return blockEntity.getTileData().getDouble(tag);
 																																		return -1;
 																																	}
 																																}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -4830,7 +4854,7 @@ public class BreadOvenCookingProcedure {
 																																		AtomicInteger _retval = new AtomicInteger(0);
 																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																		if (_ent != null)
-																																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																					.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																		return _retval.get();
 																																	}
@@ -4838,7 +4862,7 @@ public class BreadOvenCookingProcedure {
 																																	public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																		BlockEntity blockEntity = world.getBlockEntity(pos);
 																																		if (blockEntity != null)
-																																			return blockEntity.getPersistentData().getDouble(tag);
+																																			return blockEntity.getTileData().getDouble(tag);
 																																		return -1;
 																																	}
 																																}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4852,12 +4876,12 @@ public class BreadOvenCookingProcedure {
 																																					AtomicInteger _retval = new AtomicInteger(0);
 																																					BlockEntity _ent = world.getBlockEntity(pos);
 																																					if (_ent != null)
-																																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																								.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																					return _retval.get();
 																																				}
 																																			}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																				if (capability instanceof IItemHandlerModifiable)
 																																					((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																																			});
@@ -4868,7 +4892,7 @@ public class BreadOvenCookingProcedure {
 																																		if (_ent != null) {
 																																			final int _slotid = 1;
 																																			final int _amount = 1;
-																																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																				if (capability instanceof IItemHandlerModifiable) {
 																																					ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																					_stk.shrink(_amount);
@@ -4882,7 +4906,7 @@ public class BreadOvenCookingProcedure {
 																																		BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																		BlockState _bs = world.getBlockState(_bp);
 																																		if (_blockEntity != null)
-																																			_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																			_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																		if (world instanceof Level _level)
 																																			_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																	}
@@ -4893,7 +4917,7 @@ public class BreadOvenCookingProcedure {
 																																		AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																		if (_ent != null)
-																																			_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																			_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																					.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																		return _retval.get();
 																																	}
@@ -4903,7 +4927,7 @@ public class BreadOvenCookingProcedure {
 																																				AtomicInteger _retval = new AtomicInteger(0);
 																																				BlockEntity _ent = world.getBlockEntity(pos);
 																																				if (_ent != null)
-																																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																							.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																				return _retval.get();
 																																			}
@@ -4912,7 +4936,7 @@ public class BreadOvenCookingProcedure {
 																																				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																				BlockEntity _ent = world.getBlockEntity(pos);
 																																				if (_ent != null)
-																																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																							.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																				return _retval.get();
 																																			}
@@ -4922,7 +4946,7 @@ public class BreadOvenCookingProcedure {
 																																				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																				BlockEntity _ent = world.getBlockEntity(pos);
 																																				if (_ent != null)
-																																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																							.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																				return _retval.get();
 																																			}
@@ -4931,7 +4955,7 @@ public class BreadOvenCookingProcedure {
 																																			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																				BlockEntity blockEntity = world.getBlockEntity(pos);
 																																				if (blockEntity != null)
-																																					return blockEntity.getPersistentData().getDouble(tag);
+																																					return blockEntity.getTileData().getDouble(tag);
 																																				return -1;
 																																			}
 																																		}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -4940,7 +4964,7 @@ public class BreadOvenCookingProcedure {
 																																		BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																		BlockState _bs = world.getBlockState(_bp);
 																																		if (_blockEntity != null)
-																																			_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																			_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																		if (world instanceof Level _level)
 																																			_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																	}
@@ -4949,11 +4973,11 @@ public class BreadOvenCookingProcedure {
 																																		BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																		BlockState _bs = world.getBlockState(_bp);
 																																		if (_blockEntity != null)
-																																			_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																			_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																					BlockEntity blockEntity = world.getBlockEntity(pos);
 																																					if (blockEntity != null)
-																																						return blockEntity.getPersistentData().getDouble(tag);
+																																						return blockEntity.getTileData().getDouble(tag);
 																																					return -1;
 																																				}
 																																			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -4964,7 +4988,7 @@ public class BreadOvenCookingProcedure {
 																																		public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																			BlockEntity blockEntity = world.getBlockEntity(pos);
 																																			if (blockEntity != null)
-																																				return blockEntity.getPersistentData().getDouble(tag);
+																																				return blockEntity.getTileData().getDouble(tag);
 																																			return -1;
 																																		}
 																																	}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -4972,7 +4996,7 @@ public class BreadOvenCookingProcedure {
 																																			AtomicInteger _retval = new AtomicInteger(0);
 																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																			if (_ent != null)
-																																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																						.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																			return _retval.get();
 																																		}
@@ -4980,7 +5004,7 @@ public class BreadOvenCookingProcedure {
 																																		public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																			BlockEntity blockEntity = world.getBlockEntity(pos);
 																																			if (blockEntity != null)
-																																				return blockEntity.getPersistentData().getDouble(tag);
+																																				return blockEntity.getTileData().getDouble(tag);
 																																			return -1;
 																																		}
 																																	}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -4988,7 +5012,7 @@ public class BreadOvenCookingProcedure {
 																																			AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																			if (_ent != null)
-																																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																						.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																			return _retval.get();
 																																		}
@@ -5003,12 +5027,12 @@ public class BreadOvenCookingProcedure {
 																																						AtomicInteger _retval = new AtomicInteger(0);
 																																						BlockEntity _ent = world.getBlockEntity(pos);
 																																						if (_ent != null)
-																																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																									.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																						return _retval.get();
 																																					}
 																																				}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																					if (capability instanceof IItemHandlerModifiable)
 																																						((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																																				});
@@ -5019,7 +5043,7 @@ public class BreadOvenCookingProcedure {
 																																			if (_ent != null) {
 																																				final int _slotid = 1;
 																																				final int _amount = 1;
-																																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																					if (capability instanceof IItemHandlerModifiable) {
 																																						ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																						_stk.shrink(_amount);
@@ -5033,7 +5057,7 @@ public class BreadOvenCookingProcedure {
 																																			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																			BlockState _bs = world.getBlockState(_bp);
 																																			if (_blockEntity != null)
-																																				_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																				_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																			if (world instanceof Level _level)
 																																				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																		}
@@ -5044,7 +5068,7 @@ public class BreadOvenCookingProcedure {
 																																			AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																			if (_ent != null)
-																																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																				_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																						.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																			return _retval.get();
 																																		}
@@ -5054,7 +5078,7 @@ public class BreadOvenCookingProcedure {
 																																					AtomicInteger _retval = new AtomicInteger(0);
 																																					BlockEntity _ent = world.getBlockEntity(pos);
 																																					if (_ent != null)
-																																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																								.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																					return _retval.get();
 																																				}
@@ -5063,7 +5087,7 @@ public class BreadOvenCookingProcedure {
 																																					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																					BlockEntity _ent = world.getBlockEntity(pos);
 																																					if (_ent != null)
-																																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																								.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																					return _retval.get();
 																																				}
@@ -5072,7 +5096,7 @@ public class BreadOvenCookingProcedure {
 																																				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																					BlockEntity blockEntity = world.getBlockEntity(pos);
 																																					if (blockEntity != null)
-																																						return blockEntity.getPersistentData().getDouble(tag);
+																																						return blockEntity.getTileData().getDouble(tag);
 																																					return -1;
 																																				}
 																																			}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5081,7 +5105,7 @@ public class BreadOvenCookingProcedure {
 																																			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																			BlockState _bs = world.getBlockState(_bp);
 																																			if (_blockEntity != null)
-																																				_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																				_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																			if (world instanceof Level _level)
 																																				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																		}
@@ -5090,11 +5114,11 @@ public class BreadOvenCookingProcedure {
 																																			BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																			BlockState _bs = world.getBlockState(_bp);
 																																			if (_blockEntity != null)
-																																				_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																				_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																						BlockEntity blockEntity = world.getBlockEntity(pos);
 																																						if (blockEntity != null)
-																																							return blockEntity.getPersistentData().getDouble(tag);
+																																							return blockEntity.getTileData().getDouble(tag);
 																																						return -1;
 																																					}
 																																				}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -5105,7 +5129,7 @@ public class BreadOvenCookingProcedure {
 																																			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																				BlockEntity blockEntity = world.getBlockEntity(pos);
 																																				if (blockEntity != null)
-																																					return blockEntity.getPersistentData().getDouble(tag);
+																																					return blockEntity.getTileData().getDouble(tag);
 																																				return -1;
 																																			}
 																																		}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -5113,7 +5137,7 @@ public class BreadOvenCookingProcedure {
 																																				AtomicInteger _retval = new AtomicInteger(0);
 																																				BlockEntity _ent = world.getBlockEntity(pos);
 																																				if (_ent != null)
-																																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																							.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																				return _retval.get();
 																																			}
@@ -5121,7 +5145,7 @@ public class BreadOvenCookingProcedure {
 																																			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																				BlockEntity blockEntity = world.getBlockEntity(pos);
 																																				if (blockEntity != null)
-																																					return blockEntity.getPersistentData().getDouble(tag);
+																																					return blockEntity.getTileData().getDouble(tag);
 																																				return -1;
 																																			}
 																																		}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5135,12 +5159,12 @@ public class BreadOvenCookingProcedure {
 																																							AtomicInteger _retval = new AtomicInteger(0);
 																																							BlockEntity _ent = world.getBlockEntity(pos);
 																																							if (_ent != null)
-																																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																										capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																							return _retval.get();
 																																						}
 																																					}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																						if (capability instanceof IItemHandlerModifiable)
 																																							((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																																					});
@@ -5151,7 +5175,7 @@ public class BreadOvenCookingProcedure {
 																																				if (_ent != null) {
 																																					final int _slotid = 1;
 																																					final int _amount = 1;
-																																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																						if (capability instanceof IItemHandlerModifiable) {
 																																							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																							_stk.shrink(_amount);
@@ -5165,7 +5189,7 @@ public class BreadOvenCookingProcedure {
 																																				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																				BlockState _bs = world.getBlockState(_bp);
 																																				if (_blockEntity != null)
-																																					_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																					_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																				if (world instanceof Level _level)
 																																					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																			}
@@ -5176,7 +5200,7 @@ public class BreadOvenCookingProcedure {
 																																				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																				BlockEntity _ent = world.getBlockEntity(pos);
 																																				if (_ent != null)
-																																					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																							.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																				return _retval.get();
 																																			}
@@ -5186,7 +5210,7 @@ public class BreadOvenCookingProcedure {
 																																						AtomicInteger _retval = new AtomicInteger(0);
 																																						BlockEntity _ent = world.getBlockEntity(pos);
 																																						if (_ent != null)
-																																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																									.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																						return _retval.get();
 																																					}
@@ -5195,7 +5219,7 @@ public class BreadOvenCookingProcedure {
 																																						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																						BlockEntity _ent = world.getBlockEntity(pos);
 																																						if (_ent != null)
-																																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																									.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																						return _retval.get();
 																																					}
@@ -5205,7 +5229,7 @@ public class BreadOvenCookingProcedure {
 																																						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																						BlockEntity _ent = world.getBlockEntity(pos);
 																																						if (_ent != null)
-																																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																									.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																						return _retval.get();
 																																					}
@@ -5214,7 +5238,7 @@ public class BreadOvenCookingProcedure {
 																																					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																						BlockEntity blockEntity = world.getBlockEntity(pos);
 																																						if (blockEntity != null)
-																																							return blockEntity.getPersistentData().getDouble(tag);
+																																							return blockEntity.getTileData().getDouble(tag);
 																																						return -1;
 																																					}
 																																				}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5223,7 +5247,7 @@ public class BreadOvenCookingProcedure {
 																																				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																				BlockState _bs = world.getBlockState(_bp);
 																																				if (_blockEntity != null)
-																																					_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																					_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																				if (world instanceof Level _level)
 																																					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																			}
@@ -5232,11 +5256,11 @@ public class BreadOvenCookingProcedure {
 																																				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																				BlockState _bs = world.getBlockState(_bp);
 																																				if (_blockEntity != null)
-																																					_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																					_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																							BlockEntity blockEntity = world.getBlockEntity(pos);
 																																							if (blockEntity != null)
-																																								return blockEntity.getPersistentData().getDouble(tag);
+																																								return blockEntity.getTileData().getDouble(tag);
 																																							return -1;
 																																						}
 																																					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -5247,7 +5271,7 @@ public class BreadOvenCookingProcedure {
 																																				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																					BlockEntity blockEntity = world.getBlockEntity(pos);
 																																					if (blockEntity != null)
-																																						return blockEntity.getPersistentData().getDouble(tag);
+																																						return blockEntity.getTileData().getDouble(tag);
 																																					return -1;
 																																				}
 																																			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -5255,7 +5279,7 @@ public class BreadOvenCookingProcedure {
 																																					AtomicInteger _retval = new AtomicInteger(0);
 																																					BlockEntity _ent = world.getBlockEntity(pos);
 																																					if (_ent != null)
-																																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																								.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																					return _retval.get();
 																																				}
@@ -5263,7 +5287,7 @@ public class BreadOvenCookingProcedure {
 																																				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																					BlockEntity blockEntity = world.getBlockEntity(pos);
 																																					if (blockEntity != null)
-																																						return blockEntity.getPersistentData().getDouble(tag);
+																																						return blockEntity.getTileData().getDouble(tag);
 																																					return -1;
 																																				}
 																																			}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -5271,7 +5295,7 @@ public class BreadOvenCookingProcedure {
 																																					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																					BlockEntity _ent = world.getBlockEntity(pos);
 																																					if (_ent != null)
-																																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																								.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																					return _retval.get();
 																																				}
@@ -5286,12 +5310,12 @@ public class BreadOvenCookingProcedure {
 																																								AtomicInteger _retval = new AtomicInteger(0);
 																																								BlockEntity _ent = world.getBlockEntity(pos);
 																																								if (_ent != null)
-																																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																											capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																								return _retval.get();
 																																							}
 																																						}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																							if (capability instanceof IItemHandlerModifiable)
 																																								((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
 																																						});
@@ -5302,7 +5326,7 @@ public class BreadOvenCookingProcedure {
 																																					if (_ent != null) {
 																																						final int _slotid = 1;
 																																						final int _amount = 1;
-																																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+																																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 																																							if (capability instanceof IItemHandlerModifiable) {
 																																								ItemStack _stk = capability.getStackInSlot(_slotid).copy();
 																																								_stk.shrink(_amount);
@@ -5316,7 +5340,7 @@ public class BreadOvenCookingProcedure {
 																																					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																					BlockState _bs = world.getBlockState(_bp);
 																																					if (_blockEntity != null)
-																																						_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																						_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																					if (world instanceof Level _level)
 																																						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																				}
@@ -5327,7 +5351,7 @@ public class BreadOvenCookingProcedure {
 																																					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																					BlockEntity _ent = world.getBlockEntity(pos);
 																																					if (_ent != null)
-																																						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																						_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																								.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																					return _retval.get();
 																																				}
@@ -5337,7 +5361,7 @@ public class BreadOvenCookingProcedure {
 																																							AtomicInteger _retval = new AtomicInteger(0);
 																																							BlockEntity _ent = world.getBlockEntity(pos);
 																																							if (_ent != null)
-																																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																										capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																							return _retval.get();
 																																						}
@@ -5346,7 +5370,7 @@ public class BreadOvenCookingProcedure {
 																																							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																							BlockEntity _ent = world.getBlockEntity(pos);
 																																							if (_ent != null)
-																																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																										.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																							return _retval.get();
 																																						}
@@ -5355,7 +5379,7 @@ public class BreadOvenCookingProcedure {
 																																						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																							BlockEntity blockEntity = world.getBlockEntity(pos);
 																																							if (blockEntity != null)
-																																								return blockEntity.getPersistentData().getDouble(tag);
+																																								return blockEntity.getTileData().getDouble(tag);
 																																							return -1;
 																																						}
 																																					}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5364,7 +5388,7 @@ public class BreadOvenCookingProcedure {
 																																					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																					BlockState _bs = world.getBlockState(_bp);
 																																					if (_blockEntity != null)
-																																						_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																						_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																					if (world instanceof Level _level)
 																																						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																				}
@@ -5373,11 +5397,11 @@ public class BreadOvenCookingProcedure {
 																																					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																					BlockState _bs = world.getBlockState(_bp);
 																																					if (_blockEntity != null)
-																																						_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																						_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																								BlockEntity blockEntity = world.getBlockEntity(pos);
 																																								if (blockEntity != null)
-																																									return blockEntity.getPersistentData().getDouble(tag);
+																																									return blockEntity.getTileData().getDouble(tag);
 																																								return -1;
 																																							}
 																																						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -5388,7 +5412,7 @@ public class BreadOvenCookingProcedure {
 																																					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																						BlockEntity blockEntity = world.getBlockEntity(pos);
 																																						if (blockEntity != null)
-																																							return blockEntity.getPersistentData().getDouble(tag);
+																																							return blockEntity.getTileData().getDouble(tag);
 																																						return -1;
 																																					}
 																																				}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -5396,7 +5420,7 @@ public class BreadOvenCookingProcedure {
 																																						AtomicInteger _retval = new AtomicInteger(0);
 																																						BlockEntity _ent = world.getBlockEntity(pos);
 																																						if (_ent != null)
-																																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																									.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																						return _retval.get();
 																																					}
@@ -5404,7 +5428,7 @@ public class BreadOvenCookingProcedure {
 																																					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																						BlockEntity blockEntity = world.getBlockEntity(pos);
 																																						if (blockEntity != null)
-																																							return blockEntity.getPersistentData().getDouble(tag);
+																																							return blockEntity.getTileData().getDouble(tag);
 																																						return -1;
 																																					}
 																																				}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5418,15 +5442,16 @@ public class BreadOvenCookingProcedure {
 																																									AtomicInteger _retval = new AtomicInteger(0);
 																																									BlockEntity _ent = world.getBlockEntity(pos);
 																																									if (_ent != null)
-																																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																												capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																									return _retval.get();
 																																								}
 																																							}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-																																								if (capability instanceof IItemHandlerModifiable)
-																																									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
-																																							});
+																																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																									.ifPresent(capability -> {
+																																										if (capability instanceof IItemHandlerModifiable)
+																																											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
+																																									});
 																																						}
 																																					}
 																																					{
@@ -5434,13 +5459,14 @@ public class BreadOvenCookingProcedure {
 																																						if (_ent != null) {
 																																							final int _slotid = 1;
 																																							final int _amount = 1;
-																																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-																																								if (capability instanceof IItemHandlerModifiable) {
-																																									ItemStack _stk = capability.getStackInSlot(_slotid).copy();
-																																									_stk.shrink(_amount);
-																																									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
-																																								}
-																																							});
+																																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																									.ifPresent(capability -> {
+																																										if (capability instanceof IItemHandlerModifiable) {
+																																											ItemStack _stk = capability.getStackInSlot(_slotid).copy();
+																																											_stk.shrink(_amount);
+																																											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
+																																										}
+																																									});
 																																						}
 																																					}
 																																					if (!world.isClientSide()) {
@@ -5448,7 +5474,7 @@ public class BreadOvenCookingProcedure {
 																																						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																						BlockState _bs = world.getBlockState(_bp);
 																																						if (_blockEntity != null)
-																																							_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																							_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																						if (world instanceof Level _level)
 																																							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																					}
@@ -5459,7 +5485,7 @@ public class BreadOvenCookingProcedure {
 																																						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																						BlockEntity _ent = world.getBlockEntity(pos);
 																																						if (_ent != null)
-																																							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																									.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																						return _retval.get();
 																																					}
@@ -5469,7 +5495,7 @@ public class BreadOvenCookingProcedure {
 																																								AtomicInteger _retval = new AtomicInteger(0);
 																																								BlockEntity _ent = world.getBlockEntity(pos);
 																																								if (_ent != null)
-																																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																											capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																								return _retval.get();
 																																							}
@@ -5478,7 +5504,7 @@ public class BreadOvenCookingProcedure {
 																																								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																								BlockEntity _ent = world.getBlockEntity(pos);
 																																								if (_ent != null)
-																																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																											capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																								return _retval.get();
 																																							}
@@ -5488,7 +5514,7 @@ public class BreadOvenCookingProcedure {
 																																								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																								BlockEntity _ent = world.getBlockEntity(pos);
 																																								if (_ent != null)
-																																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																											capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																								return _retval.get();
 																																							}
@@ -5498,7 +5524,7 @@ public class BreadOvenCookingProcedure {
 																																							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																								BlockEntity blockEntity = world.getBlockEntity(pos);
 																																								if (blockEntity != null)
-																																									return blockEntity.getPersistentData().getDouble(tag);
+																																									return blockEntity.getTileData().getDouble(tag);
 																																								return -1;
 																																							}
 																																						}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5507,7 +5533,7 @@ public class BreadOvenCookingProcedure {
 																																						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																						BlockState _bs = world.getBlockState(_bp);
 																																						if (_blockEntity != null)
-																																							_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																							_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																						if (world instanceof Level _level)
 																																							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																					}
@@ -5516,11 +5542,11 @@ public class BreadOvenCookingProcedure {
 																																						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																						BlockState _bs = world.getBlockState(_bp);
 																																						if (_blockEntity != null)
-																																							_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																							_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																									BlockEntity blockEntity = world.getBlockEntity(pos);
 																																									if (blockEntity != null)
-																																										return blockEntity.getPersistentData().getDouble(tag);
+																																										return blockEntity.getTileData().getDouble(tag);
 																																									return -1;
 																																								}
 																																							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -5531,7 +5557,7 @@ public class BreadOvenCookingProcedure {
 																																						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																							BlockEntity blockEntity = world.getBlockEntity(pos);
 																																							if (blockEntity != null)
-																																								return blockEntity.getPersistentData().getDouble(tag);
+																																								return blockEntity.getTileData().getDouble(tag);
 																																							return -1;
 																																						}
 																																					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -5539,7 +5565,7 @@ public class BreadOvenCookingProcedure {
 																																							AtomicInteger _retval = new AtomicInteger(0);
 																																							BlockEntity _ent = world.getBlockEntity(pos);
 																																							if (_ent != null)
-																																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																										capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																							return _retval.get();
 																																						}
@@ -5547,7 +5573,7 @@ public class BreadOvenCookingProcedure {
 																																						public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																							BlockEntity blockEntity = world.getBlockEntity(pos);
 																																							if (blockEntity != null)
-																																								return blockEntity.getPersistentData().getDouble(tag);
+																																								return blockEntity.getTileData().getDouble(tag);
 																																							return -1;
 																																						}
 																																					}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -5555,7 +5581,7 @@ public class BreadOvenCookingProcedure {
 																																							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																							BlockEntity _ent = world.getBlockEntity(pos);
 																																							if (_ent != null)
-																																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																										.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																							return _retval.get();
 																																						}
@@ -5571,16 +5597,17 @@ public class BreadOvenCookingProcedure {
 																																										AtomicInteger _retval = new AtomicInteger(0);
 																																										BlockEntity _ent = world.getBlockEntity(pos);
 																																										if (_ent != null)
-																																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																													.ifPresent(capability -> _retval
 																																															.set(capability.getStackInSlot(slotid).getCount()));
 																																										return _retval.get();
 																																									}
 																																								}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-																																									if (capability instanceof IItemHandlerModifiable)
-																																										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
-																																								});
+																																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																										.ifPresent(capability -> {
+																																											if (capability instanceof IItemHandlerModifiable)
+																																												((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
+																																										});
 																																							}
 																																						}
 																																						{
@@ -5588,13 +5615,14 @@ public class BreadOvenCookingProcedure {
 																																							if (_ent != null) {
 																																								final int _slotid = 1;
 																																								final int _amount = 1;
-																																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-																																									if (capability instanceof IItemHandlerModifiable) {
-																																										ItemStack _stk = capability.getStackInSlot(_slotid).copy();
-																																										_stk.shrink(_amount);
-																																										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
-																																									}
-																																								});
+																																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																										.ifPresent(capability -> {
+																																											if (capability instanceof IItemHandlerModifiable) {
+																																												ItemStack _stk = capability.getStackInSlot(_slotid).copy();
+																																												_stk.shrink(_amount);
+																																												((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
+																																											}
+																																										});
 																																							}
 																																						}
 																																						if (!world.isClientSide()) {
@@ -5602,7 +5630,7 @@ public class BreadOvenCookingProcedure {
 																																							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																							BlockState _bs = world.getBlockState(_bp);
 																																							if (_blockEntity != null)
-																																								_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																								_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																							if (world instanceof Level _level)
 																																								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																						}
@@ -5613,7 +5641,7 @@ public class BreadOvenCookingProcedure {
 																																							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																							BlockEntity _ent = world.getBlockEntity(pos);
 																																							if (_ent != null)
-																																								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																										.ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																							return _retval.get();
 																																						}
@@ -5623,7 +5651,7 @@ public class BreadOvenCookingProcedure {
 																																									AtomicInteger _retval = new AtomicInteger(0);
 																																									BlockEntity _ent = world.getBlockEntity(pos);
 																																									if (_ent != null)
-																																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																												capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																									return _retval.get();
 																																								}
@@ -5632,7 +5660,7 @@ public class BreadOvenCookingProcedure {
 																																									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																									BlockEntity _ent = world.getBlockEntity(pos);
 																																									if (_ent != null)
-																																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																												capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																									return _retval.get();
 																																								}
@@ -5642,7 +5670,7 @@ public class BreadOvenCookingProcedure {
 																																								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																									BlockEntity blockEntity = world.getBlockEntity(pos);
 																																									if (blockEntity != null)
-																																										return blockEntity.getPersistentData().getDouble(tag);
+																																										return blockEntity.getTileData().getDouble(tag);
 																																									return -1;
 																																								}
 																																							}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5651,7 +5679,7 @@ public class BreadOvenCookingProcedure {
 																																							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																							BlockState _bs = world.getBlockState(_bp);
 																																							if (_blockEntity != null)
-																																								_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																								_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																							if (world instanceof Level _level)
 																																								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																						}
@@ -5660,11 +5688,11 @@ public class BreadOvenCookingProcedure {
 																																							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																							BlockState _bs = world.getBlockState(_bp);
 																																							if (_blockEntity != null)
-																																								_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																								_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																										BlockEntity blockEntity = world.getBlockEntity(pos);
 																																										if (blockEntity != null)
-																																											return blockEntity.getPersistentData().getDouble(tag);
+																																											return blockEntity.getTileData().getDouble(tag);
 																																										return -1;
 																																									}
 																																								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -5675,7 +5703,7 @@ public class BreadOvenCookingProcedure {
 																																							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																								BlockEntity blockEntity = world.getBlockEntity(pos);
 																																								if (blockEntity != null)
-																																									return blockEntity.getPersistentData().getDouble(tag);
+																																									return blockEntity.getTileData().getDouble(tag);
 																																								return -1;
 																																							}
 																																						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -5683,7 +5711,7 @@ public class BreadOvenCookingProcedure {
 																																								AtomicInteger _retval = new AtomicInteger(0);
 																																								BlockEntity _ent = world.getBlockEntity(pos);
 																																								if (_ent != null)
-																																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																											capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																								return _retval.get();
 																																							}
@@ -5691,7 +5719,7 @@ public class BreadOvenCookingProcedure {
 																																							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																								BlockEntity blockEntity = world.getBlockEntity(pos);
 																																								if (blockEntity != null)
-																																									return blockEntity.getPersistentData().getDouble(tag);
+																																									return blockEntity.getTileData().getDouble(tag);
 																																								return -1;
 																																							}
 																																						}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5705,16 +5733,18 @@ public class BreadOvenCookingProcedure {
 																																											AtomicInteger _retval = new AtomicInteger(0);
 																																											BlockEntity _ent = world.getBlockEntity(pos);
 																																											if (_ent != null)
-																																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																														.ifPresent(capability -> _retval
 																																																.set(capability.getStackInSlot(slotid).getCount()));
 																																											return _retval.get();
 																																										}
 																																									}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-																																										if (capability instanceof IItemHandlerModifiable)
-																																											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
-																																									});
+																																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																											.ifPresent(capability -> {
+																																												if (capability instanceof IItemHandlerModifiable)
+																																													((IItemHandlerModifiable) capability).setStackInSlot(_slotid,
+																																															_setstack);
+																																											});
 																																								}
 																																							}
 																																							{
@@ -5722,13 +5752,14 @@ public class BreadOvenCookingProcedure {
 																																								if (_ent != null) {
 																																									final int _slotid = 1;
 																																									final int _amount = 1;
-																																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-																																										if (capability instanceof IItemHandlerModifiable) {
-																																											ItemStack _stk = capability.getStackInSlot(_slotid).copy();
-																																											_stk.shrink(_amount);
-																																											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
-																																										}
-																																									});
+																																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																											.ifPresent(capability -> {
+																																												if (capability instanceof IItemHandlerModifiable) {
+																																													ItemStack _stk = capability.getStackInSlot(_slotid).copy();
+																																													_stk.shrink(_amount);
+																																													((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
+																																												}
+																																											});
 																																								}
 																																							}
 																																							if (!world.isClientSide()) {
@@ -5736,7 +5767,7 @@ public class BreadOvenCookingProcedure {
 																																								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																								BlockState _bs = world.getBlockState(_bp);
 																																								if (_blockEntity != null)
-																																									_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																									_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																								if (world instanceof Level _level)
 																																									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																							}
@@ -5747,7 +5778,7 @@ public class BreadOvenCookingProcedure {
 																																								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																								BlockEntity _ent = world.getBlockEntity(pos);
 																																								if (_ent != null)
-																																									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																									_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																											capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																								return _retval.get();
 																																							}
@@ -5757,7 +5788,7 @@ public class BreadOvenCookingProcedure {
 																																										AtomicInteger _retval = new AtomicInteger(0);
 																																										BlockEntity _ent = world.getBlockEntity(pos);
 																																										if (_ent != null)
-																																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																													.ifPresent(capability -> _retval
 																																															.set(capability.getStackInSlot(slotid).getCount()));
 																																										return _retval.get();
@@ -5767,8 +5798,9 @@ public class BreadOvenCookingProcedure {
 																																										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																										BlockEntity _ent = world.getBlockEntity(pos);
 																																										if (_ent != null)
-																																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
-																																													capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																													.ifPresent(capability -> _retval
+																																															.set(capability.getStackInSlot(slotid).copy()));
 																																										return _retval.get();
 																																									}
 																																								}.getItemStack(world, new BlockPos(x, y, z), 4))
@@ -5778,8 +5810,9 @@ public class BreadOvenCookingProcedure {
 																																										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																										BlockEntity _ent = world.getBlockEntity(pos);
 																																										if (_ent != null)
-																																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
-																																													capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																													.ifPresent(capability -> _retval
+																																															.set(capability.getStackInSlot(slotid).copy()));
 																																										return _retval.get();
 																																									}
 																																								}.getItemStack(world, new BlockPos(x, y, z), 3))
@@ -5788,7 +5821,7 @@ public class BreadOvenCookingProcedure {
 																																									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																										BlockEntity blockEntity = world.getBlockEntity(pos);
 																																										if (blockEntity != null)
-																																											return blockEntity.getPersistentData().getDouble(tag);
+																																											return blockEntity.getTileData().getDouble(tag);
 																																										return -1;
 																																									}
 																																								}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5797,7 +5830,7 @@ public class BreadOvenCookingProcedure {
 																																								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																								BlockState _bs = world.getBlockState(_bp);
 																																								if (_blockEntity != null)
-																																									_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																									_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																								if (world instanceof Level _level)
 																																									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																							}
@@ -5806,11 +5839,11 @@ public class BreadOvenCookingProcedure {
 																																								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																								BlockState _bs = world.getBlockState(_bp);
 																																								if (_blockEntity != null)
-																																									_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																									_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																											BlockEntity blockEntity = world.getBlockEntity(pos);
 																																											if (blockEntity != null)
-																																												return blockEntity.getPersistentData().getDouble(tag);
+																																												return blockEntity.getTileData().getDouble(tag);
 																																											return -1;
 																																										}
 																																									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -5821,7 +5854,7 @@ public class BreadOvenCookingProcedure {
 																																								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																									BlockEntity blockEntity = world.getBlockEntity(pos);
 																																									if (blockEntity != null)
-																																										return blockEntity.getPersistentData().getDouble(tag);
+																																										return blockEntity.getTileData().getDouble(tag);
 																																									return -1;
 																																								}
 																																							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -5829,7 +5862,7 @@ public class BreadOvenCookingProcedure {
 																																									AtomicInteger _retval = new AtomicInteger(0);
 																																									BlockEntity _ent = world.getBlockEntity(pos);
 																																									if (_ent != null)
-																																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																												capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																																									return _retval.get();
 																																								}
@@ -5837,7 +5870,7 @@ public class BreadOvenCookingProcedure {
 																																								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																									BlockEntity blockEntity = world.getBlockEntity(pos);
 																																									if (blockEntity != null)
-																																										return blockEntity.getPersistentData().getDouble(tag);
+																																										return blockEntity.getTileData().getDouble(tag);
 																																									return -1;
 																																								}
 																																							}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -5845,7 +5878,7 @@ public class BreadOvenCookingProcedure {
 																																									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																									BlockEntity _ent = world.getBlockEntity(pos);
 																																									if (_ent != null)
-																																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																												capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																									return _retval.get();
 																																								}
@@ -5862,16 +5895,19 @@ public class BreadOvenCookingProcedure {
 																																												AtomicInteger _retval = new AtomicInteger(0);
 																																												BlockEntity _ent = world.getBlockEntity(pos);
 																																												if (_ent != null)
-																																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																															null)
 																																															.ifPresent(capability -> _retval
 																																																	.set(capability.getStackInSlot(slotid).getCount()));
 																																												return _retval.get();
 																																											}
 																																										}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-																																											if (capability instanceof IItemHandlerModifiable)
-																																												((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
-																																										});
+																																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																												.ifPresent(capability -> {
+																																													if (capability instanceof IItemHandlerModifiable)
+																																														((IItemHandlerModifiable) capability).setStackInSlot(_slotid,
+																																																_setstack);
+																																												});
 																																									}
 																																								}
 																																								{
@@ -5879,13 +5915,15 @@ public class BreadOvenCookingProcedure {
 																																									if (_ent != null) {
 																																										final int _slotid = 1;
 																																										final int _amount = 1;
-																																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-																																											if (capability instanceof IItemHandlerModifiable) {
-																																												ItemStack _stk = capability.getStackInSlot(_slotid).copy();
-																																												_stk.shrink(_amount);
-																																												((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
-																																											}
-																																										});
+																																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																												.ifPresent(capability -> {
+																																													if (capability instanceof IItemHandlerModifiable) {
+																																														ItemStack _stk = capability.getStackInSlot(_slotid).copy();
+																																														_stk.shrink(_amount);
+																																														((IItemHandlerModifiable) capability).setStackInSlot(_slotid,
+																																																_stk);
+																																													}
+																																												});
 																																									}
 																																								}
 																																								if (!world.isClientSide()) {
@@ -5893,7 +5931,7 @@ public class BreadOvenCookingProcedure {
 																																									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																									BlockState _bs = world.getBlockState(_bp);
 																																									if (_blockEntity != null)
-																																										_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																										_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																									if (world instanceof Level _level)
 																																										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																								}
@@ -5904,7 +5942,7 @@ public class BreadOvenCookingProcedure {
 																																									AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																									BlockEntity _ent = world.getBlockEntity(pos);
 																																									if (_ent != null)
-																																										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
+																																										_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(
 																																												capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 																																									return _retval.get();
 																																								}
@@ -5914,7 +5952,7 @@ public class BreadOvenCookingProcedure {
 																																											AtomicInteger _retval = new AtomicInteger(0);
 																																											BlockEntity _ent = world.getBlockEntity(pos);
 																																											if (_ent != null)
-																																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																														.ifPresent(capability -> _retval
 																																																.set(capability.getStackInSlot(slotid).getCount()));
 																																											return _retval.get();
@@ -5924,7 +5962,7 @@ public class BreadOvenCookingProcedure {
 																																											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																											BlockEntity _ent = world.getBlockEntity(pos);
 																																											if (_ent != null)
-																																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																														.ifPresent(capability -> _retval
 																																																.set(capability.getStackInSlot(slotid).copy()));
 																																											return _retval.get();
@@ -5935,7 +5973,7 @@ public class BreadOvenCookingProcedure {
 																																										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																											BlockEntity blockEntity = world.getBlockEntity(pos);
 																																											if (blockEntity != null)
-																																												return blockEntity.getPersistentData().getDouble(tag);
+																																												return blockEntity.getTileData().getDouble(tag);
 																																											return -1;
 																																										}
 																																									}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -5944,7 +5982,7 @@ public class BreadOvenCookingProcedure {
 																																									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																									BlockState _bs = world.getBlockState(_bp);
 																																									if (_blockEntity != null)
-																																										_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																										_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																									if (world instanceof Level _level)
 																																										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																								}
@@ -5953,11 +5991,11 @@ public class BreadOvenCookingProcedure {
 																																									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																									BlockState _bs = world.getBlockState(_bp);
 																																									if (_blockEntity != null)
-																																										_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																										_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																												BlockEntity blockEntity = world.getBlockEntity(pos);
 																																												if (blockEntity != null)
-																																													return blockEntity.getPersistentData().getDouble(tag);
+																																													return blockEntity.getTileData().getDouble(tag);
 																																												return -1;
 																																											}
 																																										}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -5968,7 +6006,7 @@ public class BreadOvenCookingProcedure {
 																																									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																										BlockEntity blockEntity = world.getBlockEntity(pos);
 																																										if (blockEntity != null)
-																																											return blockEntity.getPersistentData().getDouble(tag);
+																																											return blockEntity.getTileData().getDouble(tag);
 																																										return -1;
 																																									}
 																																								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -5976,7 +6014,7 @@ public class BreadOvenCookingProcedure {
 																																										AtomicInteger _retval = new AtomicInteger(0);
 																																										BlockEntity _ent = world.getBlockEntity(pos);
 																																										if (_ent != null)
-																																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																													.ifPresent(capability -> _retval
 																																															.set(capability.getStackInSlot(slotid).getCount()));
 																																										return _retval.get();
@@ -5985,7 +6023,7 @@ public class BreadOvenCookingProcedure {
 																																									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																										BlockEntity blockEntity = world.getBlockEntity(pos);
 																																										if (blockEntity != null)
-																																											return blockEntity.getPersistentData().getDouble(tag);
+																																											return blockEntity.getTileData().getDouble(tag);
 																																										return -1;
 																																									}
 																																								}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6000,13 +6038,14 @@ public class BreadOvenCookingProcedure {
 																																													AtomicInteger _retval = new AtomicInteger(0);
 																																													BlockEntity _ent = world.getBlockEntity(pos);
 																																													if (_ent != null)
-																																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																null)
 																																																.ifPresent(capability -> _retval.set(
 																																																		capability.getStackInSlot(slotid).getCount()));
 																																													return _retval.get();
 																																												}
 																																											}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																													.ifPresent(capability -> {
 																																														if (capability instanceof IItemHandlerModifiable)
 																																															((IItemHandlerModifiable) capability).setStackInSlot(_slotid,
@@ -6019,7 +6058,7 @@ public class BreadOvenCookingProcedure {
 																																										if (_ent != null) {
 																																											final int _slotid = 1;
 																																											final int _amount = 1;
-																																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																													.ifPresent(capability -> {
 																																														if (capability instanceof IItemHandlerModifiable) {
 																																															ItemStack _stk = capability.getStackInSlot(_slotid).copy();
@@ -6035,7 +6074,7 @@ public class BreadOvenCookingProcedure {
 																																										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																										BlockState _bs = world.getBlockState(_bp);
 																																										if (_blockEntity != null)
-																																											_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																											_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																										if (world instanceof Level _level)
 																																											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																									}
@@ -6046,8 +6085,9 @@ public class BreadOvenCookingProcedure {
 																																										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																										BlockEntity _ent = world.getBlockEntity(pos);
 																																										if (_ent != null)
-																																											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(
-																																													capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+																																											_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+																																													.ifPresent(capability -> _retval
+																																															.set(capability.getStackInSlot(slotid).copy()));
 																																										return _retval.get();
 																																									}
 																																								}.getItemStack(world, new BlockPos(x, y, z), 1))
@@ -6056,7 +6096,8 @@ public class BreadOvenCookingProcedure {
 																																												AtomicInteger _retval = new AtomicInteger(0);
 																																												BlockEntity _ent = world.getBlockEntity(pos);
 																																												if (_ent != null)
-																																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																															null)
 																																															.ifPresent(capability -> _retval
 																																																	.set(capability.getStackInSlot(slotid).getCount()));
 																																												return _retval.get();
@@ -6067,7 +6108,8 @@ public class BreadOvenCookingProcedure {
 																																														ItemStack.EMPTY);
 																																												BlockEntity _ent = world.getBlockEntity(pos);
 																																												if (_ent != null)
-																																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																															null)
 																																															.ifPresent(capability -> _retval
 																																																	.set(capability.getStackInSlot(slotid).copy()));
 																																												return _retval.get();
@@ -6080,7 +6122,8 @@ public class BreadOvenCookingProcedure {
 																																														ItemStack.EMPTY);
 																																												BlockEntity _ent = world.getBlockEntity(pos);
 																																												if (_ent != null)
-																																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																															null)
 																																															.ifPresent(capability -> _retval
 																																																	.set(capability.getStackInSlot(slotid).copy()));
 																																												return _retval.get();
@@ -6091,7 +6134,7 @@ public class BreadOvenCookingProcedure {
 																																											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																												BlockEntity blockEntity = world.getBlockEntity(pos);
 																																												if (blockEntity != null)
-																																													return blockEntity.getPersistentData().getDouble(tag);
+																																													return blockEntity.getTileData().getDouble(tag);
 																																												return -1;
 																																											}
 																																										}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6100,7 +6143,7 @@ public class BreadOvenCookingProcedure {
 																																										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																										BlockState _bs = world.getBlockState(_bp);
 																																										if (_blockEntity != null)
-																																											_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																											_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																										if (world instanceof Level _level)
 																																											_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																									}
@@ -6109,11 +6152,11 @@ public class BreadOvenCookingProcedure {
 																																										BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																										BlockState _bs = world.getBlockState(_bp);
 																																										if (_blockEntity != null)
-																																											_blockEntity.getPersistentData().putDouble("craftingProgress", (new Object() {
+																																											_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
 																																												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																													BlockEntity blockEntity = world.getBlockEntity(pos);
 																																													if (blockEntity != null)
-																																														return blockEntity.getPersistentData().getDouble(tag);
+																																														return blockEntity.getTileData().getDouble(tag);
 																																													return -1;
 																																												}
 																																											}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
@@ -6124,7 +6167,7 @@ public class BreadOvenCookingProcedure {
 																																										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																											BlockEntity blockEntity = world.getBlockEntity(pos);
 																																											if (blockEntity != null)
-																																												return blockEntity.getPersistentData().getDouble(tag);
+																																												return blockEntity.getTileData().getDouble(tag);
 																																											return -1;
 																																										}
 																																									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200 && new Object() {
@@ -6132,7 +6175,7 @@ public class BreadOvenCookingProcedure {
 																																											AtomicInteger _retval = new AtomicInteger(0);
 																																											BlockEntity _ent = world.getBlockEntity(pos);
 																																											if (_ent != null)
-																																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																														.ifPresent(capability -> _retval
 																																																.set(capability.getStackInSlot(slotid).getCount()));
 																																											return _retval.get();
@@ -6141,7 +6184,7 @@ public class BreadOvenCookingProcedure {
 																																										public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																											BlockEntity blockEntity = world.getBlockEntity(pos);
 																																											if (blockEntity != null)
-																																												return blockEntity.getPersistentData().getDouble(tag);
+																																												return blockEntity.getTileData().getDouble(tag);
 																																											return -1;
 																																										}
 																																									}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1 && (new Object() {
@@ -6149,7 +6192,7 @@ public class BreadOvenCookingProcedure {
 																																											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																											BlockEntity _ent = world.getBlockEntity(pos);
 																																											if (_ent != null)
-																																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																														.ifPresent(capability -> _retval
 																																																.set(capability.getStackInSlot(slotid).copy()));
 																																											return _retval.get();
@@ -6167,13 +6210,14 @@ public class BreadOvenCookingProcedure {
 																																														AtomicInteger _retval = new AtomicInteger(0);
 																																														BlockEntity _ent = world.getBlockEntity(pos);
 																																														if (_ent != null)
-																																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																															_ent.getCapability(
+																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																																	.ifPresent(capability -> _retval.set(capability
 																																																			.getStackInSlot(slotid).getCount()));
 																																														return _retval.get();
 																																													}
 																																												}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																														.ifPresent(capability -> {
 																																															if (capability instanceof IItemHandlerModifiable)
 																																																((IItemHandlerModifiable) capability)
@@ -6186,7 +6230,7 @@ public class BreadOvenCookingProcedure {
 																																											if (_ent != null) {
 																																												final int _slotid = 1;
 																																												final int _amount = 1;
-																																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																														.ifPresent(capability -> {
 																																															if (capability instanceof IItemHandlerModifiable) {
 																																																ItemStack _stk = capability.getStackInSlot(_slotid)
@@ -6203,7 +6247,7 @@ public class BreadOvenCookingProcedure {
 																																											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																											BlockState _bs = world.getBlockState(_bp);
 																																											if (_blockEntity != null)
-																																												_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																												_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																											if (world instanceof Level _level)
 																																												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																										}
@@ -6214,7 +6258,7 @@ public class BreadOvenCookingProcedure {
 																																											AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 																																											BlockEntity _ent = world.getBlockEntity(pos);
 																																											if (_ent != null)
-																																												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																												_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																														.ifPresent(capability -> _retval
 																																																.set(capability.getStackInSlot(slotid).copy()));
 																																											return _retval.get();
@@ -6226,7 +6270,8 @@ public class BreadOvenCookingProcedure {
 																																													AtomicInteger _retval = new AtomicInteger(0);
 																																													BlockEntity _ent = world.getBlockEntity(pos);
 																																													if (_ent != null)
-																																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																null)
 																																																.ifPresent(capability -> _retval.set(
 																																																		capability.getStackInSlot(slotid).getCount()));
 																																													return _retval.get();
@@ -6238,7 +6283,8 @@ public class BreadOvenCookingProcedure {
 																																															ItemStack.EMPTY);
 																																													BlockEntity _ent = world.getBlockEntity(pos);
 																																													if (_ent != null)
-																																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																null)
 																																																.ifPresent(capability -> _retval
 																																																		.set(capability.getStackInSlot(slotid).copy()));
 																																													return _retval.get();
@@ -6249,7 +6295,7 @@ public class BreadOvenCookingProcedure {
 																																												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																													BlockEntity blockEntity = world.getBlockEntity(pos);
 																																													if (blockEntity != null)
-																																														return blockEntity.getPersistentData().getDouble(tag);
+																																														return blockEntity.getTileData().getDouble(tag);
 																																													return -1;
 																																												}
 																																											}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6258,7 +6304,7 @@ public class BreadOvenCookingProcedure {
 																																											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																											BlockState _bs = world.getBlockState(_bp);
 																																											if (_blockEntity != null)
-																																												_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																												_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																											if (world instanceof Level _level)
 																																												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																										}
@@ -6267,17 +6313,15 @@ public class BreadOvenCookingProcedure {
 																																											BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																											BlockState _bs = world.getBlockState(_bp);
 																																											if (_blockEntity != null)
-																																												_blockEntity.getPersistentData().putDouble("craftingProgress",
-																																														(new Object() {
-																																															public double getValue(LevelAccessor world, BlockPos pos,
-																																																	String tag) {
-																																																BlockEntity blockEntity = world.getBlockEntity(pos);
-																																																if (blockEntity != null)
-																																																	return blockEntity.getPersistentData().getDouble(tag);
-																																																return -1;
-																																															}
-																																														}.getValue(world, new BlockPos(x, y, z), "craftingProgress")
-																																																+ 1));
+																																												_blockEntity.getTileData().putDouble("craftingProgress", (new Object() {
+																																													public double getValue(LevelAccessor world, BlockPos pos,
+																																															String tag) {
+																																														BlockEntity blockEntity = world.getBlockEntity(pos);
+																																														if (blockEntity != null)
+																																															return blockEntity.getTileData().getDouble(tag);
+																																														return -1;
+																																													}
+																																												}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
 																																											if (world instanceof Level _level)
 																																												_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																										}
@@ -6285,7 +6329,7 @@ public class BreadOvenCookingProcedure {
 																																											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																												BlockEntity blockEntity = world.getBlockEntity(pos);
 																																												if (blockEntity != null)
-																																													return blockEntity.getPersistentData().getDouble(tag);
+																																													return blockEntity.getTileData().getDouble(tag);
 																																												return -1;
 																																											}
 																																										}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200
@@ -6294,7 +6338,8 @@ public class BreadOvenCookingProcedure {
 																																														AtomicInteger _retval = new AtomicInteger(0);
 																																														BlockEntity _ent = world.getBlockEntity(pos);
 																																														if (_ent != null)
-																																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																															_ent.getCapability(
+																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																																	.ifPresent(capability -> _retval.set(capability
 																																																			.getStackInSlot(slotid).getCount()));
 																																														return _retval.get();
@@ -6304,7 +6349,7 @@ public class BreadOvenCookingProcedure {
 																																															String tag) {
 																																														BlockEntity blockEntity = world.getBlockEntity(pos);
 																																														if (blockEntity != null)
-																																															return blockEntity.getPersistentData().getDouble(tag);
+																																															return blockEntity.getTileData().getDouble(tag);
 																																														return -1;
 																																													}
 																																												}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6320,14 +6365,16 @@ public class BreadOvenCookingProcedure {
 																																															AtomicInteger _retval = new AtomicInteger(0);
 																																															BlockEntity _ent = world.getBlockEntity(pos);
 																																															if (_ent != null)
-																																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																																_ent.getCapability(
+																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																		null)
 																																																		.ifPresent(capability -> _retval.set(capability
 																																																				.getStackInSlot(slotid).getCount()));
 																																															return _retval.get();
 																																														}
 																																													}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-																																															.ifPresent(capability -> {
+																																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																															null).ifPresent(capability -> {
 																																																if (capability instanceof IItemHandlerModifiable)
 																																																	((IItemHandlerModifiable) capability)
 																																																			.setStackInSlot(_slotid, _setstack);
@@ -6339,8 +6386,8 @@ public class BreadOvenCookingProcedure {
 																																												if (_ent != null) {
 																																													final int _slotid = 1;
 																																													final int _amount = 1;
-																																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-																																															.ifPresent(capability -> {
+																																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																															null).ifPresent(capability -> {
 																																																if (capability instanceof IItemHandlerModifiable) {
 																																																	ItemStack _stk = capability.getStackInSlot(_slotid)
 																																																			.copy();
@@ -6356,7 +6403,7 @@ public class BreadOvenCookingProcedure {
 																																												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																												BlockState _bs = world.getBlockState(_bp);
 																																												if (_blockEntity != null)
-																																													_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																													_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																												if (world instanceof Level _level)
 																																													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																											}
@@ -6368,7 +6415,8 @@ public class BreadOvenCookingProcedure {
 																																														ItemStack.EMPTY);
 																																												BlockEntity _ent = world.getBlockEntity(pos);
 																																												if (_ent != null)
-																																													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																													_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																															null)
 																																															.ifPresent(capability -> _retval
 																																																	.set(capability.getStackInSlot(slotid).copy()));
 																																												return _retval.get();
@@ -6380,7 +6428,8 @@ public class BreadOvenCookingProcedure {
 																																														AtomicInteger _retval = new AtomicInteger(0);
 																																														BlockEntity _ent = world.getBlockEntity(pos);
 																																														if (_ent != null)
-																																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																															_ent.getCapability(
+																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																																	.ifPresent(capability -> _retval.set(capability
 																																																			.getStackInSlot(slotid).getCount()));
 																																														return _retval.get();
@@ -6392,7 +6441,8 @@ public class BreadOvenCookingProcedure {
 																																																ItemStack.EMPTY);
 																																														BlockEntity _ent = world.getBlockEntity(pos);
 																																														if (_ent != null)
-																																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																															_ent.getCapability(
+																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																																	.ifPresent(capability -> _retval.set(
 																																																			capability.getStackInSlot(slotid).copy()));
 																																														return _retval.get();
@@ -6406,7 +6456,8 @@ public class BreadOvenCookingProcedure {
 																																																ItemStack.EMPTY);
 																																														BlockEntity _ent = world.getBlockEntity(pos);
 																																														if (_ent != null)
-																																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																															_ent.getCapability(
+																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																																	.ifPresent(capability -> _retval.set(
 																																																			capability.getStackInSlot(slotid).copy()));
 																																														return _retval.get();
@@ -6418,7 +6469,7 @@ public class BreadOvenCookingProcedure {
 																																															String tag) {
 																																														BlockEntity blockEntity = world.getBlockEntity(pos);
 																																														if (blockEntity != null)
-																																															return blockEntity.getPersistentData().getDouble(tag);
+																																															return blockEntity.getTileData().getDouble(tag);
 																																														return -1;
 																																													}
 																																												}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6427,7 +6478,7 @@ public class BreadOvenCookingProcedure {
 																																												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																												BlockState _bs = world.getBlockState(_bp);
 																																												if (_blockEntity != null)
-																																													_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																													_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																												if (world instanceof Level _level)
 																																													_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																											}
@@ -6436,14 +6487,13 @@ public class BreadOvenCookingProcedure {
 																																												BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																												BlockState _bs = world.getBlockState(_bp);
 																																												if (_blockEntity != null)
-																																													_blockEntity.getPersistentData().putDouble("craftingProgress",
+																																													_blockEntity.getTileData().putDouble("craftingProgress",
 																																															(new Object() {
 																																																public double getValue(LevelAccessor world, BlockPos pos,
 																																																		String tag) {
 																																																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																																																	if (blockEntity != null)
-																																																		return blockEntity.getPersistentData()
-																																																				.getDouble(tag);
+																																																		return blockEntity.getTileData().getDouble(tag);
 																																																	return -1;
 																																																}
 																																															}.getValue(world, new BlockPos(x, y, z), "craftingProgress")
@@ -6455,7 +6505,7 @@ public class BreadOvenCookingProcedure {
 																																												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 																																													BlockEntity blockEntity = world.getBlockEntity(pos);
 																																													if (blockEntity != null)
-																																														return blockEntity.getPersistentData().getDouble(tag);
+																																														return blockEntity.getTileData().getDouble(tag);
 																																													return -1;
 																																												}
 																																											}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200
@@ -6465,7 +6515,9 @@ public class BreadOvenCookingProcedure {
 																																															AtomicInteger _retval = new AtomicInteger(0);
 																																															BlockEntity _ent = world.getBlockEntity(pos);
 																																															if (_ent != null)
-																																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																																_ent.getCapability(
+																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																		null)
 																																																		.ifPresent(capability -> _retval.set(capability
 																																																				.getStackInSlot(slotid).getCount()));
 																																															return _retval.get();
@@ -6475,7 +6527,7 @@ public class BreadOvenCookingProcedure {
 																																																String tag) {
 																																															BlockEntity blockEntity = world.getBlockEntity(pos);
 																																															if (blockEntity != null)
-																																																return blockEntity.getPersistentData().getDouble(tag);
+																																																return blockEntity.getTileData().getDouble(tag);
 																																															return -1;
 																																														}
 																																													}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1
@@ -6486,7 +6538,9 @@ public class BreadOvenCookingProcedure {
 																																																	ItemStack.EMPTY);
 																																															BlockEntity _ent = world.getBlockEntity(pos);
 																																															if (_ent != null)
-																																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																																_ent.getCapability(
+																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																		null)
 																																																		.ifPresent(capability -> _retval.set(capability
 																																																				.getStackInSlot(slotid).copy()));
 																																															return _retval.get();
@@ -6505,7 +6559,8 @@ public class BreadOvenCookingProcedure {
 																																																AtomicInteger _retval = new AtomicInteger(0);
 																																																BlockEntity _ent = world.getBlockEntity(pos);
 																																																if (_ent != null)
-																																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																	_ent.getCapability(
+																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																			null)
 																																																			.ifPresent(capability -> _retval
 																																																					.set(capability.getStackInSlot(slotid)
@@ -6513,8 +6568,8 @@ public class BreadOvenCookingProcedure {
 																																																return _retval.get();
 																																															}
 																																														}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-																																																.ifPresent(capability -> {
+																																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																null).ifPresent(capability -> {
 																																																	if (capability instanceof IItemHandlerModifiable)
 																																																		((IItemHandlerModifiable) capability)
 																																																				.setStackInSlot(_slotid, _setstack);
@@ -6526,8 +6581,8 @@ public class BreadOvenCookingProcedure {
 																																													if (_ent != null) {
 																																														final int _slotid = 1;
 																																														final int _amount = 1;
-																																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-																																																.ifPresent(capability -> {
+																																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																null).ifPresent(capability -> {
 																																																	if (capability instanceof IItemHandlerModifiable) {
 																																																		ItemStack _stk = capability
 																																																				.getStackInSlot(_slotid).copy();
@@ -6543,7 +6598,7 @@ public class BreadOvenCookingProcedure {
 																																													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																													BlockState _bs = world.getBlockState(_bp);
 																																													if (_blockEntity != null)
-																																														_blockEntity.getPersistentData().putDouble("craftingProgress", 0);
+																																														_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																													if (world instanceof Level _level)
 																																														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																												}
@@ -6556,7 +6611,8 @@ public class BreadOvenCookingProcedure {
 																																															ItemStack.EMPTY);
 																																													BlockEntity _ent = world.getBlockEntity(pos);
 																																													if (_ent != null)
-																																														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																														_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																null)
 																																																.ifPresent(capability -> _retval
 																																																		.set(capability.getStackInSlot(slotid).copy()));
 																																													return _retval.get();
@@ -6569,7 +6625,9 @@ public class BreadOvenCookingProcedure {
 																																															AtomicInteger _retval = new AtomicInteger(0);
 																																															BlockEntity _ent = world.getBlockEntity(pos);
 																																															if (_ent != null)
-																																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																																_ent.getCapability(
+																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																		null)
 																																																		.ifPresent(capability -> _retval.set(capability
 																																																				.getStackInSlot(slotid).getCount()));
 																																															return _retval.get();
@@ -6581,7 +6639,9 @@ public class BreadOvenCookingProcedure {
 																																																	ItemStack.EMPTY);
 																																															BlockEntity _ent = world.getBlockEntity(pos);
 																																															if (_ent != null)
-																																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																																_ent.getCapability(
+																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																		null)
 																																																		.ifPresent(capability -> _retval.set(capability
 																																																				.getStackInSlot(slotid).copy()));
 																																															return _retval.get();
@@ -6593,7 +6653,7 @@ public class BreadOvenCookingProcedure {
 																																																String tag) {
 																																															BlockEntity blockEntity = world.getBlockEntity(pos);
 																																															if (blockEntity != null)
-																																																return blockEntity.getPersistentData().getDouble(tag);
+																																																return blockEntity.getTileData().getDouble(tag);
 																																															return -1;
 																																														}
 																																													}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6602,7 +6662,7 @@ public class BreadOvenCookingProcedure {
 																																													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																													BlockState _bs = world.getBlockState(_bp);
 																																													if (_blockEntity != null)
-																																														_blockEntity.getPersistentData().putDouble("craftingTime", 200);
+																																														_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																													if (world instanceof Level _level)
 																																														_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																												}
@@ -6611,14 +6671,14 @@ public class BreadOvenCookingProcedure {
 																																													BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																													BlockState _bs = world.getBlockState(_bp);
 																																													if (_blockEntity != null)
-																																														_blockEntity.getPersistentData().putDouble("craftingProgress",
+																																														_blockEntity.getTileData().putDouble("craftingProgress",
 																																																(new Object() {
 																																																	public double getValue(LevelAccessor world,
 																																																			BlockPos pos, String tag) {
 																																																		BlockEntity blockEntity = world
 																																																				.getBlockEntity(pos);
 																																																		if (blockEntity != null)
-																																																			return blockEntity.getPersistentData()
+																																																			return blockEntity.getTileData()
 																																																					.getDouble(tag);
 																																																		return -1;
 																																																	}
@@ -6632,7 +6692,7 @@ public class BreadOvenCookingProcedure {
 																																															String tag) {
 																																														BlockEntity blockEntity = world.getBlockEntity(pos);
 																																														if (blockEntity != null)
-																																															return blockEntity.getPersistentData().getDouble(tag);
+																																															return blockEntity.getTileData().getDouble(tag);
 																																														return -1;
 																																													}
 																																												}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200
@@ -6642,7 +6702,8 @@ public class BreadOvenCookingProcedure {
 																																																AtomicInteger _retval = new AtomicInteger(0);
 																																																BlockEntity _ent = world.getBlockEntity(pos);
 																																																if (_ent != null)
-																																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																	_ent.getCapability(
+																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																			null)
 																																																			.ifPresent(capability -> _retval
 																																																					.set(capability.getStackInSlot(slotid)
@@ -6655,7 +6716,7 @@ public class BreadOvenCookingProcedure {
 																																																	String tag) {
 																																																BlockEntity blockEntity = world.getBlockEntity(pos);
 																																																if (blockEntity != null)
-																																																	return blockEntity.getPersistentData().getDouble(tag);
+																																																	return blockEntity.getTileData().getDouble(tag);
 																																																return -1;
 																																															}
 																																														}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6671,7 +6732,8 @@ public class BreadOvenCookingProcedure {
 																																																	AtomicInteger _retval = new AtomicInteger(0);
 																																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																																	if (_ent != null)
-																																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																		_ent.getCapability(
+																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																				null)
 																																																				.ifPresent(capability -> _retval.set(
 																																																						capability.getStackInSlot(slotid)
@@ -6679,7 +6741,8 @@ public class BreadOvenCookingProcedure {
 																																																	return _retval.get();
 																																																}
 																																															}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																															_ent.getCapability(
+																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																																	.ifPresent(capability -> {
 																																																		if (capability instanceof IItemHandlerModifiable)
 																																																			((IItemHandlerModifiable) capability)
@@ -6692,7 +6755,8 @@ public class BreadOvenCookingProcedure {
 																																														if (_ent != null) {
 																																															final int _slotid = 1;
 																																															final int _amount = 1;
-																																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																															_ent.getCapability(
+																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																																	.ifPresent(capability -> {
 																																																		if (capability instanceof IItemHandlerModifiable) {
 																																																			ItemStack _stk = capability
@@ -6709,8 +6773,7 @@ public class BreadOvenCookingProcedure {
 																																														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																														BlockState _bs = world.getBlockState(_bp);
 																																														if (_blockEntity != null)
-																																															_blockEntity.getPersistentData().putDouble("craftingProgress",
-																																																	0);
+																																															_blockEntity.getTileData().putDouble("craftingProgress", 0);
 																																														if (world instanceof Level _level)
 																																															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																													}
@@ -6723,7 +6786,8 @@ public class BreadOvenCookingProcedure {
 																																																ItemStack.EMPTY);
 																																														BlockEntity _ent = world.getBlockEntity(pos);
 																																														if (_ent != null)
-																																															_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																															_ent.getCapability(
+																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
 																																																	.ifPresent(capability -> _retval.set(
 																																																			capability.getStackInSlot(slotid).copy()));
 																																														return _retval.get();
@@ -6736,7 +6800,8 @@ public class BreadOvenCookingProcedure {
 																																																AtomicInteger _retval = new AtomicInteger(0);
 																																																BlockEntity _ent = world.getBlockEntity(pos);
 																																																if (_ent != null)
-																																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																	_ent.getCapability(
+																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																			null)
 																																																			.ifPresent(capability -> _retval
 																																																					.set(capability.getStackInSlot(slotid)
@@ -6751,7 +6816,8 @@ public class BreadOvenCookingProcedure {
 																																																		ItemStack.EMPTY);
 																																																BlockEntity _ent = world.getBlockEntity(pos);
 																																																if (_ent != null)
-																																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																	_ent.getCapability(
+																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																			null)
 																																																			.ifPresent(capability -> _retval
 																																																					.set(capability.getStackInSlot(slotid)
@@ -6767,7 +6833,8 @@ public class BreadOvenCookingProcedure {
 																																																		ItemStack.EMPTY);
 																																																BlockEntity _ent = world.getBlockEntity(pos);
 																																																if (_ent != null)
-																																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																	_ent.getCapability(
+																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																			null)
 																																																			.ifPresent(capability -> _retval
 																																																					.set(capability.getStackInSlot(slotid)
@@ -6781,7 +6848,7 @@ public class BreadOvenCookingProcedure {
 																																																	String tag) {
 																																																BlockEntity blockEntity = world.getBlockEntity(pos);
 																																																if (blockEntity != null)
-																																																	return blockEntity.getPersistentData().getDouble(tag);
+																																																	return blockEntity.getTileData().getDouble(tag);
 																																																return -1;
 																																															}
 																																														}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6790,8 +6857,7 @@ public class BreadOvenCookingProcedure {
 																																														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																														BlockState _bs = world.getBlockState(_bp);
 																																														if (_blockEntity != null)
-																																															_blockEntity.getPersistentData().putDouble("craftingTime",
-																																																	200);
+																																															_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																														if (world instanceof Level _level)
 																																															_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																													}
@@ -6800,14 +6866,14 @@ public class BreadOvenCookingProcedure {
 																																														BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																														BlockState _bs = world.getBlockState(_bp);
 																																														if (_blockEntity != null)
-																																															_blockEntity.getPersistentData().putDouble("craftingProgress",
+																																															_blockEntity.getTileData().putDouble("craftingProgress",
 																																																	(new Object() {
 																																																		public double getValue(LevelAccessor world,
 																																																				BlockPos pos, String tag) {
 																																																			BlockEntity blockEntity = world
 																																																					.getBlockEntity(pos);
 																																																			if (blockEntity != null)
-																																																				return blockEntity.getPersistentData()
+																																																				return blockEntity.getTileData()
 																																																						.getDouble(tag);
 																																																			return -1;
 																																																		}
@@ -6821,7 +6887,7 @@ public class BreadOvenCookingProcedure {
 																																																String tag) {
 																																															BlockEntity blockEntity = world.getBlockEntity(pos);
 																																															if (blockEntity != null)
-																																																return blockEntity.getPersistentData().getDouble(tag);
+																																																return blockEntity.getTileData().getDouble(tag);
 																																															return -1;
 																																														}
 																																													}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 200
@@ -6831,7 +6897,8 @@ public class BreadOvenCookingProcedure {
 																																																	AtomicInteger _retval = new AtomicInteger(0);
 																																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																																	if (_ent != null)
-																																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																		_ent.getCapability(
+																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																				null)
 																																																				.ifPresent(capability -> _retval.set(
 																																																						capability.getStackInSlot(slotid)
@@ -6844,8 +6911,7 @@ public class BreadOvenCookingProcedure {
 																																																		String tag) {
 																																																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																																																	if (blockEntity != null)
-																																																		return blockEntity.getPersistentData()
-																																																				.getDouble(tag);
+																																																		return blockEntity.getTileData().getDouble(tag);
 																																																	return -1;
 																																																}
 																																															}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1
@@ -6856,7 +6922,8 @@ public class BreadOvenCookingProcedure {
 																																																			ItemStack.EMPTY);
 																																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																																	if (_ent != null)
-																																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																		_ent.getCapability(
+																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																				null)
 																																																				.ifPresent(capability -> _retval.set(
 																																																						capability.getStackInSlot(slotid)
@@ -6879,7 +6946,8 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																																		if (_ent != null)
 																																																			_ent.getCapability(
-																																																					ForgeCapabilities.ITEM_HANDLER, null)
+																																																					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																					null)
 																																																					.ifPresent(capability -> _retval
 																																																							.set(capability
 																																																									.getStackInSlot(
@@ -6888,8 +6956,9 @@ public class BreadOvenCookingProcedure {
 																																																		return _retval.get();
 																																																	}
 																																																}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-																																																		.ifPresent(capability -> {
+																																																_ent.getCapability(
+																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																		null).ifPresent(capability -> {
 																																																			if (capability instanceof IItemHandlerModifiable)
 																																																				((IItemHandlerModifiable) capability)
 																																																						.setStackInSlot(_slotid,
@@ -6903,8 +6972,9 @@ public class BreadOvenCookingProcedure {
 																																															if (_ent != null) {
 																																																final int _slotid = 1;
 																																																final int _amount = 1;
-																																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
-																																																		.ifPresent(capability -> {
+																																																_ent.getCapability(
+																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																		null).ifPresent(capability -> {
 																																																			if (capability instanceof IItemHandlerModifiable) {
 																																																				ItemStack _stk = capability
 																																																						.getStackInSlot(_slotid).copy();
@@ -6920,8 +6990,8 @@ public class BreadOvenCookingProcedure {
 																																															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																															BlockState _bs = world.getBlockState(_bp);
 																																															if (_blockEntity != null)
-																																																_blockEntity.getPersistentData()
-																																																		.putDouble("craftingProgress", 0);
+																																																_blockEntity.getTileData().putDouble("craftingProgress",
+																																																		0);
 																																															if (world instanceof Level _level)
 																																																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																														}
@@ -6934,7 +7004,9 @@ public class BreadOvenCookingProcedure {
 																																																	ItemStack.EMPTY);
 																																															BlockEntity _ent = world.getBlockEntity(pos);
 																																															if (_ent != null)
-																																																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null)
+																																																_ent.getCapability(
+																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																		null)
 																																																		.ifPresent(capability -> _retval.set(capability
 																																																				.getStackInSlot(slotid).copy()));
 																																															return _retval.get();
@@ -6947,7 +7019,8 @@ public class BreadOvenCookingProcedure {
 																																																	AtomicInteger _retval = new AtomicInteger(0);
 																																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																																	if (_ent != null)
-																																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																		_ent.getCapability(
+																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																				null)
 																																																				.ifPresent(capability -> _retval.set(
 																																																						capability.getStackInSlot(slotid)
@@ -6962,7 +7035,8 @@ public class BreadOvenCookingProcedure {
 																																																			ItemStack.EMPTY);
 																																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																																	if (_ent != null)
-																																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																		_ent.getCapability(
+																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																				null)
 																																																				.ifPresent(capability -> _retval.set(
 																																																						capability.getStackInSlot(slotid)
@@ -6976,8 +7050,7 @@ public class BreadOvenCookingProcedure {
 																																																		String tag) {
 																																																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																																																	if (blockEntity != null)
-																																																		return blockEntity.getPersistentData()
-																																																				.getDouble(tag);
+																																																		return blockEntity.getTileData().getDouble(tag);
 																																																	return -1;
 																																																}
 																																															}.getValue(world, new BlockPos(x, y, z), "fuelBar") >= 1) {
@@ -6986,8 +7059,7 @@ public class BreadOvenCookingProcedure {
 																																															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																															BlockState _bs = world.getBlockState(_bp);
 																																															if (_blockEntity != null)
-																																																_blockEntity.getPersistentData().putDouble("craftingTime",
-																																																		200);
+																																																_blockEntity.getTileData().putDouble("craftingTime", 200);
 																																															if (world instanceof Level _level)
 																																																_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																														}
@@ -6996,14 +7068,14 @@ public class BreadOvenCookingProcedure {
 																																															BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																															BlockState _bs = world.getBlockState(_bp);
 																																															if (_blockEntity != null)
-																																																_blockEntity.getPersistentData()
-																																																		.putDouble("craftingProgress", (new Object() {
+																																																_blockEntity.getTileData().putDouble("craftingProgress",
+																																																		(new Object() {
 																																																			public double getValue(LevelAccessor world,
 																																																					BlockPos pos, String tag) {
 																																																				BlockEntity blockEntity = world
 																																																						.getBlockEntity(pos);
 																																																				if (blockEntity != null)
-																																																					return blockEntity.getPersistentData()
+																																																					return blockEntity.getTileData()
 																																																							.getDouble(tag);
 																																																				return -1;
 																																																			}
@@ -7017,7 +7089,7 @@ public class BreadOvenCookingProcedure {
 																																																	String tag) {
 																																																BlockEntity blockEntity = world.getBlockEntity(pos);
 																																																if (blockEntity != null)
-																																																	return blockEntity.getPersistentData().getDouble(tag);
+																																																	return blockEntity.getTileData().getDouble(tag);
 																																																return -1;
 																																															}
 																																														}.getValue(world, new BlockPos(x, y, z),
@@ -7028,7 +7100,8 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																																		if (_ent != null)
 																																																			_ent.getCapability(
-																																																					ForgeCapabilities.ITEM_HANDLER, null)
+																																																					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																					null)
 																																																					.ifPresent(capability -> _retval
 																																																							.set(capability
 																																																									.getStackInSlot(
@@ -7043,7 +7116,7 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity blockEntity = world
 																																																				.getBlockEntity(pos);
 																																																		if (blockEntity != null)
-																																																			return blockEntity.getPersistentData()
+																																																			return blockEntity.getTileData()
 																																																					.getDouble(tag);
 																																																		return -1;
 																																																	}
@@ -7063,7 +7136,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																																			if (_ent != null)
 																																																				_ent.getCapability(
-																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																						null)
 																																																						.ifPresent(capability -> _retval
 																																																								.set(capability
@@ -7073,7 +7146,8 @@ public class BreadOvenCookingProcedure {
 																																																			return _retval.get();
 																																																		}
 																																																	}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																	_ent.getCapability(
+																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																			null).ifPresent(capability -> {
 																																																				if (capability instanceof IItemHandlerModifiable)
 																																																					((IItemHandlerModifiable) capability)
@@ -7088,7 +7162,8 @@ public class BreadOvenCookingProcedure {
 																																																if (_ent != null) {
 																																																	final int _slotid = 1;
 																																																	final int _amount = 1;
-																																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																	_ent.getCapability(
+																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																			null).ifPresent(capability -> {
 																																																				if (capability instanceof IItemHandlerModifiable) {
 																																																					ItemStack _stk = capability
@@ -7107,7 +7182,7 @@ public class BreadOvenCookingProcedure {
 																																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																																BlockState _bs = world.getBlockState(_bp);
 																																																if (_blockEntity != null)
-																																																	_blockEntity.getPersistentData()
+																																																	_blockEntity.getTileData()
 																																																			.putDouble("craftingProgress", 0);
 																																																if (world instanceof Level _level)
 																																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
@@ -7121,7 +7196,8 @@ public class BreadOvenCookingProcedure {
 																																																		ItemStack.EMPTY);
 																																																BlockEntity _ent = world.getBlockEntity(pos);
 																																																if (_ent != null)
-																																																	_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																	_ent.getCapability(
+																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																			null)
 																																																			.ifPresent(capability -> _retval
 																																																					.set(capability.getStackInSlot(slotid)
@@ -7137,7 +7213,8 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																																		if (_ent != null)
 																																																			_ent.getCapability(
-																																																					ForgeCapabilities.ITEM_HANDLER, null)
+																																																					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																					null)
 																																																					.ifPresent(capability -> _retval
 																																																							.set(capability
 																																																									.getStackInSlot(
@@ -7154,7 +7231,8 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																																		if (_ent != null)
 																																																			_ent.getCapability(
-																																																					ForgeCapabilities.ITEM_HANDLER, null)
+																																																					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																					null)
 																																																					.ifPresent(capability -> _retval
 																																																							.set(capability
 																																																									.getStackInSlot(
@@ -7172,7 +7250,8 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																																		if (_ent != null)
 																																																			_ent.getCapability(
-																																																					ForgeCapabilities.ITEM_HANDLER, null)
+																																																					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																					null)
 																																																					.ifPresent(capability -> _retval
 																																																							.set(capability
 																																																									.getStackInSlot(
@@ -7189,7 +7268,7 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity blockEntity = world
 																																																				.getBlockEntity(pos);
 																																																		if (blockEntity != null)
-																																																			return blockEntity.getPersistentData()
+																																																			return blockEntity.getTileData()
 																																																					.getDouble(tag);
 																																																		return -1;
 																																																	}
@@ -7200,8 +7279,8 @@ public class BreadOvenCookingProcedure {
 																																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																																BlockState _bs = world.getBlockState(_bp);
 																																																if (_blockEntity != null)
-																																																	_blockEntity.getPersistentData()
-																																																			.putDouble("craftingTime", 200);
+																																																	_blockEntity.getTileData().putDouble("craftingTime",
+																																																			200);
 																																																if (world instanceof Level _level)
 																																																	_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																															}
@@ -7210,7 +7289,7 @@ public class BreadOvenCookingProcedure {
 																																																BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																																BlockState _bs = world.getBlockState(_bp);
 																																																if (_blockEntity != null)
-																																																	_blockEntity.getPersistentData()
+																																																	_blockEntity.getTileData()
 																																																			.putDouble("craftingProgress", (new Object() {
 																																																				public double getValue(
 																																																						LevelAccessor world, BlockPos pos,
@@ -7218,8 +7297,7 @@ public class BreadOvenCookingProcedure {
 																																																					BlockEntity blockEntity = world
 																																																							.getBlockEntity(pos);
 																																																					if (blockEntity != null)
-																																																						return blockEntity
-																																																								.getPersistentData()
+																																																						return blockEntity.getTileData()
 																																																								.getDouble(tag);
 																																																					return -1;
 																																																				}
@@ -7233,8 +7311,7 @@ public class BreadOvenCookingProcedure {
 																																																		String tag) {
 																																																	BlockEntity blockEntity = world.getBlockEntity(pos);
 																																																	if (blockEntity != null)
-																																																		return blockEntity.getPersistentData()
-																																																				.getDouble(tag);
+																																																		return blockEntity.getTileData().getDouble(tag);
 																																																	return -1;
 																																																}
 																																															}.getValue(world, new BlockPos(x, y, z),
@@ -7245,7 +7322,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																																			if (_ent != null)
 																																																				_ent.getCapability(
-																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																						null)
 																																																						.ifPresent(capability -> _retval
 																																																								.set(capability
@@ -7261,7 +7338,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity blockEntity = world
 																																																					.getBlockEntity(pos);
 																																																			if (blockEntity != null)
-																																																				return blockEntity.getPersistentData()
+																																																				return blockEntity.getTileData()
 																																																						.getDouble(tag);
 																																																			return -1;
 																																																		}
@@ -7275,7 +7352,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																																			if (_ent != null)
 																																																				_ent.getCapability(
-																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																						null)
 																																																						.ifPresent(capability -> _retval
 																																																								.set(capability
@@ -7303,7 +7380,7 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(pos);
 																																																				if (_ent != null)
 																																																					_ent.getCapability(
-																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																							null).ifPresent(
 																																																									capability -> _retval
 																																																											.set(capability
@@ -7313,7 +7390,8 @@ public class BreadOvenCookingProcedure {
 																																																				return _retval.get();
 																																																			}
 																																																		}.getAmount(world, new BlockPos(x, y, z), 3)));
-																																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																		_ent.getCapability(
+																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																				null).ifPresent(capability -> {
 																																																					if (capability instanceof IItemHandlerModifiable)
 																																																						((IItemHandlerModifiable) capability)
@@ -7328,7 +7406,8 @@ public class BreadOvenCookingProcedure {
 																																																	if (_ent != null) {
 																																																		final int _slotid = 1;
 																																																		final int _amount = 1;
-																																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																		_ent.getCapability(
+																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																				null).ifPresent(capability -> {
 																																																					if (capability instanceof IItemHandlerModifiable) {
 																																																						ItemStack _stk = capability
@@ -7347,7 +7426,7 @@ public class BreadOvenCookingProcedure {
 																																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																																	BlockState _bs = world.getBlockState(_bp);
 																																																	if (_blockEntity != null)
-																																																		_blockEntity.getPersistentData()
+																																																		_blockEntity.getTileData()
 																																																				.putDouble("craftingProgress", 0);
 																																																	if (world instanceof Level _level)
 																																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
@@ -7361,7 +7440,8 @@ public class BreadOvenCookingProcedure {
 																																																			ItemStack.EMPTY);
 																																																	BlockEntity _ent = world.getBlockEntity(pos);
 																																																	if (_ent != null)
-																																																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER,
+																																																		_ent.getCapability(
+																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																				null)
 																																																				.ifPresent(capability -> _retval.set(
 																																																						capability.getStackInSlot(slotid)
@@ -7378,7 +7458,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																																			if (_ent != null)
 																																																				_ent.getCapability(
-																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																						null)
 																																																						.ifPresent(capability -> _retval
 																																																								.set(capability
@@ -7396,7 +7476,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																																			if (_ent != null)
 																																																				_ent.getCapability(
-																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																						null)
 																																																						.ifPresent(capability -> _retval
 																																																								.set(capability
@@ -7414,7 +7494,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity blockEntity = world
 																																																					.getBlockEntity(pos);
 																																																			if (blockEntity != null)
-																																																				return blockEntity.getPersistentData()
+																																																				return blockEntity.getTileData()
 																																																						.getDouble(tag);
 																																																			return -1;
 																																																		}
@@ -7425,7 +7505,7 @@ public class BreadOvenCookingProcedure {
 																																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																																	BlockState _bs = world.getBlockState(_bp);
 																																																	if (_blockEntity != null)
-																																																		_blockEntity.getPersistentData()
+																																																		_blockEntity.getTileData()
 																																																				.putDouble("craftingTime", 200);
 																																																	if (world instanceof Level _level)
 																																																		_level.sendBlockUpdated(_bp, _bs, _bs, 3);
@@ -7435,7 +7515,7 @@ public class BreadOvenCookingProcedure {
 																																																	BlockEntity _blockEntity = world.getBlockEntity(_bp);
 																																																	BlockState _bs = world.getBlockState(_bp);
 																																																	if (_blockEntity != null)
-																																																		_blockEntity.getPersistentData().putDouble(
+																																																		_blockEntity.getTileData().putDouble(
 																																																				"craftingProgress", (new Object() {
 																																																					public double getValue(
 																																																							LevelAccessor world,
@@ -7444,7 +7524,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (blockEntity != null)
 																																																							return blockEntity
-																																																									.getPersistentData()
+																																																									.getTileData()
 																																																									.getDouble(tag);
 																																																						return -1;
 																																																					}
@@ -7459,7 +7539,7 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity blockEntity = world
 																																																				.getBlockEntity(pos);
 																																																		if (blockEntity != null)
-																																																			return blockEntity.getPersistentData()
+																																																			return blockEntity.getTileData()
 																																																					.getDouble(tag);
 																																																		return -1;
 																																																	}
@@ -7473,7 +7553,7 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(pos);
 																																																				if (_ent != null)
 																																																					_ent.getCapability(
-																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																							null).ifPresent(
 																																																									capability -> _retval
 																																																											.set(capability
@@ -7489,7 +7569,7 @@ public class BreadOvenCookingProcedure {
 																																																				BlockEntity blockEntity = world
 																																																						.getBlockEntity(pos);
 																																																				if (blockEntity != null)
-																																																					return blockEntity.getPersistentData()
+																																																					return blockEntity.getTileData()
 																																																							.getDouble(tag);
 																																																				return -1;
 																																																			}
@@ -7512,7 +7592,7 @@ public class BreadOvenCookingProcedure {
 																																																							.getBlockEntity(pos);
 																																																					if (_ent != null)
 																																																						_ent.getCapability(
-																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																								null).ifPresent(
 																																																										capability -> _retval
 																																																												.set(capability
@@ -7524,8 +7604,8 @@ public class BreadOvenCookingProcedure {
 																																																			}.getAmount(world, new BlockPos(x, y, z),
 																																																					3)));
 																																																			_ent.getCapability(
-																																																					ForgeCapabilities.ITEM_HANDLER, null)
-																																																					.ifPresent(capability -> {
+																																																					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																					null).ifPresent(capability -> {
 																																																						if (capability instanceof IItemHandlerModifiable)
 																																																							((IItemHandlerModifiable) capability)
 																																																									.setStackInSlot(
@@ -7541,8 +7621,8 @@ public class BreadOvenCookingProcedure {
 																																																			final int _slotid = 1;
 																																																			final int _amount = 1;
 																																																			_ent.getCapability(
-																																																					ForgeCapabilities.ITEM_HANDLER, null)
-																																																					.ifPresent(capability -> {
+																																																					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																					null).ifPresent(capability -> {
 																																																						if (capability instanceof IItemHandlerModifiable) {
 																																																							ItemStack _stk = capability
 																																																									.getStackInSlot(
@@ -7563,7 +7643,7 @@ public class BreadOvenCookingProcedure {
 																																																				.getBlockEntity(_bp);
 																																																		BlockState _bs = world.getBlockState(_bp);
 																																																		if (_blockEntity != null)
-																																																			_blockEntity.getPersistentData()
+																																																			_blockEntity.getTileData()
 																																																					.putDouble("craftingProgress", 0);
 																																																		if (world instanceof Level _level)
 																																																			_level.sendBlockUpdated(_bp, _bs, _bs, 3);
@@ -7578,7 +7658,8 @@ public class BreadOvenCookingProcedure {
 																																																		BlockEntity _ent = world.getBlockEntity(pos);
 																																																		if (_ent != null)
 																																																			_ent.getCapability(
-																																																					ForgeCapabilities.ITEM_HANDLER, null)
+																																																					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
+																																																					null)
 																																																					.ifPresent(capability -> _retval
 																																																							.set(capability
 																																																									.getStackInSlot(
@@ -7598,7 +7679,7 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(pos);
 																																																				if (_ent != null)
 																																																					_ent.getCapability(
-																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																							null).ifPresent(
 																																																									capability -> _retval
 																																																											.set(capability
@@ -7618,7 +7699,7 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(pos);
 																																																				if (_ent != null)
 																																																					_ent.getCapability(
-																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																							null).ifPresent(
 																																																									capability -> _retval
 																																																											.set(capability
@@ -7640,7 +7721,7 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(pos);
 																																																				if (_ent != null)
 																																																					_ent.getCapability(
-																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																							null).ifPresent(
 																																																									capability -> _retval
 																																																											.set(capability
@@ -7658,7 +7739,7 @@ public class BreadOvenCookingProcedure {
 																																																				BlockEntity blockEntity = world
 																																																						.getBlockEntity(pos);
 																																																				if (blockEntity != null)
-																																																					return blockEntity.getPersistentData()
+																																																					return blockEntity.getTileData()
 																																																							.getDouble(tag);
 																																																				return -1;
 																																																			}
@@ -7670,7 +7751,7 @@ public class BreadOvenCookingProcedure {
 																																																				.getBlockEntity(_bp);
 																																																		BlockState _bs = world.getBlockState(_bp);
 																																																		if (_blockEntity != null)
-																																																			_blockEntity.getPersistentData()
+																																																			_blockEntity.getTileData()
 																																																					.putDouble("craftingTime", 200);
 																																																		if (world instanceof Level _level)
 																																																			_level.sendBlockUpdated(_bp, _bs, _bs, 3);
@@ -7681,7 +7762,7 @@ public class BreadOvenCookingProcedure {
 																																																				.getBlockEntity(_bp);
 																																																		BlockState _bs = world.getBlockState(_bp);
 																																																		if (_blockEntity != null)
-																																																			_blockEntity.getPersistentData().putDouble(
+																																																			_blockEntity.getTileData().putDouble(
 																																																					"craftingProgress", (new Object() {
 																																																						public double getValue(
 																																																								LevelAccessor world,
@@ -7691,7 +7772,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (blockEntity != null)
 																																																								return blockEntity
-																																																										.getPersistentData()
+																																																										.getTileData()
 																																																										.getDouble(tag);
 																																																							return -1;
 																																																						}
@@ -7707,7 +7788,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity blockEntity = world
 																																																					.getBlockEntity(pos);
 																																																			if (blockEntity != null)
-																																																				return blockEntity.getPersistentData()
+																																																				return blockEntity.getTileData()
 																																																						.getDouble(tag);
 																																																			return -1;
 																																																		}
@@ -7721,7 +7802,7 @@ public class BreadOvenCookingProcedure {
 																																																							.getBlockEntity(pos);
 																																																					if (_ent != null)
 																																																						_ent.getCapability(
-																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																								null).ifPresent(
 																																																										capability -> _retval
 																																																												.set(capability
@@ -7739,8 +7820,7 @@ public class BreadOvenCookingProcedure {
 																																																					BlockEntity blockEntity = world
 																																																							.getBlockEntity(pos);
 																																																					if (blockEntity != null)
-																																																						return blockEntity
-																																																								.getPersistentData()
+																																																						return blockEntity.getTileData()
 																																																								.getDouble(tag);
 																																																					return -1;
 																																																				}
@@ -7756,7 +7836,7 @@ public class BreadOvenCookingProcedure {
 																																																							.getBlockEntity(pos);
 																																																					if (_ent != null)
 																																																						_ent.getCapability(
-																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																								null).ifPresent(
 																																																										capability -> _retval
 																																																												.set(capability
@@ -7790,7 +7870,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (_ent != null)
 																																																									_ent.getCapability(
-																																																											ForgeCapabilities.ITEM_HANDLER,
+																																																											CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																											null)
 																																																											.ifPresent(
 																																																													capability -> _retval
@@ -7804,7 +7884,7 @@ public class BreadOvenCookingProcedure {
 																																																								new BlockPos(x, y, z),
 																																																								3)));
 																																																				_ent.getCapability(
-																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																						null).ifPresent(capability -> {
 																																																							if (capability instanceof IItemHandlerModifiable)
 																																																								((IItemHandlerModifiable) capability)
@@ -7821,7 +7901,7 @@ public class BreadOvenCookingProcedure {
 																																																				final int _slotid = 1;
 																																																				final int _amount = 1;
 																																																				_ent.getCapability(
-																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																						null).ifPresent(capability -> {
 																																																							if (capability instanceof IItemHandlerModifiable) {
 																																																								ItemStack _stk = capability
@@ -7843,7 +7923,7 @@ public class BreadOvenCookingProcedure {
 																																																					.getBlockEntity(_bp);
 																																																			BlockState _bs = world.getBlockState(_bp);
 																																																			if (_blockEntity != null)
-																																																				_blockEntity.getPersistentData()
+																																																				_blockEntity.getTileData()
 																																																						.putDouble("craftingProgress", 0);
 																																																			if (world instanceof Level _level)
 																																																				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
@@ -7858,7 +7938,7 @@ public class BreadOvenCookingProcedure {
 																																																			BlockEntity _ent = world.getBlockEntity(pos);
 																																																			if (_ent != null)
 																																																				_ent.getCapability(
-																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																						null)
 																																																						.ifPresent(capability -> _retval
 																																																								.set(capability
@@ -7879,7 +7959,7 @@ public class BreadOvenCookingProcedure {
 																																																							.getBlockEntity(pos);
 																																																					if (_ent != null)
 																																																						_ent.getCapability(
-																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																								null).ifPresent(
 																																																										capability -> _retval
 																																																												.set(capability
@@ -7900,7 +7980,7 @@ public class BreadOvenCookingProcedure {
 																																																							.getBlockEntity(pos);
 																																																					if (_ent != null)
 																																																						_ent.getCapability(
-																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																								null).ifPresent(
 																																																										capability -> _retval
 																																																												.set(capability
@@ -7920,8 +8000,7 @@ public class BreadOvenCookingProcedure {
 																																																					BlockEntity blockEntity = world
 																																																							.getBlockEntity(pos);
 																																																					if (blockEntity != null)
-																																																						return blockEntity
-																																																								.getPersistentData()
+																																																						return blockEntity.getTileData()
 																																																								.getDouble(tag);
 																																																					return -1;
 																																																				}
@@ -7933,7 +8012,7 @@ public class BreadOvenCookingProcedure {
 																																																					.getBlockEntity(_bp);
 																																																			BlockState _bs = world.getBlockState(_bp);
 																																																			if (_blockEntity != null)
-																																																				_blockEntity.getPersistentData()
+																																																				_blockEntity.getTileData()
 																																																						.putDouble("craftingTime", 200);
 																																																			if (world instanceof Level _level)
 																																																				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
@@ -7944,28 +8023,26 @@ public class BreadOvenCookingProcedure {
 																																																					.getBlockEntity(_bp);
 																																																			BlockState _bs = world.getBlockState(_bp);
 																																																			if (_blockEntity != null)
-																																																				_blockEntity.getPersistentData()
-																																																						.putDouble("craftingProgress",
-																																																								(new Object() {
-																																																									public double getValue(
-																																																											LevelAccessor world,
-																																																											BlockPos pos,
-																																																											String tag) {
-																																																										BlockEntity blockEntity = world
-																																																												.getBlockEntity(
-																																																														pos);
-																																																										if (blockEntity != null)
-																																																											return blockEntity
-																																																													.getPersistentData()
-																																																													.getDouble(
-																																																															tag);
-																																																										return -1;
-																																																									}
-																																																								}.getValue(world,
-																																																										new BlockPos(x, y,
-																																																												z),
-																																																										"craftingProgress")
-																																																										+ 1));
+																																																				_blockEntity.getTileData().putDouble(
+																																																						"craftingProgress",
+																																																						(new Object() {
+																																																							public double getValue(
+																																																									LevelAccessor world,
+																																																									BlockPos pos,
+																																																									String tag) {
+																																																								BlockEntity blockEntity = world
+																																																										.getBlockEntity(
+																																																												pos);
+																																																								if (blockEntity != null)
+																																																									return blockEntity
+																																																											.getTileData()
+																																																											.getDouble(
+																																																													tag);
+																																																								return -1;
+																																																							}
+																																																						}.getValue(world,
+																																																								new BlockPos(x, y, z),
+																																																								"craftingProgress") + 1));
 																																																			if (world instanceof Level _level)
 																																																				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 																																																		}
@@ -7975,7 +8052,7 @@ public class BreadOvenCookingProcedure {
 																																																				BlockEntity blockEntity = world
 																																																						.getBlockEntity(pos);
 																																																				if (blockEntity != null)
-																																																					return blockEntity.getPersistentData()
+																																																					return blockEntity.getTileData()
 																																																							.getDouble(tag);
 																																																				return -1;
 																																																			}
@@ -7991,7 +8068,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (_ent != null)
 																																																							_ent.getCapability(
-																																																									ForgeCapabilities.ITEM_HANDLER,
+																																																									CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																									null).ifPresent(
 																																																											capability -> _retval
 																																																													.set(capability
@@ -8010,7 +8087,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (blockEntity != null)
 																																																							return blockEntity
-																																																									.getPersistentData()
+																																																									.getTileData()
 																																																									.getDouble(tag);
 																																																						return -1;
 																																																					}
@@ -8037,7 +8114,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (_ent != null)
 																																																										_ent.getCapability(
-																																																												ForgeCapabilities.ITEM_HANDLER,
+																																																												CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																												null)
 																																																												.ifPresent(
 																																																														capability -> _retval
@@ -8051,7 +8128,7 @@ public class BreadOvenCookingProcedure {
 																																																									new BlockPos(x, y, z),
 																																																									3)));
 																																																					_ent.getCapability(
-																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																							null)
 																																																							.ifPresent(capability -> {
 																																																								if (capability instanceof IItemHandlerModifiable)
@@ -8069,7 +8146,7 @@ public class BreadOvenCookingProcedure {
 																																																					final int _slotid = 1;
 																																																					final int _amount = 1;
 																																																					_ent.getCapability(
-																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																							null)
 																																																							.ifPresent(capability -> {
 																																																								if (capability instanceof IItemHandlerModifiable) {
@@ -8092,9 +8169,8 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(_bp);
 																																																				BlockState _bs = world.getBlockState(_bp);
 																																																				if (_blockEntity != null)
-																																																					_blockEntity.getPersistentData()
-																																																							.putDouble("craftingProgress",
-																																																									0);
+																																																					_blockEntity.getTileData().putDouble(
+																																																							"craftingProgress", 0);
 																																																				if (world instanceof Level _level)
 																																																					_level.sendBlockUpdated(_bp, _bs, _bs,
 																																																							3);
@@ -8111,7 +8187,7 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(pos);
 																																																				if (_ent != null)
 																																																					_ent.getCapability(
-																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																							null).ifPresent(
 																																																									capability -> _retval
 																																																											.set(capability
@@ -8133,7 +8209,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (_ent != null)
 																																																							_ent.getCapability(
-																																																									ForgeCapabilities.ITEM_HANDLER,
+																																																									CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																									null).ifPresent(
 																																																											capability -> _retval
 																																																													.set(capability
@@ -8154,7 +8230,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (_ent != null)
 																																																							_ent.getCapability(
-																																																									ForgeCapabilities.ITEM_HANDLER,
+																																																									CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																									null).ifPresent(
 																																																											capability -> _retval
 																																																													.set(capability
@@ -8177,7 +8253,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (_ent != null)
 																																																							_ent.getCapability(
-																																																									ForgeCapabilities.ITEM_HANDLER,
+																																																									CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																									null).ifPresent(
 																																																											capability -> _retval
 																																																													.set(capability
@@ -8198,7 +8274,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (blockEntity != null)
 																																																							return blockEntity
-																																																									.getPersistentData()
+																																																									.getTileData()
 																																																									.getDouble(tag);
 																																																						return -1;
 																																																					}
@@ -8210,9 +8286,8 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(_bp);
 																																																				BlockState _bs = world.getBlockState(_bp);
 																																																				if (_blockEntity != null)
-																																																					_blockEntity.getPersistentData()
-																																																							.putDouble("craftingTime",
-																																																									200);
+																																																					_blockEntity.getTileData().putDouble(
+																																																							"craftingTime", 200);
 																																																				if (world instanceof Level _level)
 																																																					_level.sendBlockUpdated(_bp, _bs, _bs,
 																																																							3);
@@ -8223,29 +8298,27 @@ public class BreadOvenCookingProcedure {
 																																																						.getBlockEntity(_bp);
 																																																				BlockState _bs = world.getBlockState(_bp);
 																																																				if (_blockEntity != null)
-																																																					_blockEntity.getPersistentData()
-																																																							.putDouble("craftingProgress",
-																																																									(new Object() {
-																																																										public double getValue(
-																																																												LevelAccessor world,
-																																																												BlockPos pos,
-																																																												String tag) {
-																																																											BlockEntity blockEntity = world
-																																																													.getBlockEntity(
-																																																															pos);
-																																																											if (blockEntity != null)
-																																																												return blockEntity
-																																																														.getPersistentData()
-																																																														.getDouble(
-																																																																tag);
-																																																											return -1;
-																																																										}
-																																																									}.getValue(world,
-																																																											new BlockPos(
-																																																													x, y,
-																																																													z),
-																																																											"craftingProgress")
-																																																											+ 1));
+																																																					_blockEntity.getTileData().putDouble(
+																																																							"craftingProgress",
+																																																							(new Object() {
+																																																								public double getValue(
+																																																										LevelAccessor world,
+																																																										BlockPos pos,
+																																																										String tag) {
+																																																									BlockEntity blockEntity = world
+																																																											.getBlockEntity(
+																																																													pos);
+																																																									if (blockEntity != null)
+																																																										return blockEntity
+																																																												.getTileData()
+																																																												.getDouble(
+																																																														tag);
+																																																									return -1;
+																																																								}
+																																																							}.getValue(world,
+																																																									new BlockPos(x, y, z),
+																																																									"craftingProgress")
+																																																									+ 1));
 																																																				if (world instanceof Level _level)
 																																																					_level.sendBlockUpdated(_bp, _bs, _bs,
 																																																							3);
@@ -8257,8 +8330,7 @@ public class BreadOvenCookingProcedure {
 																																																					BlockEntity blockEntity = world
 																																																							.getBlockEntity(pos);
 																																																					if (blockEntity != null)
-																																																						return blockEntity
-																																																								.getPersistentData()
+																																																						return blockEntity.getTileData()
 																																																								.getDouble(tag);
 																																																					return -1;
 																																																				}
@@ -8275,7 +8347,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (_ent != null)
 																																																								_ent.getCapability(
-																																																										ForgeCapabilities.ITEM_HANDLER,
+																																																										CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																										null).ifPresent(
 																																																												capability -> _retval
 																																																														.set(capability
@@ -8296,7 +8368,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (blockEntity != null)
 																																																								return blockEntity
-																																																										.getPersistentData()
+																																																										.getTileData()
 																																																										.getDouble(tag);
 																																																							return -1;
 																																																						}
@@ -8314,7 +8386,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (_ent != null)
 																																																								_ent.getCapability(
-																																																										ForgeCapabilities.ITEM_HANDLER,
+																																																										CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																										null).ifPresent(
 																																																												capability -> _retval
 																																																														.set(capability
@@ -8349,7 +8421,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (_ent != null)
 																																																											_ent.getCapability(
-																																																													ForgeCapabilities.ITEM_HANDLER,
+																																																													CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																													null)
 																																																													.ifPresent(
 																																																															capability -> _retval
@@ -8365,7 +8437,7 @@ public class BreadOvenCookingProcedure {
 																																																												z),
 																																																										3)));
 																																																						_ent.getCapability(
-																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																								null)
 																																																								.ifPresent(capability -> {
 																																																									if (capability instanceof IItemHandlerModifiable)
@@ -8384,7 +8456,7 @@ public class BreadOvenCookingProcedure {
 																																																						final int _slotid = 1;
 																																																						final int _amount = 1;
 																																																						_ent.getCapability(
-																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																								null)
 																																																								.ifPresent(capability -> {
 																																																									if (capability instanceof IItemHandlerModifiable) {
@@ -8409,7 +8481,7 @@ public class BreadOvenCookingProcedure {
 																																																					BlockState _bs = world
 																																																							.getBlockState(_bp);
 																																																					if (_blockEntity != null)
-																																																						_blockEntity.getPersistentData()
+																																																						_blockEntity.getTileData()
 																																																								.putDouble(
 																																																										"craftingProgress",
 																																																										0);
@@ -8429,7 +8501,7 @@ public class BreadOvenCookingProcedure {
 																																																							.getBlockEntity(pos);
 																																																					if (_ent != null)
 																																																						_ent.getCapability(
-																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																								null).ifPresent(
 																																																										capability -> _retval
 																																																												.set(capability
@@ -8453,7 +8525,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (_ent != null)
 																																																								_ent.getCapability(
-																																																										ForgeCapabilities.ITEM_HANDLER,
+																																																										CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																										null).ifPresent(
 																																																												capability -> _retval
 																																																														.set(capability
@@ -8475,7 +8547,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (_ent != null)
 																																																								_ent.getCapability(
-																																																										ForgeCapabilities.ITEM_HANDLER,
+																																																										CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																										null).ifPresent(
 																																																												capability -> _retval
 																																																														.set(capability
@@ -8497,7 +8569,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (blockEntity != null)
 																																																								return blockEntity
-																																																										.getPersistentData()
+																																																										.getTileData()
 																																																										.getDouble(tag);
 																																																							return -1;
 																																																						}
@@ -8511,7 +8583,7 @@ public class BreadOvenCookingProcedure {
 																																																					BlockState _bs = world
 																																																							.getBlockState(_bp);
 																																																					if (_blockEntity != null)
-																																																						_blockEntity.getPersistentData()
+																																																						_blockEntity.getTileData()
 																																																								.putDouble("craftingTime",
 																																																										200);
 																																																					if (world instanceof Level _level)
@@ -8525,7 +8597,7 @@ public class BreadOvenCookingProcedure {
 																																																					BlockState _bs = world
 																																																							.getBlockState(_bp);
 																																																					if (_blockEntity != null)
-																																																						_blockEntity.getPersistentData()
+																																																						_blockEntity.getTileData()
 																																																								.putDouble(
 																																																										"craftingProgress",
 																																																										(new Object() {
@@ -8538,7 +8610,7 @@ public class BreadOvenCookingProcedure {
 																																																																pos);
 																																																												if (blockEntity != null)
 																																																													return blockEntity
-																																																															.getPersistentData()
+																																																															.getTileData()
 																																																															.getDouble(
 																																																																	tag);
 																																																												return -1;
@@ -8562,7 +8634,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (blockEntity != null)
 																																																							return blockEntity
-																																																									.getPersistentData()
+																																																									.getTileData()
 																																																									.getDouble(tag);
 																																																						return -1;
 																																																					}
@@ -8580,7 +8652,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (_ent != null)
 																																																									_ent.getCapability(
-																																																											ForgeCapabilities.ITEM_HANDLER,
+																																																											CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																											null)
 																																																											.ifPresent(
 																																																													capability -> _retval
@@ -8603,7 +8675,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (blockEntity != null)
 																																																									return blockEntity
-																																																											.getPersistentData()
+																																																											.getTileData()
 																																																											.getDouble(
 																																																													tag);
 																																																								return -1;
@@ -8634,7 +8706,7 @@ public class BreadOvenCookingProcedure {
 																																																															pos);
 																																																											if (_ent != null)
 																																																												_ent.getCapability(
-																																																														ForgeCapabilities.ITEM_HANDLER,
+																																																														CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																														null)
 																																																														.ifPresent(
 																																																																capability -> _retval
@@ -8651,7 +8723,7 @@ public class BreadOvenCookingProcedure {
 																																																													z),
 																																																											3)));
 																																																							_ent.getCapability(
-																																																									ForgeCapabilities.ITEM_HANDLER,
+																																																									CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																									null).ifPresent(
 																																																											capability -> {
 																																																												if (capability instanceof IItemHandlerModifiable)
@@ -8671,7 +8743,7 @@ public class BreadOvenCookingProcedure {
 																																																							final int _slotid = 1;
 																																																							final int _amount = 1;
 																																																							_ent.getCapability(
-																																																									ForgeCapabilities.ITEM_HANDLER,
+																																																									CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																									null).ifPresent(
 																																																											capability -> {
 																																																												if (capability instanceof IItemHandlerModifiable) {
@@ -8697,8 +8769,7 @@ public class BreadOvenCookingProcedure {
 																																																						BlockState _bs = world
 																																																								.getBlockState(_bp);
 																																																						if (_blockEntity != null)
-																																																							_blockEntity
-																																																									.getPersistentData()
+																																																							_blockEntity.getTileData()
 																																																									.putDouble(
 																																																											"craftingProgress",
 																																																											0);
@@ -8718,7 +8789,7 @@ public class BreadOvenCookingProcedure {
 																																																								.getBlockEntity(pos);
 																																																						if (_ent != null)
 																																																							_ent.getCapability(
-																																																									ForgeCapabilities.ITEM_HANDLER,
+																																																									CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																									null).ifPresent(
 																																																											capability -> _retval
 																																																													.set(capability
@@ -8743,7 +8814,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (_ent != null)
 																																																									_ent.getCapability(
-																																																											ForgeCapabilities.ITEM_HANDLER,
+																																																											CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																											null)
 																																																											.ifPresent(
 																																																													capability -> _retval
@@ -8768,7 +8839,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (_ent != null)
 																																																									_ent.getCapability(
-																																																											ForgeCapabilities.ITEM_HANDLER,
+																																																											CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																											null)
 																																																											.ifPresent(
 																																																													capability -> _retval
@@ -8794,7 +8865,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (_ent != null)
 																																																									_ent.getCapability(
-																																																											ForgeCapabilities.ITEM_HANDLER,
+																																																											CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																											null)
 																																																											.ifPresent(
 																																																													capability -> _retval
@@ -8818,7 +8889,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (blockEntity != null)
 																																																									return blockEntity
-																																																											.getPersistentData()
+																																																											.getTileData()
 																																																											.getDouble(
 																																																													tag);
 																																																								return -1;
@@ -8834,8 +8905,7 @@ public class BreadOvenCookingProcedure {
 																																																						BlockState _bs = world
 																																																								.getBlockState(_bp);
 																																																						if (_blockEntity != null)
-																																																							_blockEntity
-																																																									.getPersistentData()
+																																																							_blockEntity.getTileData()
 																																																									.putDouble(
 																																																											"craftingTime",
 																																																											200);
@@ -8851,8 +8921,7 @@ public class BreadOvenCookingProcedure {
 																																																						BlockState _bs = world
 																																																								.getBlockState(_bp);
 																																																						if (_blockEntity != null)
-																																																							_blockEntity
-																																																									.getPersistentData()
+																																																							_blockEntity.getTileData()
 																																																									.putDouble(
 																																																											"craftingProgress",
 																																																											(new Object() {
@@ -8865,7 +8934,7 @@ public class BreadOvenCookingProcedure {
 																																																																	pos);
 																																																													if (blockEntity != null)
 																																																														return blockEntity
-																																																																.getPersistentData()
+																																																																.getTileData()
 																																																																.getDouble(
 																																																																		tag);
 																																																													return -1;
@@ -8891,7 +8960,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (blockEntity != null)
 																																																								return blockEntity
-																																																										.getPersistentData()
+																																																										.getTileData()
 																																																										.getDouble(tag);
 																																																							return -1;
 																																																						}
@@ -8910,7 +8979,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (_ent != null)
 																																																										_ent.getCapability(
-																																																												ForgeCapabilities.ITEM_HANDLER,
+																																																												CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																												null)
 																																																												.ifPresent(
 																																																														capability -> _retval
@@ -8933,7 +9002,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (blockEntity != null)
 																																																										return blockEntity
-																																																												.getPersistentData()
+																																																												.getTileData()
 																																																												.getDouble(
 																																																														tag);
 																																																									return -1;
@@ -8953,7 +9022,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (_ent != null)
 																																																										_ent.getCapability(
-																																																												ForgeCapabilities.ITEM_HANDLER,
+																																																												CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																												null)
 																																																												.ifPresent(
 																																																														capability -> _retval
@@ -8993,7 +9062,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (_ent != null)
 																																																															_ent.getCapability(
-																																																																	ForgeCapabilities.ITEM_HANDLER,
+																																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																	null)
 																																																																	.ifPresent(
 																																																																			capability -> _retval
@@ -9012,7 +9081,7 @@ public class BreadOvenCookingProcedure {
 																																																																z),
 																																																														3)));
 																																																								_ent.getCapability(
-																																																										ForgeCapabilities.ITEM_HANDLER,
+																																																										CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																										null).ifPresent(
 																																																												capability -> {
 																																																													if (capability instanceof IItemHandlerModifiable)
@@ -9033,7 +9102,7 @@ public class BreadOvenCookingProcedure {
 																																																								final int _slotid = 1;
 																																																								final int _amount = 1;
 																																																								_ent.getCapability(
-																																																										ForgeCapabilities.ITEM_HANDLER,
+																																																										CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																										null).ifPresent(
 																																																												capability -> {
 																																																													if (capability instanceof IItemHandlerModifiable) {
@@ -9059,8 +9128,7 @@ public class BreadOvenCookingProcedure {
 																																																							BlockState _bs = world
 																																																									.getBlockState(_bp);
 																																																							if (_blockEntity != null)
-																																																								_blockEntity
-																																																										.getPersistentData()
+																																																								_blockEntity.getTileData()
 																																																										.putDouble(
 																																																												"craftingProgress",
 																																																												0);
@@ -9081,7 +9149,7 @@ public class BreadOvenCookingProcedure {
 																																																									.getBlockEntity(pos);
 																																																							if (_ent != null)
 																																																								_ent.getCapability(
-																																																										ForgeCapabilities.ITEM_HANDLER,
+																																																										CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																										null).ifPresent(
 																																																												capability -> _retval
 																																																														.set(capability
@@ -9106,7 +9174,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (_ent != null)
 																																																										_ent.getCapability(
-																																																												ForgeCapabilities.ITEM_HANDLER,
+																																																												CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																												null)
 																																																												.ifPresent(
 																																																														capability -> _retval
@@ -9131,7 +9199,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (_ent != null)
 																																																										_ent.getCapability(
-																																																												ForgeCapabilities.ITEM_HANDLER,
+																																																												CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																												null)
 																																																												.ifPresent(
 																																																														capability -> _retval
@@ -9156,7 +9224,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (blockEntity != null)
 																																																										return blockEntity
-																																																												.getPersistentData()
+																																																												.getTileData()
 																																																												.getDouble(
 																																																														tag);
 																																																									return -1;
@@ -9172,8 +9240,7 @@ public class BreadOvenCookingProcedure {
 																																																							BlockState _bs = world
 																																																									.getBlockState(_bp);
 																																																							if (_blockEntity != null)
-																																																								_blockEntity
-																																																										.getPersistentData()
+																																																								_blockEntity.getTileData()
 																																																										.putDouble(
 																																																												"craftingTime",
 																																																												200);
@@ -9189,8 +9256,7 @@ public class BreadOvenCookingProcedure {
 																																																							BlockState _bs = world
 																																																									.getBlockState(_bp);
 																																																							if (_blockEntity != null)
-																																																								_blockEntity
-																																																										.getPersistentData()
+																																																								_blockEntity.getTileData()
 																																																										.putDouble(
 																																																												"craftingProgress",
 																																																												(new Object() {
@@ -9203,7 +9269,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (blockEntity != null)
 																																																															return blockEntity
-																																																																	.getPersistentData()
+																																																																	.getTileData()
 																																																																	.getDouble(
 																																																																			tag);
 																																																														return -1;
@@ -9230,7 +9296,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (blockEntity != null)
 																																																									return blockEntity
-																																																											.getPersistentData()
+																																																											.getTileData()
 																																																											.getDouble(
 																																																													tag);
 																																																								return -1;
@@ -9250,7 +9316,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (_ent != null)
 																																																											_ent.getCapability(
-																																																													ForgeCapabilities.ITEM_HANDLER,
+																																																													CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																													null)
 																																																													.ifPresent(
 																																																															capability -> _retval
@@ -9275,7 +9341,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (blockEntity != null)
 																																																											return blockEntity
-																																																													.getPersistentData()
+																																																													.getTileData()
 																																																													.getDouble(
 																																																															tag);
 																																																										return -1;
@@ -9310,7 +9376,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (_ent != null)
 																																																																_ent.getCapability(
-																																																																		ForgeCapabilities.ITEM_HANDLER,
+																																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																		null)
 																																																																		.ifPresent(
 																																																																				capability -> _retval
@@ -9329,7 +9395,7 @@ public class BreadOvenCookingProcedure {
 																																																																	z),
 																																																															3)));
 																																																									_ent.getCapability(
-																																																											ForgeCapabilities.ITEM_HANDLER,
+																																																											CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																											null)
 																																																											.ifPresent(
 																																																													capability -> {
@@ -9352,7 +9418,7 @@ public class BreadOvenCookingProcedure {
 																																																									final int _slotid = 1;
 																																																									final int _amount = 1;
 																																																									_ent.getCapability(
-																																																											ForgeCapabilities.ITEM_HANDLER,
+																																																											CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																											null)
 																																																											.ifPresent(
 																																																													capability -> {
@@ -9382,7 +9448,7 @@ public class BreadOvenCookingProcedure {
 																																																												_bp);
 																																																								if (_blockEntity != null)
 																																																									_blockEntity
-																																																											.getPersistentData()
+																																																											.getTileData()
 																																																											.putDouble(
 																																																													"craftingProgress",
 																																																													0);
@@ -9405,7 +9471,7 @@ public class BreadOvenCookingProcedure {
 																																																												pos);
 																																																								if (_ent != null)
 																																																									_ent.getCapability(
-																																																											ForgeCapabilities.ITEM_HANDLER,
+																																																											CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																											null)
 																																																											.ifPresent(
 																																																													capability -> _retval
@@ -9431,7 +9497,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (_ent != null)
 																																																											_ent.getCapability(
-																																																													ForgeCapabilities.ITEM_HANDLER,
+																																																													CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																													null)
 																																																													.ifPresent(
 																																																															capability -> _retval
@@ -9458,7 +9524,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (_ent != null)
 																																																											_ent.getCapability(
-																																																													ForgeCapabilities.ITEM_HANDLER,
+																																																													CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																													null)
 																																																													.ifPresent(
 																																																															capability -> _retval
@@ -9487,7 +9553,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (_ent != null)
 																																																											_ent.getCapability(
-																																																													ForgeCapabilities.ITEM_HANDLER,
+																																																													CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																													null)
 																																																													.ifPresent(
 																																																															capability -> _retval
@@ -9514,7 +9580,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (blockEntity != null)
 																																																											return blockEntity
-																																																													.getPersistentData()
+																																																													.getTileData()
 																																																													.getDouble(
 																																																															tag);
 																																																										return -1;
@@ -9534,7 +9600,7 @@ public class BreadOvenCookingProcedure {
 																																																												_bp);
 																																																								if (_blockEntity != null)
 																																																									_blockEntity
-																																																											.getPersistentData()
+																																																											.getTileData()
 																																																											.putDouble(
 																																																													"craftingTime",
 																																																													200);
@@ -9554,7 +9620,7 @@ public class BreadOvenCookingProcedure {
 																																																												_bp);
 																																																								if (_blockEntity != null)
 																																																									_blockEntity
-																																																											.getPersistentData()
+																																																											.getTileData()
 																																																											.putDouble(
 																																																													"craftingProgress",
 																																																													(new Object() {
@@ -9567,7 +9633,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (blockEntity != null)
 																																																																return blockEntity
-																																																																		.getPersistentData()
+																																																																		.getTileData()
 																																																																		.getDouble(
 																																																																				tag);
 																																																															return -1;
@@ -9595,7 +9661,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (blockEntity != null)
 																																																										return blockEntity
-																																																												.getPersistentData()
+																																																												.getTileData()
 																																																												.getDouble(
 																																																														tag);
 																																																									return -1;
@@ -9615,7 +9681,7 @@ public class BreadOvenCookingProcedure {
 																																																															pos);
 																																																											if (_ent != null)
 																																																												_ent.getCapability(
-																																																														ForgeCapabilities.ITEM_HANDLER,
+																																																														CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																														null)
 																																																														.ifPresent(
 																																																																capability -> _retval
@@ -9641,7 +9707,7 @@ public class BreadOvenCookingProcedure {
 																																																															pos);
 																																																											if (blockEntity != null)
 																																																												return blockEntity
-																																																														.getPersistentData()
+																																																														.getTileData()
 																																																														.getDouble(
 																																																																tag);
 																																																											return -1;
@@ -9663,7 +9729,7 @@ public class BreadOvenCookingProcedure {
 																																																															pos);
 																																																											if (_ent != null)
 																																																												_ent.getCapability(
-																																																														ForgeCapabilities.ITEM_HANDLER,
+																																																														CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																														null)
 																																																														.ifPresent(
 																																																																capability -> _retval
@@ -9707,7 +9773,7 @@ public class BreadOvenCookingProcedure {
 																																																																				pos);
 																																																																if (_ent != null)
 																																																																	_ent.getCapability(
-																																																																			ForgeCapabilities.ITEM_HANDLER,
+																																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																			null)
 																																																																			.ifPresent(
 																																																																					capability -> _retval
@@ -9726,7 +9792,7 @@ public class BreadOvenCookingProcedure {
 																																																																		z),
 																																																																3)));
 																																																										_ent.getCapability(
-																																																												ForgeCapabilities.ITEM_HANDLER,
+																																																												CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																												null)
 																																																												.ifPresent(
 																																																														capability -> {
@@ -9749,7 +9815,7 @@ public class BreadOvenCookingProcedure {
 																																																										final int _slotid = 1;
 																																																										final int _amount = 1;
 																																																										_ent.getCapability(
-																																																												ForgeCapabilities.ITEM_HANDLER,
+																																																												CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																												null)
 																																																												.ifPresent(
 																																																														capability -> {
@@ -9780,7 +9846,7 @@ public class BreadOvenCookingProcedure {
 																																																													_bp);
 																																																									if (_blockEntity != null)
 																																																										_blockEntity
-																																																												.getPersistentData()
+																																																												.getTileData()
 																																																												.putDouble(
 																																																														"craftingProgress",
 																																																														0);
@@ -9803,7 +9869,7 @@ public class BreadOvenCookingProcedure {
 																																																													pos);
 																																																									if (_ent != null)
 																																																										_ent.getCapability(
-																																																												ForgeCapabilities.ITEM_HANDLER,
+																																																												CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																												null)
 																																																												.ifPresent(
 																																																														capability -> _retval
@@ -9830,7 +9896,7 @@ public class BreadOvenCookingProcedure {
 																																																															pos);
 																																																											if (_ent != null)
 																																																												_ent.getCapability(
-																																																														ForgeCapabilities.ITEM_HANDLER,
+																																																														CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																														null)
 																																																														.ifPresent(
 																																																																capability -> _retval
@@ -9858,7 +9924,7 @@ public class BreadOvenCookingProcedure {
 																																																															pos);
 																																																											if (_ent != null)
 																																																												_ent.getCapability(
-																																																														ForgeCapabilities.ITEM_HANDLER,
+																																																														CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																														null)
 																																																														.ifPresent(
 																																																																capability -> _retval
@@ -9886,7 +9952,7 @@ public class BreadOvenCookingProcedure {
 																																																															pos);
 																																																											if (blockEntity != null)
 																																																												return blockEntity
-																																																														.getPersistentData()
+																																																														.getTileData()
 																																																														.getDouble(
 																																																																tag);
 																																																											return -1;
@@ -9908,7 +9974,7 @@ public class BreadOvenCookingProcedure {
 																																																													_bp);
 																																																									if (_blockEntity != null)
 																																																										_blockEntity
-																																																												.getPersistentData()
+																																																												.getTileData()
 																																																												.putDouble(
 																																																														"craftingTime",
 																																																														200);
@@ -9929,7 +9995,7 @@ public class BreadOvenCookingProcedure {
 																																																													_bp);
 																																																									if (_blockEntity != null)
 																																																										_blockEntity
-																																																												.getPersistentData()
+																																																												.getTileData()
 																																																												.putDouble(
 																																																														"craftingProgress",
 																																																														(new Object() {
@@ -9942,7 +10008,7 @@ public class BreadOvenCookingProcedure {
 																																																																				pos);
 																																																																if (blockEntity != null)
 																																																																	return blockEntity
-																																																																			.getPersistentData()
+																																																																			.getTileData()
 																																																																			.getDouble(
 																																																																					tag);
 																																																																return -1;
@@ -9970,7 +10036,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (blockEntity != null)
 																																																											return blockEntity
-																																																													.getPersistentData()
+																																																													.getTileData()
 																																																													.getDouble(
 																																																															tag);
 																																																										return -1;
@@ -9991,7 +10057,7 @@ public class BreadOvenCookingProcedure {
 																																																																pos);
 																																																												if (_ent != null)
 																																																													_ent.getCapability(
-																																																															ForgeCapabilities.ITEM_HANDLER,
+																																																															CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																															null)
 																																																															.ifPresent(
 																																																																	capability -> _retval
@@ -10018,7 +10084,7 @@ public class BreadOvenCookingProcedure {
 																																																																pos);
 																																																												if (blockEntity != null)
 																																																													return blockEntity
-																																																															.getPersistentData()
+																																																															.getTileData()
 																																																															.getDouble(
 																																																																	tag);
 																																																												return -1;
@@ -10055,7 +10121,7 @@ public class BreadOvenCookingProcedure {
 																																																																					pos);
 																																																																	if (_ent != null)
 																																																																		_ent.getCapability(
-																																																																				ForgeCapabilities.ITEM_HANDLER,
+																																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																				null)
 																																																																				.ifPresent(
 																																																																						capability -> _retval
@@ -10074,7 +10140,7 @@ public class BreadOvenCookingProcedure {
 																																																																			z),
 																																																																	3)));
 																																																											_ent.getCapability(
-																																																													ForgeCapabilities.ITEM_HANDLER,
+																																																													CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																													null)
 																																																													.ifPresent(
 																																																															capability -> {
@@ -10097,7 +10163,7 @@ public class BreadOvenCookingProcedure {
 																																																											final int _slotid = 1;
 																																																											final int _amount = 1;
 																																																											_ent.getCapability(
-																																																													ForgeCapabilities.ITEM_HANDLER,
+																																																													CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																													null)
 																																																													.ifPresent(
 																																																															capability -> {
@@ -10128,7 +10194,7 @@ public class BreadOvenCookingProcedure {
 																																																														_bp);
 																																																										if (_blockEntity != null)
 																																																											_blockEntity
-																																																													.getPersistentData()
+																																																													.getTileData()
 																																																													.putDouble(
 																																																															"craftingProgress",
 																																																															0);
@@ -10151,7 +10217,7 @@ public class BreadOvenCookingProcedure {
 																																																														pos);
 																																																										if (blockEntity != null)
 																																																											return blockEntity
-																																																													.getPersistentData()
+																																																													.getTileData()
 																																																													.getDouble(
 																																																															tag);
 																																																										return -1;
@@ -10172,7 +10238,7 @@ public class BreadOvenCookingProcedure {
 																																																																pos);
 																																																												if (_ent != null)
 																																																													_ent.getCapability(
-																																																															ForgeCapabilities.ITEM_HANDLER,
+																																																															CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																															null)
 																																																															.ifPresent(
 																																																																	capability -> _retval
@@ -10201,7 +10267,7 @@ public class BreadOvenCookingProcedure {
 																																																														_bp);
 																																																										if (_blockEntity != null)
 																																																											_blockEntity
-																																																													.getPersistentData()
+																																																													.getTileData()
 																																																													.putDouble(
 																																																															"craftingProgress",
 																																																															((new Object() {
@@ -10214,7 +10280,7 @@ public class BreadOvenCookingProcedure {
 																																																																					pos);
 																																																																	if (blockEntity != null)
 																																																																		return blockEntity
-																																																																				.getPersistentData()
+																																																																				.getTileData()
 																																																																				.getDouble(
 																																																																						tag);
 																																																																	return -1;
@@ -10247,7 +10313,7 @@ public class BreadOvenCookingProcedure {
 																																																															pos);
 																																																											if (_ent != null)
 																																																												_ent.getCapability(
-																																																														ForgeCapabilities.ITEM_HANDLER,
+																																																														CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																														null)
 																																																														.ifPresent(
 																																																																capability -> _retval
@@ -10277,7 +10343,7 @@ public class BreadOvenCookingProcedure {
 																																																																	pos);
 																																																													if (_ent != null)
 																																																														_ent.getCapability(
-																																																																ForgeCapabilities.ITEM_HANDLER,
+																																																																CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																null)
 																																																																.ifPresent(
 																																																																		capability -> _retval
@@ -10307,7 +10373,7 @@ public class BreadOvenCookingProcedure {
 																																																																	pos);
 																																																													if (_ent != null)
 																																																														_ent.getCapability(
-																																																																ForgeCapabilities.ITEM_HANDLER,
+																																																																CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																null)
 																																																																.ifPresent(
 																																																																		capability -> _retval
@@ -10339,7 +10405,7 @@ public class BreadOvenCookingProcedure {
 																																																																	pos);
 																																																													if (_ent != null)
 																																																														_ent.getCapability(
-																																																																ForgeCapabilities.ITEM_HANDLER,
+																																																																CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																null)
 																																																																.ifPresent(
 																																																																		capability -> _retval
@@ -10369,7 +10435,7 @@ public class BreadOvenCookingProcedure {
 																																																																	pos);
 																																																													if (blockEntity != null)
 																																																														return blockEntity
-																																																																.getPersistentData()
+																																																																.getTileData()
 																																																																.getDouble(
 																																																																		tag);
 																																																													return -1;
@@ -10394,7 +10460,7 @@ public class BreadOvenCookingProcedure {
 																																																															_bp);
 																																																											if (_blockEntity != null)
 																																																												_blockEntity
-																																																														.getPersistentData()
+																																																														.getTileData()
 																																																														.putDouble(
 																																																																"craftingTime",
 																																																																200);
@@ -10418,7 +10484,7 @@ public class BreadOvenCookingProcedure {
 																																																															_bp);
 																																																											if (_blockEntity != null)
 																																																												_blockEntity
-																																																														.getPersistentData()
+																																																														.getTileData()
 																																																														.putDouble(
 																																																																"craftingProgress",
 																																																																(new Object() {
@@ -10431,7 +10497,7 @@ public class BreadOvenCookingProcedure {
 																																																																						pos);
 																																																																		if (blockEntity != null)
 																																																																			return blockEntity
-																																																																					.getPersistentData()
+																																																																					.getTileData()
 																																																																					.getDouble(
 																																																																							tag);
 																																																																		return -1;
@@ -10461,7 +10527,7 @@ public class BreadOvenCookingProcedure {
 																																																																pos);
 																																																												if (blockEntity != null)
 																																																													return blockEntity
-																																																															.getPersistentData()
+																																																															.getTileData()
 																																																															.getDouble(
 																																																																	tag);
 																																																												return -1;
@@ -10484,7 +10550,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (_ent != null)
 																																																															_ent.getCapability(
-																																																																	ForgeCapabilities.ITEM_HANDLER,
+																																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																	null)
 																																																																	.ifPresent(
 																																																																			capability -> _retval
@@ -10512,7 +10578,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (blockEntity != null)
 																																																															return blockEntity
-																																																																	.getPersistentData()
+																																																																	.getTileData()
 																																																																	.getDouble(
 																																																																			tag);
 																																																														return -1;
@@ -10536,7 +10602,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (_ent != null)
 																																																															_ent.getCapability(
-																																																																	ForgeCapabilities.ITEM_HANDLER,
+																																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																	null)
 																																																																	.ifPresent(
 																																																																			capability -> _retval
@@ -10582,7 +10648,7 @@ public class BreadOvenCookingProcedure {
 																																																																							pos);
 																																																																			if (_ent != null)
 																																																																				_ent.getCapability(
-																																																																						ForgeCapabilities.ITEM_HANDLER,
+																																																																						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																						null)
 																																																																						.ifPresent(
 																																																																								capability -> _retval
@@ -10601,7 +10667,7 @@ public class BreadOvenCookingProcedure {
 																																																																					z),
 																																																																			3)));
 																																																													_ent.getCapability(
-																																																															ForgeCapabilities.ITEM_HANDLER,
+																																																															CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																															null)
 																																																															.ifPresent(
 																																																																	capability -> {
@@ -10624,7 +10690,7 @@ public class BreadOvenCookingProcedure {
 																																																													final int _slotid = 1;
 																																																													final int _amount = 1;
 																																																													_ent.getCapability(
-																																																															ForgeCapabilities.ITEM_HANDLER,
+																																																															CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																															null)
 																																																															.ifPresent(
 																																																																	capability -> {
@@ -10657,7 +10723,7 @@ public class BreadOvenCookingProcedure {
 																																																																_bp);
 																																																												if (_blockEntity != null)
 																																																													_blockEntity
-																																																															.getPersistentData()
+																																																															.getTileData()
 																																																															.putDouble(
 																																																																	"craftingProgress",
 																																																																	0);
@@ -10682,7 +10748,7 @@ public class BreadOvenCookingProcedure {
 																																																																pos);
 																																																												if (_ent != null)
 																																																													_ent.getCapability(
-																																																															ForgeCapabilities.ITEM_HANDLER,
+																																																															CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																															null)
 																																																															.ifPresent(
 																																																																	capability -> _retval
@@ -10714,7 +10780,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (_ent != null)
 																																																															_ent.getCapability(
-																																																																	ForgeCapabilities.ITEM_HANDLER,
+																																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																	null)
 																																																																	.ifPresent(
 																																																																			capability -> _retval
@@ -10744,7 +10810,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (_ent != null)
 																																																															_ent.getCapability(
-																																																																	ForgeCapabilities.ITEM_HANDLER,
+																																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																	null)
 																																																																	.ifPresent(
 																																																																			capability -> _retval
@@ -10774,7 +10840,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (blockEntity != null)
 																																																															return blockEntity
-																																																																	.getPersistentData()
+																																																																	.getTileData()
 																																																																	.getDouble(
 																																																																			tag);
 																																																														return -1;
@@ -10800,7 +10866,7 @@ public class BreadOvenCookingProcedure {
 																																																																_bp);
 																																																												if (_blockEntity != null)
 																																																													_blockEntity
-																																																															.getPersistentData()
+																																																															.getTileData()
 																																																															.putDouble(
 																																																																	"craftingTime",
 																																																																	200);
@@ -10825,7 +10891,7 @@ public class BreadOvenCookingProcedure {
 																																																																_bp);
 																																																												if (_blockEntity != null)
 																																																													_blockEntity
-																																																															.getPersistentData()
+																																																															.getTileData()
 																																																															.putDouble(
 																																																																	"craftingProgress",
 																																																																	(new Object() {
@@ -10838,7 +10904,7 @@ public class BreadOvenCookingProcedure {
 																																																																							pos);
 																																																																			if (blockEntity != null)
 																																																																				return blockEntity
-																																																																						.getPersistentData()
+																																																																						.getTileData()
 																																																																						.getDouble(
 																																																																								tag);
 																																																																			return -1;
@@ -10868,7 +10934,7 @@ public class BreadOvenCookingProcedure {
 																																																																	pos);
 																																																													if (blockEntity != null)
 																																																														return blockEntity
-																																																																.getPersistentData()
+																																																																.getTileData()
 																																																																.getDouble(
 																																																																		tag);
 																																																													return -1;
@@ -10892,7 +10958,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (_ent != null)
 																																																																_ent.getCapability(
-																																																																		ForgeCapabilities.ITEM_HANDLER,
+																																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																		null)
 																																																																		.ifPresent(
 																																																																				capability -> _retval
@@ -10920,7 +10986,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (blockEntity != null)
 																																																																return blockEntity
-																																																																		.getPersistentData()
+																																																																		.getTileData()
 																																																																		.getDouble(
 																																																																				tag);
 																																																															return -1;
@@ -10958,7 +11024,7 @@ public class BreadOvenCookingProcedure {
 																																																																								pos);
 																																																																				if (_ent != null)
 																																																																					_ent.getCapability(
-																																																																							ForgeCapabilities.ITEM_HANDLER,
+																																																																							CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																							null)
 																																																																							.ifPresent(
 																																																																									capability -> _retval
@@ -10977,7 +11043,7 @@ public class BreadOvenCookingProcedure {
 																																																																						z),
 																																																																				3)));
 																																																														_ent.getCapability(
-																																																																ForgeCapabilities.ITEM_HANDLER,
+																																																																CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																null)
 																																																																.ifPresent(
 																																																																		capability -> {
@@ -11000,7 +11066,7 @@ public class BreadOvenCookingProcedure {
 																																																														final int _slotid = 1;
 																																																														final int _amount = 1;
 																																																														_ent.getCapability(
-																																																																ForgeCapabilities.ITEM_HANDLER,
+																																																																CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																null)
 																																																																.ifPresent(
 																																																																		capability -> {
@@ -11033,7 +11099,7 @@ public class BreadOvenCookingProcedure {
 																																																																	_bp);
 																																																													if (_blockEntity != null)
 																																																														_blockEntity
-																																																																.getPersistentData()
+																																																																.getTileData()
 																																																																.putDouble(
 																																																																		"craftingProgress",
 																																																																		0);
@@ -11058,7 +11124,7 @@ public class BreadOvenCookingProcedure {
 																																																																	pos);
 																																																													if (_ent != null)
 																																																														_ent.getCapability(
-																																																																ForgeCapabilities.ITEM_HANDLER,
+																																																																CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																null)
 																																																																.ifPresent(
 																																																																		capability -> _retval
@@ -11090,7 +11156,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (_ent != null)
 																																																																_ent.getCapability(
-																																																																		ForgeCapabilities.ITEM_HANDLER,
+																																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																		null)
 																																																																		.ifPresent(
 																																																																				capability -> _retval
@@ -11120,7 +11186,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (_ent != null)
 																																																																_ent.getCapability(
-																																																																		ForgeCapabilities.ITEM_HANDLER,
+																																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																		null)
 																																																																		.ifPresent(
 																																																																				capability -> _retval
@@ -11152,7 +11218,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (_ent != null)
 																																																																_ent.getCapability(
-																																																																		ForgeCapabilities.ITEM_HANDLER,
+																																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																		null)
 																																																																		.ifPresent(
 																																																																				capability -> _retval
@@ -11182,7 +11248,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (blockEntity != null)
 																																																																return blockEntity
-																																																																		.getPersistentData()
+																																																																		.getTileData()
 																																																																		.getDouble(
 																																																																				tag);
 																																																															return -1;
@@ -11208,7 +11274,7 @@ public class BreadOvenCookingProcedure {
 																																																																	_bp);
 																																																													if (_blockEntity != null)
 																																																														_blockEntity
-																																																																.getPersistentData()
+																																																																.getTileData()
 																																																																.putDouble(
 																																																																		"craftingTime",
 																																																																		200);
@@ -11233,7 +11299,7 @@ public class BreadOvenCookingProcedure {
 																																																																	_bp);
 																																																													if (_blockEntity != null)
 																																																														_blockEntity
-																																																																.getPersistentData()
+																																																																.getTileData()
 																																																																.putDouble(
 																																																																		"craftingProgress",
 																																																																		(new Object() {
@@ -11246,7 +11312,7 @@ public class BreadOvenCookingProcedure {
 																																																																								pos);
 																																																																				if (blockEntity != null)
 																																																																					return blockEntity
-																																																																							.getPersistentData()
+																																																																							.getTileData()
 																																																																							.getDouble(
 																																																																									tag);
 																																																																				return -1;
@@ -11276,7 +11342,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (blockEntity != null)
 																																																															return blockEntity
-																																																																	.getPersistentData()
+																																																																	.getTileData()
 																																																																	.getDouble(
 																																																																			tag);
 																																																														return -1;
@@ -11300,7 +11366,7 @@ public class BreadOvenCookingProcedure {
 																																																																				pos);
 																																																																if (_ent != null)
 																																																																	_ent.getCapability(
-																																																																			ForgeCapabilities.ITEM_HANDLER,
+																																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																			null)
 																																																																			.ifPresent(
 																																																																					capability -> _retval
@@ -11328,7 +11394,7 @@ public class BreadOvenCookingProcedure {
 																																																																				pos);
 																																																																if (blockEntity != null)
 																																																																	return blockEntity
-																																																																			.getPersistentData()
+																																																																			.getTileData()
 																																																																			.getDouble(
 																																																																					tag);
 																																																																return -1;
@@ -11352,7 +11418,7 @@ public class BreadOvenCookingProcedure {
 																																																																				pos);
 																																																																if (_ent != null)
 																																																																	_ent.getCapability(
-																																																																			ForgeCapabilities.ITEM_HANDLER,
+																																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																			null)
 																																																																			.ifPresent(
 																																																																					capability -> _retval
@@ -11398,7 +11464,7 @@ public class BreadOvenCookingProcedure {
 																																																																									pos);
 																																																																					if (_ent != null)
 																																																																						_ent.getCapability(
-																																																																								ForgeCapabilities.ITEM_HANDLER,
+																																																																								CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																								null)
 																																																																								.ifPresent(
 																																																																										capability -> _retval
@@ -11417,7 +11483,7 @@ public class BreadOvenCookingProcedure {
 																																																																							z),
 																																																																					3)));
 																																																															_ent.getCapability(
-																																																																	ForgeCapabilities.ITEM_HANDLER,
+																																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																	null)
 																																																																	.ifPresent(
 																																																																			capability -> {
@@ -11440,7 +11506,7 @@ public class BreadOvenCookingProcedure {
 																																																															final int _slotid = 1;
 																																																															final int _amount = 1;
 																																																															_ent.getCapability(
-																																																																	ForgeCapabilities.ITEM_HANDLER,
+																																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																	null)
 																																																																	.ifPresent(
 																																																																			capability -> {
@@ -11473,7 +11539,7 @@ public class BreadOvenCookingProcedure {
 																																																																		_bp);
 																																																														if (_blockEntity != null)
 																																																															_blockEntity
-																																																																	.getPersistentData()
+																																																																	.getTileData()
 																																																																	.putDouble(
 																																																																			"craftingProgress",
 																																																																			0);
@@ -11498,7 +11564,7 @@ public class BreadOvenCookingProcedure {
 																																																																		pos);
 																																																														if (_ent != null)
 																																																															_ent.getCapability(
-																																																																	ForgeCapabilities.ITEM_HANDLER,
+																																																																	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																	null)
 																																																																	.ifPresent(
 																																																																			capability -> _retval
@@ -11530,7 +11596,7 @@ public class BreadOvenCookingProcedure {
 																																																																				pos);
 																																																																if (_ent != null)
 																																																																	_ent.getCapability(
-																																																																			ForgeCapabilities.ITEM_HANDLER,
+																																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																			null)
 																																																																			.ifPresent(
 																																																																					capability -> _retval
@@ -11560,7 +11626,7 @@ public class BreadOvenCookingProcedure {
 																																																																				pos);
 																																																																if (_ent != null)
 																																																																	_ent.getCapability(
-																																																																			ForgeCapabilities.ITEM_HANDLER,
+																																																																			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																			null)
 																																																																			.ifPresent(
 																																																																					capability -> _retval
@@ -11590,7 +11656,7 @@ public class BreadOvenCookingProcedure {
 																																																																				pos);
 																																																																if (blockEntity != null)
 																																																																	return blockEntity
-																																																																			.getPersistentData()
+																																																																			.getTileData()
 																																																																			.getDouble(
 																																																																					tag);
 																																																																return -1;
@@ -11616,7 +11682,7 @@ public class BreadOvenCookingProcedure {
 																																																																		_bp);
 																																																														if (_blockEntity != null)
 																																																															_blockEntity
-																																																																	.getPersistentData()
+																																																																	.getTileData()
 																																																																	.putDouble(
 																																																																			"craftingTime",
 																																																																			200);
@@ -11641,7 +11707,7 @@ public class BreadOvenCookingProcedure {
 																																																																		_bp);
 																																																														if (_blockEntity != null)
 																																																															_blockEntity
-																																																																	.getPersistentData()
+																																																																	.getTileData()
 																																																																	.putDouble(
 																																																																			"craftingProgress",
 																																																																			(new Object() {
@@ -11654,7 +11720,7 @@ public class BreadOvenCookingProcedure {
 																																																																									pos);
 																																																																					if (blockEntity != null)
 																																																																						return blockEntity
-																																																																								.getPersistentData()
+																																																																								.getTileData()
 																																																																								.getDouble(
 																																																																										tag);
 																																																																					return -1;
@@ -11684,7 +11750,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (blockEntity != null)
 																																																																return blockEntity
-																																																																		.getPersistentData()
+																																																																		.getTileData()
 																																																																		.getDouble(
 																																																																				tag);
 																																																															return -1;
@@ -11708,7 +11774,7 @@ public class BreadOvenCookingProcedure {
 																																																																					pos);
 																																																																	if (_ent != null)
 																																																																		_ent.getCapability(
-																																																																				ForgeCapabilities.ITEM_HANDLER,
+																																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																				null)
 																																																																				.ifPresent(
 																																																																						capability -> _retval
@@ -11736,7 +11802,7 @@ public class BreadOvenCookingProcedure {
 																																																																					pos);
 																																																																	if (blockEntity != null)
 																																																																		return blockEntity
-																																																																				.getPersistentData()
+																																																																				.getTileData()
 																																																																				.getDouble(
 																																																																						tag);
 																																																																	return -1;
@@ -11774,7 +11840,7 @@ public class BreadOvenCookingProcedure {
 																																																																										pos);
 																																																																						if (_ent != null)
 																																																																							_ent.getCapability(
-																																																																									ForgeCapabilities.ITEM_HANDLER,
+																																																																									CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																									null)
 																																																																									.ifPresent(
 																																																																											capability -> _retval
@@ -11793,7 +11859,7 @@ public class BreadOvenCookingProcedure {
 																																																																								z),
 																																																																						3)));
 																																																																_ent.getCapability(
-																																																																		ForgeCapabilities.ITEM_HANDLER,
+																																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																		null)
 																																																																		.ifPresent(
 																																																																				capability -> {
@@ -11816,7 +11882,7 @@ public class BreadOvenCookingProcedure {
 																																																																final int _slotid = 1;
 																																																																final int _amount = 1;
 																																																																_ent.getCapability(
-																																																																		ForgeCapabilities.ITEM_HANDLER,
+																																																																		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																		null)
 																																																																		.ifPresent(
 																																																																				capability -> {
@@ -11849,7 +11915,7 @@ public class BreadOvenCookingProcedure {
 																																																																			_bp);
 																																																															if (_blockEntity != null)
 																																																																_blockEntity
-																																																																		.getPersistentData()
+																																																																		.getTileData()
 																																																																		.putDouble(
 																																																																				"craftingProgress",
 																																																																				0);
@@ -11872,7 +11938,7 @@ public class BreadOvenCookingProcedure {
 																																																																			pos);
 																																																															if (blockEntity != null)
 																																																																return blockEntity
-																																																																		.getPersistentData()
+																																																																		.getTileData()
 																																																																		.getDouble(
 																																																																				tag);
 																																																															return -1;
@@ -11896,7 +11962,7 @@ public class BreadOvenCookingProcedure {
 																																																																					pos);
 																																																																	if (_ent != null)
 																																																																		_ent.getCapability(
-																																																																				ForgeCapabilities.ITEM_HANDLER,
+																																																																				CapabilityItemHandler.ITEM_HANDLER_CAPABILITY,
 																																																																				null)
 																																																																				.ifPresent(
 																																																																						capability -> _retval
@@ -11928,7 +11994,7 @@ public class BreadOvenCookingProcedure {
 																																																																			_bp);
 																																																															if (_blockEntity != null)
 																																																																_blockEntity
-																																																																		.getPersistentData()
+																																																																		.getTileData()
 																																																																		.putDouble(
 																																																																				"craftingProgress",
 																																																																				((new Object() {
@@ -11941,7 +12007,7 @@ public class BreadOvenCookingProcedure {
 																																																																										pos);
 																																																																						if (blockEntity != null)
 																																																																							return blockEntity
-																																																																									.getPersistentData()
+																																																																									.getTileData()
 																																																																									.getDouble(
 																																																																											tag);
 																																																																						return -1;

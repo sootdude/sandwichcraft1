@@ -4,7 +4,7 @@ package net.mcreator.breadcraft.world.inventory;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.Level;
@@ -34,7 +34,7 @@ public class CounterStorageMenu extends AbstractContainerMenu implements Supplie
 	private boolean bound = false;
 
 	public CounterStorageMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(BreadcraftModMenus.COUNTER_STORAGE.get(), id);
+		super(BreadcraftModMenus.COUNTER_STORAGE, id);
 		this.entity = inv.player;
 		this.world = inv.player.level;
 		this.internal = new ItemStackHandler(24);
@@ -53,7 +53,7 @@ public class CounterStorageMenu extends AbstractContainerMenu implements Supplie
 					itemstack = this.entity.getMainHandItem();
 				else
 					itemstack = this.entity.getOffhandItem();
-				itemstack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+				itemstack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 					this.internal = capability;
 					this.bound = true;
 				});
@@ -61,14 +61,14 @@ public class CounterStorageMenu extends AbstractContainerMenu implements Supplie
 				extraData.readByte(); // drop padding
 				Entity entity = world.getEntity(extraData.readVarInt());
 				if (entity != null)
-					entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						this.internal = capability;
 						this.bound = true;
 					});
 			} else { // might be bound to block
 				BlockEntity ent = inv.player != null ? inv.player.level.getBlockEntity(pos) : null;
 				if (ent != null) {
-					ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+					ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						this.internal = capability;
 						this.bound = true;
 					});
@@ -143,25 +143,30 @@ public class CounterStorageMenu extends AbstractContainerMenu implements Supplie
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
 			if (index < 24) {
-				if (!this.moveItemStackTo(itemstack1, 24, this.slots.size(), true))
+				if (!this.moveItemStackTo(itemstack1, 24, this.slots.size(), true)) {
 					return ItemStack.EMPTY;
+				}
 				slot.onQuickCraft(itemstack1, itemstack);
 			} else if (!this.moveItemStackTo(itemstack1, 0, 24, false)) {
 				if (index < 24 + 27) {
-					if (!this.moveItemStackTo(itemstack1, 24 + 27, this.slots.size(), true))
+					if (!this.moveItemStackTo(itemstack1, 24 + 27, this.slots.size(), true)) {
 						return ItemStack.EMPTY;
+					}
 				} else {
-					if (!this.moveItemStackTo(itemstack1, 24, 24 + 27, false))
+					if (!this.moveItemStackTo(itemstack1, 24, 24 + 27, false)) {
 						return ItemStack.EMPTY;
+					}
 				}
 				return ItemStack.EMPTY;
 			}
-			if (itemstack1.getCount() == 0)
+			if (itemstack1.getCount() == 0) {
 				slot.set(ItemStack.EMPTY);
-			else
+			} else {
 				slot.setChanged();
-			if (itemstack1.getCount() == itemstack.getCount())
+			}
+			if (itemstack1.getCount() == itemstack.getCount()) {
 				return ItemStack.EMPTY;
+			}
 			slot.onTake(playerIn, itemstack1);
 		}
 		return itemstack;

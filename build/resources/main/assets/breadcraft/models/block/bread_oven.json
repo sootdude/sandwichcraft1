@@ -5,6 +5,5 @@
     "particle": "breadcraft:blocks/breadoven",
     "4": "breadcraft:blocks/window",
     "5": "breadcraft:blocks/breadoven"
-  },
-  "render_type": "solid"
+  }
 }

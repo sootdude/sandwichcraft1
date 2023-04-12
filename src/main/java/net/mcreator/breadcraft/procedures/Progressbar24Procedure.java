@@ -11,7 +11,7 @@ public class Progressbar24Procedure {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "craftingTime")) / 60;
@@ -19,14 +19,14 @@ public class Progressbar24Procedure {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "craftingProgress") > craftingTime * 24 && new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)
-					return blockEntity.getPersistentData().getDouble(tag);
+					return blockEntity.getTileData().getDouble(tag);
 				return -1;
 			}
 		}.getValue(world, new BlockPos(x, y, z), "craftingProgress") <= craftingTime * 25) {

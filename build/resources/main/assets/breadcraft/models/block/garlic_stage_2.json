@@ -3,6 +3,5 @@
   "textures": {
     "cross": "breadcraft:blocks/garlic_stage2",
     "particle": "breadcraft:blocks/garlic_stage2"
-  },
-  "render_type": "cutout"
+  }
 }

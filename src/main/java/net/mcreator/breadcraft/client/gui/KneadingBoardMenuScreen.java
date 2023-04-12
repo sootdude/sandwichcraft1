@@ -1,9 +1,11 @@
+
 package net.mcreator.breadcraft.client.gui;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.Button;
@@ -75,8 +77,8 @@ public class KneadingBoardMenuScreen extends AbstractContainerScreen<KneadingBoa
 
 	@Override
 	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
-		this.font.draw(poseStack, Component.translatable("gui.breadcraft.kneading_board_menu.label_kneading_board"), 50, 5, -12829636);
-		this.font.draw(poseStack, Component.translatable("gui.breadcraft.kneading_board_menu.label_inventory"), 7, 68, -12829636);
+		this.font.draw(poseStack, new TranslatableComponent("gui.breadcraft.kneading_board_menu.label_kneading_board"), 50, 5, -12829636);
+		this.font.draw(poseStack, new TranslatableComponent("gui.breadcraft.kneading_board_menu.label_inventory"), 7, 68, -12829636);
 	}
 
 	@Override
@@ -89,7 +91,7 @@ public class KneadingBoardMenuScreen extends AbstractContainerScreen<KneadingBoa
 	public void init() {
 		super.init();
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-		button_knead = new Button(this.leftPos + 61, this.topPos + 45, 51, 20, Component.translatable("gui.breadcraft.kneading_board_menu.button_knead"), e -> {
+		button_knead = new Button(this.leftPos + 61, this.topPos + 45, 51, 20, new TranslatableComponent("gui.breadcraft.kneading_board_menu.button_knead"), e -> {
 			if (true) {
 				BreadcraftMod.PACKET_HANDLER.sendToServer(new KneadingBoardMenuButtonMessage(0, x, y, z));
 				KneadingBoardMenuButtonMessage.handleButtonAction(entity, 0, x, y, z);

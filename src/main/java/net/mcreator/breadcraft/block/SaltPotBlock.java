@@ -2,6 +2,8 @@
 package net.mcreator.breadcraft.block;
 
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -33,13 +35,17 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 
 import net.mcreator.breadcraft.world.inventory.SaltPotGUIMenu;
 import net.mcreator.breadcraft.procedures.SaltPotUpdateTickProcedure;
+import net.mcreator.breadcraft.init.BreadcraftModBlocks;
 import net.mcreator.breadcraft.block.entity.SaltPotBlockEntity;
 
 import java.util.List;
@@ -107,10 +113,10 @@ public class SaltPotBlock extends Block implements EntityBlock {
 	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
 		super.use(blockstate, world, pos, entity, hand, hit);
 		if (entity instanceof ServerPlayer player) {
-			NetworkHooks.openScreen(player, new MenuProvider() {
+			NetworkHooks.openGui(player, new MenuProvider() {
 				@Override
 				public Component getDisplayName() {
-					return Component.literal("Salt Pot");
+					return new TextComponent("Salt Pot");
 				}
 
 				@Override
@@ -158,5 +164,10 @@ public class SaltPotBlock extends Block implements EntityBlock {
 			}
 			super.onRemove(state, world, pos, newState, isMoving);
 		}
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public static void registerRenderLayer() {
+		ItemBlockRenderTypes.setRenderLayer(BreadcraftModBlocks.SALT_POT.get(), renderType -> renderType == RenderType.cutout());
 	}
 }

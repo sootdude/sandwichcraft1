@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[43,)"
+loaderVersion="[40,)"
 license="Academic Free License v3.0"
 
 [[mods]]
@@ -17,7 +17,7 @@ Soot's Sandwichcraft is a sandwich-making mod with 30 varieties of bread, 48 var
 [[dependencies.breadcraft]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.2]"
+    versionRange="[1.18.2]"
     ordering="NONE"
     side="BOTH"
 

@@ -4,6 +4,9 @@
  */
 package net.mcreator.breadcraft.init;
 
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
+
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.CreativeModeTab;
 
@@ -22,7 +25,7 @@ public class BreadcraftModTabs {
 				return new ItemStack(BreadcraftModItems.WHITE_FLOUR.get());
 			}
 
-			@Override
+			@OnlyIn(Dist.CLIENT)
 			public boolean hasSearchBar() {
 				return false;
 			}
@@ -33,7 +36,7 @@ public class BreadcraftModTabs {
 				return new ItemStack(BreadcraftModItems.BASIC_DOUGH.get());
 			}
 
-			@Override
+			@OnlyIn(Dist.CLIENT)
 			public boolean hasSearchBar() {
 				return false;
 			}
@@ -44,7 +47,7 @@ public class BreadcraftModTabs {
 				return new ItemStack(BreadcraftModItems.MORTAR_PESTLE.get());
 			}
 
-			@Override
+			@OnlyIn(Dist.CLIENT)
 			public boolean hasSearchBar() {
 				return false;
 			}
@@ -55,7 +58,7 @@ public class BreadcraftModTabs {
 				return new ItemStack(BreadcraftModItems.WHITE_COUNTRY_LOAF.get());
 			}
 
-			@Override
+			@OnlyIn(Dist.CLIENT)
 			public boolean hasSearchBar() {
 				return false;
 			}
@@ -66,7 +69,7 @@ public class BreadcraftModTabs {
 				return new ItemStack(BreadcraftModItems.CHEESE_ICON_PLACEHOLDER.get());
 			}
 
-			@Override
+			@OnlyIn(Dist.CLIENT)
 			public boolean hasSearchBar() {
 				return false;
 			}
@@ -77,7 +80,7 @@ public class BreadcraftModTabs {
 				return new ItemStack(BreadcraftModItems.GRILLED_CHEESE.get());
 			}
 
-			@Override
+			@OnlyIn(Dist.CLIENT)
 			public boolean hasSearchBar() {
 				return false;
 			}

@@ -10,12 +10,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.breadcraft.init.BreadcraftModItems;
+
+import java.util.Random;
 
 public class CaperStage7DestroyedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -25,7 +26,7 @@ public class CaperStage7DestroyedProcedure {
 		ItemStack itemSeed = ItemStack.EMPTY;
 		double randomNumber = 0;
 		double cropnumber = 0;
-		cropnumber = Mth.nextInt(RandomSource.create(), 1, 3);
+		cropnumber = Mth.nextInt(new Random(), 1, 3);
 		if (cropnumber == 1 && (new Object() {
 			public boolean checkGamemode(Entity _ent) {
 				if (_ent instanceof ServerPlayer _serverPlayer) {

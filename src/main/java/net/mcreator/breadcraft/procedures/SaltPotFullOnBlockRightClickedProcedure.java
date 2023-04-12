@@ -1,6 +1,6 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
@@ -15,7 +15,7 @@ public class SaltPotFullOnBlockRightClickedProcedure {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = level.getBlockEntity(pos);
 				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> _retval.set(capability.getTankCapacity(tank)));
+					_ent.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, null).ifPresent(capability -> _retval.set(capability.getTankCapacity(tank)));
 				return _retval.get();
 			}
 		}.getFluidTankCapacity(world, new BlockPos(x, y, z), 1) == 1000) {

@@ -39,12 +39,12 @@ public class ChefsKnifeItem extends SwordItem {
 	}
 
 	@Override
-	public boolean hasCraftingRemainingItem(ItemStack stack) {
+	public boolean hasContainerItem(ItemStack stack) {
 		return true;
 	}
 
 	@Override
-	public ItemStack getCraftingRemainingItem(ItemStack itemstack) {
+	public ItemStack getContainerItem(ItemStack itemstack) {
 		ItemStack retval = new ItemStack(this);
 		retval.setDamageValue(itemstack.getDamageValue() + 1);
 		if (retval.getDamageValue() >= retval.getMaxDamage()) {

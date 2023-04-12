@@ -3,6 +3,5 @@
   "textures": {
     "crop": "breadcraft:blocks/thyme_stage4",
     "particle": "breadcraft:blocks/thyme_stage4"
-  },
-  "render_type": "cutout"
+  }
 }

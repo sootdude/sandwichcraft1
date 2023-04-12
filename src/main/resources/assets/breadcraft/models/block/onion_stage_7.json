@@ -3,6 +3,5 @@
   "textures": {
     "cross": "breadcraft:blocks/onion_stage7",
     "particle": "breadcraft:blocks/onion_stage7"
-  },
-  "render_type": "cutout"
+  }
 }

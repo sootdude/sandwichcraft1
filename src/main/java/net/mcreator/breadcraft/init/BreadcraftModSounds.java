@@ -4,16 +4,26 @@
  */
 package net.mcreator.breadcraft.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.RegistryEvent;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.ResourceLocation;
 
-import net.mcreator.breadcraft.BreadcraftMod;
+import java.util.Map;
+import java.util.HashMap;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BreadcraftModSounds {
-	public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, BreadcraftMod.MODID);
-	public static final RegistryObject<SoundEvent> MUTED = REGISTRY.register("muted", () -> new SoundEvent(new ResourceLocation("breadcraft", "muted")));
+	public static Map<ResourceLocation, SoundEvent> REGISTRY = new HashMap<>();
+	static {
+		REGISTRY.put(new ResourceLocation("breadcraft", "muted"), new SoundEvent(new ResourceLocation("breadcraft", "muted")));
+	}
+
+	@SubscribeEvent
+	public static void registerSounds(RegistryEvent.Register<SoundEvent> event) {
+		for (Map.Entry<ResourceLocation, SoundEvent> sound : REGISTRY.entrySet())
+			event.getRegistry().register(sound.getValue().setRegistryName(sound.getKey()));
+	}
 }

@@ -1,9 +1,11 @@
+
 package net.mcreator.breadcraft.client.gui;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.Minecraft;
@@ -71,7 +73,7 @@ public class CounterStorageScreen extends AbstractContainerScreen<CounterStorage
 
 	@Override
 	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
-		this.font.draw(poseStack, Component.translatable("gui.breadcraft.counter_storage.label_counter"), 6, 7, -12829636);
+		this.font.draw(poseStack, new TranslatableComponent("gui.breadcraft.counter_storage.label_counter"), 6, 7, -12829636);
 	}
 
 	@Override

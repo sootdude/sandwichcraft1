@@ -1,7 +1,7 @@
 
 package net.mcreator.breadcraft.block;
 
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
@@ -36,6 +36,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.BiomeColors;
 
 import net.mcreator.breadcraft.procedures.CheesePotOnBlockRightClickedProcedure;
@@ -163,7 +165,12 @@ public class CheesePotCraftingBlock extends Block implements EntityBlock {
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static void blockColorLoad(RegisterColorHandlersEvent.Block event) {
+	public static void registerRenderLayer() {
+		ItemBlockRenderTypes.setRenderLayer(BreadcraftModBlocks.CHEESE_POT_CRAFTING.get(), renderType -> renderType == RenderType.cutout());
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public static void blockColorLoad(ColorHandlerEvent.Block event) {
 		event.getBlockColors().register((bs, world, pos, index) -> {
 			return world != null && pos != null ? BiomeColors.getAverageWaterColor(world, pos) : -1;
 		}, BreadcraftModBlocks.CHEESE_POT_CRAFTING.get());

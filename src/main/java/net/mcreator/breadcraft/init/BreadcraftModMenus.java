@@ -1,15 +1,16 @@
 
 /*
- *	MCreator note: This file will be REGENERATED on each build.
+ *    MCreator note: This file will be REGENERATED on each build.
  */
 package net.mcreator.breadcraft.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.common.extensions.IForgeMenuType;
+import net.minecraftforge.network.IContainerFactory;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.RegistryEvent;
 
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 
 import net.mcreator.breadcraft.world.inventory.SaltPotGUIMenu;
 import net.mcreator.breadcraft.world.inventory.ProofingBowlGuiMenu;
@@ -17,14 +18,29 @@ import net.mcreator.breadcraft.world.inventory.KneadingBoardMenuMenu;
 import net.mcreator.breadcraft.world.inventory.CounterStorageMenu;
 import net.mcreator.breadcraft.world.inventory.BreadOvenGuiMenu;
 import net.mcreator.breadcraft.world.inventory.AgingCaskGuiMenu;
-import net.mcreator.breadcraft.BreadcraftMod;
 
+import java.util.List;
+import java.util.ArrayList;
+
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BreadcraftModMenus {
-	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.MENU_TYPES, BreadcraftMod.MODID);
-	public static final RegistryObject<MenuType<KneadingBoardMenuMenu>> KNEADING_BOARD_MENU = REGISTRY.register("kneading_board_menu", () -> IForgeMenuType.create(KneadingBoardMenuMenu::new));
-	public static final RegistryObject<MenuType<SaltPotGUIMenu>> SALT_POT_GUI = REGISTRY.register("salt_pot_gui", () -> IForgeMenuType.create(SaltPotGUIMenu::new));
-	public static final RegistryObject<MenuType<CounterStorageMenu>> COUNTER_STORAGE = REGISTRY.register("counter_storage", () -> IForgeMenuType.create(CounterStorageMenu::new));
-	public static final RegistryObject<MenuType<BreadOvenGuiMenu>> BREAD_OVEN_GUI = REGISTRY.register("bread_oven_gui", () -> IForgeMenuType.create(BreadOvenGuiMenu::new));
-	public static final RegistryObject<MenuType<ProofingBowlGuiMenu>> PROOFING_BOWL_GUI = REGISTRY.register("proofing_bowl_gui", () -> IForgeMenuType.create(ProofingBowlGuiMenu::new));
-	public static final RegistryObject<MenuType<AgingCaskGuiMenu>> AGING_CASK_GUI = REGISTRY.register("aging_cask_gui", () -> IForgeMenuType.create(AgingCaskGuiMenu::new));
+	private static final List<MenuType<?>> REGISTRY = new ArrayList<>();
+	public static final MenuType<KneadingBoardMenuMenu> KNEADING_BOARD_MENU = register("kneading_board_menu", (id, inv, extraData) -> new KneadingBoardMenuMenu(id, inv, extraData));
+	public static final MenuType<SaltPotGUIMenu> SALT_POT_GUI = register("salt_pot_gui", (id, inv, extraData) -> new SaltPotGUIMenu(id, inv, extraData));
+	public static final MenuType<CounterStorageMenu> COUNTER_STORAGE = register("counter_storage", (id, inv, extraData) -> new CounterStorageMenu(id, inv, extraData));
+	public static final MenuType<BreadOvenGuiMenu> BREAD_OVEN_GUI = register("bread_oven_gui", (id, inv, extraData) -> new BreadOvenGuiMenu(id, inv, extraData));
+	public static final MenuType<ProofingBowlGuiMenu> PROOFING_BOWL_GUI = register("proofing_bowl_gui", (id, inv, extraData) -> new ProofingBowlGuiMenu(id, inv, extraData));
+	public static final MenuType<AgingCaskGuiMenu> AGING_CASK_GUI = register("aging_cask_gui", (id, inv, extraData) -> new AgingCaskGuiMenu(id, inv, extraData));
+
+	private static <T extends AbstractContainerMenu> MenuType<T> register(String registryname, IContainerFactory<T> containerFactory) {
+		MenuType<T> menuType = new MenuType<T>(containerFactory);
+		menuType.setRegistryName(registryname);
+		REGISTRY.add(menuType);
+		return menuType;
+	}
+
+	@SubscribeEvent
+	public static void registerContainers(RegistryEvent.Register<MenuType<?>> event) {
+		event.getRegistry().registerAll(REGISTRY.toArray(new MenuType[0]));
+	}
 }

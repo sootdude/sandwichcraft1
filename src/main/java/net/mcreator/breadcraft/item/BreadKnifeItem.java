@@ -8,6 +8,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.Component;
 
 import net.mcreator.breadcraft.init.BreadcraftModTabs;
@@ -44,12 +45,12 @@ public class BreadKnifeItem extends SwordItem {
 	}
 
 	@Override
-	public boolean hasCraftingRemainingItem(ItemStack stack) {
+	public boolean hasContainerItem(ItemStack stack) {
 		return true;
 	}
 
 	@Override
-	public ItemStack getCraftingRemainingItem(ItemStack itemstack) {
+	public ItemStack getContainerItem(ItemStack itemstack) {
 		ItemStack retval = new ItemStack(this);
 		retval.setDamageValue(itemstack.getDamageValue() + 1);
 		if (retval.getDamageValue() >= retval.getMaxDamage()) {
@@ -66,6 +67,6 @@ public class BreadKnifeItem extends SwordItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A72For cutting your bread."));
+		list.add(new TextComponent("\u00A72For cutting your bread."));
 	}
 }

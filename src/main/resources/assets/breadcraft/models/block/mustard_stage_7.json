@@ -3,6 +3,5 @@
   "textures": {
     "cross": "breadcraft:blocks/mustard_stage7",
     "particle": "breadcraft:blocks/mustard_stage7"
-  },
-  "render_type": "cutout"
+  }
 }

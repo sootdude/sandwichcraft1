@@ -5,6 +5,5 @@
     "particle": "breadcraft:blocks/proofingbowl",
     "3": "breadcraft:blocks/proofingbowl",
     "4": "breadcraft:blocks/cover"
-  },
-  "render_type": "solid"
+  }
 }
