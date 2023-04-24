@@ -56,7 +56,7 @@
     "material": {
       "value": "PLANTS"
     },
-    "tickRate": 1,
+    "tickRate": 0,
     "tickRandomly": true,
     "isReplaceable": false,
     "canProvidePower": false,
