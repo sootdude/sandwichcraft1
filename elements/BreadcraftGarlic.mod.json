@@ -2,8 +2,9 @@
   "_fv": 39,
   "_type": "tag",
   "definition": {
-    "type": "Items",
-    "items": [
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
       {
         "value": "CUSTOM:GarlicStage7"
       },
@@ -29,7 +30,6 @@
         "value": "CUSTOM:GarlicStage0"
       }
     ],
-    "blocks": [],
     "functions": [],
     "entities": [],
     "biomes": [],

@@ -63,6 +63,14 @@ import net.mcreator.breadcraft.block.entity.PepperStage3BlockEntity;
 import net.mcreator.breadcraft.block.entity.PepperStage2BlockEntity;
 import net.mcreator.breadcraft.block.entity.PepperStage1BlockEntity;
 import net.mcreator.breadcraft.block.entity.PepperStage0BlockEntity;
+import net.mcreator.breadcraft.block.entity.PeanutStage7BlockEntity;
+import net.mcreator.breadcraft.block.entity.PeanutStage6BlockEntity;
+import net.mcreator.breadcraft.block.entity.PeanutStage5BlockEntity;
+import net.mcreator.breadcraft.block.entity.PeanutStage4BlockEntity;
+import net.mcreator.breadcraft.block.entity.PeanutStage3BlockEntity;
+import net.mcreator.breadcraft.block.entity.PeanutStage2BlockEntity;
+import net.mcreator.breadcraft.block.entity.PeanutStage1BlockEntity;
+import net.mcreator.breadcraft.block.entity.PeanutStage0BlockEntity;
 import net.mcreator.breadcraft.block.entity.OnionStage7BlockEntity;
 import net.mcreator.breadcraft.block.entity.OnionStage6BlockEntity;
 import net.mcreator.breadcraft.block.entity.OnionStage5BlockEntity;
@@ -211,6 +219,14 @@ public class BreadcraftModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> GARLIC_STAGE_2 = register("garlic_stage_2", BreadcraftModBlocks.GARLIC_STAGE_2, GarlicStage2BlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> GARLIC_STAGE_1 = register("garlic_stage_1", BreadcraftModBlocks.GARLIC_STAGE_1, GarlicStage1BlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> GARLIC_STAGE_0 = register("garlic_stage_0", BreadcraftModBlocks.GARLIC_STAGE_0, GarlicStage0BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PEANUT_STAGE_7 = register("peanut_stage_7", BreadcraftModBlocks.PEANUT_STAGE_7, PeanutStage7BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PEANUT_STAGE_5 = register("peanut_stage_5", BreadcraftModBlocks.PEANUT_STAGE_5, PeanutStage5BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PEANUT_STAGE_6 = register("peanut_stage_6", BreadcraftModBlocks.PEANUT_STAGE_6, PeanutStage6BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PEANUT_STAGE_3 = register("peanut_stage_3", BreadcraftModBlocks.PEANUT_STAGE_3, PeanutStage3BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PEANUT_STAGE_4 = register("peanut_stage_4", BreadcraftModBlocks.PEANUT_STAGE_4, PeanutStage4BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PEANUT_STAGE_1 = register("peanut_stage_1", BreadcraftModBlocks.PEANUT_STAGE_1, PeanutStage1BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PEANUT_STAGE_2 = register("peanut_stage_2", BreadcraftModBlocks.PEANUT_STAGE_2, PeanutStage2BlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> PEANUT_STAGE_0 = register("peanut_stage_0", BreadcraftModBlocks.PEANUT_STAGE_0, PeanutStage0BlockEntity::new);
 
 	private static RegistryObject<BlockEntityType<?>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));

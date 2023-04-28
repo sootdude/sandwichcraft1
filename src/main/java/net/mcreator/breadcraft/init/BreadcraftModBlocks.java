@@ -66,6 +66,14 @@ import net.mcreator.breadcraft.block.PepperStage3Block;
 import net.mcreator.breadcraft.block.PepperStage2Block;
 import net.mcreator.breadcraft.block.PepperStage1Block;
 import net.mcreator.breadcraft.block.PepperStage0Block;
+import net.mcreator.breadcraft.block.PeanutStage7Block;
+import net.mcreator.breadcraft.block.PeanutStage6Block;
+import net.mcreator.breadcraft.block.PeanutStage5Block;
+import net.mcreator.breadcraft.block.PeanutStage4Block;
+import net.mcreator.breadcraft.block.PeanutStage3Block;
+import net.mcreator.breadcraft.block.PeanutStage2Block;
+import net.mcreator.breadcraft.block.PeanutStage1Block;
+import net.mcreator.breadcraft.block.PeanutStage0Block;
 import net.mcreator.breadcraft.block.OnionStage7Block;
 import net.mcreator.breadcraft.block.OnionStage6Block;
 import net.mcreator.breadcraft.block.OnionStage5Block;
@@ -214,6 +222,14 @@ public class BreadcraftModBlocks {
 	public static final RegistryObject<Block> GARLIC_STAGE_2 = REGISTRY.register("garlic_stage_2", () -> new GarlicStage2Block());
 	public static final RegistryObject<Block> GARLIC_STAGE_1 = REGISTRY.register("garlic_stage_1", () -> new GarlicStage1Block());
 	public static final RegistryObject<Block> GARLIC_STAGE_0 = REGISTRY.register("garlic_stage_0", () -> new GarlicStage0Block());
+	public static final RegistryObject<Block> PEANUT_STAGE_7 = REGISTRY.register("peanut_stage_7", () -> new PeanutStage7Block());
+	public static final RegistryObject<Block> PEANUT_STAGE_5 = REGISTRY.register("peanut_stage_5", () -> new PeanutStage5Block());
+	public static final RegistryObject<Block> PEANUT_STAGE_6 = REGISTRY.register("peanut_stage_6", () -> new PeanutStage6Block());
+	public static final RegistryObject<Block> PEANUT_STAGE_3 = REGISTRY.register("peanut_stage_3", () -> new PeanutStage3Block());
+	public static final RegistryObject<Block> PEANUT_STAGE_4 = REGISTRY.register("peanut_stage_4", () -> new PeanutStage4Block());
+	public static final RegistryObject<Block> PEANUT_STAGE_1 = REGISTRY.register("peanut_stage_1", () -> new PeanutStage1Block());
+	public static final RegistryObject<Block> PEANUT_STAGE_2 = REGISTRY.register("peanut_stage_2", () -> new PeanutStage2Block());
+	public static final RegistryObject<Block> PEANUT_STAGE_0 = REGISTRY.register("peanut_stage_0", () -> new PeanutStage0Block());
 
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientSideHandler {

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "breadcraft:mortar_pestle"
+    },
+    {
+      "tag": "forge:peanut"
+    },
+    {
+      "tag": "forge:salt"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:peanut_butter",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Campfire cooking",
+    "xpReward": 1.0,
+    "cookingTime": 600,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "campfireCookingInputStack": {
+      "value": "CUSTOM:Peanut"
+    },
+    "campfireCookingReturnStack": {
+      "value": "CUSTOM:RoastedPeanuts"
+    },
+    "name": "roasted_peanuts_recipe_2",
+    "namespace": "mod"
+  }
+}

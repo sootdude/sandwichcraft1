@@ -1,0 +1,39 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Blocks",
+    "items": [],
+    "blocks": [
+      {
+        "value": "CUSTOM:PeanutStage7"
+      },
+      {
+        "value": "CUSTOM:PeanutStage5"
+      },
+      {
+        "value": "CUSTOM:PeanutStage6"
+      },
+      {
+        "value": "CUSTOM:PeanutStage3"
+      },
+      {
+        "value": "CUSTOM:PeanutStage4"
+      },
+      {
+        "value": "CUSTOM:PeanutStage1"
+      },
+      {
+        "value": "CUSTOM:PeanutStage2"
+      },
+      {
+        "value": "CUSTOM:PeanutStage0"
+      }
+    ],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "peanut",
+    "namespace": "breadcraft"
+  }
+}

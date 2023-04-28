@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "breadcraft:blocks/peanut_stage_3",
+    "particle": "breadcraft:blocks/peanut_stage_3"
+  },
+  "render_type": "cutout"
+}

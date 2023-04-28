@@ -203,6 +203,24 @@
             "enablecomment": false,
             "onlyComment": false,
             "entityType": "EntityAgeable"
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 2.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "peanutSeedDropRate",
+            "varname": "peanut_seed_drop_rate",
+            "enablecomment": false,
+            "onlyComment": false,
+            "entityType": "EntityAgeable"
           }
         ]
       }

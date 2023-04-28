@@ -34,5 +34,6 @@ public class BreadcraftModCompostableItems {
 		ComposterBlock.COMPOSTABLES.put(BreadcraftModItems.THYME.get(), 0.65f);
 		ComposterBlock.COMPOSTABLES.put(BreadcraftModItems.THYME_SEEDS.get(), 0.3f);
 		ComposterBlock.COMPOSTABLES.put(BreadcraftModItems.GARLIC.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(BreadcraftModItems.PEANUT.get(), 0.65f);
 	}
 }
