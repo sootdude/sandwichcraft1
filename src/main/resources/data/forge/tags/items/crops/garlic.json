@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "breadcraft:minced_garlic",
     "breadcraft:garlic"
   ]
 }

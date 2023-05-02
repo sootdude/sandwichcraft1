@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "breadcraft:tomato",
-    "breadcraft:tomato_slice"
+    "breadcraft:tomato"
   ]
 }

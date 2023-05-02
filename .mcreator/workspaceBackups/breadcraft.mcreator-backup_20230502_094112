@@ -22234,8 +22234,8 @@
   "workspaceSettings": {
     "modid": "breadcraft",
     "modName": "Soot\u0027s Sandwichcraft",
-    "version": "1.2.0",
-    "description": "Soot\u0027s Sandwichcraft is a sandwich-making mod with 30 varieties of bread, 48 varieties of sandwiches, and plenty of side dishes.",
+    "version": "1.2.1",
+    "description": "Soot\u0027s Sandwichcraft is a sandwich-making mod with 31 varieties of bread, 50 varieties of sandwiches, and plenty of side dishes.",
     "author": "sootdude",
     "websiteURL": "https://www.curseforge.com/minecraft/mc-mods/soots-sandwichcraft",
     "license": "Academic Free License v3.0",
@@ -22246,7 +22246,7 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "forge-1.19.2",
+    "currentGenerator": "forge-1.18.2",
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.breadcraft",
     "lockBaseModFiles": false
