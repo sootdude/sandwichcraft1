@@ -8,13 +8,13 @@
       "tag": "forge:lettuce"
     },
     {
-      "tag": "forge:tomatoes"
+      "item": "breadcraft:tomato_slice"
     },
     {
       "item": "breadcraft:diced_onion"
     },
     {
-      "tag": "forge:tomatoes"
+      "item": "breadcraft:tomato_slice"
     }
   ],
   "result": {

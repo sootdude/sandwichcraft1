@@ -14,7 +14,7 @@
       "tag": "forge:lettuce"
     },
     {
-      "tag": "forge:tomatoes"
+      "item": "breadcraft:tomato_slice"
     }
   ],
   "result": {
