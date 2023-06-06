@@ -681,6 +681,19 @@ public class BreadcraftModItems {
 	public static final RegistryObject<Item> PEANUT_STAGE_1 = block(BreadcraftModBlocks.PEANUT_STAGE_1, null);
 	public static final RegistryObject<Item> PEANUT_STAGE_2 = block(BreadcraftModBlocks.PEANUT_STAGE_2, null);
 	public static final RegistryObject<Item> PEANUT_STAGE_0 = block(BreadcraftModBlocks.PEANUT_STAGE_0, null);
+	public static final RegistryObject<Item> DARK_OAK_COUNTER = block(BreadcraftModBlocks.DARK_OAK_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> BIRCH_COUNTER_CORNER = block(BreadcraftModBlocks.BIRCH_COUNTER_CORNER, null);
+	public static final RegistryObject<Item> DARK_OAK_COUNTER_CORNER = block(BreadcraftModBlocks.DARK_OAK_COUNTER_CORNER, null);
+	public static final RegistryObject<Item> OAK_COUNTER = block(BreadcraftModBlocks.OAK_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> OAK_COUNTER_CORNER = block(BreadcraftModBlocks.OAK_COUNTER_CORNER, null);
+	public static final RegistryObject<Item> SPRUCE_COUNTER = block(BreadcraftModBlocks.SPRUCE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> SPRUCE_COUNTER_CORNER = block(BreadcraftModBlocks.SPRUCE_COUNTER_CORNER, null);
+	public static final RegistryObject<Item> ACACIA_COUNTER = block(BreadcraftModBlocks.ACACIA_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> ACACIA_COUNTER_CORNER = block(BreadcraftModBlocks.ACACIA_COUNTER_CORNER, null);
+	public static final RegistryObject<Item> MANGROVE_COUNTER = block(BreadcraftModBlocks.MANGROVE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> MANGROVE_COUNTER_CORNER = block(BreadcraftModBlocks.MANGROVE_COUNTER_CORNER, null);
+	public static final RegistryObject<Item> JUNGLE_COUNTER = block(BreadcraftModBlocks.JUNGLE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> JUNGLE_COUNTER_CORNER = block(BreadcraftModBlocks.JUNGLE_COUNTER_CORNER, null);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

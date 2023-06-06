@@ -14,13 +14,13 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.breadcraft.network.BreadOvenGuiSlotMessage;
 import net.mcreator.breadcraft.init.BreadcraftModMenus;
-import net.mcreator.breadcraft.BreadcraftMod;
 
 import java.util.function.Supplier;
 import java.util.Map;
@@ -80,6 +80,10 @@ public class BreadOvenGuiMenu extends AbstractContainerMenu implements Supplier<
 		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 46, 53) {
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 46, 18) {
+			@Override
+			public boolean mayPlace(ItemStack stack) {
+				return stack.is(ItemTags.create(new ResourceLocation("breadcraft:sandwichcraftdoughs")));
+			}
 		}));
 		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 112, 35) {
 			@Override
@@ -89,9 +93,8 @@ public class BreadOvenGuiMenu extends AbstractContainerMenu implements Supplier<
 		}));
 		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 136, 35) {
 			@Override
-			public void setChanged() {
-				super.setChanged();
-				slotChanged(4, 0, 0);
+			public boolean mayPlace(ItemStack stack) {
+				return stack.is(ItemTags.create(new ResourceLocation("breadcraft:pans")));
 			}
 		}));
 		for (int si = 0; si < 3; ++si)
@@ -235,13 +238,6 @@ public class BreadOvenGuiMenu extends AbstractContainerMenu implements Supplier<
 					playerIn.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
 				}
 			}
-		}
-	}
-
-	private void slotChanged(int slotid, int ctype, int meta) {
-		if (this.world != null && this.world.isClientSide()) {
-			BreadcraftMod.PACKET_HANDLER.sendToServer(new BreadOvenGuiSlotMessage(slotid, x, y, z, ctype, meta));
-			BreadOvenGuiSlotMessage.handleSlotAction(entity, slotid, ctype, meta, x, y, z);
 		}
 	}
 

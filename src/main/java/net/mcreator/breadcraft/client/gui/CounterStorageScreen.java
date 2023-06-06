@@ -48,10 +48,6 @@ public class CounterStorageScreen extends AbstractContainerScreen<CounterStorage
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.setShaderTexture(0, texture);
 		this.blit(ms, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-
-		RenderSystem.setShaderTexture(0, new ResourceLocation("breadcraft:textures/screens/line.png"));
-		this.blit(ms, this.leftPos + 87, this.topPos + 16, 0, 0, 16, 48, 16, 48);
-
 		RenderSystem.disableBlend();
 	}
 

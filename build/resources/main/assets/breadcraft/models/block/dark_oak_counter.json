@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/darkoakcounter",
+  "textures": {
+    "all": "breadcraft:blocks/darkoakcounterr",
+    "particle": "breadcraft:blocks/darkoakcounterr",
+    "1": "breadcraft:blocks/darkoakcounterr"
+  },
+  "render_type": "solid"
+}

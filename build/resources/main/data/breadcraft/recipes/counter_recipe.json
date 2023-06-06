@@ -1,21 +1,34 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "01",
-    "23"
+    "012",
+    "3 5",
+    "678"
   ],
   "key": {
     "0": {
-      "item": "minecraft:birch_slab"
+      "item": "minecraft:quartz_slab"
     },
     "1": {
-      "item": "minecraft:birch_slab"
+      "item": "minecraft:quartz_slab"
     },
     "2": {
-      "item": "minecraft:quartz_stairs"
+      "item": "minecraft:quartz_slab"
     },
     "3": {
-      "item": "minecraft:quartz_stairs"
+      "item": "minecraft:birch_planks"
+    },
+    "5": {
+      "item": "minecraft:birch_planks"
+    },
+    "6": {
+      "item": "minecraft:birch_planks"
+    },
+    "7": {
+      "item": "minecraft:birch_planks"
+    },
+    "8": {
+      "item": "minecraft:birch_planks"
     }
   },
   "result": {

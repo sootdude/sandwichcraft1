@@ -1,0 +1,36 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Items",
+    "items": [
+      {
+        "value": "CUSTOM:SheetPan"
+      },
+      {
+        "value": "CUSTOM:RoundPan"
+      },
+      {
+        "value": "CUSTOM:SquarePan"
+      },
+      {
+        "value": "CUSTOM:LoafPan"
+      },
+      {
+        "value": "CUSTOM:RidgedPan"
+      },
+      {
+        "value": "CUSTOM:DutchOven"
+      },
+      {
+        "value": "CUSTOM:Pot"
+      }
+    ],
+    "blocks": [],
+    "functions": [],
+    "entities": [],
+    "biomes": [],
+    "name": "pans",
+    "namespace": "mod"
+  }
+}

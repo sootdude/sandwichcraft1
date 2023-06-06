@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 2,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.POLISHED_DIORITE_SLAB"
+      },
+      {
+        "value": "Blocks.POLISHED_DIORITE_SLAB"
+      },
+      {
+        "value": "Blocks.POLISHED_DIORITE_SLAB"
+      },
+      {
+        "value": "Blocks.PLANKS#1"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Blocks.PLANKS#1"
+      },
+      {
+        "value": "Blocks.PLANKS#1"
+      },
+      {
+        "value": "Blocks.PLANKS#1"
+      },
+      {
+        "value": "Blocks.PLANKS#1"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:SpruceCounter"
+    },
+    "name": "spruce_counter_recipe",
+    "namespace": "mod"
+  }
+}

@@ -6,6 +6,19 @@
     "breadcraft:bread_oven",
     "breadcraft:counter",
     "breadcraft:salt_pot_full",
-    "breadcraft:cheese_pot_crafting"
+    "breadcraft:cheese_pot_crafting",
+    "breadcraft:dark_oak_counter",
+    "breadcraft:birch_counter_corner",
+    "breadcraft:dark_oak_counter_corner",
+    "breadcraft:oak_counter",
+    "breadcraft:oak_counter_corner",
+    "breadcraft:spruce_counter",
+    "breadcraft:spruce_counter_corner",
+    "breadcraft:acacia_counter",
+    "breadcraft:acacia_counter_corner",
+    "breadcraft:mangrove_counter",
+    "breadcraft:mangrove_counter_corner",
+    "breadcraft:jungle_counter",
+    "breadcraft:jungle_counter_corner"
   ]
 }

@@ -31,7 +31,7 @@ import java.util.stream.IntStream;
 import io.netty.buffer.Unpooled;
 
 public class CounterBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(24, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(27, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
 	public CounterBlockEntity(BlockPos position, BlockState state) {
@@ -94,7 +94,7 @@ public class CounterBlockEntity extends RandomizableContainerBlockEntity impleme
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Counter");
+		return Component.literal("Birch Counter");
 	}
 
 	@Override
@@ -124,54 +124,6 @@ public class CounterBlockEntity extends RandomizableContainerBlockEntity impleme
 
 	@Override
 	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-		if (index == 0)
-			return false;
-		if (index == 1)
-			return false;
-		if (index == 2)
-			return false;
-		if (index == 3)
-			return false;
-		if (index == 4)
-			return false;
-		if (index == 5)
-			return false;
-		if (index == 6)
-			return false;
-		if (index == 7)
-			return false;
-		if (index == 8)
-			return false;
-		if (index == 9)
-			return false;
-		if (index == 10)
-			return false;
-		if (index == 11)
-			return false;
-		if (index == 12)
-			return false;
-		if (index == 13)
-			return false;
-		if (index == 14)
-			return false;
-		if (index == 15)
-			return false;
-		if (index == 16)
-			return false;
-		if (index == 17)
-			return false;
-		if (index == 18)
-			return false;
-		if (index == 19)
-			return false;
-		if (index == 20)
-			return false;
-		if (index == 21)
-			return false;
-		if (index == 22)
-			return false;
-		if (index == 23)
-			return false;
 		return true;
 	}
 

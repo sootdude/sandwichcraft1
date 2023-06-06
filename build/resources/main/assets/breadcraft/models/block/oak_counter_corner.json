@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/oakcountercorner",
+  "textures": {
+    "all": "breadcraft:blocks/oakcountercorner",
+    "particle": "breadcraft:blocks/oakcountercorner",
+    "2": "breadcraft:blocks/oakcountercorner"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 2,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.POLISHED_GRANITE_SLAB"
+      },
+      {
+        "value": "Blocks.POLISHED_GRANITE_SLAB"
+      },
+      {
+        "value": "Blocks.POLISHED_GRANITE_SLAB"
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      },
+      {
+        "value": ""
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      },
+      {
+        "value": "Blocks.PLANKS#3"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:JungleCounter"
+    },
+    "name": "jungle_counter_recipe",
+    "namespace": "mod"
+  }
+}

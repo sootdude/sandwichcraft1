@@ -37,7 +37,7 @@ public class CounterStorageMenu extends AbstractContainerMenu implements Supplie
 		super(BreadcraftModMenus.COUNTER_STORAGE.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level;
-		this.internal = new ItemStackHandler(24);
+		this.internal = new ItemStackHandler(27);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();
@@ -75,53 +75,59 @@ public class CounterStorageMenu extends AbstractContainerMenu implements Supplie
 				}
 			}
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 7, 17) {
+		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 7, 19) {
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 25, 17) {
+		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 25, 19) {
 		}));
-		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 43, 17) {
+		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 43, 19) {
 		}));
-		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 61, 17) {
+		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 61, 19) {
 		}));
-		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 7, 35) {
+		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 79, 19) {
 		}));
-		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 25, 35) {
+		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 97, 19) {
 		}));
-		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 43, 35) {
+		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 115, 19) {
 		}));
-		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 61, 35) {
+		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 133, 19) {
 		}));
-		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 7, 53) {
+		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 151, 19) {
 		}));
-		this.customSlots.put(9, this.addSlot(new SlotItemHandler(internal, 9, 25, 53) {
+		this.customSlots.put(9, this.addSlot(new SlotItemHandler(internal, 9, 7, 37) {
 		}));
-		this.customSlots.put(10, this.addSlot(new SlotItemHandler(internal, 10, 43, 53) {
+		this.customSlots.put(10, this.addSlot(new SlotItemHandler(internal, 10, 25, 37) {
 		}));
-		this.customSlots.put(11, this.addSlot(new SlotItemHandler(internal, 11, 61, 53) {
+		this.customSlots.put(11, this.addSlot(new SlotItemHandler(internal, 11, 43, 37) {
 		}));
-		this.customSlots.put(12, this.addSlot(new SlotItemHandler(internal, 12, 97, 17) {
+		this.customSlots.put(12, this.addSlot(new SlotItemHandler(internal, 12, 61, 37) {
 		}));
-		this.customSlots.put(13, this.addSlot(new SlotItemHandler(internal, 13, 115, 17) {
+		this.customSlots.put(13, this.addSlot(new SlotItemHandler(internal, 13, 79, 37) {
 		}));
-		this.customSlots.put(14, this.addSlot(new SlotItemHandler(internal, 14, 133, 17) {
+		this.customSlots.put(14, this.addSlot(new SlotItemHandler(internal, 14, 97, 37) {
 		}));
-		this.customSlots.put(15, this.addSlot(new SlotItemHandler(internal, 15, 151, 17) {
+		this.customSlots.put(15, this.addSlot(new SlotItemHandler(internal, 15, 115, 37) {
 		}));
-		this.customSlots.put(16, this.addSlot(new SlotItemHandler(internal, 16, 97, 35) {
+		this.customSlots.put(16, this.addSlot(new SlotItemHandler(internal, 16, 133, 37) {
 		}));
-		this.customSlots.put(17, this.addSlot(new SlotItemHandler(internal, 17, 115, 35) {
+		this.customSlots.put(17, this.addSlot(new SlotItemHandler(internal, 17, 151, 37) {
 		}));
-		this.customSlots.put(18, this.addSlot(new SlotItemHandler(internal, 18, 133, 35) {
+		this.customSlots.put(18, this.addSlot(new SlotItemHandler(internal, 18, 7, 55) {
 		}));
-		this.customSlots.put(19, this.addSlot(new SlotItemHandler(internal, 19, 151, 35) {
+		this.customSlots.put(19, this.addSlot(new SlotItemHandler(internal, 19, 25, 55) {
 		}));
-		this.customSlots.put(20, this.addSlot(new SlotItemHandler(internal, 20, 97, 53) {
+		this.customSlots.put(20, this.addSlot(new SlotItemHandler(internal, 20, 43, 55) {
 		}));
-		this.customSlots.put(21, this.addSlot(new SlotItemHandler(internal, 21, 115, 53) {
+		this.customSlots.put(21, this.addSlot(new SlotItemHandler(internal, 21, 61, 55) {
 		}));
-		this.customSlots.put(22, this.addSlot(new SlotItemHandler(internal, 22, 133, 53) {
+		this.customSlots.put(22, this.addSlot(new SlotItemHandler(internal, 22, 79, 55) {
 		}));
-		this.customSlots.put(23, this.addSlot(new SlotItemHandler(internal, 23, 151, 53) {
+		this.customSlots.put(23, this.addSlot(new SlotItemHandler(internal, 23, 97, 55) {
+		}));
+		this.customSlots.put(24, this.addSlot(new SlotItemHandler(internal, 24, 115, 55) {
+		}));
+		this.customSlots.put(25, this.addSlot(new SlotItemHandler(internal, 25, 133, 55) {
+		}));
+		this.customSlots.put(26, this.addSlot(new SlotItemHandler(internal, 26, 151, 55) {
 		}));
 		for (int si = 0; si < 3; ++si)
 			for (int sj = 0; sj < 9; ++sj)
@@ -142,16 +148,16 @@ public class CounterStorageMenu extends AbstractContainerMenu implements Supplie
 		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
-			if (index < 24) {
-				if (!this.moveItemStackTo(itemstack1, 24, this.slots.size(), true))
+			if (index < 27) {
+				if (!this.moveItemStackTo(itemstack1, 27, this.slots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onQuickCraft(itemstack1, itemstack);
-			} else if (!this.moveItemStackTo(itemstack1, 0, 24, false)) {
-				if (index < 24 + 27) {
-					if (!this.moveItemStackTo(itemstack1, 24 + 27, this.slots.size(), true))
+			} else if (!this.moveItemStackTo(itemstack1, 0, 27, false)) {
+				if (index < 27 + 27) {
+					if (!this.moveItemStackTo(itemstack1, 27 + 27, this.slots.size(), true))
 						return ItemStack.EMPTY;
 				} else {
-					if (!this.moveItemStackTo(itemstack1, 24, 24 + 27, false))
+					if (!this.moveItemStackTo(itemstack1, 27, 27 + 27, false))
 						return ItemStack.EMPTY;
 				}
 				return ItemStack.EMPTY;

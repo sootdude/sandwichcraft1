@@ -10,31 +10,31 @@
     "recipeShapeless": false,
     "recipeSlots": [
       {
-        "value": ""
+        "value": "Blocks.STONE_SLAB#7"
+      },
+      {
+        "value": "Blocks.STONE_SLAB#7"
+      },
+      {
+        "value": "Blocks.STONE_SLAB#7"
+      },
+      {
+        "value": "Blocks.PLANKS#2"
       },
       {
         "value": ""
       },
       {
-        "value": ""
+        "value": "Blocks.PLANKS#2"
       },
       {
-        "value": "Blocks.WOODEN_SLAB#2"
+        "value": "Blocks.PLANKS#2"
       },
       {
-        "value": "Blocks.WOODEN_SLAB#2"
+        "value": "Blocks.PLANKS#2"
       },
       {
-        "value": ""
-      },
-      {
-        "value": "Blocks.QUARTZ_STAIRS"
-      },
-      {
-        "value": "Blocks.QUARTZ_STAIRS"
-      },
-      {
-        "value": ""
+        "value": "Blocks.PLANKS#2"
       }
     ],
     "recipeReturnStack": {

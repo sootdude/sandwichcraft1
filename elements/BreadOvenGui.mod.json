@@ -32,7 +32,7 @@
         "type": "inputslot",
         "data": {
           "inputLimit": {
-            "value": ""
+            "value": "TAG:breadcraft:sandwichcraftdoughs"
           },
           "disablePlacement": {
             "fixedValue": false
@@ -209,7 +209,7 @@
         "type": "inputslot",
         "data": {
           "inputLimit": {
-            "value": ""
+            "value": "TAG:breadcraft:pans"
           },
           "disablePlacement": {
             "fixedValue": false
@@ -219,9 +219,6 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "onSlotChanged": {
-            "name": "FUELING"
-          },
           "x": 260,
           "y": 70
         }

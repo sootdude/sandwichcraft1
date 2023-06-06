@@ -54,6 +54,18 @@
       },
       {
         "value": "CUSTOM:RolledBasicDough"
+      },
+      {
+        "value": "CUSTOM:SourdoughDough"
+      },
+      {
+        "value": "CUSTOM:ProofedSourdoughDough"
+      },
+      {
+        "value": "CUSTOM:FlatSourdoughDough"
+      },
+      {
+        "value": "CUSTOM:RolledDarkDough"
       }
     ],
     "blocks": [],
