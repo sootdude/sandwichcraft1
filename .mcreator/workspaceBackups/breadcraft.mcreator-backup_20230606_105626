@@ -4119,7 +4119,8 @@
           "src/main/resources/assets/breadcraft/models/item/counter.json",
           "src/main/java/net/mcreator/breadcraft/block/CounterBlock.java"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "BasilStage0Destroyed",
@@ -4762,7 +4763,8 @@
           "src/main/java/net/mcreator/breadcraft/client/gui/CounterStorageScreen.java",
           "src/main/java/net/mcreator/breadcraft/world/inventory/CounterStorageMenu.java"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "RosemaryStage7",
@@ -21713,7 +21715,8 @@
           "src/main/resources/assets/breadcraft/blockstates/dark_oak_counter.json",
           "src/main/java/net/mcreator/breadcraft/block/entity/DarkOakCounterBlockEntity.java"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "BirchCounterCorner",
@@ -21730,7 +21733,8 @@
           "src/main/java/net/mcreator/breadcraft/block/entity/BirchCounterCornerBlockEntity.java",
           "src/main/resources/assets/breadcraft/models/block/birch_counter_corner.json"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "DarkOakCounterCorner",
@@ -21747,7 +21751,8 @@
           "src/main/resources/assets/breadcraft/models/item/dark_oak_counter_corner.json",
           "src/main/java/net/mcreator/breadcraft/block/DarkOakCounterCornerBlock.java"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "CounterRotation",
@@ -21778,7 +21783,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "DarkOakCounterRotation",
@@ -21809,7 +21815,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "OakCounter",
@@ -21826,7 +21833,8 @@
           "src/main/java/net/mcreator/breadcraft/block/entity/OakCounterBlockEntity.java",
           "src/main/resources/assets/breadcraft/blockstates/oak_counter.json"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "OakCounterCorner",
@@ -21843,7 +21851,8 @@
           "src/main/resources/assets/breadcraft/blockstates/oak_counter_corner.json",
           "src/main/java/net/mcreator/breadcraft/block/OakCounterCornerBlock.java"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "OakCounterRotation",
@@ -21874,7 +21883,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "PeanutStage7RightClickedwithModInstalled",
@@ -21905,7 +21915,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Peanut"
     },
     {
       "name": "PepperRightClickHarvest",
@@ -21937,7 +21948,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/hotpepper"
     },
     {
       "name": "WildGreensRightClickHarvest",
@@ -21969,7 +21980,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/WildGreens"
     },
     {
       "name": "GarlicRightClickHarvest",
@@ -22001,7 +22012,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Garlic"
     },
     {
       "name": "CaperRightClickHarvest",
@@ -22033,7 +22044,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Caper"
     },
     {
       "name": "RosemaryRightClickHarvest",
@@ -22065,7 +22076,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Rosemary"
     },
     {
       "name": "BasilRightClickHarvest",
@@ -22097,7 +22108,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Basil"
     },
     {
       "name": "ThymeRightClickHarvest",
@@ -22129,7 +22140,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Thyme"
     },
     {
       "name": "RyeRightClickHarvest",
@@ -22161,7 +22172,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Rye"
     },
     {
       "name": "OnionRightClickHarvest",
@@ -22193,7 +22204,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Onion"
     },
     {
       "name": "MustardRightClickHarvest",
@@ -22225,7 +22236,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Mustard"
     },
     {
       "name": "TomatoRightClickHarvest",
@@ -22257,7 +22268,7 @@
           }
         ]
       },
-      "path": "~/Crops"
+      "path": "~/Crops/Tomato"
     },
     {
       "name": "WildGreensShiftBonemeal",
@@ -22292,7 +22303,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/WildGreens"
     },
     {
       "name": "MustardShiftBonemeal",
@@ -22327,7 +22339,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Mustard"
     },
     {
       "name": "RyeShiftBonemeal",
@@ -22362,7 +22375,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Rye"
     },
     {
       "name": "ThymeShiftBonemeal",
@@ -22397,7 +22411,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Thyme"
     },
     {
       "name": "RosemaryShiftBonemeal",
@@ -22432,7 +22447,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Rosemary"
     },
     {
       "name": "BasilShiftBonemeal",
@@ -22467,7 +22483,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Basil"
     },
     {
       "name": "CaperShiftBonemeal",
@@ -22502,7 +22519,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Caper"
     },
     {
       "name": "TomatoShiftBonemeal",
@@ -22537,7 +22555,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Tomato"
     },
     {
       "name": "OnionShiftBonemeal",
@@ -22572,7 +22591,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Onion"
     },
     {
       "name": "PepperShiftBonemeal",
@@ -22607,7 +22627,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/hotpepper"
     },
     {
       "name": "GarlicShiftBonemeal",
@@ -22642,7 +22663,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Garlic"
     },
     {
       "name": "PeanutShiftBonemeal",
@@ -22677,7 +22699,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Crops/Tomato"
     },
     {
       "name": "DarkOakCounterRecipe",
@@ -22690,7 +22713,8 @@
         "files": [
           "src/main/resources/data/breadcraft/recipes/dark_oak_counter_recipe.json"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "OakCounterRecipe",
@@ -22703,11 +22727,13 @@
         "files": [
           "src/main/resources/data/breadcraft/recipes/oak_counter_recipe.json"
         ]
-      }
+      },
+      "path": "~/Counters"
     },
     {
       "name": "SpruceCounter",
       "type": "block",
+      "sortid": 1126,
       "compiles": true,
       "locked_code": false,
       "registry_name": "spruce_counter",
@@ -22719,7 +22745,318 @@
           "src/main/java/net/mcreator/breadcraft/block/SpruceCounterBlock.java",
           "src/main/resources/assets/breadcraft/models/item/spruce_counter.json"
         ]
-      }
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "SpruceCounterCorner",
+      "type": "block",
+      "sortid": 1127,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spruce_counter_corner",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/breadcraft/models/block/spruce_counter_corner.json",
+          "src/main/java/net/mcreator/breadcraft/block/SpruceCounterCornerBlock.java",
+          "src/main/resources/assets/breadcraft/models/item/spruce_counter_corner.json",
+          "src/main/java/net/mcreator/breadcraft/block/entity/SpruceCounterCornerBlockEntity.java",
+          "src/main/resources/assets/breadcraft/blockstates/spruce_counter_corner.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "AcaciaCounter",
+      "type": "block",
+      "sortid": 1128,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "acacia_counter",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/block/AcaciaCounterBlock.java",
+          "src/main/resources/assets/breadcraft/models/item/acacia_counter.json",
+          "src/main/resources/assets/breadcraft/models/block/acacia_counter.json",
+          "src/main/java/net/mcreator/breadcraft/block/entity/AcaciaCounterBlockEntity.java",
+          "src/main/resources/assets/breadcraft/blockstates/acacia_counter.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "AcaciaCounterCorner",
+      "type": "block",
+      "sortid": 1129,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "acacia_counter_corner",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/block/entity/AcaciaCounterCornerBlockEntity.java",
+          "src/main/resources/assets/breadcraft/models/block/acacia_counter_corner.json",
+          "src/main/resources/assets/breadcraft/blockstates/acacia_counter_corner.json",
+          "src/main/resources/assets/breadcraft/models/item/acacia_counter_corner.json",
+          "src/main/java/net/mcreator/breadcraft/block/AcaciaCounterCornerBlock.java"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "SpruceCounterRecipe",
+      "type": "recipe",
+      "sortid": 1130,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spruce_counter_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/spruce_counter_recipe.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "AcaciaCounterRecipe",
+      "type": "recipe",
+      "sortid": 1131,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "acacia_counter_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/acacia_counter_recipe.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "SpruceCounterRotation",
+      "type": "procedure",
+      "sortid": 1132,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spruce_counter_rotation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/procedures/SpruceCounterRotationProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "AcaciaCounterRotation",
+      "type": "procedure",
+      "sortid": 1133,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "acacia_counter_rotation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/procedures/AcaciaCounterRotationProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "MangroveCounter",
+      "type": "block",
+      "sortid": 1134,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mangrove_counter",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/breadcraft/models/block/mangrove_counter.json",
+          "src/main/java/net/mcreator/breadcraft/block/MangroveCounterBlock.java",
+          "src/main/resources/assets/breadcraft/models/item/mangrove_counter.json",
+          "src/main/java/net/mcreator/breadcraft/block/entity/MangroveCounterBlockEntity.java",
+          "src/main/resources/assets/breadcraft/blockstates/mangrove_counter.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "MangroveCounterCorner",
+      "type": "block",
+      "sortid": 1135,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mangrove_counter_corner",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/block/entity/MangroveCounterCornerBlockEntity.java",
+          "src/main/java/net/mcreator/breadcraft/block/MangroveCounterCornerBlock.java",
+          "src/main/resources/assets/breadcraft/blockstates/mangrove_counter_corner.json",
+          "src/main/resources/assets/breadcraft/models/block/mangrove_counter_corner.json",
+          "src/main/resources/assets/breadcraft/models/item/mangrove_counter_corner.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "MangroveCounterRecipe",
+      "type": "recipe",
+      "sortid": 1136,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mangrove_counter_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/mangrove_counter_recipe.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "MangroveCounterRotation",
+      "type": "procedure",
+      "sortid": 1137,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mangrove_counter_rotation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/procedures/MangroveCounterRotationProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "JungleCounter",
+      "type": "block",
+      "sortid": 1138,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jungle_counter",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/breadcraft/blockstates/jungle_counter.json",
+          "src/main/resources/assets/breadcraft/models/item/jungle_counter.json",
+          "src/main/java/net/mcreator/breadcraft/block/entity/JungleCounterBlockEntity.java",
+          "src/main/java/net/mcreator/breadcraft/block/JungleCounterBlock.java",
+          "src/main/resources/assets/breadcraft/models/block/jungle_counter.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "JungleCounterCorner",
+      "type": "block",
+      "sortid": 1139,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jungle_counter_corner",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/block/JungleCounterCornerBlock.java",
+          "src/main/resources/assets/breadcraft/models/item/jungle_counter_corner.json",
+          "src/main/resources/assets/breadcraft/blockstates/jungle_counter_corner.json",
+          "src/main/java/net/mcreator/breadcraft/block/entity/JungleCounterCornerBlockEntity.java",
+          "src/main/resources/assets/breadcraft/models/block/jungle_counter_corner.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "JungleCounterRecipe",
+      "type": "recipe",
+      "sortid": 1140,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jungle_counter_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/jungle_counter_recipe.json"
+        ]
+      },
+      "path": "~/Counters"
+    },
+    {
+      "name": "JungleCounterRotation",
+      "type": "procedure",
+      "sortid": 1141,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jungle_counter_rotation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/procedures/JungleCounterRotationProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Counters"
     }
   ],
   "variable_elements": [],
@@ -22771,6 +23108,7 @@
       "block.breadcraft.mustard_stage_7": "MustardStage7",
       "item.breadcraft.chicken_salad": "Chicken Salad",
       "item.breadcraft.bruschetta": "Bruschetta",
+      "block.breadcraft.spruce_counter_corner": "Spruce Counter (Corner)",
       "item.breadcraft.sheet_pan": "Sheet Pan",
       "gui.breadcraft.bread_oven_gui.label_inventory": "Inventory",
       "item.breadcraft.blt": "BLT",
@@ -22779,6 +23117,7 @@
       "item.breadcraft.scrambled_egg_sandwich": "Scrambled Egg Sandwich",
       "item.breadcraft.dinner_roll": "Dinner Roll",
       "item.breadcraft.pressed_brie": "Pressed Brie",
+      "block.breadcraft.mangrove_counter": "Mangrove Counter",
       "item.breadcraft.rye_grain": "Rye Grain",
       "item.breadcraft.banana_bread_slice": "Banana Bread Slice",
       "item.breadcraft.cheddar_cheese_slice": "Cheddar Cheese Slice",
@@ -22859,6 +23198,7 @@
       "block.breadcraft.basil_stage_6": "BasilStage6",
       "block.breadcraft.basil_stage_7": "BasilStage7",
       "item.breadcraft.rolling_pin": "Rolling Pin",
+      "block.breadcraft.mangrove_counter_corner": "Mangrove Counter (Corner)",
       "item.breadcraft.grilled_apple_sandwich": "Grilled Apple Sandwich",
       "item.breadcraft.plain_bagel": "Bagel",
       "item.breadcraft.proofed_whole_wheat_dough": "Risen Whole Wheat Dough",
@@ -22880,6 +23220,7 @@
       "item.breadcraft.croutons": "Croutons",
       "item.breadcraft.guinness_bread_slice": "Guinness Bread Slice",
       "item.breadcraft.sliced_sub_sandwich_loaf": "Sliced Sub Sandwich Loaf",
+      "block.breadcraft.acacia_counter": "Acacia Counter",
       "item.breadcraft.pressed_colby_cheese": "Pressed Colby Cheese",
       "item.breadcraft.french_dip_sandwich": "French Dip Sandwich",
       "item.breadcraft.mozzarella_cheese": "Mozzarella Cheese",
@@ -22927,6 +23268,7 @@
       "gui.breadcraft.proofing_bowl_gui.label_proofing_bowl": "Proofing Bowl",
       "item.breadcraft.babka_slice": "Babka Slice",
       "item.breadcraft.frieswith_honey_mustard": "Fries with Honey Mustard",
+      "block.breadcraft.jungle_counter": "Jungle Counter",
       "block.breadcraft.garlic_stage_7": "GarlicStage7",
       "block.breadcraft.garlic_stage_5": "GarlicStage6",
       "block.breadcraft.garlic_stage_6": "GarlicStage6",
@@ -23067,7 +23409,7 @@
       "item.breadcraft.mozzarella_curds": "Mozzarella Curds",
       "item.breadcraft.round_pan": "Round Pan",
       "item.breadcraft.potato_chips": "Potato Chips",
-      "block.breadcraft.spruce_counter": "Oak Counter",
+      "block.breadcraft.spruce_counter": "Spruce Counter",
       "itemGroup.tabbreadcraft": "Ingredients",
       "item.breadcraft.sliced_everything_bagel": "Sliced Everything Bagel",
       "item.breadcraft.crackers_with_brie": "Crackers with Brie",
@@ -23081,12 +23423,14 @@
       "item.breadcraft.fougasse": "Fougasse",
       "item.breadcraft.hot_pepper": "Hot Pepper",
       "item.breadcraft.sourdough_dough": "Sourdough Dough",
+      "block.breadcraft.acacia_counter_corner": "Acacia Counter (Corner)",
       "item.breadcraft.flat_dark_dough": "Flat Dark Dough",
       "item.breadcraft.basil_seeds": "Basil Seeds",
       "item.breadcraft.rye_bread_slice": "Rye Bread Slice",
       "item.breadcraft.wild_greens": "Wild Greens",
       "item.breadcraft.colby_cheese": "Colby Cheese",
       "gui.breadcraft.counter_storage.label_counter": "Counter",
+      "block.breadcraft.jungle_counter_corner": "Jungle Counter (Corner)",
       "item.breadcraft.waldorf_salad": "Waldorf Salad",
       "item.breadcraft.focaccia_slice": "Focaccia Slice",
       "item.breadcraft.rennet": "Rennet",
@@ -23247,6 +23591,10 @@
       },
       {
         "name": "caskprogressbar",
+        "children": []
+      },
+      {
+        "name": "Counters",
         "children": []
       }
     ]
