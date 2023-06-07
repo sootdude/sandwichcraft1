@@ -13,6 +13,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 
 import net.mcreator.breadcraft.client.gui.SaltPotGUIScreen;
 import net.mcreator.breadcraft.client.gui.ProofingBowlGuiScreen;
+import net.mcreator.breadcraft.client.gui.KnifeBlockGuiScreen;
 import net.mcreator.breadcraft.client.gui.KneadingBoardMenuScreen;
 import net.mcreator.breadcraft.client.gui.CounterStorageScreen;
 import net.mcreator.breadcraft.client.gui.BreadOvenGuiScreen;
@@ -29,6 +30,7 @@ public class BreadcraftModScreens {
 			MenuScreens.register(BreadcraftModMenus.BREAD_OVEN_GUI.get(), BreadOvenGuiScreen::new);
 			MenuScreens.register(BreadcraftModMenus.PROOFING_BOWL_GUI.get(), ProofingBowlGuiScreen::new);
 			MenuScreens.register(BreadcraftModMenus.AGING_CASK_GUI.get(), AgingCaskGuiScreen::new);
+			MenuScreens.register(BreadcraftModMenus.KNIFE_BLOCK_GUI.get(), KnifeBlockGuiScreen::new);
 		});
 	}
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "breadcraft:block/whisk_cup_full"
+    },
+    "facing=east": {
+      "model": "breadcraft:block/whisk_cup_full",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "breadcraft:block/whisk_cup_full",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "breadcraft:block/whisk_cup_full",
+      "y": 270
+    }
+  }
+}

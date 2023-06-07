@@ -24,8 +24,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 132,
-          "y": 55
+          "x": 133,
+          "y": 53
         }
       },
       {
@@ -42,8 +42,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 150,
-          "y": 55
+          "x": 151,
+          "y": 53
         }
       },
       {
@@ -60,8 +60,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 168,
-          "y": 55
+          "x": 169,
+          "y": 53
         }
       },
       {
@@ -78,8 +78,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 186,
-          "y": 55
+          "x": 187,
+          "y": 53
         }
       },
       {
@@ -96,8 +96,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 204,
-          "y": 55
+          "x": 205,
+          "y": 53
         }
       },
       {
@@ -114,8 +114,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 222,
-          "y": 55
+          "x": 223,
+          "y": 53
         }
       },
       {
@@ -132,8 +132,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 240,
-          "y": 55
+          "x": 241,
+          "y": 53
         }
       },
       {
@@ -150,8 +150,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 258,
-          "y": 55
+          "x": 259,
+          "y": 53
         }
       },
       {
@@ -168,8 +168,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 276,
-          "y": 55
+          "x": 277,
+          "y": 53
         }
       },
       {
@@ -186,8 +186,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 132,
-          "y": 73
+          "x": 133,
+          "y": 71
         }
       },
       {
@@ -204,8 +204,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 150,
-          "y": 73
+          "x": 151,
+          "y": 71
         }
       },
       {
@@ -222,8 +222,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 168,
-          "y": 73
+          "x": 169,
+          "y": 71
         }
       },
       {
@@ -240,8 +240,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 186,
-          "y": 73
+          "x": 187,
+          "y": 71
         }
       },
       {
@@ -258,8 +258,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 204,
-          "y": 73
+          "x": 205,
+          "y": 71
         }
       },
       {
@@ -276,8 +276,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 222,
-          "y": 73
+          "x": 223,
+          "y": 71
         }
       },
       {
@@ -294,8 +294,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 240,
-          "y": 73
+          "x": 241,
+          "y": 71
         }
       },
       {
@@ -312,8 +312,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 258,
-          "y": 73
+          "x": 259,
+          "y": 71
         }
       },
       {
@@ -330,8 +330,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 276,
-          "y": 73
+          "x": 277,
+          "y": 71
         }
       },
       {
@@ -348,8 +348,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 132,
-          "y": 91
+          "x": 133,
+          "y": 89
         }
       },
       {
@@ -366,8 +366,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 150,
-          "y": 91
+          "x": 151,
+          "y": 89
         }
       },
       {
@@ -384,8 +384,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 168,
-          "y": 91
+          "x": 169,
+          "y": 89
         }
       },
       {
@@ -402,8 +402,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 186,
-          "y": 91
+          "x": 187,
+          "y": 89
         }
       },
       {
@@ -420,8 +420,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 204,
-          "y": 91
+          "x": 205,
+          "y": 89
         }
       },
       {
@@ -438,8 +438,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 222,
-          "y": 91
+          "x": 223,
+          "y": 89
         }
       },
       {
@@ -453,8 +453,8 @@
             "value": -12829636,
             "falpha": 0.0
           },
-          "x": 132,
-          "y": 44
+          "x": 133,
+          "y": 41
         }
       },
       {
@@ -471,8 +471,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 240,
-          "y": 91
+          "x": 241,
+          "y": 89
         }
       },
       {
@@ -489,8 +489,8 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 258,
-          "y": 91
+          "x": 259,
+          "y": 89
         }
       },
       {
@@ -507,8 +507,23 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 276,
-          "y": 91
+          "x": 277,
+          "y": 89
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_inventory",
+          "text": {
+            "fixedValue": "Inventory"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 133,
+          "y": 109
         }
       }
     ],

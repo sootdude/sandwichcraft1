@@ -13,6 +13,7 @@ import net.minecraft.world.inventory.MenuType;
 
 import net.mcreator.breadcraft.world.inventory.SaltPotGUIMenu;
 import net.mcreator.breadcraft.world.inventory.ProofingBowlGuiMenu;
+import net.mcreator.breadcraft.world.inventory.KnifeBlockGuiMenu;
 import net.mcreator.breadcraft.world.inventory.KneadingBoardMenuMenu;
 import net.mcreator.breadcraft.world.inventory.CounterStorageMenu;
 import net.mcreator.breadcraft.world.inventory.BreadOvenGuiMenu;
@@ -27,4 +28,5 @@ public class BreadcraftModMenus {
 	public static final RegistryObject<MenuType<BreadOvenGuiMenu>> BREAD_OVEN_GUI = REGISTRY.register("bread_oven_gui", () -> IForgeMenuType.create(BreadOvenGuiMenu::new));
 	public static final RegistryObject<MenuType<ProofingBowlGuiMenu>> PROOFING_BOWL_GUI = REGISTRY.register("proofing_bowl_gui", () -> IForgeMenuType.create(ProofingBowlGuiMenu::new));
 	public static final RegistryObject<MenuType<AgingCaskGuiMenu>> AGING_CASK_GUI = REGISTRY.register("aging_cask_gui", () -> IForgeMenuType.create(AgingCaskGuiMenu::new));
+	public static final RegistryObject<MenuType<KnifeBlockGuiMenu>> KNIFE_BLOCK_GUI = REGISTRY.register("knife_block_gui", () -> IForgeMenuType.create(KnifeBlockGuiMenu::new));
 }

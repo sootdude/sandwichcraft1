@@ -67,7 +67,8 @@ public class CounterStorageScreen extends AbstractContainerScreen<CounterStorage
 
 	@Override
 	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
-		this.font.draw(poseStack, Component.translatable("gui.breadcraft.counter_storage.label_counter"), 6, 7, -12829636);
+		this.font.draw(poseStack, Component.translatable("gui.breadcraft.counter_storage.label_counter"), 7, 4, -12829636);
+		this.font.draw(poseStack, Component.translatable("gui.breadcraft.counter_storage.label_inventory"), 7, 72, -12829636);
 	}
 
 	@Override

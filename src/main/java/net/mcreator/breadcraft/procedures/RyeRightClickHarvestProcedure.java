@@ -36,7 +36,7 @@ public class RyeRightClickHarvestProcedure {
 			}
 			{
 				BlockPos _bp = new BlockPos(x, y, z);
-				BlockState _bs = BreadcraftModBlocks.STAGE_7.get().defaultBlockState();
+				BlockState _bs = BreadcraftModBlocks.STAGE_0.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 					Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());

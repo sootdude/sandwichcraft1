@@ -78,6 +78,10 @@ public class BreadOvenGuiMenu extends AbstractContainerMenu implements Supplier<
 			}
 		}
 		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 46, 53) {
+			@Override
+			public boolean mayPlace(ItemStack stack) {
+				return stack.is(ItemTags.create(new ResourceLocation("forge:breadovenfuel")));
+			}
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 46, 18) {
 			@Override

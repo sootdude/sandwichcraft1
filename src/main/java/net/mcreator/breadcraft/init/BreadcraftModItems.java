@@ -300,6 +300,7 @@ public class BreadcraftModItems {
 	public static final RegistryObject<Item> CHEESE_POT = block(BreadcraftModBlocks.CHEESE_POT, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> AGING_CASK = block(BreadcraftModBlocks.AGING_CASK, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> PROOFING_BOWL = block(BreadcraftModBlocks.PROOFING_BOWL, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> KNIFE_BLOCK = block(BreadcraftModBlocks.KNIFE_BLOCK, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> BREAD_OVEN = block(BreadcraftModBlocks.BREAD_OVEN, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> KNEADING_BOARD = block(BreadcraftModBlocks.KNEADING_BOARD, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> CHEESE_PRESS = REGISTRY.register("cheese_press", () -> new CheesePressItem());
@@ -317,6 +318,12 @@ public class BreadcraftModItems {
 	public static final RegistryObject<Item> POT = REGISTRY.register("pot", () -> new PotItem());
 	public static final RegistryObject<Item> DUTCH_OVEN = REGISTRY.register("dutch_oven", () -> new DutchOvenItem());
 	public static final RegistryObject<Item> COUNTER = block(BreadcraftModBlocks.COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> DARK_OAK_COUNTER = block(BreadcraftModBlocks.DARK_OAK_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> OAK_COUNTER = block(BreadcraftModBlocks.OAK_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> SPRUCE_COUNTER = block(BreadcraftModBlocks.SPRUCE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> ACACIA_COUNTER = block(BreadcraftModBlocks.ACACIA_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> MANGROVE_COUNTER = block(BreadcraftModBlocks.MANGROVE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> JUNGLE_COUNTER = block(BreadcraftModBlocks.JUNGLE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> FLAT_BASIC_DOUGH = REGISTRY.register("flat_basic_dough", () -> new FlatBasicDoughItem());
 	public static final RegistryObject<Item> BASIC_DOUGH = REGISTRY.register("basic_dough", () -> new BasicDoughItem());
 	public static final RegistryObject<Item> PROOFED_BASIC_DOUGH = REGISTRY.register("proofed_basic_dough", () -> new ProofedBasicDoughItem());
@@ -681,19 +688,18 @@ public class BreadcraftModItems {
 	public static final RegistryObject<Item> PEANUT_STAGE_1 = block(BreadcraftModBlocks.PEANUT_STAGE_1, null);
 	public static final RegistryObject<Item> PEANUT_STAGE_2 = block(BreadcraftModBlocks.PEANUT_STAGE_2, null);
 	public static final RegistryObject<Item> PEANUT_STAGE_0 = block(BreadcraftModBlocks.PEANUT_STAGE_0, null);
-	public static final RegistryObject<Item> DARK_OAK_COUNTER = block(BreadcraftModBlocks.DARK_OAK_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> BIRCH_COUNTER_CORNER = block(BreadcraftModBlocks.BIRCH_COUNTER_CORNER, null);
 	public static final RegistryObject<Item> DARK_OAK_COUNTER_CORNER = block(BreadcraftModBlocks.DARK_OAK_COUNTER_CORNER, null);
-	public static final RegistryObject<Item> OAK_COUNTER = block(BreadcraftModBlocks.OAK_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> OAK_COUNTER_CORNER = block(BreadcraftModBlocks.OAK_COUNTER_CORNER, null);
-	public static final RegistryObject<Item> SPRUCE_COUNTER = block(BreadcraftModBlocks.SPRUCE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> SPRUCE_COUNTER_CORNER = block(BreadcraftModBlocks.SPRUCE_COUNTER_CORNER, null);
-	public static final RegistryObject<Item> ACACIA_COUNTER = block(BreadcraftModBlocks.ACACIA_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> ACACIA_COUNTER_CORNER = block(BreadcraftModBlocks.ACACIA_COUNTER_CORNER, null);
-	public static final RegistryObject<Item> MANGROVE_COUNTER = block(BreadcraftModBlocks.MANGROVE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> MANGROVE_COUNTER_CORNER = block(BreadcraftModBlocks.MANGROVE_COUNTER_CORNER, null);
-	public static final RegistryObject<Item> JUNGLE_COUNTER = block(BreadcraftModBlocks.JUNGLE_COUNTER, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
 	public static final RegistryObject<Item> JUNGLE_COUNTER_CORNER = block(BreadcraftModBlocks.JUNGLE_COUNTER_CORNER, null);
+	public static final RegistryObject<Item> KNIFE_BLOCK_FULL = block(BreadcraftModBlocks.KNIFE_BLOCK_FULL, null);
+	public static final RegistryObject<Item> KNIFE_BLOCK_CHEFS_KNIFE = block(BreadcraftModBlocks.KNIFE_BLOCK_CHEFS_KNIFE, null);
+	public static final RegistryObject<Item> KNIFE_BLOCK_BREAD_KNIFE = block(BreadcraftModBlocks.KNIFE_BLOCK_BREAD_KNIFE, null);
+	public static final RegistryObject<Item> WHISK_CUP = block(BreadcraftModBlocks.WHISK_CUP, BreadcraftModTabs.TAB_BREADCRAFT_TOOLS);
+	public static final RegistryObject<Item> WHISK_CUP_FULL = block(BreadcraftModBlocks.WHISK_CUP_FULL, null);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
