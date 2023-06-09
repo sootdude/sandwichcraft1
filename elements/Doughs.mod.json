@@ -5,24 +5,6 @@
     "type": "Items",
     "items": [
       {
-        "value": "CUSTOM:BasicDough"
-      },
-      {
-        "value": "CUSTOM:FlatBasicDough"
-      },
-      {
-        "value": "CUSTOM:DarkDough"
-      },
-      {
-        "value": "CUSTOM:FlatDarkDough"
-      },
-      {
-        "value": "CUSTOM:HerbDough"
-      },
-      {
-        "value": "CUSTOM:FlatHerbDough"
-      },
-      {
         "value": "CUSTOM:ProofedBasicDough"
       },
       {
@@ -32,19 +14,10 @@
         "value": "CUSTOM:ProofedHerbDough"
       },
       {
-        "value": "CUSTOM:EnrichedDough"
-      },
-      {
         "value": "CUSTOM:ProofedEnrichedDough"
       },
       {
         "value": "CUSTOM:RolledEnrichedDough"
-      },
-      {
-        "value": "CUSTOM:FlatWholeWheatDough"
-      },
-      {
-        "value": "CUSTOM:WholeWheatDough"
       },
       {
         "value": "CUSTOM:ProofedWholeWheatDough"
@@ -59,16 +32,13 @@
         "value": "CUSTOM:RolledBasicDough"
       },
       {
-        "value": "CUSTOM:FlatSourdoughDough"
-      },
-      {
-        "value": "CUSTOM:SourdoughDough"
-      },
-      {
         "value": "CUSTOM:ProofedSourdoughDough"
       },
       {
         "value": "CUSTOM:RolledDarkDough"
+      },
+      {
+        "value": "CUSTOM:BananaBreadBatter"
       }
     ],
     "blocks": [],

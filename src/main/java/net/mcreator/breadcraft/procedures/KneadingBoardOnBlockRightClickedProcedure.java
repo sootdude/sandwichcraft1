@@ -15,7 +15,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.breadcraft.init.BreadcraftModItems;
-import net.mcreator.breadcraft.BreadcraftMod;
 
 import java.util.function.Supplier;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -53,22 +52,20 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.BASIC_DOUGH.get());
-					_setstack.setCount((int) (new Object() {
-						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
-							AtomicInteger _retval = new AtomicInteger(0);
-							BlockEntity _ent = world.getBlockEntity(pos);
-							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
-							return _retval.get();
-						}
-					}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.BASIC_DOUGH.get());
+				_setstack.setCount((int) (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
+						AtomicInteger _retval = new AtomicInteger(0);
+						BlockEntity _ent = world.getBlockEntity(pos);
+						if (_ent != null)
+							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						return _retval.get();
+					}
+				}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();
@@ -91,14 +88,12 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.BASIC_DOUGH.get());
-					_setstack.setCount(1);
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.BASIC_DOUGH.get());
+				_setstack.setCount(1);
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();
@@ -132,26 +127,24 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.HERB_DOUGH.get());
-					_setstack.setCount((int) (new Object() {
-						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
-							AtomicInteger _retval = new AtomicInteger(0);
-							BlockEntity _ent = world.getBlockEntity(pos);
-							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
-							return _retval.get();
-						}
-					}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(1)).remove(1);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.HERB_DOUGH.get());
+				_setstack.setCount((int) (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
+						AtomicInteger _retval = new AtomicInteger(0);
+						BlockEntity _ent = world.getBlockEntity(pos);
+						if (_ent != null)
+							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						return _retval.get();
+					}
+				}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(1)).remove(1);
+				_player.containerMenu.broadcastChanges();
+			}
 		}
 		if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(1)).getItem() : ItemStack.EMPTY).getItem() == BreadcraftModItems.FLAT_HERB_DOUGH
 				.get() && new Object() {
@@ -170,14 +163,12 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.HERB_DOUGH.get());
-					_setstack.setCount(1);
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.HERB_DOUGH.get());
+				_setstack.setCount(1);
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();
@@ -211,22 +202,20 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.DARK_DOUGH.get());
-					_setstack.setCount((int) (new Object() {
-						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
-							AtomicInteger _retval = new AtomicInteger(0);
-							BlockEntity _ent = world.getBlockEntity(pos);
-							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
-							return _retval.get();
-						}
-					}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.DARK_DOUGH.get());
+				_setstack.setCount((int) (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
+						AtomicInteger _retval = new AtomicInteger(0);
+						BlockEntity _ent = world.getBlockEntity(pos);
+						if (_ent != null)
+							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						return _retval.get();
+					}
+				}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();
@@ -249,14 +238,12 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.DARK_DOUGH.get());
-					_setstack.setCount(1);
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.DARK_DOUGH.get());
+				_setstack.setCount(1);
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();
@@ -290,22 +277,20 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.WHOLE_WHEAT_DOUGH.get());
-					_setstack.setCount((int) (new Object() {
-						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
-							AtomicInteger _retval = new AtomicInteger(0);
-							BlockEntity _ent = world.getBlockEntity(pos);
-							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
-							return _retval.get();
-						}
-					}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.WHOLE_WHEAT_DOUGH.get());
+				_setstack.setCount((int) (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
+						AtomicInteger _retval = new AtomicInteger(0);
+						BlockEntity _ent = world.getBlockEntity(pos);
+						if (_ent != null)
+							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						return _retval.get();
+					}
+				}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();
@@ -328,14 +313,12 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.WHOLE_WHEAT_DOUGH.get());
-					_setstack.setCount(1);
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.WHOLE_WHEAT_DOUGH.get());
+				_setstack.setCount(1);
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();
@@ -369,22 +352,20 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.SOURDOUGH_DOUGH.get());
-					_setstack.setCount((int) (new Object() {
-						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
-							AtomicInteger _retval = new AtomicInteger(0);
-							BlockEntity _ent = world.getBlockEntity(pos);
-							if (_ent != null)
-								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
-							return _retval.get();
-						}
-					}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.SOURDOUGH_DOUGH.get());
+				_setstack.setCount((int) (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
+						AtomicInteger _retval = new AtomicInteger(0);
+						BlockEntity _ent = world.getBlockEntity(pos);
+						if (_ent != null)
+							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
+						return _retval.get();
+					}
+				}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();
@@ -407,14 +388,12 @@ public class KneadingBoardOnBlockRightClickedProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.break")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			BreadcraftMod.queueServerWork(10, () -> {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					ItemStack _setstack = new ItemStack(BreadcraftModItems.SOURDOUGH_DOUGH.get());
-					_setstack.setCount(1);
-					((Slot) _slots.get(2)).set(_setstack);
-					_player.containerMenu.broadcastChanges();
-				}
-			});
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				ItemStack _setstack = new ItemStack(BreadcraftModItems.SOURDOUGH_DOUGH.get());
+				_setstack.setCount(1);
+				((Slot) _slots.get(2)).set(_setstack);
+				_player.containerMenu.broadcastChanges();
+			}
 			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
 				((Slot) _slots.get(1)).remove(1);
 				_player.containerMenu.broadcastChanges();

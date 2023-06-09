@@ -62,6 +62,16 @@ public class KnifeBlockFullBlock extends Block implements EntityBlock {
 	}
 
 	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return switch (state.getValue(FACING)) {
+			default -> box(5, 0, 2, 10, 16, 14);
+			case NORTH -> box(6, 0, 2, 11, 16, 14);
+			case EAST -> box(2, 0, 6, 14, 16, 11);
+			case WEST -> box(2, 0, 5, 14, 16, 10);
+		};
+	}
+
+	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(FACING);
 	}

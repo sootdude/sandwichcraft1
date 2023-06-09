@@ -23418,6 +23418,32 @@
           }
         ]
       }
+    },
+    {
+      "name": "KnifeBlockRecipe",
+      "type": "recipe",
+      "sortid": 1142,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "knife_block_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/knife_block_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "WhiskCupRecipe",
+      "type": "recipe",
+      "sortid": 1143,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "whisk_cup_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/whisk_cup_recipe.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -23971,7 +23997,7 @@
   "workspaceSettings": {
     "modid": "breadcraft",
     "modName": "Soot\u0027s Sandwichcraft",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Soot\u0027s Sandwichcraft is a sandwich-making mod with 31 varieties of bread, 50 varieties of sandwiches, and plenty of side dishes.",
     "author": "sootdude",
     "websiteURL": "https://www.curseforge.com/minecraft/mc-mods/soots-sandwichcraft",

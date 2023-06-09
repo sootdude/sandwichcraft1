@@ -23314,6 +23314,136 @@
           "src/main/resources/assets/breadcraft/models/block/knife_block_bread_knife.json"
         ]
       }
+    },
+    {
+      "name": "WhiskCup",
+      "type": "block",
+      "sortid": 1138,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "whisk_cup",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/breadcraft/models/block/whisk_cup.json",
+          "src/main/java/net/mcreator/breadcraft/block/entity/WhiskCupBlockEntity.java",
+          "src/main/java/net/mcreator/breadcraft/block/WhiskCupBlock.java",
+          "src/main/resources/assets/breadcraft/models/item/whisk_cup.json",
+          "src/main/resources/assets/breadcraft/blockstates/whisk_cup.json"
+        ]
+      }
+    },
+    {
+      "name": "WhiskCupOnRightClick",
+      "type": "procedure",
+      "sortid": 1140,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "whisk_cup_on_right_click",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/procedures/WhiskCupOnRightClickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WhiskCupFull",
+      "type": "block",
+      "sortid": 1139,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "whisk_cup_full",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/block/entity/WhiskCupFullBlockEntity.java",
+          "src/main/java/net/mcreator/breadcraft/block/WhiskCupFullBlock.java",
+          "src/main/resources/assets/breadcraft/models/block/whisk_cup_full.json",
+          "src/main/resources/assets/breadcraft/models/item/whisk_cup_full.json",
+          "src/main/resources/assets/breadcraft/blockstates/whisk_cup_full.json"
+        ]
+      }
+    },
+    {
+      "name": "WhiskCupFullonRightClick",
+      "type": "procedure",
+      "sortid": 1141,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "whisk_cup_fullon_right_click",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/breadcraft/procedures/WhiskCupFullonRightClickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "KnifeBlockRecipe",
+      "type": "recipe",
+      "sortid": 1142,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "knife_block_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/knife_block_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "WhiskCupRecipe",
+      "type": "recipe",
+      "sortid": 1143,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "whisk_cup_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/breadcraft/recipes/whisk_cup_recipe.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -23426,6 +23556,7 @@
       "item.breadcraft.lemon": "Lemon",
       "item.breadcraft.challah": "Challah",
       "item.breadcraft.ranch": "Ranch",
+      "block.breadcraft.whisk_cup_full": "Whisk Cup",
       "item.breadcraft.everything_bagelwith_cream_cheese": "Everything Bagel with Cream Cheese",
       "item.breadcraft.whole_wheat_boule_slice": "Whole Wheat Boule Slice",
       "itemGroup.tabbreadcraft_tools": "Baking Essentials",
@@ -23482,6 +23613,7 @@
       "block.breadcraft.acacia_counter": "Acacia Counter",
       "item.breadcraft.pressed_colby_cheese": "Pressed Colby Cheese",
       "item.breadcraft.french_dip_sandwich": "French Dip Sandwich",
+      "block.breadcraft.whisk_cup": "Whisk Cup",
       "item.breadcraft.mozzarella_cheese": "Mozzarella Cheese",
       "item.breadcraft.rye_ham_and_cheese_sandwich": "Rye Ham and Cheese Sandwich",
       "item.breadcraft.white_cheddar_slice": "White Cheddar Slice",
@@ -23556,6 +23688,7 @@
       "item.breadcraft.cobb_salad": "Cobb Salad",
       "block.breadcraft.thyme_stage_5": "ThymeStage5",
       "block.breadcraft.thyme_stage_4": "ThymeStage4",
+      "gui.breadcraft.counter_storage.label_inventory": "Inventory",
       "block.breadcraft.thyme_stage_7": "ThymeStage7",
       "block.breadcraft.thyme_stage_6": "ThymeStage6",
       "block.breadcraft.thyme_stage_1": "ThymeStage1",
@@ -23864,7 +23997,7 @@
   "workspaceSettings": {
     "modid": "breadcraft",
     "modName": "Soot\u0027s Sandwichcraft",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Soot\u0027s Sandwichcraft is a sandwich-making mod with 31 varieties of bread, 50 varieties of sandwiches, and plenty of side dishes.",
     "author": "sootdude",
     "websiteURL": "https://www.curseforge.com/minecraft/mc-mods/soots-sandwichcraft",

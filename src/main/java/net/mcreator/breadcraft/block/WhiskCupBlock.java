@@ -61,6 +61,16 @@ public class WhiskCupBlock extends Block implements EntityBlock {
 	}
 
 	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return switch (state.getValue(FACING)) {
+			default -> box(8, 0, 2, 14, 6, 8);
+			case NORTH -> box(2, 0, 8, 8, 6, 14);
+			case EAST -> box(2, 0, 2, 8, 6, 8);
+			case WEST -> box(8, 0, 8, 14, 6, 14);
+		};
+	}
+
+	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(FACING);
 	}
