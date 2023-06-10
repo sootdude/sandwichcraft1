@@ -46,7 +46,7 @@ public class PeanutGrassDropsProcedure {
 		BlockState blockDoubleFern = Blocks.AIR.defaultBlockState();
 		double randomNumber = 0;
 		ItemStack itemSeeds = ItemStack.EMPTY;
-		itemSeeds = new ItemStack(BreadcraftModItems.BASIL_SEEDS.get());
+		itemSeeds = new ItemStack(BreadcraftModItems.PEANUT.get());
 		blockFern = Blocks.FERN.defaultBlockState();
 		blockTallGrass = Blocks.GRASS.defaultBlockState();
 		blockDoubleFern = Blocks.LARGE_FERN.defaultBlockState();
