@@ -16,7 +16,7 @@ import java.util.List;
 
 public class TartarSauceItem extends Item {
 	public TartarSauceItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_BREADCRAFT).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.7999999999999999f)
+		super(new Item.Properties().tab(BreadcraftModTabs.TAB_BREADCRAFT).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.8f)
 
 				.build()));
 	}

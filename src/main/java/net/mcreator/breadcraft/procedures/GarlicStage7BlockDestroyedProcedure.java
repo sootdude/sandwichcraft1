@@ -48,7 +48,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 			if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) == 1) {
 					if (randomNumber > 0.575 && randomNumber <= 1) {
-						for (int index0 = 0; index0 < (int) (4); index0++) {
+						for (int index0 = 0; index0 < 4; index0++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -56,7 +56,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.216 && randomNumber <= 0.575) {
-						for (int index1 = 0; index1 < (int) (3); index1++) {
+						for (int index1 = 0; index1 < 3; index1++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -64,7 +64,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.216 && randomNumber <= 0.575) {
-						for (int index2 = 0; index2 < (int) (2); index2++) {
+						for (int index2 = 0; index2 < 2; index2++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -80,7 +80,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 					}
 				} else if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ALL_DAMAGE_PROTECTION, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) == 2) {
 					if (randomNumber > 0.937 && randomNumber <= 1) {
-						for (int index3 = 0; index3 < (int) (5); index3++) {
+						for (int index3 = 0; index3 < 5; index3++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -88,7 +88,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.709 && randomNumber <= 0.937) {
-						for (int index4 = 0; index4 < (int) (4); index4++) {
+						for (int index4 = 0; index4 < 4; index4++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -96,7 +96,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.367 && randomNumber <= 0.709) {
-						for (int index5 = 0; index5 < (int) (3); index5++) {
+						for (int index5 = 0; index5 < 3; index5++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -104,7 +104,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.11 && randomNumber <= 0.367) {
-						for (int index6 = 0; index6 < (int) (2); index6++) {
+						for (int index6 = 0; index6 < 2; index6++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -120,7 +120,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 					}
 				} else {
 					if (randomNumber > 0.962 && randomNumber <= 1) {
-						for (int index7 = 0; index7 < (int) (6); index7++) {
+						for (int index7 = 0; index7 < 6; index7++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -128,7 +128,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.806 && randomNumber <= 0.962) {
-						for (int index8 = 0; index8 < (int) (5); index8++) {
+						for (int index8 = 0; index8 < 5; index8++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -136,7 +136,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.513 && randomNumber <= 0.806) {
-						for (int index9 = 0; index9 < (int) (4); index9++) {
+						for (int index9 = 0; index9 < 4; index9++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -144,7 +144,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.22 && randomNumber <= 0.513) {
-						for (int index10 = 0; index10 < (int) (3); index10++) {
+						for (int index10 = 0; index10 < 3; index10++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -152,7 +152,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 							}
 						}
 					} else if (randomNumber > 0.055 && randomNumber <= 0.22) {
-						for (int index11 = 0; index11 < (int) (2); index11++) {
+						for (int index11 = 0; index11 < 2; index11++) {
 							if (world instanceof Level _level && !_level.isClientSide()) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 								entityToSpawn.setPickUpDelay(10);
@@ -169,7 +169,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 				}
 			} else {
 				if (randomNumber > 0.809 && randomNumber <= 1) {
-					for (int index12 = 0; index12 < (int) (3); index12++) {
+					for (int index12 = 0; index12 < 3; index12++) {
 						if (world instanceof Level _level && !_level.isClientSide()) {
 							ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 							entityToSpawn.setPickUpDelay(10);
@@ -177,7 +177,7 @@ public class GarlicStage7BlockDestroyedProcedure {
 						}
 					}
 				} else if (randomNumber > 0.39 && randomNumber <= 0.809) {
-					for (int index13 = 0; index13 < (int) (2); index13++) {
+					for (int index13 = 0; index13 < 2; index13++) {
 						if (world instanceof Level _level && !_level.isClientSide()) {
 							ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 							entityToSpawn.setPickUpDelay(10);

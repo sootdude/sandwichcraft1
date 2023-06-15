@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MeatStewItem extends Item {
 	public MeatStewItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_SANDWICHESANDMORE).stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.7000000000000001f)
+		super(new Item.Properties().tab(BreadcraftModTabs.TAB_SANDWICHESANDMORE).stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.7f)
 
 				.meat().build()));
 	}

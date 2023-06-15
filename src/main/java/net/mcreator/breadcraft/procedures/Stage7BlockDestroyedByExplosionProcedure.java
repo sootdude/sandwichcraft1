@@ -18,7 +18,7 @@ public class Stage7BlockDestroyedByExplosionProcedure {
 			randomNumber = Math.random();
 		}
 		if (randomNumber > 0.809 && randomNumber <= 1) {
-			for (int index0 = 0; index0 < (int) (3); index0++) {
+			for (int index0 = 0; index0 < 3; index0++) {
 				if (world instanceof Level _level && !_level.isClientSide()) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 					entityToSpawn.setPickUpDelay(10);
@@ -26,7 +26,7 @@ public class Stage7BlockDestroyedByExplosionProcedure {
 				}
 			}
 		} else if (randomNumber > 0.39 && randomNumber <= 0.809) {
-			for (int index1 = 0; index1 < (int) (2); index1++) {
+			for (int index1 = 0; index1 < 2; index1++) {
 				if (world instanceof Level _level && !_level.isClientSide()) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 					entityToSpawn.setPickUpDelay(10);
