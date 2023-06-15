@@ -33,7 +33,7 @@ public class ChefsKnifeItem extends SwordItem {
 			}
 
 			public Ingredient getRepairIngredient() {
-				return Ingredient.EMPTY;
+				return Ingredient.of();
 			}
 		}, 3, -2f, new Item.Properties().tab(BreadcraftModTabs.TAB_BREADCRAFT_TOOLS));
 	}

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class SmokedHamSandwichItem extends Item {
 	public SmokedHamSandwichItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_SANDWICHESANDMORE).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(11).saturationMod(0.7999999999999999f)
+		super(new Item.Properties().tab(BreadcraftModTabs.TAB_SANDWICHESANDMORE).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(11).saturationMod(0.8f)
 
 				.meat().build()));
 	}

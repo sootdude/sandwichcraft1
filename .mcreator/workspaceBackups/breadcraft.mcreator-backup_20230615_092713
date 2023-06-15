@@ -24009,10 +24009,10 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "forge-1.18.2",
+    "currentGenerator": "forge-1.19.2",
     "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.breadcraft",
     "lockBaseModFiles": false
   },
-  "mcreatorVersion": 202300110610
+  "mcreatorVersion": 202300223515
 }

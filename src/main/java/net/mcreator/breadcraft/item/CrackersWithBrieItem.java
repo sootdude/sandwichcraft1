@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CrackersWithBrieItem extends Item {
 	public CrackersWithBrieItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_BREAD_TAB).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.7999999999999999f)
+		super(new Item.Properties().tab(BreadcraftModTabs.TAB_BREAD_TAB).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8f)
 
 				.build()));
 	}
