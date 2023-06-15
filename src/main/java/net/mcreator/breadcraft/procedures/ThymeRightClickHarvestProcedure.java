@@ -23,7 +23,7 @@ public class ThymeRightClickHarvestProcedure {
 		ItemStack itemSeed = ItemStack.EMPTY;
 		double randomNumber = 0;
 		double cropnumber = 0;
-		if (ModList.get().isLoaded("harvestwithease") || ModList.get().isLoaded("rightclickharvest") || ModList.get().isLoaded("right_click_get_crops") || ModList.get().isLoaded("quark")) {
+		if (ModList.get().isLoaded("harvestwithease") || ModList.get().isLoaded("rightclickharvest") || ModList.get().isLoaded("right_click_get_crops")) {
 			cropnumber = Mth.nextInt(RandomSource.create(), 1, 3);
 			if (cropnumber == 1) {
 				itemSeed = new ItemStack(BreadcraftModItems.THYME_SEEDS.get());

@@ -21,7 +21,7 @@ public class OnionRightClickHarvestProcedure {
 		ItemStack itemSeed = ItemStack.EMPTY;
 		double randomNumber = 0;
 		double cropnumber = 0;
-		if (ModList.get().isLoaded("harvestwithease") || ModList.get().isLoaded("rightclickharvest") || ModList.get().isLoaded("right_click_get_crops") || ModList.get().isLoaded("quark")) {
+		if (ModList.get().isLoaded("harvestwithease") || ModList.get().isLoaded("rightclickharvest") || ModList.get().isLoaded("right_click_get_crops")) {
 			itemSeed = new ItemStack(BreadcraftModItems.ONION_SEEDS.get());
 			itemCrop = new ItemStack(BreadcraftModItems.ONION.get());
 			if (world instanceof Level _level && !_level.isClientSide()) {
