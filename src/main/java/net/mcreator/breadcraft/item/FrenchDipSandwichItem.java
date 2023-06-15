@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FrenchDipSandwichItem extends Item {
 	public FrenchDipSandwichItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_SANDWICHESANDMORE).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(12).saturationMod(0.7999999999999999f)
+		super(new Item.Properties().tab(BreadcraftModTabs.TAB_SANDWICHESANDMORE).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(12).saturationMod(0.8f)
 
 				.meat().build()));
 	}

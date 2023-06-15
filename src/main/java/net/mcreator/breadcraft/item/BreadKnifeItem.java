@@ -38,9 +38,9 @@ public class BreadKnifeItem extends SwordItem {
 			}
 
 			public Ingredient getRepairIngredient() {
-				return Ingredient.EMPTY;
+				return Ingredient.of();
 			}
-		}, 3, -2.4000000000000001f, new Item.Properties().tab(BreadcraftModTabs.TAB_BREADCRAFT_TOOLS));
+		}, 3, -2.4f, new Item.Properties().tab(BreadcraftModTabs.TAB_BREADCRAFT_TOOLS));
 	}
 
 	@Override

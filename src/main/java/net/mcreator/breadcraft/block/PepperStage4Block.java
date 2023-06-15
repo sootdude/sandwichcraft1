@@ -1,6 +1,7 @@
 
 package net.mcreator.breadcraft.block;
 
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.common.util.ForgeSoundType;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -26,7 +27,6 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.util.RandomSource;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.Direction;
@@ -42,8 +42,9 @@ import net.mcreator.breadcraft.block.entity.PepperStage4BlockEntity;
 public class PepperStage4Block extends Block implements EntityBlock {
 	public PepperStage4Block() {
 		super(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT)
-				.sound(new ForgeSoundType(1.0f, 1.0f, () -> new SoundEvent(new ResourceLocation("block.crop.break")), () -> new SoundEvent(new ResourceLocation("block.grass.step")), () -> new SoundEvent(new ResourceLocation("breadcraft:muted")),
-						() -> new SoundEvent(new ResourceLocation("block.grass.hit")), () -> new SoundEvent(new ResourceLocation("block.grass.fall"))))
+				.sound(new ForgeSoundType(1.0f, 1.0f, () -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.crop.break")), () -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.grass.step")),
+						() -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("breadcraft:muted")), () -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.grass.hit")),
+						() -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.grass.fall"))))
 				.instabreak().noCollission().noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false).noLootTable());
 	}
 

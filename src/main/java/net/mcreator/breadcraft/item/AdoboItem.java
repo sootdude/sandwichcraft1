@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AdoboItem extends Item {
 	public AdoboItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_SANDWICHESANDMORE).stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(11).saturationMod(0.7000000000000001f)
+		super(new Item.Properties().tab(BreadcraftModTabs.TAB_SANDWICHESANDMORE).stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(11).saturationMod(0.7f)
 
 				.meat().build()));
 	}
