@@ -97,7 +97,7 @@ public class Stage0Block extends Block implements EntityBlock {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		Stage0BlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		Stage0BlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
 		return retval;
 	}
 

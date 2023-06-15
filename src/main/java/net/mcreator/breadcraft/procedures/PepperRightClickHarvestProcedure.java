@@ -23,7 +23,7 @@ public class PepperRightClickHarvestProcedure {
 		ItemStack itemSeed = ItemStack.EMPTY;
 		double randomNumber = 0;
 		double cropnumber = 0;
-		if (ModList.get().isLoaded("harvestwithease") || ModList.get().isLoaded("rightclickharvest") || ModList.get().isLoaded("right_click_get_crops")) {
+		if (ModList.get().isLoaded("harvestwithease") || ModList.get().isLoaded("rightclickharvest") || ModList.get().isLoaded("right_click_get_crops") || ModList.get().isLoaded("quark")) {
 			cropnumber = Mth.nextInt(RandomSource.create(), 1, 3);
 			if (cropnumber == 1) {
 				itemSeed = new ItemStack(BreadcraftModItems.HOT_PEPPER_SEEDS.get());
