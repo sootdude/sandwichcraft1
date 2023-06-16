@@ -15,5 +15,5 @@ import net.mcreator.breadcraft.BreadcraftMod;
 
 public class BreadcraftModSounds {
 	public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, BreadcraftMod.MODID);
-	public static final RegistryObject<SoundEvent> MUTED = REGISTRY.register("muted", () -> new SoundEvent(new ResourceLocation("breadcraft", "muted")));
+	public static final RegistryObject<SoundEvent> MUTED = REGISTRY.register("muted", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("breadcraft", "muted")));
 }

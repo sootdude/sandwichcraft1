@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "breadcraft:blocks/caper_stage_4"
+    "layer0": "breadcraft:block/caper_stage_4"
   }
 }

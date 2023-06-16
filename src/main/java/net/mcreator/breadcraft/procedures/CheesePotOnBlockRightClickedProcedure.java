@@ -1,32 +1,8 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.eventbus.api.Event;
 
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.breadcraft.init.BreadcraftModItems;
-import net.mcreator.breadcraft.init.BreadcraftModBlocks;
-import net.mcreator.breadcraft.BreadcraftMod;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.Map;
+import javax.annotation.Nullable;
 
 public class CheesePotOnBlockRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -40,9 +16,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 1) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 1) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 1;
 					final ItemStack _setstack = new ItemStack(Items.MILK_BUCKET);
@@ -71,9 +47,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 2) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 2) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					final ItemStack _setstack = new ItemStack(BreadcraftModItems.BREADCRAFT_SALT.get());
@@ -97,9 +73,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 3) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 3;
 					final ItemStack _setstack = new ItemStack(BreadcraftModItems.LEMON_JUICE.get());
@@ -128,9 +104,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 4) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 4) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 4;
 					final ItemStack _setstack = new ItemStack(BreadcraftModItems.RENNET.get());
@@ -159,9 +135,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 5) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 5;
 					final ItemStack _setstack = new ItemStack(Items.YELLOW_DYE);
@@ -185,9 +161,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 6) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 6) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 6;
 					final ItemStack _setstack = new ItemStack(Blocks.BROWN_MUSHROOM);
@@ -211,9 +187,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 7) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 7) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 7;
 					final ItemStack _setstack = new ItemStack(BreadcraftModItems.CREAM.get());
@@ -242,9 +218,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 8) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 8) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 8;
 					final ItemStack _setstack = new ItemStack(BreadcraftModItems.OIL.get());
@@ -273,9 +249,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 9) == 0) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 9) == 0) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 9;
 					final ItemStack _setstack = new ItemStack(Blocks.WARPED_FUNGUS);
@@ -299,9 +275,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 4) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 4) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 4;
 					final int _amount = 1;
@@ -332,9 +308,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 5) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 5) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 5;
 					final int _amount = 1;
@@ -361,9 +337,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 3) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 3) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 3;
 					final int _amount = 1;
@@ -394,9 +370,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 2) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 2) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 2;
 					final int _amount = 1;
@@ -423,9 +399,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 1) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 1;
 					final int _amount = 1;
@@ -456,9 +432,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 6) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 6) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 6;
 					final int _amount = 1;
@@ -485,9 +461,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 7) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 7) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 7;
 					final int _amount = 1;
@@ -518,9 +494,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 8) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 8) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 8;
 					final int _amount = 1;
@@ -551,9 +527,9 @@ public class CheesePotOnBlockRightClickedProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 9) == 1) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 9) == 1) {
 			{
-				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 9;
 					final int _amount = 1;
@@ -581,7 +557,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 1) == 1 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -589,7 +565,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 2) == 1 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 2) == 1 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -597,7 +573,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 3) == 1 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 3) == 1 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -605,7 +581,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 4) == 1 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 4) == 1 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -613,7 +589,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 5) == 0 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -621,7 +597,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 6) == 0 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 6) == 0 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -629,7 +605,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 7) == 0 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 7) == 0 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -637,7 +613,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 8) == 0 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 8) == 0 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -645,23 +621,23 @@ public class CheesePotOnBlockRightClickedProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 9) == 0) {
+			}.getAmount(world, BlockPos.containing(x, y, z), 9) == 0) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
+						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1, false);
 					}
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
+						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1, false);
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 1;
 						final int _amount = 1;
@@ -675,7 +651,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 2;
 						final int _amount = 1;
@@ -689,7 +665,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 3;
 						final int _amount = 1;
@@ -703,7 +679,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 4;
 						final int _amount = 1;
@@ -717,7 +693,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 					}
 				}
 				{
-					BlockPos _bp = new BlockPos(x, y, z);
+					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockState _bs = BreadcraftModBlocks.CHEESE_POT_CRAFTING.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -733,7 +709,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 				BreadcraftMod.queueServerWork(60, () -> {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 						}
@@ -742,21 +718,21 @@ public class CheesePotOnBlockRightClickedProcedure {
 				BreadcraftMod.queueServerWork(140, () -> {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1, false);
 						}
 					}
 				});
 				BreadcraftMod.queueServerWork(200, () -> {
-					if (world instanceof Level _level && !_level.isClientSide()) {
+					if (world instanceof ServerLevel _level) {
 						ItemEntity entityToSpawn = new ItemEntity(_level, x, (y + 1), z, new ItemStack(BreadcraftModItems.MOZZARELLA_CURDS.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}
 				});
 				{
-					BlockPos _bp = new BlockPos(x, y, z);
+					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockState _bs = BreadcraftModBlocks.CHEESE_POT.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -779,7 +755,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 1) == 1 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -787,7 +763,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 2) == 1 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 2) == 1 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -795,7 +771,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -803,7 +779,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 4) == 1 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 4) == 1 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -811,7 +787,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 5) == 0 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -819,7 +795,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 6) == 0 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 6) == 0 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -827,7 +803,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 7) == 0 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 7) == 0 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -835,7 +811,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 8) == 0 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 8) == 0 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -843,23 +819,23 @@ public class CheesePotOnBlockRightClickedProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 9) == 0) {
+					}.getAmount(world, BlockPos.containing(x, y, z), 9) == 0) {
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
-								_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
+								_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
 							} else {
 								_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1, false);
 							}
 						}
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
-								_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
+								_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
 							} else {
 								_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1, false);
 							}
 						}
 						{
-							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final int _amount = 1;
@@ -873,7 +849,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 							}
 						}
 						{
-							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 2;
 								final int _amount = 1;
@@ -887,7 +863,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 							}
 						}
 						{
-							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 4;
 								final int _amount = 1;
@@ -901,7 +877,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 							}
 						}
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = BreadcraftModBlocks.CHEESE_POT_CRAFTING.get().defaultBlockState();
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -917,7 +893,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 						BreadcraftMod.queueServerWork(60, () -> {
 							if (world instanceof Level _level) {
 								if (!_level.isClientSide()) {
-									_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+									_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 								} else {
 									_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 								}
@@ -926,21 +902,21 @@ public class CheesePotOnBlockRightClickedProcedure {
 						BreadcraftMod.queueServerWork(140, () -> {
 							if (world instanceof Level _level) {
 								if (!_level.isClientSide()) {
-									_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
+									_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
 								} else {
 									_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1, false);
 								}
 							}
 						});
 						BreadcraftMod.queueServerWork(200, () -> {
-							if (world instanceof Level _level && !_level.isClientSide()) {
+							if (world instanceof ServerLevel _level) {
 								ItemEntity entityToSpawn = new ItemEntity(_level, x, (y + 1), z, new ItemStack(BreadcraftModItems.CHEDDAR_CHEESE_CURDS.get()));
 								entityToSpawn.setPickUpDelay(10);
 								_level.addFreshEntity(entityToSpawn);
 							}
 						});
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = BreadcraftModBlocks.CHEESE_POT.get().defaultBlockState();
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -963,7 +939,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 1) == 1 && new Object() {
+							}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -971,7 +947,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 2) == 0 && new Object() {
+							}.getAmount(world, BlockPos.containing(x, y, z), 2) == 0 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -979,7 +955,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 3) == 1 && new Object() {
+							}.getAmount(world, BlockPos.containing(x, y, z), 3) == 1 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -987,7 +963,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 4) == 0 && new Object() {
+							}.getAmount(world, BlockPos.containing(x, y, z), 4) == 0 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -995,7 +971,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 5) == 0 && new Object() {
+							}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -1003,7 +979,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 6) == 0 && new Object() {
+							}.getAmount(world, BlockPos.containing(x, y, z), 6) == 0 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -1011,7 +987,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 7) == 1 && new Object() {
+							}.getAmount(world, BlockPos.containing(x, y, z), 7) == 1 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -1019,7 +995,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 8) == 0 && new Object() {
+							}.getAmount(world, BlockPos.containing(x, y, z), 8) == 0 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -1027,23 +1003,23 @@ public class CheesePotOnBlockRightClickedProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 9) == 0) {
+							}.getAmount(world, BlockPos.containing(x, y, z), 9) == 0) {
 								if (world instanceof Level _level) {
 									if (!_level.isClientSide()) {
-										_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
+										_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
 									} else {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
 								if (world instanceof Level _level) {
 									if (!_level.isClientSide()) {
-										_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
+										_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
 									} else {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
 								{
-									BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+									BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 									if (_ent != null) {
 										final int _slotid = 1;
 										final int _amount = 1;
@@ -1057,7 +1033,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 									}
 								}
 								{
-									BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+									BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 									if (_ent != null) {
 										final int _slotid = 3;
 										final int _amount = 1;
@@ -1071,7 +1047,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 									}
 								}
 								{
-									BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+									BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 									if (_ent != null) {
 										final int _slotid = 7;
 										final int _amount = 1;
@@ -1085,7 +1061,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 									}
 								}
 								{
-									BlockPos _bp = new BlockPos(x, y, z);
+									BlockPos _bp = BlockPos.containing(x, y, z);
 									BlockState _bs = BreadcraftModBlocks.CHEESE_POT_CRAFTING.get().defaultBlockState();
 									BlockState _bso = world.getBlockState(_bp);
 									for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1101,7 +1077,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 								BreadcraftMod.queueServerWork(60, () -> {
 									if (world instanceof Level _level) {
 										if (!_level.isClientSide()) {
-											_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+											_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 										} else {
 											_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 										}
@@ -1110,21 +1086,21 @@ public class CheesePotOnBlockRightClickedProcedure {
 								BreadcraftMod.queueServerWork(140, () -> {
 									if (world instanceof Level _level) {
 										if (!_level.isClientSide()) {
-											_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
+											_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
 										} else {
 											_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1, false);
 										}
 									}
 								});
 								BreadcraftMod.queueServerWork(200, () -> {
-									if (world instanceof Level _level && !_level.isClientSide()) {
+									if (world instanceof ServerLevel _level) {
 										ItemEntity entityToSpawn = new ItemEntity(_level, x, (y + 1), z, new ItemStack(BreadcraftModItems.CREAM_CHEESE.get()));
 										entityToSpawn.setPickUpDelay(10);
 										_level.addFreshEntity(entityToSpawn);
 									}
 								});
 								{
-									BlockPos _bp = new BlockPos(x, y, z);
+									BlockPos _bp = BlockPos.containing(x, y, z);
 									BlockState _bs = BreadcraftModBlocks.CHEESE_POT.get().defaultBlockState();
 									BlockState _bso = world.getBlockState(_bp);
 									for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1147,7 +1123,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 1) == 1 && new Object() {
+									}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1 && new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
@@ -1155,7 +1131,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 2) == 1 && new Object() {
+									}.getAmount(world, BlockPos.containing(x, y, z), 2) == 1 && new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
@@ -1163,7 +1139,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
+									}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
@@ -1171,7 +1147,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 4) == 1 && new Object() {
+									}.getAmount(world, BlockPos.containing(x, y, z), 4) == 1 && new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
@@ -1179,7 +1155,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 5) == 1 && new Object() {
+									}.getAmount(world, BlockPos.containing(x, y, z), 5) == 1 && new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
@@ -1187,7 +1163,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 6) == 0 && new Object() {
+									}.getAmount(world, BlockPos.containing(x, y, z), 6) == 0 && new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
@@ -1195,7 +1171,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 7) == 0 && new Object() {
+									}.getAmount(world, BlockPos.containing(x, y, z), 7) == 0 && new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
@@ -1203,7 +1179,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 8) == 0 && new Object() {
+									}.getAmount(world, BlockPos.containing(x, y, z), 8) == 0 && new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
 											BlockEntity _ent = world.getBlockEntity(pos);
@@ -1211,23 +1187,23 @@ public class CheesePotOnBlockRightClickedProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 9) == 0) {
+									}.getAmount(world, BlockPos.containing(x, y, z), 9) == 0) {
 										if (world instanceof Level _level) {
 											if (!_level.isClientSide()) {
-												_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
+												_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
 											} else {
 												_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1, false);
 											}
 										}
 										if (world instanceof Level _level) {
 											if (!_level.isClientSide()) {
-												_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
+												_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
 											} else {
 												_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1, false);
 											}
 										}
 										{
-											BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+											BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 											if (_ent != null) {
 												final int _slotid = 1;
 												final int _amount = 1;
@@ -1241,7 +1217,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 											}
 										}
 										{
-											BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+											BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 											if (_ent != null) {
 												final int _slotid = 2;
 												final int _amount = 1;
@@ -1255,7 +1231,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 											}
 										}
 										{
-											BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+											BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 											if (_ent != null) {
 												final int _slotid = 4;
 												final int _amount = 1;
@@ -1269,7 +1245,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 											}
 										}
 										{
-											BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+											BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 											if (_ent != null) {
 												final int _slotid = 5;
 												final int _amount = 1;
@@ -1283,7 +1259,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 											}
 										}
 										{
-											BlockPos _bp = new BlockPos(x, y, z);
+											BlockPos _bp = BlockPos.containing(x, y, z);
 											BlockState _bs = BreadcraftModBlocks.CHEESE_POT_CRAFTING.get().defaultBlockState();
 											BlockState _bso = world.getBlockState(_bp);
 											for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1299,7 +1275,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 										BreadcraftMod.queueServerWork(60, () -> {
 											if (world instanceof Level _level) {
 												if (!_level.isClientSide()) {
-													_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+													_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 												} else {
 													_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 												}
@@ -1308,21 +1284,21 @@ public class CheesePotOnBlockRightClickedProcedure {
 										BreadcraftMod.queueServerWork(140, () -> {
 											if (world instanceof Level _level) {
 												if (!_level.isClientSide()) {
-													_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
+													_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
 												} else {
 													_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1, false);
 												}
 											}
 										});
 										BreadcraftMod.queueServerWork(200, () -> {
-											if (world instanceof Level _level && !_level.isClientSide()) {
+											if (world instanceof ServerLevel _level) {
 												ItemEntity entityToSpawn = new ItemEntity(_level, x, (y + 1), z, new ItemStack(BreadcraftModItems.COLBY_CHEESE_CURDS.get()));
 												entityToSpawn.setPickUpDelay(10);
 												_level.addFreshEntity(entityToSpawn);
 											}
 										});
 										{
-											BlockPos _bp = new BlockPos(x, y, z);
+											BlockPos _bp = BlockPos.containing(x, y, z);
 											BlockState _bs = BreadcraftModBlocks.CHEESE_POT.get().defaultBlockState();
 											BlockState _bso = world.getBlockState(_bp);
 											for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1345,7 +1321,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 1) == 1 && new Object() {
+											}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1 && new Object() {
 												public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
@@ -1353,7 +1329,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 2) == 1 && new Object() {
+											}.getAmount(world, BlockPos.containing(x, y, z), 2) == 1 && new Object() {
 												public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
@@ -1361,7 +1337,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
+											}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && new Object() {
 												public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
@@ -1369,7 +1345,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 4) == 1 && new Object() {
+											}.getAmount(world, BlockPos.containing(x, y, z), 4) == 1 && new Object() {
 												public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
@@ -1377,7 +1353,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 5) == 0 && new Object() {
+											}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0 && new Object() {
 												public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
@@ -1385,7 +1361,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 6) == 1 && new Object() {
+											}.getAmount(world, BlockPos.containing(x, y, z), 6) == 1 && new Object() {
 												public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
@@ -1393,7 +1369,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 7) == 0 && new Object() {
+											}.getAmount(world, BlockPos.containing(x, y, z), 7) == 0 && new Object() {
 												public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
@@ -1401,7 +1377,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 8) == 0 && new Object() {
+											}.getAmount(world, BlockPos.containing(x, y, z), 8) == 0 && new Object() {
 												public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 													AtomicInteger _retval = new AtomicInteger(0);
 													BlockEntity _ent = world.getBlockEntity(pos);
@@ -1409,23 +1385,23 @@ public class CheesePotOnBlockRightClickedProcedure {
 														_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 													return _retval.get();
 												}
-											}.getAmount(world, new BlockPos(x, y, z), 9) == 0) {
+											}.getAmount(world, BlockPos.containing(x, y, z), 9) == 0) {
 												if (world instanceof Level _level) {
 													if (!_level.isClientSide()) {
-														_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
+														_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
 													} else {
 														_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1, false);
 													}
 												}
 												if (world instanceof Level _level) {
 													if (!_level.isClientSide()) {
-														_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
+														_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
 													} else {
 														_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1, false);
 													}
 												}
 												{
-													BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+													BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 													if (_ent != null) {
 														final int _slotid = 1;
 														final int _amount = 1;
@@ -1439,7 +1415,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 													}
 												}
 												{
-													BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+													BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 													if (_ent != null) {
 														final int _slotid = 2;
 														final int _amount = 1;
@@ -1453,7 +1429,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 													}
 												}
 												{
-													BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+													BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 													if (_ent != null) {
 														final int _slotid = 4;
 														final int _amount = 1;
@@ -1467,7 +1443,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 													}
 												}
 												{
-													BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+													BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 													if (_ent != null) {
 														final int _slotid = 6;
 														final int _amount = 1;
@@ -1481,7 +1457,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 													}
 												}
 												{
-													BlockPos _bp = new BlockPos(x, y, z);
+													BlockPos _bp = BlockPos.containing(x, y, z);
 													BlockState _bs = BreadcraftModBlocks.CHEESE_POT_CRAFTING.get().defaultBlockState();
 													BlockState _bso = world.getBlockState(_bp);
 													for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1497,7 +1473,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 												BreadcraftMod.queueServerWork(60, () -> {
 													if (world instanceof Level _level) {
 														if (!_level.isClientSide()) {
-															_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+															_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 														} else {
 															_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 														}
@@ -1506,21 +1482,21 @@ public class CheesePotOnBlockRightClickedProcedure {
 												BreadcraftMod.queueServerWork(140, () -> {
 													if (world instanceof Level _level) {
 														if (!_level.isClientSide()) {
-															_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
+															_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
 														} else {
 															_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1, false);
 														}
 													}
 												});
 												BreadcraftMod.queueServerWork(200, () -> {
-													if (world instanceof Level _level && !_level.isClientSide()) {
+													if (world instanceof ServerLevel _level) {
 														ItemEntity entityToSpawn = new ItemEntity(_level, x, (y + 1), z, new ItemStack(BreadcraftModItems.GOUDA_CHEESE_CURDS.get()));
 														entityToSpawn.setPickUpDelay(10);
 														_level.addFreshEntity(entityToSpawn);
 													}
 												});
 												{
-													BlockPos _bp = new BlockPos(x, y, z);
+													BlockPos _bp = BlockPos.containing(x, y, z);
 													BlockState _bs = BreadcraftModBlocks.CHEESE_POT.get().defaultBlockState();
 													BlockState _bso = world.getBlockState(_bp);
 													for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1543,7 +1519,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 1) == 1 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1551,7 +1527,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 2) == 1 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 2) == 1 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1559,7 +1535,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1567,7 +1543,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 4) == 1 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 4) == 1 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1575,7 +1551,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 5) == 0 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1583,7 +1559,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 6) == 0 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 6) == 0 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1591,7 +1567,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 7) == 0 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 7) == 0 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1599,7 +1575,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 7) == 0 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 7) == 0 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1607,7 +1583,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 8) == 1 && new Object() {
+													}.getAmount(world, BlockPos.containing(x, y, z), 8) == 1 && new Object() {
 														public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 															AtomicInteger _retval = new AtomicInteger(0);
 															BlockEntity _ent = world.getBlockEntity(pos);
@@ -1615,23 +1591,23 @@ public class CheesePotOnBlockRightClickedProcedure {
 																_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 															return _retval.get();
 														}
-													}.getAmount(world, new BlockPos(x, y, z), 9) == 0) {
+													}.getAmount(world, BlockPos.containing(x, y, z), 9) == 0) {
 														if (world instanceof Level _level) {
 															if (!_level.isClientSide()) {
-																_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
+																_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
 															} else {
 																_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1, false);
 															}
 														}
 														if (world instanceof Level _level) {
 															if (!_level.isClientSide()) {
-																_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
+																_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
 															} else {
 																_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1, false);
 															}
 														}
 														{
-															BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+															BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 															if (_ent != null) {
 																final int _slotid = 1;
 																final int _amount = 1;
@@ -1645,7 +1621,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 															}
 														}
 														{
-															BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+															BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 															if (_ent != null) {
 																final int _slotid = 2;
 																final int _amount = 1;
@@ -1659,7 +1635,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 															}
 														}
 														{
-															BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+															BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 															if (_ent != null) {
 																final int _slotid = 4;
 																final int _amount = 1;
@@ -1673,7 +1649,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 															}
 														}
 														{
-															BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+															BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 															if (_ent != null) {
 																final int _slotid = 8;
 																final int _amount = 1;
@@ -1687,7 +1663,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 															}
 														}
 														{
-															BlockPos _bp = new BlockPos(x, y, z);
+															BlockPos _bp = BlockPos.containing(x, y, z);
 															BlockState _bs = BreadcraftModBlocks.CHEESE_POT_CRAFTING.get().defaultBlockState();
 															BlockState _bso = world.getBlockState(_bp);
 															for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1703,7 +1679,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 														BreadcraftMod.queueServerWork(60, () -> {
 															if (world instanceof Level _level) {
 																if (!_level.isClientSide()) {
-																	_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+																	_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 																} else {
 																	_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 																}
@@ -1712,21 +1688,21 @@ public class CheesePotOnBlockRightClickedProcedure {
 														BreadcraftMod.queueServerWork(140, () -> {
 															if (world instanceof Level _level) {
 																if (!_level.isClientSide()) {
-																	_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
+																	_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
 																} else {
 																	_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1, false);
 																}
 															}
 														});
 														BreadcraftMod.queueServerWork(200, () -> {
-															if (world instanceof Level _level && !_level.isClientSide()) {
+															if (world instanceof ServerLevel _level) {
 																ItemEntity entityToSpawn = new ItemEntity(_level, x, (y + 1), z, new ItemStack(BreadcraftModItems.PARMESAN_CURDS.get()));
 																entityToSpawn.setPickUpDelay(10);
 																_level.addFreshEntity(entityToSpawn);
 															}
 														});
 														{
-															BlockPos _bp = new BlockPos(x, y, z);
+															BlockPos _bp = BlockPos.containing(x, y, z);
 															BlockState _bs = BreadcraftModBlocks.CHEESE_POT.get().defaultBlockState();
 															BlockState _bso = world.getBlockState(_bp);
 															for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1749,7 +1725,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 1) == 1 && new Object() {
+															}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1 && new Object() {
 																public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
@@ -1757,7 +1733,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 2) == 1 && new Object() {
+															}.getAmount(world, BlockPos.containing(x, y, z), 2) == 1 && new Object() {
 																public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
@@ -1765,7 +1741,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
+															}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && new Object() {
 																public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
@@ -1773,7 +1749,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 4) == 1 && new Object() {
+															}.getAmount(world, BlockPos.containing(x, y, z), 4) == 1 && new Object() {
 																public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
@@ -1781,7 +1757,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 5) == 0 && new Object() {
+															}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0 && new Object() {
 																public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
@@ -1789,7 +1765,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 6) == 0 && new Object() {
+															}.getAmount(world, BlockPos.containing(x, y, z), 6) == 0 && new Object() {
 																public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
@@ -1797,7 +1773,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 7) == 1 && new Object() {
+															}.getAmount(world, BlockPos.containing(x, y, z), 7) == 1 && new Object() {
 																public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
@@ -1805,7 +1781,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 8) == 0 && new Object() {
+															}.getAmount(world, BlockPos.containing(x, y, z), 8) == 0 && new Object() {
 																public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																	AtomicInteger _retval = new AtomicInteger(0);
 																	BlockEntity _ent = world.getBlockEntity(pos);
@@ -1813,23 +1789,23 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																	return _retval.get();
 																}
-															}.getAmount(world, new BlockPos(x, y, z), 9) == 0) {
+															}.getAmount(world, BlockPos.containing(x, y, z), 9) == 0) {
 																if (world instanceof Level _level) {
 																	if (!_level.isClientSide()) {
-																		_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
+																		_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
 																	} else {
 																		_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1, false);
 																	}
 																}
 																if (world instanceof Level _level) {
 																	if (!_level.isClientSide()) {
-																		_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
+																		_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
 																	} else {
 																		_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1, false);
 																	}
 																}
 																{
-																	BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+																	BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 																	if (_ent != null) {
 																		final int _slotid = 1;
 																		final int _amount = 1;
@@ -1843,7 +1819,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																	}
 																}
 																{
-																	BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+																	BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 																	if (_ent != null) {
 																		final int _slotid = 2;
 																		final int _amount = 1;
@@ -1857,7 +1833,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																	}
 																}
 																{
-																	BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+																	BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 																	if (_ent != null) {
 																		final int _slotid = 4;
 																		final int _amount = 1;
@@ -1871,7 +1847,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																	}
 																}
 																{
-																	BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+																	BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 																	if (_ent != null) {
 																		final int _slotid = 7;
 																		final int _amount = 1;
@@ -1885,7 +1861,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																	}
 																}
 																{
-																	BlockPos _bp = new BlockPos(x, y, z);
+																	BlockPos _bp = BlockPos.containing(x, y, z);
 																	BlockState _bs = BreadcraftModBlocks.CHEESE_POT_CRAFTING.get().defaultBlockState();
 																	BlockState _bso = world.getBlockState(_bp);
 																	for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1901,7 +1877,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																BreadcraftMod.queueServerWork(60, () -> {
 																	if (world instanceof Level _level) {
 																		if (!_level.isClientSide()) {
-																			_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+																			_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 																		} else {
 																			_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 																		}
@@ -1910,21 +1886,21 @@ public class CheesePotOnBlockRightClickedProcedure {
 																BreadcraftMod.queueServerWork(140, () -> {
 																	if (world instanceof Level _level) {
 																		if (!_level.isClientSide()) {
-																			_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
+																			_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
 																		} else {
 																			_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1, false);
 																		}
 																	}
 																});
 																BreadcraftMod.queueServerWork(200, () -> {
-																	if (world instanceof Level _level && !_level.isClientSide()) {
+																	if (world instanceof ServerLevel _level) {
 																		ItemEntity entityToSpawn = new ItemEntity(_level, x, (y + 1), z, new ItemStack(BreadcraftModItems.BRIE_CHEESE_CURDS.get()));
 																		entityToSpawn.setPickUpDelay(10);
 																		_level.addFreshEntity(entityToSpawn);
 																	}
 																});
 																{
-																	BlockPos _bp = new BlockPos(x, y, z);
+																	BlockPos _bp = BlockPos.containing(x, y, z);
 																	BlockState _bs = BreadcraftModBlocks.CHEESE_POT.get().defaultBlockState();
 																	BlockState _bso = world.getBlockState(_bp);
 																	for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -1947,7 +1923,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 1) == 1 && new Object() {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 1) == 1 && new Object() {
 																		public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
@@ -1955,7 +1931,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 2) == 1 && new Object() {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 2) == 1 && new Object() {
 																		public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
@@ -1963,7 +1939,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && new Object() {
 																		public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
@@ -1971,7 +1947,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 4) == 1 && new Object() {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 4) == 1 && new Object() {
 																		public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
@@ -1979,7 +1955,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 5) == 0 && new Object() {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0 && new Object() {
 																		public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
@@ -1987,7 +1963,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 6) == 0 && new Object() {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 6) == 0 && new Object() {
 																		public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
@@ -1995,7 +1971,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 7) == 0 && new Object() {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 7) == 0 && new Object() {
 																		public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
@@ -2003,7 +1979,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 8) == 0 && new Object() {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 8) == 0 && new Object() {
 																		public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 																			AtomicInteger _retval = new AtomicInteger(0);
 																			BlockEntity _ent = world.getBlockEntity(pos);
@@ -2011,23 +1987,23 @@ public class CheesePotOnBlockRightClickedProcedure {
 																				_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 																			return _retval.get();
 																		}
-																	}.getAmount(world, new BlockPos(x, y, z), 9) == 1) {
+																	}.getAmount(world, BlockPos.containing(x, y, z), 9) == 1) {
 																		if (world instanceof Level _level) {
 																			if (!_level.isClientSide()) {
-																				_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
+																				_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1);
 																			} else {
 																				_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.NEUTRAL, 1, 1, false);
 																			}
 																		}
 																		if (world instanceof Level _level) {
 																			if (!_level.isClientSide()) {
-																				_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
+																				_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1);
 																			} else {
 																				_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.NEUTRAL, 1, 1, false);
 																			}
 																		}
 																		{
-																			BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+																			BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 																			if (_ent != null) {
 																				final int _slotid = 1;
 																				final int _amount = 1;
@@ -2041,7 +2017,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																			}
 																		}
 																		{
-																			BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+																			BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 																			if (_ent != null) {
 																				final int _slotid = 2;
 																				final int _amount = 1;
@@ -2055,7 +2031,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																			}
 																		}
 																		{
-																			BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+																			BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 																			if (_ent != null) {
 																				final int _slotid = 4;
 																				final int _amount = 1;
@@ -2069,7 +2045,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																			}
 																		}
 																		{
-																			BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+																			BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 																			if (_ent != null) {
 																				final int _slotid = 9;
 																				final int _amount = 1;
@@ -2083,7 +2059,7 @@ public class CheesePotOnBlockRightClickedProcedure {
 																			}
 																		}
 																		{
-																			BlockPos _bp = new BlockPos(x, y, z);
+																			BlockPos _bp = BlockPos.containing(x, y, z);
 																			BlockState _bs = BreadcraftModBlocks.CHEESE_POT_CRAFTING.get().defaultBlockState();
 																			BlockState _bso = world.getBlockState(_bp);
 																			for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -2099,7 +2075,8 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		BreadcraftMod.queueServerWork(60, () -> {
 																			if (world instanceof Level _level) {
 																				if (!_level.isClientSide()) {
-																					_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+																					_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL,
+																							1, 1);
 																				} else {
 																					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 																				}
@@ -2108,21 +2085,22 @@ public class CheesePotOnBlockRightClickedProcedure {
 																		BreadcraftMod.queueServerWork(140, () -> {
 																			if (world instanceof Level _level) {
 																				if (!_level.isClientSide()) {
-																					_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1);
+																					_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1,
+																							1);
 																				} else {
 																					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.brewing_stand.brew")), SoundSource.NEUTRAL, 1, 1, false);
 																				}
 																			}
 																		});
 																		BreadcraftMod.queueServerWork(200, () -> {
-																			if (world instanceof Level _level && !_level.isClientSide()) {
+																			if (world instanceof ServerLevel _level) {
 																				ItemEntity entityToSpawn = new ItemEntity(_level, x, (y + 1), z, new ItemStack(BreadcraftModItems.BLUE_CHEESE_CURDS.get()));
 																				entityToSpawn.setPickUpDelay(10);
 																				_level.addFreshEntity(entityToSpawn);
 																			}
 																		});
 																		{
-																			BlockPos _bp = new BlockPos(x, y, z);
+																			BlockPos _bp = BlockPos.containing(x, y, z);
 																			BlockState _bs = BreadcraftModBlocks.CHEESE_POT.get().defaultBlockState();
 																			BlockState _bso = world.getBlockState(_bp);
 																			for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {

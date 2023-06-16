@@ -1,9 +1,0 @@
-{
-  "parent": "breadcraft:custom/cask",
-  "textures": {
-    "all": "breadcraft:blocks/casktexture",
-    "particle": "breadcraft:blocks/casktexture",
-    "0": "breadcraft:blocks/casktexture"
-  },
-  "render_type": "solid"
-}

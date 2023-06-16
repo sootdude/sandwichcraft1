@@ -1,9 +1,9 @@
 {
   "parent": "breadcraft:custom/acaciacounter",
   "textures": {
-    "all": "breadcraft:blocks/acaciacounter",
-    "particle": "breadcraft:blocks/acaciacounter",
-    "0": "breadcraft:blocks/acaciacounter"
+    "all": "breadcraft:block/acaciacounter",
+    "particle": "breadcraft:block/acaciacounter",
+    "0": "breadcraft:block/acaciacounter"
   },
   "render_type": "solid"
 }

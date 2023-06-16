@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "breadcraft:items/smokedhamsandwich"
+    "layer0": "breadcraft:item/smokedhamsandwich"
   }
 }

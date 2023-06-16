@@ -1,12 +1,8 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.core.BlockPos;
+import net.minecraftforge.eventbus.api.Event;
+
+import javax.annotation.Nullable;
 
 public class CloseguiProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -20,11 +16,11 @@ public class CloseguiProcedure {
 					return blockEntity.getPersistentData().getDouble(tag);
 				return -1;
 			}
-		}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 1200) {
+		}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= 1200) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (!world.isClientSide()) {
-				BlockPos _bp = new BlockPos(x, y, z);
+				BlockPos _bp = BlockPos.containing(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)

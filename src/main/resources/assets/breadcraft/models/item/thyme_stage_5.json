@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "breadcraft:blocks/thyme_stage5"
+    "layer0": "breadcraft:block/thyme_stage5"
   }
 }

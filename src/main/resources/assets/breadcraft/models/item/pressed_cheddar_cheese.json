@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "breadcraft:items/pressed_cheddar_cheese"
+    "layer0": "breadcraft:item/pressed_cheddar_cheese"
   }
 }

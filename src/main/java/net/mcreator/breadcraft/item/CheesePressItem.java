@@ -1,15 +1,12 @@
 
 package net.mcreator.breadcraft.item;
 
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Item;
-
-import net.mcreator.breadcraft.init.BreadcraftModTabs;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import javax.annotation.Nullable;
 
 public class CheesePressItem extends Item {
 	public CheesePressItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_BREADCRAFT_TOOLS).durability(64).rarity(Rarity.COMMON));
+		super(new Item.Properties().durability(64).rarity(Rarity.COMMON));
 	}
 
 	@Override

@@ -1,8 +1,0 @@
-{
-  "parent": "block/crop",
-  "textures": {
-    "crop": "breadcraft:blocks/thyme_stage1",
-    "particle": "breadcraft:blocks/thyme_stage1"
-  },
-  "render_type": "cutout"
-}

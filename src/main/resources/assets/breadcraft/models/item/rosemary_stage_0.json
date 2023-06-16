@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "breadcraft:blocks/rosemary_stage0"
+    "layer0": "breadcraft:block/rosemary_stage0"
   }
 }

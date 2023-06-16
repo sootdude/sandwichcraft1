@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "breadcraft:blocks/rye_stage6"
+    "layer0": "breadcraft:block/rye_stage6"
   }
 }

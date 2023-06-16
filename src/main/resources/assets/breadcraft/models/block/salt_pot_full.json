@@ -1,10 +1,10 @@
 {
   "parent": "breadcraft:custom/saltpotfull",
   "textures": {
-    "all": "breadcraft:blocks/potfull",
-    "particle": "breadcraft:blocks/grey",
-    "2": "breadcraft:blocks/waterflowing",
-    "3": "breadcraft:blocks/potfull"
+    "all": "breadcraft:block/potfull",
+    "particle": "breadcraft:block/grey",
+    "2": "breadcraft:block/waterflowing",
+    "3": "breadcraft:block/potfull"
   },
   "render_type": "solid"
 }

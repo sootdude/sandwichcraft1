@@ -1,9 +1,9 @@
 {
   "parent": "breadcraft:custom/birchcounter",
   "textures": {
-    "all": "breadcraft:blocks/birchcounterr",
-    "particle": "breadcraft:blocks/birchcounterr",
-    "2": "breadcraft:blocks/birchcounterr"
+    "all": "breadcraft:block/birchcounterr",
+    "particle": "breadcraft:block/birchcounterr",
+    "2": "breadcraft:block/birchcounterr"
   },
   "render_type": "solid"
 }

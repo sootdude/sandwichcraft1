@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "breadcraft:items/batardgrilledcheese"
+    "layer0": "breadcraft:item/batardgrilledcheese"
   }
 }

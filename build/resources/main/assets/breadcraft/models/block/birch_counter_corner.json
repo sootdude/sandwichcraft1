@@ -1,9 +1,0 @@
-{
-  "parent": "breadcraft:custom/birchcountercorner",
-  "textures": {
-    "all": "breadcraft:blocks/birchcountercorner",
-    "particle": "breadcraft:blocks/birchcountercorner",
-    "3": "breadcraft:blocks/birchcountercorner"
-  },
-  "render_type": "solid"
-}

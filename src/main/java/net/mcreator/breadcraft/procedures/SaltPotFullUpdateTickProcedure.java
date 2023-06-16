@@ -1,18 +1,8 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.eventbus.api.Event;
 
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.core.BlockPos;
-
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
 public class SaltPotFullUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -24,7 +14,7 @@ public class SaltPotFullUpdateTickProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == Items.GOLD_INGOT && (new Object() {
+		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == Items.GOLD_INGOT && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -32,7 +22,7 @@ public class SaltPotFullUpdateTickProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == Items.LAVA_BUCKET && (new Object() {
+		}.getItemStack(world, BlockPos.containing(x, y, z), 1)).getItem() == Items.LAVA_BUCKET && (new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -40,7 +30,7 @@ public class SaltPotFullUpdateTickProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 2) == 0 || (new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 2) == 0 || (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -48,7 +38,7 @@ public class SaltPotFullUpdateTickProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.DIAMOND && new Object() {
+		}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.DIAMOND && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -56,9 +46,9 @@ public class SaltPotFullUpdateTickProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 2) <= 63)) {
+		}.getAmount(world, BlockPos.containing(x, y, z), 2) <= 63)) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = new BlockPos(x, y, z);
+				BlockPos _bp = BlockPos.containing(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -67,7 +57,7 @@ public class SaltPotFullUpdateTickProcedure {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if (!world.isClientSide()) {
-				BlockPos _bp = new BlockPos(x, y, z);
+				BlockPos _bp = BlockPos.containing(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -78,7 +68,7 @@ public class SaltPotFullUpdateTickProcedure {
 								return blockEntity.getPersistentData().getDouble(tag);
 							return -1;
 						}
-					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
+					}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") + 1));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
@@ -89,9 +79,9 @@ public class SaltPotFullUpdateTickProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 300) {
+			}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= 300) {
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final int _amount = 1;
@@ -105,7 +95,7 @@ public class SaltPotFullUpdateTickProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 1;
 						final int _amount = 1;
@@ -119,7 +109,7 @@ public class SaltPotFullUpdateTickProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 1;
 						final ItemStack _setstack = new ItemStack(Items.BUCKET);
@@ -131,7 +121,7 @@ public class SaltPotFullUpdateTickProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 2;
 						final ItemStack _setstack = new ItemStack(Items.DIAMOND);
@@ -143,7 +133,7 @@ public class SaltPotFullUpdateTickProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
+						}.getAmount(world, BlockPos.containing(x, y, z), 2) + 1));
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 							if (capability instanceof IItemHandlerModifiable)
 								((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -151,7 +141,7 @@ public class SaltPotFullUpdateTickProcedure {
 					}
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = new BlockPos(x, y, z);
+					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -162,7 +152,7 @@ public class SaltPotFullUpdateTickProcedure {
 			}
 		} else {
 			if (!world.isClientSide()) {
-				BlockPos _bp = new BlockPos(x, y, z);
+				BlockPos _bp = BlockPos.containing(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)

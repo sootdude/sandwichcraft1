@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "breadcraft:blocks/onion_stage4",
-    "particle": "breadcraft:blocks/onion_stage4"
-  },
-  "render_type": "cutout"
-}

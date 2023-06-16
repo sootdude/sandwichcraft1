@@ -1,8 +1,0 @@
-{
-  "parent": "block/crop",
-  "textures": {
-    "crop": "breadcraft:blocks/rye_stage6",
-    "particle": "breadcraft:blocks/rye_stage6"
-  },
-  "render_type": "cutout"
-}

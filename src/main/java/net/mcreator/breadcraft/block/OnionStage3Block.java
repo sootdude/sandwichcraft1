@@ -1,43 +1,9 @@
 
 package net.mcreator.breadcraft.block;
 
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.common.util.ForgeSoundType;
-
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.util.RandomSource;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.Direction;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.breadcraft.procedures.OnionUpdateTickProcedure;
-import net.mcreator.breadcraft.procedures.OnionStage0DestroyedByExplosionProcedure;
-import net.mcreator.breadcraft.procedures.OnionStage0BlockDestroyedProcedure;
-import net.mcreator.breadcraft.procedures.OnionBonemealRightClickedProcedure;
-import net.mcreator.breadcraft.init.BreadcraftModItems;
-import net.mcreator.breadcraft.block.entity.OnionStage3BlockEntity;
 
 public class OnionStage3Block extends Block implements EntityBlock {
 	public OnionStage3Block() {

@@ -1,9 +1,9 @@
 {
   "parent": "breadcraft:custom/knifeblockempty",
   "textures": {
-    "all": "breadcraft:blocks/knifeblockempty",
-    "particle": "breadcraft:blocks/knifeblockempty",
-    "2": "breadcraft:blocks/knifeblockempty"
+    "all": "breadcraft:block/knifeblockempty",
+    "particle": "breadcraft:block/knifeblockempty",
+    "2": "breadcraft:block/knifeblockempty"
   },
   "render_type": "solid"
 }

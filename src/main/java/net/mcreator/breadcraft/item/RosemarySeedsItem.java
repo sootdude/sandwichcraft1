@@ -1,17 +1,12 @@
 
 package net.mcreator.breadcraft.item;
 
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.InteractionResult;
-
-import net.mcreator.breadcraft.procedures.RosemarySeedsRightClickedOnBlockProcedure;
-import net.mcreator.breadcraft.init.BreadcraftModTabs;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import javax.annotation.Nullable;
 
 public class RosemarySeedsItem extends Item {
 	public RosemarySeedsItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_BREADCRAFT).stacksTo(64).rarity(Rarity.COMMON));
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
 	}
 
 	@Override

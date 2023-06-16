@@ -1,9 +1,0 @@
-{
-  "parent": "breadcraft:custom/mangrovecounter",
-  "textures": {
-    "all": "breadcraft:blocks/mangrovecounter",
-    "particle": "breadcraft:blocks/mangrovecounter",
-    "0": "breadcraft:blocks/mangrovecounter"
-  },
-  "render_type": "solid"
-}

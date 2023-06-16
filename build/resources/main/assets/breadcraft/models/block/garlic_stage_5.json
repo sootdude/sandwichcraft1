@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "breadcraft:blocks/garlic_stage5",
-    "particle": "breadcraft:blocks/garlic_stage5"
-  },
-  "render_type": "cutout"
-}

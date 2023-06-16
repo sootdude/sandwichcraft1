@@ -1,6 +1,7 @@
 {
-  "group": "breadcraft",
   "type": "minecraft:crafting_shapeless",
+  "group": "breadcraft",
+  "category": "misc",
   "ingredients": [
     {
       "item": "minecraft:wheat"

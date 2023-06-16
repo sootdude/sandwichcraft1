@@ -1,10 +1,10 @@
 {
   "parent": "breadcraft:custom/proofingbowlcovered",
   "textures": {
-    "all": "breadcraft:blocks/proofingbowl",
-    "particle": "breadcraft:blocks/proofingbowl",
-    "3": "breadcraft:blocks/proofingbowl",
-    "4": "breadcraft:blocks/cover"
+    "all": "breadcraft:block/proofingbowl",
+    "particle": "breadcraft:block/proofingbowl",
+    "3": "breadcraft:block/proofingbowl",
+    "4": "breadcraft:block/cover"
   },
   "render_type": "solid"
 }

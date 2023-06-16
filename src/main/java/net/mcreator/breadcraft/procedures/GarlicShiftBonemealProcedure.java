@@ -1,32 +1,8 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.TickEvent;
-
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.breadcraft.init.BreadcraftModBlocks;
-import net.mcreator.breadcraft.BreadcraftMod;
 
 import javax.annotation.Nullable;
-
-import java.util.Map;
 
 @Mod.EventBusSubscriber
 public class GarlicShiftBonemealProcedure {
@@ -68,10 +44,10 @@ public class GarlicShiftBonemealProcedure {
 					blockStage6 = BreadcraftModBlocks.GARLIC_STAGE_6.get().defaultBlockState();
 					blockStage7 = BreadcraftModBlocks.GARLIC_STAGE_7.get().defaultBlockState();
 					randomNumber = Math.random();
-					if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage0.getBlock()) {
+					if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage0.getBlock()) {
 						if (randomNumber > 0.85 && randomNumber <= 1) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage1;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -101,7 +77,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.65 && randomNumber <= 0.85) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage2;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -131,7 +107,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.45 && randomNumber <= 0.65) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage3;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -161,7 +137,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.25 && randomNumber <= 0.45) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage4;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -191,7 +167,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.05 && randomNumber <= 0.25) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage5;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -220,10 +196,10 @@ public class GarlicShiftBonemealProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage1.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage1.getBlock()) {
 						if (randomNumber > 0.85 && randomNumber <= 1) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage2;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -253,7 +229,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.65 && randomNumber <= 0.85) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage3;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -283,7 +259,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.45 && randomNumber <= 0.65) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage4;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -313,7 +289,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.25 && randomNumber <= 0.45) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage5;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -343,7 +319,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.05 && randomNumber <= 0.25) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage6;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -372,10 +348,10 @@ public class GarlicShiftBonemealProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage2.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage2.getBlock()) {
 						if (randomNumber > 0.85 && randomNumber <= 1) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage3;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -405,7 +381,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.65 && randomNumber <= 0.85) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage4;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -435,7 +411,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.45 && randomNumber <= 0.65) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage5;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -465,7 +441,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.25 && randomNumber <= 0.45) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage6;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -495,7 +471,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.05 && randomNumber <= 0.25) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage7;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -524,10 +500,10 @@ public class GarlicShiftBonemealProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage3.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage3.getBlock()) {
 						if (randomNumber > 0.75 && randomNumber <= 1) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage4;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -557,7 +533,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.55 && randomNumber <= 0.75) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage5;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -587,7 +563,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.25 && randomNumber <= 0.55) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage6;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -617,7 +593,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.05 && randomNumber <= 0.25) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage7;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -646,10 +622,10 @@ public class GarlicShiftBonemealProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage4.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage4.getBlock()) {
 						if (randomNumber > 0.65 && randomNumber <= 1) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage5;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -679,7 +655,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.45 && randomNumber <= 0.65) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage6;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -709,7 +685,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.05 && randomNumber <= 0.45) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage7;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -738,10 +714,10 @@ public class GarlicShiftBonemealProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage5.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage5.getBlock()) {
 						if (randomNumber > 0.45 && randomNumber <= 1) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage6;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -771,7 +747,7 @@ public class GarlicShiftBonemealProcedure {
 							}
 						} else if (randomNumber > 0.05 && randomNumber <= 0.45) {
 							{
-								BlockPos _bp = new BlockPos(x, y + 1, z);
+								BlockPos _bp = BlockPos.containing(x, y + 1, z);
 								BlockState _bs = blockStage7;
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -800,9 +776,9 @@ public class GarlicShiftBonemealProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage6.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage6.getBlock()) {
 						{
-							BlockPos _bp = new BlockPos(x, y + 1, z);
+							BlockPos _bp = BlockPos.containing(x, y + 1, z);
 							BlockState _bs = blockStage7;
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -831,14 +807,14 @@ public class GarlicShiftBonemealProcedure {
 							}
 						}
 					}
-					if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage0.getBlock() || (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage1.getBlock()
-							|| (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage2.getBlock() || (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage3.getBlock()
-							|| (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage4.getBlock() || (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage5.getBlock()
-							|| (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockStage6.getBlock()) {
+					if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage0.getBlock() || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage1.getBlock()
+							|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage2.getBlock() || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage3.getBlock()
+							|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage4.getBlock() || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage5.getBlock()
+							|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockStage6.getBlock()) {
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, x, y, z, 5, 1, 1, 1, 1);
 						if (!world.isClientSide()) {
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
@@ -849,7 +825,7 @@ public class GarlicShiftBonemealProcedure {
 											return blockEntity.getPersistentData().getDouble(tag);
 										return -1;
 									}
-								}.getValue(world, new BlockPos(x, y, z), "TotalGrowthTime")));
+								}.getValue(world, BlockPos.containing(x, y, z), "TotalGrowthTime")));
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}

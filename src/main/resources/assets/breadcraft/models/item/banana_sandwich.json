@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "breadcraft:items/bananasandwich"
+    "layer0": "breadcraft:item/bananasandwich"
   }
 }

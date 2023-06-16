@@ -1,26 +1,8 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.eventbus.api.Event;
 
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.breadcraft.init.BreadcraftModItems;
-import net.mcreator.breadcraft.init.BreadcraftModBlocks;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.Map;
+import javax.annotation.Nullable;
 
 public class SaltCraftingProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -34,7 +16,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 1) <= 32 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 1) <= 32 && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -42,7 +24,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 2) <= 32 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 2) <= 32 && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -50,7 +32,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 3) <= 32 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 3) <= 32 && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -58,7 +40,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 4) <= 32 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 4) <= 32 && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -66,7 +48,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 5) <= 32 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 5) <= 32 && new Object() {
 			public int getFluidTankCapacity(LevelAccessor level, BlockPos pos, int tank) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = level.getBlockEntity(pos);
@@ -74,7 +56,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> _retval.set(capability.getTankCapacity(tank)));
 				return _retval.get();
 			}
-		}.getFluidTankCapacity(world, new BlockPos(x, y, z), 1) == 1000 || new Object() {
+		}.getFluidTankCapacity(world, BlockPos.containing(x, y, z), 1) == 1000 || new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -82,7 +64,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 1) == 0 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 1) == 0 && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -90,7 +72,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 2) == 0 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 2) == 0 && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -98,7 +80,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -106,7 +88,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 4) == 0 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 4) == 0 && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -114,7 +96,7 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos(x, y, z), 5) == 0 && new Object() {
+		}.getAmount(world, BlockPos.containing(x, y, z), 5) == 0 && new Object() {
 			public int getFluidTankCapacity(LevelAccessor level, BlockPos pos, int tank) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = level.getBlockEntity(pos);
@@ -122,9 +104,9 @@ public class SaltCraftingProcedure {
 					_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> _retval.set(capability.getTankCapacity(tank)));
 				return _retval.get();
 			}
-		}.getFluidTankCapacity(world, new BlockPos(x, y, z), 1) == 1000) {
+		}.getFluidTankCapacity(world, BlockPos.containing(x, y, z), 1) == 1000) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = new BlockPos(x, y, z);
+				BlockPos _bp = BlockPos.containing(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -133,7 +115,7 @@ public class SaltCraftingProcedure {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if (!world.isClientSide()) {
-				BlockPos _bp = new BlockPos(x, y, z);
+				BlockPos _bp = BlockPos.containing(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -144,7 +126,7 @@ public class SaltCraftingProcedure {
 								return blockEntity.getPersistentData().getDouble(tag);
 							return -1;
 						}
-					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
+					}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") + 1));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
@@ -155,7 +137,7 @@ public class SaltCraftingProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 1200 && new Object() {
+			}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= 1200 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -163,15 +145,15 @@ public class SaltCraftingProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 1) <= 32) {
+			}.getAmount(world, BlockPos.containing(x, y, z), 1) <= 32) {
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					int _amount = 1000;
 					if (_ent != null)
 						_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> capability.drain(_amount, IFluidHandler.FluidAction.EXECUTE));
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 1;
 						final ItemStack _setstack = new ItemStack(BreadcraftModItems.BREADCRAFT_SALT.get());
@@ -183,7 +165,7 @@ public class SaltCraftingProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, new BlockPos(x, y, z), 1) + 32));
+						}.getAmount(world, BlockPos.containing(x, y, z), 1) + 32));
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 							if (capability instanceof IItemHandlerModifiable)
 								((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -191,7 +173,7 @@ public class SaltCraftingProcedure {
 					}
 				}
 				{
-					BlockPos _bp = new BlockPos(x, y, z);
+					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockState _bs = BreadcraftModBlocks.SALT_POT.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -221,7 +203,7 @@ public class SaltCraftingProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 					}
@@ -236,7 +218,7 @@ public class SaltCraftingProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 1) == 64 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 1) == 64 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -244,7 +226,7 @@ public class SaltCraftingProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 2) <= 32 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 2) <= 32 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -252,7 +234,7 @@ public class SaltCraftingProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 3) <= 32 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 3) <= 32 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -260,7 +242,7 @@ public class SaltCraftingProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 4) <= 32 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 4) <= 32 && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = world.getBlockEntity(pos);
@@ -268,7 +250,7 @@ public class SaltCraftingProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, new BlockPos(x, y, z), 5) <= 32 && new Object() {
+			}.getAmount(world, BlockPos.containing(x, y, z), 5) <= 32 && new Object() {
 				public int getFluidTankCapacity(LevelAccessor level, BlockPos pos, int tank) {
 					AtomicInteger _retval = new AtomicInteger(0);
 					BlockEntity _ent = level.getBlockEntity(pos);
@@ -276,9 +258,9 @@ public class SaltCraftingProcedure {
 						_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> _retval.set(capability.getTankCapacity(tank)));
 					return _retval.get();
 				}
-			}.getFluidTankCapacity(world, new BlockPos(x, y, z), 1) == 1000) {
+			}.getFluidTankCapacity(world, BlockPos.containing(x, y, z), 1) == 1000) {
 				if (!world.isClientSide()) {
-					BlockPos _bp = new BlockPos(x, y, z);
+					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -287,7 +269,7 @@ public class SaltCraftingProcedure {
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = new BlockPos(x, y, z);
+					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -298,7 +280,7 @@ public class SaltCraftingProcedure {
 									return blockEntity.getPersistentData().getDouble(tag);
 								return -1;
 							}
-						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
+						}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") + 1));
 					if (world instanceof Level _level)
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
@@ -309,7 +291,7 @@ public class SaltCraftingProcedure {
 							return blockEntity.getPersistentData().getDouble(tag);
 						return -1;
 					}
-				}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 1200 && new Object() {
+				}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= 1200 && new Object() {
 					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -317,15 +299,15 @@ public class SaltCraftingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos(x, y, z), 1) == 64) {
+				}.getAmount(world, BlockPos.containing(x, y, z), 1) == 64) {
 					{
-						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 						int _amount = 1000;
 						if (_ent != null)
 							_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> capability.drain(_amount, IFluidHandler.FluidAction.EXECUTE));
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(BreadcraftModItems.BREADCRAFT_SALT.get());
@@ -337,7 +319,7 @@ public class SaltCraftingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 2) + 32));
+							}.getAmount(world, BlockPos.containing(x, y, z), 2) + 32));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -345,7 +327,7 @@ public class SaltCraftingProcedure {
 						}
 					}
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = BreadcraftModBlocks.SALT_POT.get().defaultBlockState();
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -375,7 +357,7 @@ public class SaltCraftingProcedure {
 					}
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 						}
@@ -390,7 +372,7 @@ public class SaltCraftingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos(x, y, z), 1) == 64 && new Object() {
+				}.getAmount(world, BlockPos.containing(x, y, z), 1) == 64 && new Object() {
 					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -398,7 +380,7 @@ public class SaltCraftingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos(x, y, z), 2) == 64 && new Object() {
+				}.getAmount(world, BlockPos.containing(x, y, z), 2) == 64 && new Object() {
 					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -406,7 +388,7 @@ public class SaltCraftingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos(x, y, z), 3) <= 32 && new Object() {
+				}.getAmount(world, BlockPos.containing(x, y, z), 3) <= 32 && new Object() {
 					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -414,7 +396,7 @@ public class SaltCraftingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos(x, y, z), 4) <= 32 && new Object() {
+				}.getAmount(world, BlockPos.containing(x, y, z), 4) <= 32 && new Object() {
 					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -422,7 +404,7 @@ public class SaltCraftingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos(x, y, z), 5) <= 32 && new Object() {
+				}.getAmount(world, BlockPos.containing(x, y, z), 5) <= 32 && new Object() {
 					public int getFluidTankCapacity(LevelAccessor level, BlockPos pos, int tank) {
 						AtomicInteger _retval = new AtomicInteger(0);
 						BlockEntity _ent = level.getBlockEntity(pos);
@@ -430,9 +412,9 @@ public class SaltCraftingProcedure {
 							_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> _retval.set(capability.getTankCapacity(tank)));
 						return _retval.get();
 					}
-				}.getFluidTankCapacity(world, new BlockPos(x, y, z), 1) == 1000) {
+				}.getFluidTankCapacity(world, BlockPos.containing(x, y, z), 1) == 1000) {
 					if (!world.isClientSide()) {
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
@@ -441,7 +423,7 @@ public class SaltCraftingProcedure {
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
 					if (!world.isClientSide()) {
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
@@ -452,7 +434,7 @@ public class SaltCraftingProcedure {
 										return blockEntity.getPersistentData().getDouble(tag);
 									return -1;
 								}
-							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
+							}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") + 1));
 						if (world instanceof Level _level)
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
@@ -463,7 +445,7 @@ public class SaltCraftingProcedure {
 								return blockEntity.getPersistentData().getDouble(tag);
 							return -1;
 						}
-					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 1200 && new Object() {
+					}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= 1200 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -471,7 +453,7 @@ public class SaltCraftingProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 1) == 64 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 1) == 64 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -479,15 +461,15 @@ public class SaltCraftingProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 2) == 64) {
+					}.getAmount(world, BlockPos.containing(x, y, z), 2) == 64) {
 						{
-							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 							int _amount = 1000;
 							if (_ent != null)
 								_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> capability.drain(_amount, IFluidHandler.FluidAction.EXECUTE));
 						}
 						{
-							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(BreadcraftModItems.BREADCRAFT_SALT.get());
@@ -499,7 +481,7 @@ public class SaltCraftingProcedure {
 											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
-								}.getAmount(world, new BlockPos(x, y, z), 3)));
+								}.getAmount(world, BlockPos.containing(x, y, z), 3)));
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable)
 										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -507,7 +489,7 @@ public class SaltCraftingProcedure {
 							}
 						}
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = BreadcraftModBlocks.SALT_POT.get().defaultBlockState();
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -537,7 +519,7 @@ public class SaltCraftingProcedure {
 						}
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
-								_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+								_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 							} else {
 								_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 							}
@@ -552,7 +534,7 @@ public class SaltCraftingProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 1) == 64 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 1) == 64 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -560,7 +542,7 @@ public class SaltCraftingProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 2) == 64 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 2) == 64 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -568,7 +550,7 @@ public class SaltCraftingProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 3) == 64 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 3) == 64 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -576,7 +558,7 @@ public class SaltCraftingProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 4) <= 32 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 4) <= 32 && new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -584,7 +566,7 @@ public class SaltCraftingProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos(x, y, z), 5) <= 32 && new Object() {
+					}.getAmount(world, BlockPos.containing(x, y, z), 5) <= 32 && new Object() {
 						public int getFluidTankCapacity(LevelAccessor level, BlockPos pos, int tank) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							BlockEntity _ent = level.getBlockEntity(pos);
@@ -592,9 +574,9 @@ public class SaltCraftingProcedure {
 								_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> _retval.set(capability.getTankCapacity(tank)));
 							return _retval.get();
 						}
-					}.getFluidTankCapacity(world, new BlockPos(x, y, z), 1) == 1000) {
+					}.getFluidTankCapacity(world, BlockPos.containing(x, y, z), 1) == 1000) {
 						if (!world.isClientSide()) {
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
@@ -603,7 +585,7 @@ public class SaltCraftingProcedure {
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
 						if (!world.isClientSide()) {
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
@@ -614,7 +596,7 @@ public class SaltCraftingProcedure {
 											return blockEntity.getPersistentData().getDouble(tag);
 										return -1;
 									}
-								}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
+								}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") + 1));
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
@@ -625,7 +607,7 @@ public class SaltCraftingProcedure {
 									return blockEntity.getPersistentData().getDouble(tag);
 								return -1;
 							}
-						}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 1200 && new Object() {
+						}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= 1200 && new Object() {
 							public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
@@ -633,15 +615,15 @@ public class SaltCraftingProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, new BlockPos(x, y, z), 3) == 64) {
+						}.getAmount(world, BlockPos.containing(x, y, z), 3) == 64) {
 							{
-								BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+								BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 								int _amount = 1000;
 								if (_ent != null)
 									_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> capability.drain(_amount, IFluidHandler.FluidAction.EXECUTE));
 							}
 							{
-								BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+								BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 								if (_ent != null) {
 									final int _slotid = 4;
 									final ItemStack _setstack = new ItemStack(BreadcraftModItems.BREADCRAFT_SALT.get());
@@ -653,7 +635,7 @@ public class SaltCraftingProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, new BlockPos(x, y, z), 4)));
+									}.getAmount(world, BlockPos.containing(x, y, z), 4)));
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 										if (capability instanceof IItemHandlerModifiable)
 											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -661,7 +643,7 @@ public class SaltCraftingProcedure {
 								}
 							}
 							{
-								BlockPos _bp = new BlockPos(x, y, z);
+								BlockPos _bp = BlockPos.containing(x, y, z);
 								BlockState _bs = BreadcraftModBlocks.SALT_POT.get().defaultBlockState();
 								BlockState _bso = world.getBlockState(_bp);
 								for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -691,7 +673,7 @@ public class SaltCraftingProcedure {
 							}
 							if (world instanceof Level _level) {
 								if (!_level.isClientSide()) {
-									_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+									_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 								} else {
 									_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 								}
@@ -706,7 +688,7 @@ public class SaltCraftingProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, new BlockPos(x, y, z), 1) == 64 && new Object() {
+						}.getAmount(world, BlockPos.containing(x, y, z), 1) == 64 && new Object() {
 							public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
@@ -714,7 +696,7 @@ public class SaltCraftingProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, new BlockPos(x, y, z), 2) == 64 && new Object() {
+						}.getAmount(world, BlockPos.containing(x, y, z), 2) == 64 && new Object() {
 							public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
@@ -722,7 +704,7 @@ public class SaltCraftingProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, new BlockPos(x, y, z), 3) == 64 && new Object() {
+						}.getAmount(world, BlockPos.containing(x, y, z), 3) == 64 && new Object() {
 							public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
@@ -730,7 +712,7 @@ public class SaltCraftingProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, new BlockPos(x, y, z), 4) == 64 && new Object() {
+						}.getAmount(world, BlockPos.containing(x, y, z), 4) == 64 && new Object() {
 							public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = world.getBlockEntity(pos);
@@ -738,7 +720,7 @@ public class SaltCraftingProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, new BlockPos(x, y, z), 5) <= 32 && new Object() {
+						}.getAmount(world, BlockPos.containing(x, y, z), 5) <= 32 && new Object() {
 							public int getFluidTankCapacity(LevelAccessor level, BlockPos pos, int tank) {
 								AtomicInteger _retval = new AtomicInteger(0);
 								BlockEntity _ent = level.getBlockEntity(pos);
@@ -746,9 +728,9 @@ public class SaltCraftingProcedure {
 									_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> _retval.set(capability.getTankCapacity(tank)));
 								return _retval.get();
 							}
-						}.getFluidTankCapacity(world, new BlockPos(x, y, z), 1) == 1000) {
+						}.getFluidTankCapacity(world, BlockPos.containing(x, y, z), 1) == 1000) {
 							if (!world.isClientSide()) {
-								BlockPos _bp = new BlockPos(x, y, z);
+								BlockPos _bp = BlockPos.containing(x, y, z);
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
@@ -757,7 +739,7 @@ public class SaltCraftingProcedure {
 									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 							}
 							if (!world.isClientSide()) {
-								BlockPos _bp = new BlockPos(x, y, z);
+								BlockPos _bp = BlockPos.containing(x, y, z);
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
@@ -768,7 +750,7 @@ public class SaltCraftingProcedure {
 												return blockEntity.getPersistentData().getDouble(tag);
 											return -1;
 										}
-									}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
+									}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") + 1));
 								if (world instanceof Level _level)
 									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 							}
@@ -779,7 +761,7 @@ public class SaltCraftingProcedure {
 										return blockEntity.getPersistentData().getDouble(tag);
 									return -1;
 								}
-							}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= 1200 && new Object() {
+							}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= 1200 && new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
 									BlockEntity _ent = world.getBlockEntity(pos);
@@ -787,15 +769,15 @@ public class SaltCraftingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, new BlockPos(x, y, z), 4) == 64) {
+							}.getAmount(world, BlockPos.containing(x, y, z), 4) == 64) {
 								{
-									BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+									BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 									int _amount = 1000;
 									if (_ent != null)
 										_ent.getCapability(ForgeCapabilities.FLUID_HANDLER, null).ifPresent(capability -> capability.drain(_amount, IFluidHandler.FluidAction.EXECUTE));
 								}
 								{
-									BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
+									BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
 									if (_ent != null) {
 										final int _slotid = 5;
 										final ItemStack _setstack = new ItemStack(BreadcraftModItems.BREADCRAFT_SALT.get());
@@ -807,7 +789,7 @@ public class SaltCraftingProcedure {
 													_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 												return _retval.get();
 											}
-										}.getAmount(world, new BlockPos(x, y, z), 5) + 32));
+										}.getAmount(world, BlockPos.containing(x, y, z), 5) + 32));
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 											if (capability instanceof IItemHandlerModifiable)
 												((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -815,7 +797,7 @@ public class SaltCraftingProcedure {
 									}
 								}
 								{
-									BlockPos _bp = new BlockPos(x, y, z);
+									BlockPos _bp = BlockPos.containing(x, y, z);
 									BlockState _bs = BreadcraftModBlocks.SALT_POT.get().defaultBlockState();
 									BlockState _bso = world.getBlockState(_bp);
 									for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -845,7 +827,7 @@ public class SaltCraftingProcedure {
 								}
 								if (world instanceof Level _level) {
 									if (!_level.isClientSide()) {
-										_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
+										_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1);
 									} else {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie_villager.cure")), SoundSource.NEUTRAL, 1, 1, false);
 									}
@@ -853,7 +835,7 @@ public class SaltCraftingProcedure {
 							}
 						} else {
 							if (!world.isClientSide()) {
-								BlockPos _bp = new BlockPos(x, y, z);
+								BlockPos _bp = BlockPos.containing(x, y, z);
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)

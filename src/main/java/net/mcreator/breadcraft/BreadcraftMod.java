@@ -29,7 +29,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.mcreator.breadcraft.init.BreadcraftModTabs;
 import net.mcreator.breadcraft.init.BreadcraftModSounds;
 import net.mcreator.breadcraft.init.BreadcraftModMenus;
 import net.mcreator.breadcraft.init.BreadcraftModItems;
@@ -52,7 +51,6 @@ public class BreadcraftMod {
 
 	public BreadcraftMod() {
 		MinecraftForge.EVENT_BUS.register(this);
-		BreadcraftModTabs.load();
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		BreadcraftModSounds.REGISTRY.register(bus);
 		BreadcraftModBlocks.REGISTRY.register(bus);

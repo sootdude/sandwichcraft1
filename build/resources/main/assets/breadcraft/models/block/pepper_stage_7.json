@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "breadcraft:blocks/pepper_stage_7",
-    "particle": "breadcraft:blocks/pepper_stage_7"
-  },
-  "render_type": "cutout"
-}

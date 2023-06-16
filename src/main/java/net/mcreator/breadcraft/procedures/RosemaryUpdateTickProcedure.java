@@ -1,19 +1,8 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.BlockPos;
+import net.minecraftforge.eventbus.api.Event;
 
-import net.mcreator.breadcraft.init.BreadcraftModBlocks;
-
-import java.util.Map;
+import javax.annotation.Nullable;
 
 public class RosemaryUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -44,24 +33,34 @@ public class RosemaryUpdateTickProcedure {
 		blockStage5 = BreadcraftModBlocks.ROSEMARY_STAGE_5.get().defaultBlockState();
 		blockStage6 = BreadcraftModBlocks.ROSEMARY_STAGE_6.get().defaultBlockState();
 		blockStage7 = BreadcraftModBlocks.ROSEMARY_STAGE_7.get().defaultBlockState();
-		if (!((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == blockSoulSand.getBlock()) && (world.getBlockState(new BlockPos(x, y + 1, z))).getMaterial() == net.minecraft.world.level.material.Material.SAND) {
+		if (!((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == blockSoulSand.getBlock()) && (world.getBlockState(BlockPos.containing(x, y + 1, z))).getMaterial() == net.minecraft.world.level.material.Material.SAND) {
 			{
-				BlockPos _pos = new BlockPos(x, y + 1, z);
-				Block.dropResources(world.getBlockState(_pos), world, new BlockPos(x + 0.5, y + 0.5, z + 0.5), null);
+				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				Block.dropResources(world.getBlockState(_pos), world, BlockPos.containing(x + 0.5, y + 0.5, z + 0.5), null);
 				world.destroyBlock(_pos, false);
 			}
 		}
-		if (!((world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == blockFarmland.getBlock()) || (world.getBlockState(new BlockPos(x, y + 1, z))).getMaterial() == net.minecraft.world.level.material.Material.WATER
-				&& (((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip10 ? (world.getBlockState(new BlockPos(x, y + 1, z))).getValue(_getip10) : -1) >= 1
-						&& ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip12 ? (world.getBlockState(new BlockPos(x, y + 1, z))).getValue(_getip12) : -1) <= 7
-						|| ((world.getBlockState(new BlockPos(x + 1, y, z))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip14 ? (world.getBlockState(new BlockPos(x + 1, y, z))).getValue(_getip14) : -1) == 14
-						|| ((world.getBlockState(new BlockPos(x - 1, y, z))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip16 ? (world.getBlockState(new BlockPos(x - 1, y, z))).getValue(_getip16) : -1) == 14
-						|| ((world.getBlockState(new BlockPos(x, y, z + 1))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip18 ? (world.getBlockState(new BlockPos(x, y, z + 1))).getValue(_getip18) : -1) == 14
-						|| ((world.getBlockState(new BlockPos(x, y, z - 1))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip20
-								? (world.getBlockState(new BlockPos(x, y, z - 1))).getValue(_getip20)
+		if (!((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == blockFarmland.getBlock()) || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getMaterial() == net.minecraft.world.level.material.Material.WATER
+				&& (((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip10
+						? (world.getBlockState(BlockPos.containing(x, y + 1, z))).getValue(_getip10)
+						: -1) >= 1
+						&& ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip12
+								? (world.getBlockState(BlockPos.containing(x, y + 1, z))).getValue(_getip12)
+								: -1) <= 7
+						|| ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip14
+								? (world.getBlockState(BlockPos.containing(x + 1, y, z))).getValue(_getip14)
+								: -1) == 14
+						|| ((world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip16
+								? (world.getBlockState(BlockPos.containing(x - 1, y, z))).getValue(_getip16)
+								: -1) == 14
+						|| ((world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip18
+								? (world.getBlockState(BlockPos.containing(x, y, z + 1))).getValue(_getip18)
+								: -1) == 14
+						|| ((world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock().getStateDefinition().getProperty("level") instanceof IntegerProperty _getip20
+								? (world.getBlockState(BlockPos.containing(x, y, z - 1))).getValue(_getip20)
 								: -1) == 14)) {
-			world.destroyBlock(new BlockPos(x, y, z), false);
-			if (!((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage7.getBlock())) {
+			world.destroyBlock(BlockPos.containing(x, y, z), false);
+			if (!((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage7.getBlock())) {
 				logicDropType = true;
 				canDrop = true;
 			} else {
@@ -69,7 +68,7 @@ public class RosemaryUpdateTickProcedure {
 				canDrop = true;
 			}
 		}
-		if (!((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage7.getBlock())) {
+		if (!((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage7.getBlock())) {
 			if (logicLightGrowthCondition == true) {
 				if (new Object() {
 					public double getValue(LevelAccessor world, BlockPos pos, String tag) {
@@ -78,13 +77,13 @@ public class RosemaryUpdateTickProcedure {
 							return blockEntity.getPersistentData().getDouble(tag);
 						return -1;
 					}
-				}.getValue(world, new BlockPos(x, y, z), "GrowthTime") > 0) {
+				}.getValue(world, BlockPos.containing(x, y, z), "GrowthTime") > 0) {
 					randomNumber = Math.random();
 					if (randomNumber > 1 / numberGrowthCondition) {
 						randomNumber = Math.random();
 						if (randomNumber >= 0.4) {
 							if (!world.isClientSide()) {
-								BlockPos _bp = new BlockPos(x, y, z);
+								BlockPos _bp = BlockPos.containing(x, y, z);
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
@@ -95,7 +94,7 @@ public class RosemaryUpdateTickProcedure {
 												return blockEntity.getPersistentData().getDouble(tag);
 											return -1;
 										}
-									}.getValue(world, new BlockPos(x, y, z), "GrowthTime")) - 1));
+									}.getValue(world, BlockPos.containing(x, y, z), "GrowthTime")) - 1));
 								if (world instanceof Level _level)
 									_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 							}
@@ -107,16 +106,16 @@ public class RosemaryUpdateTickProcedure {
 										return blockEntity.getPersistentData().getDouble(tag);
 									return -1;
 								}
-							}.getValue(world, new BlockPos(x, y, z), "GrowthTime") < new Object() {
+							}.getValue(world, BlockPos.containing(x, y, z), "GrowthTime") < new Object() {
 								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 									BlockEntity blockEntity = world.getBlockEntity(pos);
 									if (blockEntity != null)
 										return blockEntity.getPersistentData().getDouble(tag);
 									return -1;
 								}
-							}.getValue(world, new BlockPos(x, y, z), "TotalGrowthTime")) {
+							}.getValue(world, BlockPos.containing(x, y, z), "TotalGrowthTime")) {
 								if (!world.isClientSide()) {
-									BlockPos _bp = new BlockPos(x, y, z);
+									BlockPos _bp = BlockPos.containing(x, y, z);
 									BlockEntity _blockEntity = world.getBlockEntity(_bp);
 									BlockState _bs = world.getBlockState(_bp);
 									if (_blockEntity != null)
@@ -127,7 +126,7 @@ public class RosemaryUpdateTickProcedure {
 													return blockEntity.getPersistentData().getDouble(tag);
 												return -1;
 											}
-										}.getValue(world, new BlockPos(x, y, z), "GrowthTime") + 1));
+										}.getValue(world, BlockPos.containing(x, y, z), "GrowthTime") + 1));
 									if (world instanceof Level _level)
 										_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 								}
@@ -136,7 +135,7 @@ public class RosemaryUpdateTickProcedure {
 					}
 				} else {
 					if (!world.isClientSide()) {
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockEntity _blockEntity = world.getBlockEntity(_bp);
 						BlockState _bs = world.getBlockState(_bp);
 						if (_blockEntity != null)
@@ -147,7 +146,7 @@ public class RosemaryUpdateTickProcedure {
 										return blockEntity.getPersistentData().getDouble(tag);
 									return -1;
 								}
-							}.getValue(world, new BlockPos(x, y, z), "TotalGrowthTime")));
+							}.getValue(world, BlockPos.containing(x, y, z), "TotalGrowthTime")));
 						if (world instanceof Level _level)
 							_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 					}
@@ -159,10 +158,10 @@ public class RosemaryUpdateTickProcedure {
 							return blockEntity.getPersistentData().getDouble(tag);
 						return -1;
 					}
-				}.getValue(world, new BlockPos(x, y, z), "GrowthTime") == 0) {
-					if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage0.getBlock()) {
+				}.getValue(world, BlockPos.containing(x, y, z), "GrowthTime") == 0) {
+					if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage0.getBlock()) {
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = blockStage1;
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -190,9 +189,9 @@ public class RosemaryUpdateTickProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage1.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage1.getBlock()) {
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = blockStage2;
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -220,9 +219,9 @@ public class RosemaryUpdateTickProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage2.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage2.getBlock()) {
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = blockStage3;
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -250,9 +249,9 @@ public class RosemaryUpdateTickProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage3.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage3.getBlock()) {
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = blockStage4;
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -280,9 +279,9 @@ public class RosemaryUpdateTickProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage4.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage4.getBlock()) {
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = blockStage5;
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -310,9 +309,9 @@ public class RosemaryUpdateTickProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage5.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage5.getBlock()) {
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = blockStage6;
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -340,9 +339,9 @@ public class RosemaryUpdateTickProcedure {
 								}
 							}
 						}
-					} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage6.getBlock()) {
+					} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage6.getBlock()) {
 						{
-							BlockPos _bp = new BlockPos(x, y, z);
+							BlockPos _bp = BlockPos.containing(x, y, z);
 							BlockState _bs = blockStage7;
 							BlockState _bso = world.getBlockState(_bp);
 							for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {

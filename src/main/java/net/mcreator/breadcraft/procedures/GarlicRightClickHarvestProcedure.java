@@ -1,19 +1,8 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraftforge.fml.ModList;
+import net.minecraftforge.eventbus.api.Event;
 
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.breadcraft.init.BreadcraftModItems;
-import net.mcreator.breadcraft.init.BreadcraftModBlocks;
-
-import java.util.Map;
+import javax.annotation.Nullable;
 
 public class GarlicRightClickHarvestProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -23,18 +12,18 @@ public class GarlicRightClickHarvestProcedure {
 		double cropnumber = 0;
 		if (ModList.get().isLoaded("harvestwithease") || ModList.get().isLoaded("rightclickharvest") || ModList.get().isLoaded("right_click_get_crops") || ModList.get().isLoaded("quark")) {
 			itemSeed = new ItemStack(BreadcraftModItems.GARLIC.get());
-			if (world instanceof Level _level && !_level.isClientSide()) {
+			if (world instanceof ServerLevel _level) {
 				ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 				entityToSpawn.setPickUpDelay(10);
 				_level.addFreshEntity(entityToSpawn);
 			}
-			if (world instanceof Level _level && !_level.isClientSide()) {
+			if (world instanceof ServerLevel _level) {
 				ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), itemSeed);
 				entityToSpawn.setPickUpDelay(10);
 				_level.addFreshEntity(entityToSpawn);
 			}
 			{
-				BlockPos _bp = new BlockPos(x, y, z);
+				BlockPos _bp = BlockPos.containing(x, y, z);
 				BlockState _bs = BreadcraftModBlocks.GARLIC_STAGE_0.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {

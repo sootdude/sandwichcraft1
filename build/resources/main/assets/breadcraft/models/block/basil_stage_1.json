@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "breadcraft:blocks/basil_stage_1",
-    "particle": "breadcraft:blocks/basil_stage_1"
-  },
-  "render_type": "cutout"
-}

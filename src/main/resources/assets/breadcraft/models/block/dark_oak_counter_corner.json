@@ -1,9 +1,9 @@
 {
   "parent": "breadcraft:custom/darkoakcountercorner",
   "textures": {
-    "all": "breadcraft:blocks/darkoakcountercorner",
-    "particle": "breadcraft:blocks/darkoakcountercorner",
-    "2": "breadcraft:blocks/darkoakcountercorner"
+    "all": "breadcraft:block/darkoakcountercorner",
+    "particle": "breadcraft:block/darkoakcountercorner",
+    "2": "breadcraft:block/darkoakcountercorner"
   },
   "render_type": "solid"
 }

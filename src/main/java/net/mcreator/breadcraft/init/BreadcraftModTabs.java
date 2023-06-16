@@ -4,83 +4,340 @@
  */
 package net.mcreator.breadcraft.init;
 
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.CreativeModeTabEvent;
+
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BreadcraftModTabs {
-	public static CreativeModeTab TAB_BREADCRAFT;
-	public static CreativeModeTab TAB_DOUGH;
-	public static CreativeModeTab TAB_BREADCRAFT_TOOLS;
-	public static CreativeModeTab TAB_BREAD_TAB;
-	public static CreativeModeTab TAB_CHEESE_TAB;
-	public static CreativeModeTab TAB_SANDWICHESANDMORE;
+	@SubscribeEvent
+	public static void buildTabContentsModded(CreativeModeTabEvent.Register event) {
+		event.registerCreativeModeTab(new ResourceLocation("breadcraft", "breadcraft"),
+				builder -> builder.title(Component.translatable("item_group.breadcraft.breadcraft")).icon(() -> new ItemStack(BreadcraftModItems.WHITE_FLOUR.get())).displayItems((parameters, tabData) -> {
+					tabData.accept(BreadcraftModItems.RYE_SEEDS.get());
+					tabData.accept(BreadcraftModItems.THYME_SEEDS.get());
+					tabData.accept(BreadcraftModItems.ROSEMARY_SEEDS.get());
+					tabData.accept(BreadcraftModItems.BASIL_SEEDS.get());
+					tabData.accept(BreadcraftModItems.ONION_SEEDS.get());
+					tabData.accept(BreadcraftModItems.WILD_GREENS_SEEDS.get());
+					tabData.accept(BreadcraftModItems.CAPER_SEEDS.get());
+					tabData.accept(BreadcraftModItems.TOMATO_SEEDS.get());
+					tabData.accept(BreadcraftModItems.HOT_PEPPER_SEEDS.get());
+					tabData.accept(BreadcraftModItems.MUSTARD_SEEDS.get());
+					tabData.accept(BreadcraftModItems.WHEAT_GRAIN.get());
+					tabData.accept(BreadcraftModItems.RYE_GRAIN.get());
+					tabData.accept(BreadcraftModItems.RYE.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_STARTER.get());
+					tabData.accept(BreadcraftModItems.WHEAT_FLOUR.get());
+					tabData.accept(BreadcraftModItems.WHITE_FLOUR.get());
+					tabData.accept(BreadcraftModItems.RYE_FLOUR.get());
+					tabData.accept(BreadcraftModItems.BREADCRAFT_SALT.get());
+					tabData.accept(BreadcraftModItems.BASIL.get());
+					tabData.accept(BreadcraftModItems.ROSEMARY.get());
+					tabData.accept(BreadcraftModItems.THYME.get());
+					tabData.accept(BreadcraftModItems.CAPER_LEAVES.get());
+					tabData.accept(BreadcraftModItems.WILD_GREENS.get());
+					tabData.accept(BreadcraftModItems.MIXED_HERBS.get());
+					tabData.accept(BreadcraftModItems.HOT_PEPPER.get());
+					tabData.accept(BreadcraftModItems.TOMATO.get());
+					tabData.accept(BreadcraftModItems.TOMATO_SLICE.get());
+					tabData.accept(BreadcraftModItems.ONION.get());
+					tabData.accept(BreadcraftModItems.GARLIC.get());
+					tabData.accept(BreadcraftModItems.DICED_ONION.get());
+					tabData.accept(BreadcraftModItems.CARAMELIZED_ONION.get());
+					tabData.accept(BreadcraftModItems.MINCED_GARLIC.get());
+					tabData.accept(BreadcraftModItems.LEMON.get());
+					tabData.accept(BreadcraftModItems.LEMON_JUICE.get());
+					tabData.accept(BreadcraftModItems.BANANA.get());
+					tabData.accept(BreadcraftModItems.PEANUT.get());
+					tabData.accept(BreadcraftModItems.ROASTED_PEANUTS.get());
+					tabData.accept(BreadcraftModItems.PEANUT_BUTTER.get());
+					tabData.accept(BreadcraftModItems.RAISINS.get());
+					tabData.accept(BreadcraftModItems.CREAM.get());
+					tabData.accept(BreadcraftModItems.BUTTER.get());
+					tabData.accept(BreadcraftModItems.OIL.get());
+					tabData.accept(BreadcraftModItems.RENNET.get());
+					tabData.accept(BreadcraftModItems.HOT_SAUCE.get());
+					tabData.accept(BreadcraftModItems.KETCHUP.get());
+					tabData.accept(BreadcraftModItems.BBQ_SAUCE.get());
+					tabData.accept(BreadcraftModItems.MUSTARD.get());
+					tabData.accept(BreadcraftModItems.HONEY_MUSTARD.get());
+					tabData.accept(BreadcraftModItems.MAYONNAISE.get());
+					tabData.accept(BreadcraftModItems.RANCH.get());
+					tabData.accept(BreadcraftModItems.CAESAR_DRESSING.get());
+					tabData.accept(BreadcraftModItems.BLUE_CHEESE_DRESSING.get());
+					tabData.accept(BreadcraftModItems.TARTAR_SAUCE.get());
+					tabData.accept(BreadcraftModItems.CHOPPED_BEEF.get());
+					tabData.accept(BreadcraftModItems.CHOPPED_PORK.get());
+					tabData.accept(BreadcraftModItems.CHOPPED_CHICKEN.get());
+					tabData.accept(BreadcraftModItems.RAW_BURGER_PATTY.get());
+					tabData.accept(BreadcraftModItems.BURGER_PATTY.get());
+					tabData.accept(BreadcraftModItems.RAW_VEGGIE_PATTY.get());
+					tabData.accept(BreadcraftModItems.VEGGIE_PATTY.get());
+					tabData.accept(BreadcraftModItems.BANANA_BREAD_BATTER.get());
+					tabData.accept(BreadcraftModItems.CROUTONS.get());
+				})
 
-	public static void load() {
-		TAB_BREADCRAFT = new CreativeModeTab("tabbreadcraft") {
-			@Override
-			public ItemStack makeIcon() {
-				return new ItemStack(BreadcraftModItems.WHITE_FLOUR.get());
-			}
+		);
+		event.registerCreativeModeTab(new ResourceLocation("breadcraft", "dough"),
+				builder -> builder.title(Component.translatable("item_group.breadcraft.dough")).icon(() -> new ItemStack(BreadcraftModItems.BASIC_DOUGH.get())).displayItems((parameters, tabData) -> {
+					tabData.accept(BreadcraftModItems.FLAT_BASIC_DOUGH.get());
+					tabData.accept(BreadcraftModItems.BASIC_DOUGH.get());
+					tabData.accept(BreadcraftModItems.PROOFED_BASIC_DOUGH.get());
+					tabData.accept(BreadcraftModItems.ROLLED_BASIC_DOUGH.get());
+					tabData.accept(BreadcraftModItems.FLAT_DARK_DOUGH.get());
+					tabData.accept(BreadcraftModItems.DARK_DOUGH.get());
+					tabData.accept(BreadcraftModItems.PROOFED_DARK_DOUGH.get());
+					tabData.accept(BreadcraftModItems.ROLLED_DARK_DOUGH.get());
+					tabData.accept(BreadcraftModItems.DARK_DOUGH_WITH_FILLING.get());
+					tabData.accept(BreadcraftModItems.FLAT_HERB_DOUGH.get());
+					tabData.accept(BreadcraftModItems.HERB_DOUGH.get());
+					tabData.accept(BreadcraftModItems.PROOFED_HERB_DOUGH.get());
+					tabData.accept(BreadcraftModItems.FLAT_WHOLE_WHEAT_DOUGH.get());
+					tabData.accept(BreadcraftModItems.WHOLE_WHEAT_DOUGH.get());
+					tabData.accept(BreadcraftModItems.PROOFED_WHOLE_WHEAT_DOUGH.get());
+					tabData.accept(BreadcraftModItems.FLAT_SOURDOUGH_DOUGH.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_DOUGH.get());
+					tabData.accept(BreadcraftModItems.PROOFED_SOURDOUGH_DOUGH.get());
+					tabData.accept(BreadcraftModItems.ENRICHED_DOUGH.get());
+					tabData.accept(BreadcraftModItems.PROOFED_ENRICHED_DOUGH.get());
+					tabData.accept(BreadcraftModItems.ROLLED_ENRICHED_DOUGH.get());
+					tabData.accept(BreadcraftModItems.ENRICHED_DOUGH_WITH_FILLING.get());
+					tabData.accept(BreadcraftModItems.PRETZEL_DOUGH.get());
+				})
 
-			@Override
-			public boolean hasSearchBar() {
-				return false;
-			}
-		};
-		TAB_DOUGH = new CreativeModeTab("tabdough") {
-			@Override
-			public ItemStack makeIcon() {
-				return new ItemStack(BreadcraftModItems.BASIC_DOUGH.get());
-			}
+		);
+		event.registerCreativeModeTab(new ResourceLocation("breadcraft", "breadcraft_tools"),
+				builder -> builder.title(Component.translatable("item_group.breadcraft.breadcraft_tools")).icon(() -> new ItemStack(BreadcraftModItems.MORTAR_PESTLE.get())).displayItems((parameters, tabData) -> {
+					tabData.accept(BreadcraftModBlocks.SALT_POT.get().asItem());
+					tabData.accept(BreadcraftModBlocks.CHEESE_POT.get().asItem());
+					tabData.accept(BreadcraftModBlocks.AGING_CASK.get().asItem());
+					tabData.accept(BreadcraftModBlocks.PROOFING_BOWL.get().asItem());
+					tabData.accept(BreadcraftModBlocks.KNIFE_BLOCK.get().asItem());
+					tabData.accept(BreadcraftModBlocks.BREAD_OVEN.get().asItem());
+					tabData.accept(BreadcraftModBlocks.KNEADING_BOARD.get().asItem());
+					tabData.accept(BreadcraftModItems.CHEESE_PRESS.get());
+					tabData.accept(BreadcraftModItems.ROLLING_PIN.get());
+					tabData.accept(BreadcraftModItems.WHISK.get());
+					tabData.accept(BreadcraftModItems.HAMMER.get());
+					tabData.accept(BreadcraftModItems.MORTAR_PESTLE.get());
+					tabData.accept(BreadcraftModItems.BREAD_KNIFE.get());
+					tabData.accept(BreadcraftModItems.CHEFS_KNIFE.get());
+					tabData.accept(BreadcraftModItems.SHEET_PAN.get());
+					tabData.accept(BreadcraftModItems.RIDGED_PAN.get());
+					tabData.accept(BreadcraftModItems.SQUARE_PAN.get());
+					tabData.accept(BreadcraftModItems.LOAF_PAN.get());
+					tabData.accept(BreadcraftModItems.ROUND_PAN.get());
+					tabData.accept(BreadcraftModItems.POT.get());
+					tabData.accept(BreadcraftModItems.DUTCH_OVEN.get());
+					tabData.accept(BreadcraftModBlocks.COUNTER.get().asItem());
+					tabData.accept(BreadcraftModBlocks.DARK_OAK_COUNTER.get().asItem());
+					tabData.accept(BreadcraftModBlocks.OAK_COUNTER.get().asItem());
+					tabData.accept(BreadcraftModBlocks.SPRUCE_COUNTER.get().asItem());
+					tabData.accept(BreadcraftModBlocks.ACACIA_COUNTER.get().asItem());
+					tabData.accept(BreadcraftModBlocks.MANGROVE_COUNTER.get().asItem());
+					tabData.accept(BreadcraftModBlocks.JUNGLE_COUNTER.get().asItem());
+					tabData.accept(BreadcraftModBlocks.WHISK_CUP.get().asItem());
+				})
 
-			@Override
-			public boolean hasSearchBar() {
-				return false;
-			}
-		};
-		TAB_BREADCRAFT_TOOLS = new CreativeModeTab("tabbreadcraft_tools") {
-			@Override
-			public ItemStack makeIcon() {
-				return new ItemStack(BreadcraftModItems.MORTAR_PESTLE.get());
-			}
+		);
+		event.registerCreativeModeTab(new ResourceLocation("breadcraft", "bread_tab"),
+				builder -> builder.title(Component.translatable("item_group.breadcraft.bread_tab")).icon(() -> new ItemStack(BreadcraftModItems.WHITE_COUNTRY_LOAF.get())).displayItems((parameters, tabData) -> {
+					tabData.accept(BreadcraftModItems.WHITE_BREAD.get());
+					tabData.accept(BreadcraftModItems.MILK_BREAD.get());
+					tabData.accept(BreadcraftModItems.BRIOCHE.get());
+					tabData.accept(BreadcraftModItems.CHALLAH.get());
+					tabData.accept(BreadcraftModItems.CROISSANT.get());
+					tabData.accept(BreadcraftModItems.CROISSANTWITH_JAM.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_SANDWICH_BREAD.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_BOULE.get());
+					tabData.accept(BreadcraftModItems.PRETZEL_BREAD.get());
+					tabData.accept(BreadcraftModItems.PRETZEL_ROLL.get());
+					tabData.accept(BreadcraftModItems.SOFT_PRETZEL.get());
+					tabData.accept(BreadcraftModItems.CHOCOLATE_SOURDOUGH.get());
+					tabData.accept(BreadcraftModItems.PUMPERNICKEL.get());
+					tabData.accept(BreadcraftModItems.GUINNESS_BREAD.get());
+					tabData.accept(BreadcraftModItems.BABKA.get());
+					tabData.accept(BreadcraftModItems.BANANA_BREAD.get());
+					tabData.accept(BreadcraftModItems.WHITE_COUNTRY_LOAF.get());
+					tabData.accept(BreadcraftModItems.RYE_BREAD.get());
+					tabData.accept(BreadcraftModItems.WHOLE_WHEAT_BOULE.get());
+					tabData.accept(BreadcraftModItems.WHOLE_WHEAT_BREAD.get());
+					tabData.accept(BreadcraftModItems.BAGUETTE.get());
+					tabData.accept(BreadcraftModItems.SLICED_BAGUETTE.get());
+					tabData.accept(BreadcraftModItems.FRENCH_BATARD.get());
+					tabData.accept(BreadcraftModItems.FOUGASSE.get());
+					tabData.accept(BreadcraftModItems.FOCACCIA.get());
+					tabData.accept(BreadcraftModItems.SUB_SANDWICH_LOAF.get());
+					tabData.accept(BreadcraftModItems.SLICED_SUB_SANDWICH_LOAF.get());
+					tabData.accept(BreadcraftModItems.BRIOCHE_BUN.get());
+					tabData.accept(BreadcraftModItems.SLICED_BRIOCHE_BUN.get());
+					tabData.accept(BreadcraftModItems.DINNER_ROLL.get());
+					tabData.accept(BreadcraftModItems.PLAIN_BAGEL.get());
+					tabData.accept(BreadcraftModItems.BERRY_BAGEL.get());
+					tabData.accept(BreadcraftModItems.EVERYTHING_BAGEL.get());
+					tabData.accept(BreadcraftModItems.SLICED_PLAIN_BAGEL.get());
+					tabData.accept(BreadcraftModItems.SLICED_BERRY_BAGEL.get());
+					tabData.accept(BreadcraftModItems.SLICED_EVERYTHING_BAGEL.get());
+					tabData.accept(BreadcraftModItems.WHITE_BREAD_SLICE.get());
+					tabData.accept(BreadcraftModItems.MILK_BREAD_SLICE.get());
+					tabData.accept(BreadcraftModItems.BRIOCHE_SLICE.get());
+					tabData.accept(BreadcraftModItems.CHALLAH_SLICE.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_SANDWICH_BREAD_SLICE.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_BOULE_SLICE.get());
+					tabData.accept(BreadcraftModItems.PRETZEL_BREAD_SLICE.get());
+					tabData.accept(BreadcraftModItems.CHOCOLATE_SOURDOUGH_SLICE.get());
+					tabData.accept(BreadcraftModItems.PUMPERNICKEL_SLICE.get());
+					tabData.accept(BreadcraftModItems.GUINNESS_BREAD_SLICE.get());
+					tabData.accept(BreadcraftModItems.BABKA_SLICE.get());
+					tabData.accept(BreadcraftModItems.BANANA_BREAD_SLICE.get());
+					tabData.accept(BreadcraftModItems.COUNTRY_LOAF_SLICE.get());
+					tabData.accept(BreadcraftModItems.RYE_BREAD_SLICE.get());
+					tabData.accept(BreadcraftModItems.WHOLE_WHEAT_BOULE_SLICE.get());
+					tabData.accept(BreadcraftModItems.WHOLE_WHEAT_SLICE.get());
+					tabData.accept(BreadcraftModItems.FRENCH_BATARD_SLICE.get());
+					tabData.accept(BreadcraftModItems.FOUGASSE_SLICE.get());
+					tabData.accept(BreadcraftModItems.FOCACCIA_SLICE.get());
+					tabData.accept(BreadcraftModItems.CRACKERS.get());
+					tabData.accept(BreadcraftModItems.CRACKERS_WITH_BRIE.get());
+					tabData.accept(BreadcraftModItems.STICKY_BUN.get());
+				})
 
-			@Override
-			public boolean hasSearchBar() {
-				return false;
-			}
-		};
-		TAB_BREAD_TAB = new CreativeModeTab("tabbread_tab") {
-			@Override
-			public ItemStack makeIcon() {
-				return new ItemStack(BreadcraftModItems.WHITE_COUNTRY_LOAF.get());
-			}
+		);
+		event.registerCreativeModeTab(new ResourceLocation("breadcraft", "cheese_tab"),
+				builder -> builder.title(Component.translatable("item_group.breadcraft.cheese_tab")).icon(() -> new ItemStack(BreadcraftModItems.CHEESE_ICON_PLACEHOLDER.get())).displayItems((parameters, tabData) -> {
+					tabData.accept(BreadcraftModItems.MOZZARELLA_CURDS.get());
+					tabData.accept(BreadcraftModItems.BRIE_CHEESE_CURDS.get());
+					tabData.accept(BreadcraftModItems.BLUE_CHEESE_CURDS.get());
+					tabData.accept(BreadcraftModItems.CHEDDAR_CHEESE_CURDS.get());
+					tabData.accept(BreadcraftModItems.COLBY_CHEESE_CURDS.get());
+					tabData.accept(BreadcraftModItems.GOUDA_CHEESE_CURDS.get());
+					tabData.accept(BreadcraftModItems.PARMESAN_CURDS.get());
+					tabData.accept(BreadcraftModItems.PRESSED_CHEDDAR_CHEESE.get());
+					tabData.accept(BreadcraftModItems.PRESSED_BRIE.get());
+					tabData.accept(BreadcraftModItems.PRESSED_BLUE_CHEESE.get());
+					tabData.accept(BreadcraftModItems.PRESSED_COLBY_CHEESE.get());
+					tabData.accept(BreadcraftModItems.PRESSED_GOUDA.get());
+					tabData.accept(BreadcraftModItems.PARTIALLY_PRESSED_PARMESAN.get());
+					tabData.accept(BreadcraftModItems.PRESSED_PARMESAN.get());
+					tabData.accept(BreadcraftModItems.CREAM_CHEESE.get());
+					tabData.accept(BreadcraftModItems.MOZZARELLA_CHEESE.get());
+					tabData.accept(BreadcraftModItems.BRIE.get());
+					tabData.accept(BreadcraftModItems.BLUE_CHEESE.get());
+					tabData.accept(BreadcraftModItems.WHITE_CHEDDAR.get());
+					tabData.accept(BreadcraftModItems.AGED_WHITE_CHEDDAR.get());
+					tabData.accept(BreadcraftModItems.CHEDDAR_CHEESE.get());
+					tabData.accept(BreadcraftModItems.COLBY_CHEESE.get());
+					tabData.accept(BreadcraftModItems.GOUDA.get());
+					tabData.accept(BreadcraftModItems.PARMESAN.get());
+					tabData.accept(BreadcraftModItems.CREAM_CHEESE_DOLLOP.get());
+					tabData.accept(BreadcraftModItems.SLICED_MOZZARELLA.get());
+					tabData.accept(BreadcraftModItems.BRIE_SLICE.get());
+					tabData.accept(BreadcraftModItems.CRUMBLED_BLUE_CHEESE.get());
+					tabData.accept(BreadcraftModItems.WHITE_CHEDDAR_SLICE.get());
+					tabData.accept(BreadcraftModItems.AGED_WHITE_CHEDDAR_SLICE.get());
+					tabData.accept(BreadcraftModItems.CHEDDAR_CHEESE_SLICE.get());
+					tabData.accept(BreadcraftModItems.COLBY_CHEESE_SLICE.get());
+					tabData.accept(BreadcraftModItems.GOUDA_CHEESE_SLICE.get());
+					tabData.accept(BreadcraftModItems.GRATED_PARMESAN.get());
+				})
 
-			@Override
-			public boolean hasSearchBar() {
-				return false;
-			}
-		};
-		TAB_CHEESE_TAB = new CreativeModeTab("tabcheese_tab") {
-			@Override
-			public ItemStack makeIcon() {
-				return new ItemStack(BreadcraftModItems.CHEESE_ICON_PLACEHOLDER.get());
-			}
+		);
+		event.registerCreativeModeTab(new ResourceLocation("breadcraft", "sandwichesandmore"),
+				builder -> builder.title(Component.translatable("item_group.breadcraft.sandwichesandmore")).icon(() -> new ItemStack(BreadcraftModItems.GRILLED_CHEESE.get())).displayItems((parameters, tabData) -> {
+					tabData.accept(BreadcraftModItems.GRILLED_CHEESE.get());
+					tabData.accept(BreadcraftModItems.WHITE_BREAD_TOAST.get());
+					tabData.accept(BreadcraftModItems.PATTY_MELT.get());
+					tabData.accept(BreadcraftModItems.SALMON_MELT.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_GRILLED_CHEESE.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_TOAST.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_BOULE_GRILLED_CHEESE.get());
+					tabData.accept(BreadcraftModItems.GRILLED_APPLE_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.MONTE_CRISTO.get());
+					tabData.accept(BreadcraftModItems.SWEETBERRY_JAM_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.REG_BANANA_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.PEANUT_BUTTERAND_BANANA_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.TOAST.get());
+					tabData.accept(BreadcraftModItems.FRENCH_TOAST.get());
+					tabData.accept(BreadcraftModItems.FRENCH_TOAST_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.GRILLED_TOMATO_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.BATARD_GRILLED_CHEESE.get());
+					tabData.accept(BreadcraftModItems.FRENCH_BREAD_TOAST.get());
+					tabData.accept(BreadcraftModItems.BRUSCHETTA.get());
+					tabData.accept(BreadcraftModItems.GARLIC_BREAD.get());
+					tabData.accept(BreadcraftModItems.BRIEAND_BAGUETTE_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.SMOKED_HAM_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.FRENCH_DIP_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.BANH_MI.get());
+					tabData.accept(BreadcraftModItems.HAMBURGER.get());
+					tabData.accept(BreadcraftModItems.CHEESEBURGER.get());
+					tabData.accept(BreadcraftModItems.VEGGIE_BURGER.get());
+					tabData.accept(BreadcraftModItems.PULLED_PORK_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.ROAST_BEEF_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.CHICKEN_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.BBQ_CHICKEN_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.MEATBALL_SUB.get());
+					tabData.accept(BreadcraftModItems.VEGGIE_SUB.get());
+					tabData.accept(BreadcraftModItems.SLOPPY_JOE.get());
+					tabData.accept(BreadcraftModItems.STEAK_SANDWICHWITH_CAPER_SAUCE.get());
+					tabData.accept(BreadcraftModItems.BREAKFAST_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.LOX_BAGEL.get());
+					tabData.accept(BreadcraftModItems.BAGELWITH_CREAM_CHEESE.get());
+					tabData.accept(BreadcraftModItems.BERRY_BAGELWITH_CREAM_CHEESE.get());
+					tabData.accept(BreadcraftModItems.EVERYTHING_BAGELWITH_CREAM_CHEESE.get());
+					tabData.accept(BreadcraftModItems.BUTTERED_GUINNESS_BREAD.get());
+					tabData.accept(BreadcraftModItems.PUMPERNICKEL_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.BANANA_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.GREENS_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.WHOLE_WHEAT_GRILLED_CHEESE.get());
+					tabData.accept(BreadcraftModItems.WHOLE_WHEAT_TOAST.get());
+					tabData.accept(BreadcraftModItems.BEETROOT_CARROT_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.RYE_HAM_AND_CHEESE_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.RYE_GRILLED_CHEESE.get());
+					tabData.accept(BreadcraftModItems.RYE_TOAST.get());
+					tabData.accept(BreadcraftModItems.COUNTRY_GRILLED_CHEESE.get());
+					tabData.accept(BreadcraftModItems.COUNTRY_LOAF_TOAST.get());
+					tabData.accept(BreadcraftModItems.PRETZEL_BREAD_GRILLED_CHEESE.get());
+					tabData.accept(BreadcraftModItems.PRETZEL_BREAD_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.COD_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.SOURDOUGH_HAM_AND_CHEESE_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.CLUB_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.PEANUT_BUTTERAND_JELLY_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.DELI_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.SCRAMBLED_EGG_SANDWICH.get());
+					tabData.accept(BreadcraftModItems.BLT.get());
+					tabData.accept(BreadcraftModItems.SOFT_PRETZELWITH_MUSTARD.get());
+					tabData.accept(BreadcraftModItems.SOFT_PRETZELWITH_CHEESE.get());
+					tabData.accept(BreadcraftModItems.MASHED_POTATOES.get());
+					tabData.accept(BreadcraftModItems.POTATO_CHIPS.get());
+					tabData.accept(BreadcraftModItems.FRIES.get());
+					tabData.accept(BreadcraftModItems.KETCHUPAND_FRIES.get());
+					tabData.accept(BreadcraftModItems.FRIESWITH_HONEY_MUSTARD.get());
+					tabData.accept(BreadcraftModItems.ONION_RINGS.get());
+					tabData.accept(BreadcraftModItems.FRIED_CHEESE_CURDS.get());
+					tabData.accept(BreadcraftModItems.TOMATO_SOUP.get());
+					tabData.accept(BreadcraftModItems.CARROT_SOUP.get());
+					tabData.accept(BreadcraftModItems.FRENCH_ONION_SOUP.get());
+					tabData.accept(BreadcraftModItems.CREAM_OF_VEGETABLE_SOUP.get());
+					tabData.accept(BreadcraftModItems.MEAT_STEW.get());
+					tabData.accept(BreadcraftModItems.ADOBO.get());
+					tabData.accept(BreadcraftModItems.SALAD.get());
+					tabData.accept(BreadcraftModItems.CAESAR_SALAD.get());
+					tabData.accept(BreadcraftModItems.SALMON_CEVICHE.get());
+					tabData.accept(BreadcraftModItems.COBB_SALAD.get());
+					tabData.accept(BreadcraftModItems.WALDORF_SALAD.get());
+					tabData.accept(BreadcraftModItems.CAPRESE_SALAD.get());
+					tabData.accept(BreadcraftModItems.PANZANELLA.get());
+					tabData.accept(BreadcraftModItems.WEDGE_SALAD.get());
+					tabData.accept(BreadcraftModItems.POTATO_SALAD.get());
+					tabData.accept(BreadcraftModItems.CHICKEN_SALAD.get());
+					tabData.accept(BreadcraftModItems.EGG_SALAD.get());
+				})
 
-			@Override
-			public boolean hasSearchBar() {
-				return false;
-			}
-		};
-		TAB_SANDWICHESANDMORE = new CreativeModeTab("tabsandwichesandmore") {
-			@Override
-			public ItemStack makeIcon() {
-				return new ItemStack(BreadcraftModItems.GRILLED_CHEESE.get());
-			}
-
-			@Override
-			public boolean hasSearchBar() {
-				return false;
-			}
-		};
+		);
 	}
 }

@@ -1,15 +1,12 @@
 
 package net.mcreator.breadcraft.item;
 
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Item;
-
-import net.mcreator.breadcraft.init.BreadcraftModTabs;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import javax.annotation.Nullable;
 
 public class WhiskItem extends Item {
 	public WhiskItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_BREADCRAFT_TOOLS).durability(131).rarity(Rarity.COMMON));
+		super(new Item.Properties().durability(131).rarity(Rarity.COMMON));
 	}
 
 	@Override

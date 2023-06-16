@@ -1,10 +1,10 @@
 {
   "parent": "breadcraft:custom/cheesepot",
   "textures": {
-    "all": "breadcraft:blocks/campfirefull",
-    "particle": "breadcraft:blocks/grey",
-    "4": "breadcraft:blocks/campfirefull",
-    "5": "breadcraft:blocks/waterflowing"
+    "all": "breadcraft:block/campfirefull",
+    "particle": "breadcraft:block/grey",
+    "4": "breadcraft:block/campfirefull",
+    "5": "breadcraft:block/waterflowing"
   },
   "render_type": "solid"
 }

@@ -1,25 +1,8 @@
 package net.mcreator.breadcraft.procedures;
 
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.BlockPos;
+import net.minecraftforge.eventbus.api.Event;
 
-import net.mcreator.breadcraft.init.BreadcraftModBlocks;
-
-import java.util.Map;
+import javax.annotation.Nullable;
 
 public class PepperBonemealRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -46,10 +29,10 @@ public class PepperBonemealRightClickedProcedure {
 		blockStage7 = BreadcraftModBlocks.PEPPER_STAGE_7.get().defaultBlockState();
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == itemBoneMeal.getItem()) {
 			randomNumber = Math.random();
-			if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage0.getBlock()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage0.getBlock()) {
 				if (randomNumber > 0.85 && randomNumber <= 1) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage1;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -79,7 +62,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.65 && randomNumber <= 0.85) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage2;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -109,7 +92,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.45 && randomNumber <= 0.65) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage3;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -139,7 +122,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.25 && randomNumber <= 0.45) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage4;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -169,7 +152,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.05 && randomNumber <= 0.25) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage5;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -198,10 +181,10 @@ public class PepperBonemealRightClickedProcedure {
 						}
 					}
 				}
-			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage1.getBlock()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage1.getBlock()) {
 				if (randomNumber > 0.85 && randomNumber <= 1) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage2;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -231,7 +214,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.65 && randomNumber <= 0.85) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage3;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -261,7 +244,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.45 && randomNumber <= 0.65) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage4;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -291,7 +274,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.25 && randomNumber <= 0.45) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage5;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -321,7 +304,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.05 && randomNumber <= 0.25) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage6;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -350,10 +333,10 @@ public class PepperBonemealRightClickedProcedure {
 						}
 					}
 				}
-			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage2.getBlock()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage2.getBlock()) {
 				if (randomNumber > 0.85 && randomNumber <= 1) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage3;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -383,7 +366,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.65 && randomNumber <= 0.85) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage4;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -413,7 +396,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.45 && randomNumber <= 0.65) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage5;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -443,7 +426,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.25 && randomNumber <= 0.45) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage6;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -473,7 +456,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.05 && randomNumber <= 0.25) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage7;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -502,10 +485,10 @@ public class PepperBonemealRightClickedProcedure {
 						}
 					}
 				}
-			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage3.getBlock()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage3.getBlock()) {
 				if (randomNumber > 0.75 && randomNumber <= 1) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage4;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -535,7 +518,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.55 && randomNumber <= 0.75) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage5;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -565,7 +548,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.25 && randomNumber <= 0.55) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage6;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -595,7 +578,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.05 && randomNumber <= 0.25) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage7;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -624,10 +607,10 @@ public class PepperBonemealRightClickedProcedure {
 						}
 					}
 				}
-			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage4.getBlock()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage4.getBlock()) {
 				if (randomNumber > 0.65 && randomNumber <= 1) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage5;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -657,7 +640,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.45 && randomNumber <= 0.65) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage6;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -687,7 +670,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.05 && randomNumber <= 0.45) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage7;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -716,10 +699,10 @@ public class PepperBonemealRightClickedProcedure {
 						}
 					}
 				}
-			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage5.getBlock()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage5.getBlock()) {
 				if (randomNumber > 0.45 && randomNumber <= 1) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage6;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -749,7 +732,7 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				} else if (randomNumber > 0.05 && randomNumber <= 0.45) {
 					{
-						BlockPos _bp = new BlockPos(x, y, z);
+						BlockPos _bp = BlockPos.containing(x, y, z);
 						BlockState _bs = blockStage7;
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -778,9 +761,9 @@ public class PepperBonemealRightClickedProcedure {
 						}
 					}
 				}
-			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage6.getBlock()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage6.getBlock()) {
 				{
-					BlockPos _bp = new BlockPos(x, y, z);
+					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockState _bs = blockStage7;
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -809,14 +792,14 @@ public class PepperBonemealRightClickedProcedure {
 					}
 				}
 			}
-			if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage0.getBlock() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage1.getBlock()
-					|| (world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage2.getBlock() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage3.getBlock()
-					|| (world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage4.getBlock() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage5.getBlock()
-					|| (world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockStage6.getBlock()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage0.getBlock() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage1.getBlock()
+					|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage2.getBlock() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage3.getBlock()
+					|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage4.getBlock() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage5.getBlock()
+					|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockStage6.getBlock()) {
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, x, y, z, 5, 1, 1, 1, 1);
 				if (!world.isClientSide()) {
-					BlockPos _bp = new BlockPos(x, y, z);
+					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -827,14 +810,14 @@ public class PepperBonemealRightClickedProcedure {
 									return blockEntity.getPersistentData().getDouble(tag);
 								return -1;
 							}
-						}.getValue(world, new BlockPos(x, y, z), "TotalGrowthTime")));
+						}.getValue(world, BlockPos.containing(x, y, z), "TotalGrowthTime")));
 					if (world instanceof Level _level)
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (!(entity instanceof Player _plr ? _plr.getAbilities().instabuild : false)) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = itemBoneMeal;
-						_setstack.setCount((int) (((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).getCount() - 1));
+						_setstack.setCount((int) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1));
 						_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
 						if (_entity instanceof Player _player)
 							_player.getInventory().setChanged();

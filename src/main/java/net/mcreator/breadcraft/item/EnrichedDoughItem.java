@@ -1,13 +1,11 @@
 
 package net.mcreator.breadcraft.item;
 
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Item;
-
-import net.mcreator.breadcraft.init.BreadcraftModTabs;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import javax.annotation.Nullable;
 
 public class EnrichedDoughItem extends Item {
 	public EnrichedDoughItem() {
-		super(new Item.Properties().tab(BreadcraftModTabs.TAB_DOUGH).stacksTo(64).rarity(Rarity.COMMON));
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
 	}
 }
