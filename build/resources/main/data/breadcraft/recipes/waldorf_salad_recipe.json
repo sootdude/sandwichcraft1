@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chefs_knife"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "breadcraft:raisins"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    },
+    {
+      "tag": "forge:salt"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:waldorf_salad",
+    "count": 2
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:caper_leaves"
+    },
+    {
+      "item": "breadcraft:mortar_pestle"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:rennet",
+    "count": 1
+  }
+}

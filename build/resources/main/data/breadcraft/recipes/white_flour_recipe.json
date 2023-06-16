@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:mortar_pestle"
+    },
+    {
+      "item": "breadcraft:wheat_grain"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:white_flour",
+    "count": 1
+  }
+}

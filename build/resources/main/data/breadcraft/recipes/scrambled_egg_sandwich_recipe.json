@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "tag": "forge:hot_sauce"
+    },
+    {
+      "tag": "forge:eggs"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:scrambled_egg_sandwich",
+    "count": 1
+  }
+}

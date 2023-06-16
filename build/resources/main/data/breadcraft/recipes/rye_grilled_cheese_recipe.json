@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:rye_bread_slice"
+    },
+    {
+      "item": "breadcraft:rye_bread_slice"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:rye_grilled_cheese",
+    "count": 1
+  }
+}

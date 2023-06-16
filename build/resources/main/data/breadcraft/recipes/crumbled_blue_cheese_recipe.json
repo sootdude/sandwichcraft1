@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:blue_cheese"
+    },
+    {
+      "item": "breadcraft:chefs_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:crumbled_blue_cheese",
+    "count": 12
+  }
+}

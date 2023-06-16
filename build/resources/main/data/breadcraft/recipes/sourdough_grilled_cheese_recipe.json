@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:sourdough_sandwich_bread_slice"
+    },
+    {
+      "item": "breadcraft:sourdough_sandwich_bread_slice"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:sourdough_grilled_cheese",
+    "count": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/mangrovecountercorner",
+  "textures": {
+    "all": "breadcraft:block/mangrovecountercorner",
+    "particle": "breadcraft:block/mangrovecountercorner",
+    "0": "breadcraft:block/mangrovecountercorner"
+  },
+  "render_type": "solid"
+}

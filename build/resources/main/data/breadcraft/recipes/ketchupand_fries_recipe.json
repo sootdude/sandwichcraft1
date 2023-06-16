@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:fries"
+    },
+    {
+      "tag": "forge:ketchup"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:ketchupand_fries",
+    "count": 1
+  }
+}

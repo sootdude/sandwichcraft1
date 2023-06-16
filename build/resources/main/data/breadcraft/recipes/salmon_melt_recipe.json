@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    },
+    {
+      "item": "minecraft:cooked_salmon"
+    },
+    {
+      "tag": "forge:pepper"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:salmon_melt",
+    "count": 1
+  }
+}

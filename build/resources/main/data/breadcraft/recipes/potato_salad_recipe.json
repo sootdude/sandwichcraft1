@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chefs_knife"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "item": "breadcraft:diced_onion"
+    },
+    {
+      "tag": "forge:salt"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:potato_salad",
+    "count": 1
+  }
+}

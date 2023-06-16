@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:tomatoes"
+    },
+    {
+      "item": "breadcraft:chefs_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:tomato_slice",
+    "count": 6
+  }
+}

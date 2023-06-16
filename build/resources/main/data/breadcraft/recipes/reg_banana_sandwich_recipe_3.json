@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:milk_bread_slice"
+    },
+    {
+      "item": "breadcraft:milk_bread_slice"
+    },
+    {
+      "tag": "forge:bananas"
+    },
+    {
+      "tag": "forge:butter"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:reg_banana_sandwich",
+    "count": 1
+  }
+}

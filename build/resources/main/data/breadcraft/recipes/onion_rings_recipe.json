@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:onions"
+    },
+    {
+      "tag": "forge:flour"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:cookingoil"
+    },
+    {
+      "item": "breadcraft:pot"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:onion_rings",
+    "count": 1
+  }
+}

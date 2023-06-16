@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chocolate_sourdough"
+    },
+    {
+      "item": "breadcraft:bread_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:chocolate_sourdough_slice",
+    "count": 12
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:soft_pretzel"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    },
+    {
+      "tag": "forge:salt"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:soft_pretzelwith_cheese",
+    "count": 1
+  }
+}

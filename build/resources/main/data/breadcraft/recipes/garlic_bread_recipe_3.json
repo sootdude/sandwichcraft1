@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:sourdough_boule_slice"
+    },
+    {
+      "item": "breadcraft:minced_garlic"
+    },
+    {
+      "tag": "forge:butter"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:garlic_bread",
+    "count": 1
+  }
+}

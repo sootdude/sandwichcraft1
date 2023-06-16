@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "item": "breadcraft:diced_onion"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    },
+    {
+      "item": "breadcraft:caper_seeds"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:tartar_sauce",
+    "count": 4
+  }
+}

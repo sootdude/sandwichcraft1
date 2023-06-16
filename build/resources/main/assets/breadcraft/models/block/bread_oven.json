@@ -1,0 +1,10 @@
+{
+  "parent": "breadcraft:custom/breadoven",
+  "textures": {
+    "all": "breadcraft:block/breadoven",
+    "particle": "breadcraft:block/breadoven",
+    "4": "breadcraft:block/window",
+    "5": "breadcraft:block/breadoven"
+  },
+  "render_type": "solid"
+}

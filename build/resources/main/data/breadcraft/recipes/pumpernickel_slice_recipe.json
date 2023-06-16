@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:pumpernickel"
+    },
+    {
+      "item": "breadcraft:bread_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:pumpernickel_slice",
+    "count": 12
+  }
+}

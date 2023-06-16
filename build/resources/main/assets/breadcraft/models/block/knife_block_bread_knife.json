@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/knifeblockbreadknife",
+  "textures": {
+    "all": "breadcraft:block/knifeblock",
+    "particle": "breadcraft:block/knifeblock",
+    "2": "breadcraft:block/knifeblock"
+  },
+  "render_type": "solid"
+}

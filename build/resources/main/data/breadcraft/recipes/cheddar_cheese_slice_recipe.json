@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:cheddar_cheese"
+    },
+    {
+      "item": "breadcraft:chefs_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:cheddar_cheese_slice",
+    "count": 12
+  }
+}

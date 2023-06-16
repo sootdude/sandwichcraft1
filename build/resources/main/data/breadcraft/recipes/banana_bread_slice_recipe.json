@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:banana_bread"
+    },
+    {
+      "item": "breadcraft:bread_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:banana_bread_slice",
+    "count": 4
+  }
+}

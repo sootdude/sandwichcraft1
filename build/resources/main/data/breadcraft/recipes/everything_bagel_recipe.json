@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:plain_bagel"
+    },
+    {
+      "item": "minecraft:poppy"
+    },
+    {
+      "item": "breadcraft:minced_garlic"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:everything_bagel",
+    "count": 1
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_baguette"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "breadcraft:diced_onion"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:chili_pepper"
+    },
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "tag": "forge:lettuce"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:banh_mi",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:focaccia"
+    },
+    {
+      "item": "breadcraft:bread_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:focaccia_slice",
+    "count": 12
+  }
+}

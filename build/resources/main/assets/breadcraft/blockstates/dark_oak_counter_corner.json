@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "breadcraft:block/dark_oak_counter_corner"
+    },
+    "facing=east": {
+      "model": "breadcraft:block/dark_oak_counter_corner",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "breadcraft:block/dark_oak_counter_corner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "breadcraft:block/dark_oak_counter_corner",
+      "y": 270
+    }
+  }
+}

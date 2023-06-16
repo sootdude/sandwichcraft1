@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:white_flour"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "item": "breadcraft:mixed_herbs"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "breadcraft:white_flour"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:flat_herb_dough",
+    "count": 1
+  }
+}

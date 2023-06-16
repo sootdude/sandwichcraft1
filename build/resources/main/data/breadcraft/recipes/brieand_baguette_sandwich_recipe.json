@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_baguette"
+    },
+    {
+      "item": "breadcraft:brie_slice"
+    },
+    {
+      "item": "breadcraft:brie_slice"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "item": "breadcraft:tomato_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:brieand_baguette_sandwich",
+    "count": 1
+  }
+}

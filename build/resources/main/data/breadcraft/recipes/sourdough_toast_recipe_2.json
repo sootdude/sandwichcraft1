@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:sourdough_boule_slice"
+    },
+    {
+      "item": "breadcraft:sourdough_boule_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:sourdough_toast",
+    "count": 1
+  }
+}

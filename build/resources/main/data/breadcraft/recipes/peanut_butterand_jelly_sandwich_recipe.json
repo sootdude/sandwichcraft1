@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "tag": "forge:peanut_butter"
+    },
+    {
+      "tag": "forge:berries"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    },
+    {
+      "tag": "forge:sugar"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:peanut_butterand_jelly_sandwich",
+    "count": 1
+  }
+}

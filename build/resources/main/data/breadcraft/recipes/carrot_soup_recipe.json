@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:pot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "tag": "forge:herb"
+    },
+    {
+      "tag": "forge:onions"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:carrot_soup",
+    "count": 1
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chefs_knife"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "item": "breadcraft:crumbled_blue_cheese"
+    },
+    {
+      "item": "breadcraft:blue_cheese_dressing"
+    },
+    {
+      "item": "breadcraft:tomato_slice"
+    },
+    {
+      "item": "breadcraft:diced_onion"
+    },
+    {
+      "tag": "forge:olive_oil"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:wedge_salad",
+    "count": 2
+  }
+}

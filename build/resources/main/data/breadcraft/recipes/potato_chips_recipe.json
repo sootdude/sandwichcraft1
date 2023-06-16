@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chefs_knife"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:cookingoil"
+    },
+    {
+      "item": "breadcraft:pot"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:potato_chips",
+    "count": 1
+  }
+}

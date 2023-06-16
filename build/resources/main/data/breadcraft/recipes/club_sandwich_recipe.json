@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chopped_chicken"
+    },
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "item": "breadcraft:sourdough_sandwich_bread_slice"
+    },
+    {
+      "item": "breadcraft:sourdough_sandwich_bread_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:club_sandwich",
+    "count": 2
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    },
+    {
+      "tag": "forge:burger_patty"
+    },
+    {
+      "item": "breadcraft:caramelized_onion"
+    },
+    {
+      "tag": "forge:ketchup"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:patty_melt",
+    "count": 1
+  }
+}

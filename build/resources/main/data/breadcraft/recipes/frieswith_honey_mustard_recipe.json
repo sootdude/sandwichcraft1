@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:fries"
+    },
+    {
+      "item": "breadcraft:honey_mustard"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:frieswith_honey_mustard",
+    "count": 1
+  }
+}

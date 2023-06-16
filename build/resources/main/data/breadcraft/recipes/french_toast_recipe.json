@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:brioche_slice"
+    },
+    {
+      "item": "breadcraft:brioche_slice"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:butter"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:french_toast",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:proofed_basic_dough",
+    "breadcraft:proofed_dark_dough",
+    "breadcraft:proofed_sourdough_dough",
+    "breadcraft:enriched_dough_with_filling",
+    "breadcraft:proofed_herb_dough",
+    "breadcraft:banana_bread_batter",
+    "breadcraft:rolled_dark_dough",
+    "breadcraft:proofed_whole_wheat_dough",
+    "breadcraft:pretzel_dough",
+    "breadcraft:rolled_basic_dough",
+    "breadcraft:rolled_enriched_dough",
+    "breadcraft:proofed_enriched_dough"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:lemons"
+    },
+    {
+      "item": "breadcraft:mortar_pestle"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:lemon_juice",
+    "count": 1
+  }
+}

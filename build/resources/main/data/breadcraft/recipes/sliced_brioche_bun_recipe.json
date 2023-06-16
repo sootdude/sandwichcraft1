@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:brioche_bun"
+    },
+    {
+      "item": "breadcraft:bread_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:sliced_brioche_bun",
+    "count": 1
+  }
+}

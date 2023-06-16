@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:sourdough_sandwich_bread_slice"
+    },
+    {
+      "item": "breadcraft:sourdough_sandwich_bread_slice"
+    },
+    {
+      "tag": "forge:pork"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "item": "breadcraft:tomato_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:blt",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:white_bread_slice"
+    },
+    {
+      "item": "breadcraft:white_bread_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:white_bread_toast",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:mortar_pestle"
+    },
+    {
+      "item": "breadcraft:rye_grain"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:rye_flour",
+    "count": 1
+  }
+}

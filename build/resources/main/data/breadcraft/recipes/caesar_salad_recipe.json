@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "tag": "forge:chicken"
+    },
+    {
+      "tag": "forge:croutons"
+    },
+    {
+      "item": "breadcraft:caesar_dressing"
+    },
+    {
+      "item": "breadcraft:grated_parmesan"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:caesar_salad",
+    "count": 2
+  }
+}

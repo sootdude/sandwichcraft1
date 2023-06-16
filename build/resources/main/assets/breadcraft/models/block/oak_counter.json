@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/oakcounter",
+  "textures": {
+    "all": "breadcraft:block/oakcounter",
+    "particle": "breadcraft:block/oakcounter",
+    "1": "breadcraft:block/oakcounter"
+  },
+  "render_type": "solid"
+}

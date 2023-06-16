@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chefs_knife"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:pork"
+    },
+    {
+      "tag": "forge:chicken"
+    },
+    {
+      "item": "breadcraft:tomato_slice"
+    },
+    {
+      "item": "breadcraft:diced_onion"
+    },
+    {
+      "item": "breadcraft:grated_parmesan"
+    },
+    {
+      "tag": "forge:ranch_dressing"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:cobb_salad",
+    "count": 2
+  }
+}

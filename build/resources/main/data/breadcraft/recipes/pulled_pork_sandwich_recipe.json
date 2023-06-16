@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_brioche_bun"
+    },
+    {
+      "tag": "forge:pork"
+    },
+    {
+      "tag": "forge:mayo"
+    },
+    {
+      "tag": "forge:bbqsauce"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:pulled_pork_sandwich",
+    "count": 1
+  }
+}

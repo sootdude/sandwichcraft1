@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:basil"
+    },
+    {
+      "item": "breadcraft:rosemary"
+    },
+    {
+      "item": "breadcraft:thyme"
+    },
+    {
+      "item": "breadcraft:mortar_pestle"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:mixed_herbs",
+    "count": 3
+  }
+}

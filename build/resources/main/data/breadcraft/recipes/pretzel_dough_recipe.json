@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:proofed_basic_dough"
+    },
+    {
+      "item": "breadcraft:pot"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:pretzel_dough",
+    "count": 1
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:onions"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "forge:cream"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "item": "breadcraft:pot"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:cream_of_vegetable_soup",
+    "count": 1
+  }
+}

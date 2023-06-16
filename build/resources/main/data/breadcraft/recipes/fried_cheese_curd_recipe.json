@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:cookingoil"
+    },
+    {
+      "item": "breadcraft:pot"
+    },
+    {
+      "tag": "forge:cheesecurd"
+    },
+    {
+      "tag": "forge:flour"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:fried_cheese_curds",
+    "count": 1
+  }
+}

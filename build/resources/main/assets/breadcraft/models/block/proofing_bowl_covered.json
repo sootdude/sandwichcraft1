@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/proofingbowl",
+  "textures": {
+    "all": "breadcraft:block/proofingbowl",
+    "particle": "breadcraft:block/proofingbowl",
+    "16": "breadcraft:block/proofingbowl"
+  },
+  "render_type": "solid"
+}

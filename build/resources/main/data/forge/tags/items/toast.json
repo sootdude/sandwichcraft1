@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:rye_toast",
+    "breadcraft:toast",
+    "breadcraft:white_bread_toast",
+    "breadcraft:french_bread_toast",
+    "breadcraft:sourdough_toast",
+    "breadcraft:country_loaf_toast"
+  ]
+}

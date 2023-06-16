@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/whiskcup",
+  "textures": {
+    "all": "breadcraft:block/whiskcup",
+    "particle": "breadcraft:block/whiskcup",
+    "1": "breadcraft:block/whiskcup"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/sprucecountercorner",
+  "textures": {
+    "all": "breadcraft:block/sprucecountercorner",
+    "particle": "breadcraft:block/sprucecountercorner",
+    "0": "breadcraft:block/sprucecountercorner"
+  },
+  "render_type": "solid"
+}

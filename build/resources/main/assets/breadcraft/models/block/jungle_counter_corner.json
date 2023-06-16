@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/junglecountercorner",
+  "textures": {
+    "all": "breadcraft:block/junglecountercorner",
+    "particle": "breadcraft:block/junglecountercorner",
+    "0": "breadcraft:block/junglecountercorner"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:mozzarella_cheese"
+    },
+    {
+      "item": "breadcraft:chefs_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:sliced_mozzarella",
+    "count": 12
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:onions"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:cookingoil"
+    },
+    {
+      "tag": "forge:cheese_slice"
+    },
+    {
+      "item": "breadcraft:french_batard_slice"
+    },
+    {
+      "item": "breadcraft:pot"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:french_onion_soup",
+    "count": 1
+  }
+}

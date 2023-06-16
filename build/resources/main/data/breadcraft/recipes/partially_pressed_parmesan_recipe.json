@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:parmesan_curds"
+    },
+    {
+      "item": "breadcraft:cheese_press"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:partially_pressed_parmesan",
+    "count": 1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:pork"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:garlic"
+    },
+    {
+      "tag": "forge:pepper"
+    },
+    {
+      "item": "breadcraft:pot"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:adobo",
+    "count": 1
+  }
+}

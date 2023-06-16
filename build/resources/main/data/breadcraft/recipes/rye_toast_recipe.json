@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:rye_bread_slice"
+    },
+    {
+      "item": "breadcraft:rye_bread_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:rye_toast",
+    "count": 1
+  }
+}

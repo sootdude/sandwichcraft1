@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "breadcraft:block/knife_block_bread_knife"
+    },
+    "facing=east": {
+      "model": "breadcraft:block/knife_block_bread_knife",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "breadcraft:block/knife_block_bread_knife",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "breadcraft:block/knife_block_bread_knife",
+      "y": 270
+    }
+  }
+}

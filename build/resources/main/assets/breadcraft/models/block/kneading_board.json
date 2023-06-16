@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/kneadingboard",
+  "textures": {
+    "all": "breadcraft:block/board",
+    "particle": "breadcraft:block/board",
+    "2": "breadcraft:block/board"
+  },
+  "render_type": "solid"
+}

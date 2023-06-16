@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:rolled_enriched_dough"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "item": "breadcraft:raisins"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:enriched_dough_with_filling",
+    "count": 1
+  }
+}

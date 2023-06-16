@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:rolled_dark_dough"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:dark_dough_with_filling",
+    "count": 1
+  }
+}

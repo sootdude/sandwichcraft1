@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chefs_knife"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "item": "breadcraft:tomato_slice"
+    },
+    {
+      "item": "breadcraft:diced_onion"
+    },
+    {
+      "tag": "breadcraft:acceptable_salad_bread"
+    },
+    {
+      "tag": "forge:olive_oil"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:panzanella",
+    "count": 2
+  }
+}

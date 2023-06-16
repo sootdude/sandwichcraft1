@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:chefs_knife"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "tag": "forge:lettuce"
+    },
+    {
+      "tag": "forge:chili_pepper"
+    },
+    {
+      "item": "breadcraft:diced_onion"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    },
+    {
+      "item": "breadcraft:breadcraft_salt"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:salmon_ceviche",
+    "count": 2
+  }
+}

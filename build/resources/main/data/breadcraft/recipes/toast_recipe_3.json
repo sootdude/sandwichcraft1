@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:challah_slice"
+    },
+    {
+      "item": "breadcraft:challah_slice"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:toast",
+    "count": 1
+  }
+}

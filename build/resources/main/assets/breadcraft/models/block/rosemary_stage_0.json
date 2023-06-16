@@ -1,0 +1,8 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "breadcraft:block/rosemary_stage0",
+    "particle": "breadcraft:block/rosemary_stage0"
+  },
+  "render_type": "cutout"
+}

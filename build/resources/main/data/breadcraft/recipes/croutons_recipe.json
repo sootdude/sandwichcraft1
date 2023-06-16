@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "breadcraft:acceptable_salad_bread"
+    },
+    {
+      "tag": "forge:herb"
+    },
+    {
+      "tag": "forge:cookingoil"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:croutons",
+    "count": 4
+  }
+}

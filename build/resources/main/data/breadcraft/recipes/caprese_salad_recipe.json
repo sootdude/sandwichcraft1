@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "breadcraft:sliced_mozzarella"
+    },
+    {
+      "item": "breadcraft:tomato_slice"
+    },
+    {
+      "tag": "forge:basil"
+    },
+    {
+      "item": "breadcraft:tomato_slice"
+    },
+    {
+      "item": "breadcraft:sliced_mozzarella"
+    },
+    {
+      "tag": "forge:olive_oil"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:caprese_salad",
+    "count": 2
+  }
+}

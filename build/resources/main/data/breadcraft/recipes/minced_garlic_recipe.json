@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:garlic"
+    },
+    {
+      "item": "breadcraft:chefs_knife"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:minced_garlic",
+    "count": 2
+  }
+}

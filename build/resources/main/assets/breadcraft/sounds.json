@@ -1,0 +1,10 @@
+{
+  "muted": {
+    "sounds": [
+      {
+        "name": "breadcraft:muted",
+        "stream": false
+      }
+    ]
+  }
+}

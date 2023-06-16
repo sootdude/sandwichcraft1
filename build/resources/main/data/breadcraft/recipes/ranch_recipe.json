@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:cream"
+    },
+    {
+      "tag": "forge:lemon_juice"
+    },
+    {
+      "item": "breadcraft:mixed_herbs"
+    },
+    {
+      "tag": "forge:salt"
+    }
+  ],
+  "result": {
+    "item": "breadcraft:ranch",
+    "count": 4
+  }
+}

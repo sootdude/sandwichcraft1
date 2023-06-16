@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:aging_cask",
+    "breadcraft:proofing_bowl",
+    "breadcraft:knife_block",
+    "breadcraft:kneading_board",
+    "breadcraft:proofing_bowl_covered",
+    "breadcraft:knife_block_full",
+    "breadcraft:knife_block_chefs_knife",
+    "breadcraft:knife_block_bread_knife"
+  ]
+}

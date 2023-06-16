@@ -1,0 +1,9 @@
+{
+  "parent": "breadcraft:custom/cup",
+  "textures": {
+    "all": "breadcraft:block/toolscup",
+    "particle": "breadcraft:block/toolscup",
+    "2": "breadcraft:block/toolscup"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "breadcraft:block/caper_stage_3",
+    "particle": "breadcraft:block/caper_stage_3"
+  },
+  "render_type": "cutout"
+}

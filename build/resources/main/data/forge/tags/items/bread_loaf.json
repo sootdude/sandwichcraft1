@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "breadcraft:pretzel_bread",
+    "breadcraft:white_bread",
+    "breadcraft:whole_wheat_bread",
+    "breadcraft:french_batard",
+    "breadcraft:babka",
+    "breadcraft:rye_bread",
+    "breadcraft:challah",
+    "breadcraft:fougasse",
+    "breadcraft:sourdough_sandwich_bread",
+    "breadcraft:sourdough_boule",
+    "breadcraft:whole_wheat_boule",
+    "breadcraft:pumpernickel",
+    "breadcraft:brioche",
+    "breadcraft:focaccia",
+    "breadcraft:white_country_loaf",
+    "breadcraft:sub_sandwich_loaf",
+    "breadcraft:chocolate_sourdough",
+    "breadcraft:milk_bread",
+    "breadcraft:baguette"
+  ]
+}
